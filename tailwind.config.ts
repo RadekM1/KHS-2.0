@@ -107,9 +107,5 @@ export default {
       roboto: ["var(--font-roboto)", "latin"],
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require('tailwind-scrollbar'),
-    require('daisyui')
-  ],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],
 };
