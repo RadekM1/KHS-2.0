@@ -46,13 +46,12 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
     setJustClicked(true)
     setTimeout(()=>{
       setJustClicked(false)
-    }, 1200)
+    }, 1520)
   }
 
-  console.log(clicked)
 
   return (
-    <div className="w-16 flex flex-row flex-nowrap border-l-gray-300 h-full" >
+    <div className="w-16 flex gap-[2px] ml-3 flex-row flex-nowrap border-l-gray-300 h-full" >
       <button 
       disabled={clicked === true || !sessionContext}
       onClick={()=>handleClick()}
@@ -60,8 +59,12 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
         <HearthIcon className={`
           h-6 w-6   flex self-center
           ${clicked ? 'text-rose-500' : ' text-transparent' }
+          ${!clicked && sessionContext ? 'hover:animate-pulse hover:text-rose-100 hover:dark:text-rose-300' : ''}
           ${justClicked ? 'animate-bounce duration-1000  transition-all' : ''}
           `} />
+      </button>
+      <button className="h-6 w-6 justify-center border-[1px] text-center border-transparent hover:border-gray-200 rounded self-center items-center flex">
+        {likes}
       </button>
     </div>
   )
