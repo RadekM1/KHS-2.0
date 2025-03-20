@@ -58,19 +58,19 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
         <div className="flex w-full overflow-hidden">
           <div className="flex w-full flex-row">
             <div className="flex flex-row flex-nowrap justify-end text-xs">
-              <div className="flex justify-center text-gray-600 dark:text-gray-100">
-                <FaRegComment className="mx-2 h-5 w-5 self-center text-gray-400 dark:text-gray-600" />
+              <div className="flex justify-center h-full text-gray-600 dark:text-gray-100">
+                <FaRegComment className="mx-2 flex h-5 w-5 self-center text-gray-400 dark:text-gray-600" />
               </div>
               <div className="mr-2 flex self-center text-xs dark:text-gray-200">
                 {data.comments_count}
               </div>
-              <button className="mx-2 dark:text-gray-100">
+              <div className="mx-2 dark:text-gray-100">
                 <Heart
                   likes={data.hearts_count}
-                  heartsList={data.liked_by}
+                  heartsList={data.liked_by ?? null}
                   slug={slug}
                 />
-              </button>
+              </div>
             </div>
             <div className="mx-2 flex self-center text-sm">
               <Share share={share} title={data.title} />

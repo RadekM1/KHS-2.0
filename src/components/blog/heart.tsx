@@ -1,11 +1,10 @@
 "use client";
 
-import Chip from "@mui/material/Chip";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { HearthIcon } from "./hearth-icon";
 import { useState, useEffect } from "react";
-import Tooltip from "@mui/material/Tooltip";
+
 import { useSessionContext } from "@/src/context/session-provider";
+import { heartInsert } from "@/src/lib/server-functions/backend/heart-insert";
 
 interface HeartProps {
   likes: number;
@@ -21,6 +20,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
   const [clicked, setClicked] = useState(false);
   const [clicks, setClicks] = useState(likes);
   const sessionContext = useSessionContext();
+  const [justClicked, setJustClicked] = useState<boolean>(false)
 
   const user = sessionContext?.user.email ?? "";
   const isClicked = heartsList.some((account) => account.account === user);
@@ -32,68 +32,39 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
   }, [sessionContext, heartsList]);
 
   const handleClick = async () => {
+    if (sessionContext === null || !slug) {
+      console.log("chybí údaje k uložení hodnoty do databáze - id článku, nebo id uživatele");
+      return;
+    }
     setClicks(clicks + 1);
     setClicked(true);
-
-    if (sessionContext === null) {
-      alert("nebyl zjištěn přihlášený uživatel");
-      return;
-    }
-
-    if (!slug) {
-      alert("chyba při zjištění ID článku");
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/hearts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          article_slug_heart: slug,
-          user_account_heart: sessionContext.user,
-          operation: "insert",
-        }),
-      });
-
-      if (!response.ok) {
-        console.log(response);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    handleClickAnimation()
+    await heartInsert(slug, sessionContext.user.email)
   };
 
+  const handleClickAnimation = () =>{
+    setJustClicked(true)
+    setTimeout(()=>{
+      setJustClicked(false)
+    }, 1200)
+  }
+
+  console.log(clicked)
+
   return (
-    <Tooltip title={!sessionContext ? "Je potřeba být přihlášený" : ""} arrow>
-      <div className="relative">
-        {clicked ? (
-          <Chip
-            icon={<FavoriteIcon color="error" />}
-            label={clicks}
-            className="dark:text-gray-300"
-            variant="outlined"
-            onClick={sessionContext && !clicked ? handleClick : undefined}
-            style={
-              !sessionContext ? { cursor: "not-allowed", opacity: 0.6 } : {}
-            }
-          />
-        ) : (
-          <Chip
-            icon={<FavoriteBorderIcon style={{ color: "#9e9e9e" }} />}
-            label={clicks}
-            className="dark:text-gray-300"
-            variant="outlined"
-            onClick={sessionContext ? handleClick : undefined}
-            style={
-              !sessionContext ? { cursor: "not-allowed", opacity: 0.6 } : {}
-            }
-          />
-        )}
-      </div>
-    </Tooltip>
-  );
+    <div className="w-16 flex flex-row flex-nowrap border-l-gray-300 h-full" >
+      <button 
+      disabled={clicked === true || !sessionContext}
+      onClick={()=>handleClick()}
+      className={`${!sessionContext ? ' cursor-not-allowed' : 'cursor-poiner'} h-full`}>
+        <HearthIcon className={`
+          h-6 w-6   flex self-center
+          ${clicked ? 'text-rose-500' : ' text-transparent' }
+          ${justClicked ? 'animate-bounce duration-1000  transition-all' : ''}
+          `} />
+      </button>
+    </div>
+  )
 };
+
+
