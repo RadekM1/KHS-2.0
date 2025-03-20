@@ -13,13 +13,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
-      duration={100000}
+      duration={10000}
       closeButton={true}
       toastOptions={{
         classNames: {
           toast: "group data-[type=success]:bg-green-500",
           description:
-            "group-[.toaster]:text-muted-foreground scale-150 my-10 bg-slate-800 py-10",
+            "group-[.toaster]:text-muted-foreground scale-150  bg-slate-800 ",
           actionButton:
             "group-[.toaster]:bg-primary group-[.toaster]:text-primary-foreground",
           cancelButton:

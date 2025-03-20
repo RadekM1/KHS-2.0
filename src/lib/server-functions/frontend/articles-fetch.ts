@@ -1,6 +1,6 @@
 "use server";
-import pool from "@/src/lib/database/pool";
-import { executeQuery } from "@/src/lib/database/db";
+import pool from "@/src/lib/connection-adapters/pool";
+import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { postCardsSchema, PostCards } from "@/src/schemas/queries/articles";
 
 export const articlesCardFetch = async () => {

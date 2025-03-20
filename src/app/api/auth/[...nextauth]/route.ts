@@ -1,12 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
-import pool from "@/src/lib/database/pool";
-import { executeQuery } from "@/src/lib/database/db";
-import { compare } from "bcryptjs";
-import { validateEmail } from "@/src/lib/functions/validateEmail";
-import { validatePassword } from "@/src/lib/functions/validatePassword";
-import { SessionUserSchema } from "@/src/schemas/session";
+import { login } from "@/src/lib/server-functions/backend/users/login";
 
 export const authOptions: AuthOptions = {
   session: {
@@ -26,100 +21,12 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(
-        credentials: Record<"account" | "password", string> | undefined,
+        credentials: { account: string; password: string } | undefined,
       ) {
-        const sqlConnection = await pool.connect();
-
-        try {
-          if (
-            !credentials ||
-            !validateEmail(credentials.account) ||
-            !validatePassword(credentials.password)
-          ) {
-            throw new Error("Nevhodné heslo nebo jméno");
-          }
-
-          const cleanUser = credentials.account;
-
-          let wrongPassCount = 0;
-
-          const result = await executeQuery({
-            sqlConnection,
-            query: "SELECT * FROM users WHERE account = $1",
-            values: [cleanUser],
-          });
-
-          if (result.rows.length === 0) {
-            throw new Error("Uživatel v databázi nenalezen");
-          }
-
-          const row = result.rows[0];
-          const isBlocked = new Date(row.ban_time_stamp);
-
-          const passFromDatabase = row.hash_password;
-          const passFromClient = credentials.password;
-          const locked = row.locked;
-
-          if (locked) {
-            throw new Error("neautorizovaný účet");
-          }
-
-          if (!isNaN(isBlocked.getTime()) && isBlocked > new Date()) {
-            throw new Error("Účet je stále zablokován");
-          }
-
-          const passEqual = await compare(passFromClient, passFromDatabase);
-
-          if (!passEqual) {
-            const resWrongPass = await executeQuery({
-              sqlConnection,
-              query:
-                "UPDATE users SET wrong_pass_check = wrong_pass_check + 1 WHERE account = $1 RETURNING wrong_pass_check",
-              values: [cleanUser],
-            });
-
-            wrongPassCount = parseInt(resWrongPass.rows[0].wrong_pass_check);
-
-            if (wrongPassCount >= 5) {
-              const resBlockAccount = await executeQuery({
-                sqlConnection,
-                query: `
-                UPDATE users SET 
-                ban_time_stamp = NOW() + INTERVAL '15 minutes'
-                WHERE account = $1`,
-                values: [cleanUser],
-              });
-              throw new Error(
-                "Účet byl z bezpečnostních důvodů na 15 minut zablokován, velký počet neplatných pokusů o přihlášení",
-              );
-            }
-            throw new Error("Nesprávné heslo");
-          } else {
-            const resWrongPass = await executeQuery({
-              sqlConnection,
-              query:
-                "UPDATE users SET wrong_pass_check = 0 WHERE account = $1 RETURNING wrong_pass_check",
-              values: [cleanUser],
-            });
-          }
-
-          return {
-            id: row.id.toString(),
-            email: cleanUser,
-            avatar: row.avatar,
-            clearance: row.clearance,
-            firstName: row.name,
-            lastName: row.last_name,
-          };
-        } catch (error) {
-          throw new Error(
-            error instanceof Error
-              ? error.message
-              : "An unknown error occurred",
-          );
-        } finally {
-          sqlConnection.release();
+        if (!credentials || !credentials.account || !credentials.password) {
+          throw new Error("Chybí přihlašovací údaje.");
         }
+        return login(credentials.account, credentials.password);
       },
     }),
   ],

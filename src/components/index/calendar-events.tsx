@@ -1,4 +1,4 @@
-import { CalendarEvents } from "@/src/schemas/queries/frontend/calendar";
+import { CalendarEvents } from "@/src/schemas/queries/calendar";
 import dayjs from "dayjs";
 import { czDays, czMonths } from "@/src/static-objects/conts/dates";
 
@@ -34,7 +34,7 @@ export const CalendarEventsTable = ({ rows }: { rows: CalendarEvents }) => {
                 {`${dayInMonth}. ${czMonths[tempDay.month()]} (${czDays[dayInWeek]})`}
               </td>
               <td className="flex-grow py-2 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
-                {` - ${row.event}`}
+                {` - ${row.event}`}
               </td>
               <td className="flex-shrink py-2 text-end text-xs font-thin text-orange-600 dark:text-orange-200 sm:text-sm">
                 {` ${checkDay && checkDay} ${checkDay ? "" : eventStartInCycle} ${checkDay ? "" : "-"} ${checkNoEnd ? checkNoEnd : ""} ${checkDay || checkNoEnd ? "" : eventEndInCycle}`}

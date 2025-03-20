@@ -1,4 +1,9 @@
-import { GiHiking, GiMountainClimbing, GiSkis, GiNewspaper } from "react-icons/gi";
+import {
+  GiHiking,
+  GiMountainClimbing,
+  GiSkis,
+  GiNewspaper,
+} from "react-icons/gi";
 import { MdHistory } from "react-icons/md";
 import { LiaMountainSolid } from "react-icons/lia";
 import { VscChecklist } from "react-icons/vsc";
@@ -6,7 +11,7 @@ import { BoulderIcon } from "@/src/components/menu/boulderIcon";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import { IoSchoolOutline, IoPeopleOutline } from "react-icons/io5";
 import { FiPhone } from "react-icons/fi";
-import { IoIosInformationCircleOutline } from "react-icons/io"
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IoLibraryOutline } from "react-icons/io5";
 import { TbMoodBoy } from "react-icons/tb";
 import { GoThumbsup } from "react-icons/go";
@@ -19,7 +24,7 @@ export const menuObject = [
     label: "Novinky",
     link: "/novinky",
     submenu: null,
-    mobileIcon: IoIosInformationCircleOutline
+    mobileIcon: IoIosInformationCircleOutline,
   },
   {
     label: "Články",
@@ -103,7 +108,7 @@ export const menuObject = [
         isVisible: true,
       },
       {
-        label: "Horokruh - lezecký kroužek pro mládež",
+        label: "Horokruh - lezecký kroužek",
         link: "/kurzy/horokruh",
         icon: TbMoodBoy,
         isVisible: true,
@@ -111,8 +116,8 @@ export const menuObject = [
     ],
   },
   {
-    label: 'Pro členy',
-    link: null, 
+    label: "Pro členy",
+    link: null,
     mobileIcon: GiSkis,
     submenu: [
       {
@@ -145,63 +150,45 @@ export const menuObject = [
         icon: FaListCheck,
         isVisible: true,
       },
-    ]
+    ],
   },
   {
-    label: 'O nás', 
-    link: null, 
+    label: "O nás",
+    link: null,
     mobileIcon: IoPeopleOutline,
     submenu: [
       {
         label: "Historie oddílu",
         link: "/o-nas/historie-oddilu",
         icon: MdHistory,
-        isVisible: true
+        isVisible: true,
       },
       {
         label: "Vedení oddílu",
         link: "/o-nas/vedeni-oddilu",
         icon: FaPeopleGroup,
-        isVisible: true
+        isVisible: true,
       },
       {
         label: "Instruktoři horoškoly",
         link: "/o-nas/instruktori-horoskoly",
         icon: LiaMountainSolid,
-        isVisible: true
+        isVisible: true,
       },
       {
         label: "Trenéři lezení",
         link: "/o-nas/treneri-lezeni",
         icon: BoulderIcon,
-        isVisible: true
-      }
-    ]
+        isVisible: true,
+      },
+    ],
   },
   {
-    label: 'Kontakt',
-    link: '/kontakt',
-    mobileIcon: FiPhone
-  }
+    label: "Kontakt",
+    link: "/kontakt",
+    mobileIcon: FiPhone,
+  },
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const oNas = [
   {
@@ -229,7 +216,6 @@ export const oNas = [
     icon: BoulderIcon,
   },
 ];
-
 
 export const kurzy = [
   {
@@ -304,7 +290,6 @@ export const articles = [
     icon: GiHiking,
   },
 ];
-
 
 export const proCleny = [
   {

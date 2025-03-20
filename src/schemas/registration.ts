@@ -10,17 +10,23 @@ export const passwordSchema = z
 
 export const emailSchema = z.string().email();
 
-export const userSchema = z.object({
-  firstName: z
-    .string()
-    .trim()
-    .min(2, { message: "Jméno musí obsahovat alespoň dva znaky" }),
-  lastName: z
-    .string()
-    .trim()
-    .min(2, { message: "Příjmení musí obsahovat alespoň dva znaky" }),
-  user: z.string().email(),
-  password: passwordSchema,
-});
+export const registrationSchema = z
+  .object({
+    firstName: z
+      .string()
+      .trim()
+      .min(2, { message: "Jméno musí obsahovat alespoň dva znaky" }),
+    lastName: z
+      .string()
+      .trim()
+      .min(2, { message: "Příjmení musí obsahovat alespoň dva znaky" }),
+    email: z.string().email({ message: "Email není ve správném formátu" }),
+    password: passwordSchema,
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Hesla se neshodují.",
+    path: ["confirmPassword"],
+  });
 
-export type UserSchema = z.infer<typeof userSchema>;
+export type RegistrationSchema = z.infer<typeof registrationSchema>;

@@ -1,5 +1,5 @@
 import { MdRssFeed } from "react-icons/md";
-import { BtnArticleShow } from "../blog/Btn-article-show";
+import { BtnArticleShow } from "../blog/btn-article-show";
 import { Share } from "../blog/share";
 import { newsFetch } from "@/src/lib/server-functions/frontend/news-fetch";
 

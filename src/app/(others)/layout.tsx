@@ -6,7 +6,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className=" flex w-full mt-16 max-w-screen-xl flex-col items-start justify-start rounded p-2 text-center sm:px-3 md:px-8 lg:px-0">
+    <div className=" flex w-full  bg-white dark:bg-zinc-950 mt-16 max-w-screen-xl flex-col items-start justify-start rounded p-2 text-center sm:px-3 md:px-8 lg:px-0">
       {children}
     </div>
   );

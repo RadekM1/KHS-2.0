@@ -18,11 +18,10 @@ export const Menu = () => {
 
   return (
     <>
-    <header 
-    className="fixed top-0 z-30 w-full border-b border-b-gray-300 justify-center items-center flex bg-stone-100/90 backdrop-blur-sm dark:border-b-gray-600 dark:bg-[#1E1E1E]/80">
-      <nav
-        aria-label="Global"
-        className="flex  max-w-7xl w-full self-center flex-row flex-nowrap items-end justify-between "
+      <header className="fixed top-0 z-30 w-full border-b border-b-gray-300 justify-center items-center flex bg-stone-100/90 backdrop-blur-sm dark:border-b-gray-600 dark:bg-[#1E1E1E]/80">
+        <nav
+          aria-label="Global"
+          className="flex  max-w-7xl w-full self-center flex-row flex-nowrap items-end justify-between "
         >
           <div className="flex h-full self-center">
             <div className="flex  h-full lg:hidden">
@@ -34,17 +33,22 @@ export const Menu = () => {
                 <Bars3Icon aria-hidden="true" className="h-10 w-10" />
               </button>
               <Link className="h-full flex self-center" href="/">
-                <img  alt="logo" src="https://storage.googleapis.com/khs-zlin/logo_small.svg" className="flex h-[50px]  self-center object-contain lg:hidden" />
+                <img
+                  alt="logo"
+                  src="https://storage.googleapis.com/khs-zlin/logo_small.svg"
+                  className="flex h-[50px]  self-center object-contain lg:hidden"
+                />
               </Link>
             </div>
           </div>
           <Link className="h-full flex self-center ml-3 " href="/">
-              <img  alt="logo" src="https://storage.googleapis.com/khs-zlin/logo.svg" className="hidden h-[70px] self-center object-contain lg:flex" />
+            <img
+              alt="logo"
+              src="https://storage.googleapis.com/khs-zlin/logo.svg"
+              className="hidden h-[70px] self-center object-contain lg:flex"
+            />
           </Link>
-          <BigScreenMenu
-          path={pathName}
-          filter={currentFilter}
-          />
+          <BigScreenMenu path={pathName} filter={currentFilter} />
           <div className="flex flex-row gap-x-3 flex-nowrap h-full self-end items-center">
             <ThemeToggle />
             <DashboardMenu />
@@ -56,7 +60,7 @@ export const Menu = () => {
           path={pathName}
           filter={currentFilter}
         />
-    </header>
+      </header>
     </>
   );
 };

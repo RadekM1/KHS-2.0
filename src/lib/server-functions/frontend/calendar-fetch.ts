@@ -1,7 +1,7 @@
 "use server";
 
-import { executeQuery } from "../../database/db";
-import pool from "../../database/pool";
+import { executeQuery } from "../../connection-adapters/db";
+import pool from "../../connection-adapters/pool";
 import { CalendarEvents, eventsSchema } from "@/src/schemas/queries/calendar";
 
 export const calendarFetch = async () => {

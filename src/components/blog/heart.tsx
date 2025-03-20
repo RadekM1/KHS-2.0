@@ -3,7 +3,6 @@
 import Chip from "@mui/material/Chip";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { useSessionContext } from "@/src/context/session-provider";
@@ -19,26 +18,24 @@ interface HeartProps {
 }
 
 export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
-  const { data: session } = useSession();
   const [clicked, setClicked] = useState(false);
   const [clicks, setClicks] = useState(likes);
   const sessionContext = useSessionContext();
 
+  const user = sessionContext?.user.email ?? "";
+  const isClicked = heartsList.some((account) => account.account === user);
+
   useEffect(() => {
-    if (sessionContext) {
-      if (true) {
-        setClicked(true);
-      } else {
-        setClicked(false);
-      }
+    if (isClicked) {
+      setClicked(true);
     }
-  }, [session, heartsList]);
+  }, [sessionContext, heartsList]);
 
   const handleClick = async () => {
     setClicks(clicks + 1);
     setClicked(true);
 
-    if (!user) {
+    if (sessionContext === null) {
       alert("nebyl zjištěn přihlášený uživatel");
       return;
     }
@@ -57,13 +54,13 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
 
         body: JSON.stringify({
           article_slug_heart: slug,
-          user_account_heart: user,
+          user_account_heart: sessionContext.user,
           operation: "insert",
         }),
       });
 
       if (!response.ok) {
-        console.log(response.error);
+        console.log(response);
       }
     } catch (error) {
       console.log(error);
