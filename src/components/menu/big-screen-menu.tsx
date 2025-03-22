@@ -14,7 +14,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [whichIsOpen, setWhichIsOpen] = useState<number>(10);
 
-  console.log(isOpen)
+
 
   const popoverWrapperRef = useRef<HTMLDivElement>(null);
 

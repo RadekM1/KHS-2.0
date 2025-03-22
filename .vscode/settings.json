@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "postgresql.r3.websupport.cz",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "khs_postgre",
+            "database": "khs_postgre",
+            "username": "khs_postgre"
+        }
+    ]
+}

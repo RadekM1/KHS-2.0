@@ -7,10 +7,14 @@ import { GiNewspaper } from "react-icons/gi";
 import { Share } from "@/src/components/blog/share";
 import { CommentComponent } from "./commentComponent";
 
-export const revalidate = 3600;
+interface PageProps {
+  params: {
+    clanek: string;
+  };
+}
 
-export default async function page({ params }) {
-  const article = params.clanek;
+export default async function page({ params }: PageProps) {
+  const article = await params.clanek;
 
   let category = "";
 

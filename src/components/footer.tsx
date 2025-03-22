@@ -38,24 +38,32 @@ export const Footer = () => {
               Navigace
             </h2>
             <div className="mb-4 py-8 gap-10 flex-row  justify-between flex text-2xl">
-              <ul className="text-sm ">
+              <ul className="text-sm flex flex-col gap-4 ">
                 {firstHalfMenu.map((item, i) => {
                   return (
-                    <React.Fragment key={i}>
-                      {item.link ? (
-                        <Link
-                          href={item.link}
-                          className={` pt-4 font-semibold  ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
-                        >
-                          <li>{item.label}</li>
-                        </Link>
+                    <React.Fragment 
+                    key={i}>
+                      {item.submenu ? (
+                          ''
                       ) : (
-                        <p className="pt-4 font-semibold">{item.label}</p>
+                        <li>
+                        <Link
+                        href={item.link}
+                        className={`font-semibold  ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
+                      >
+                        {item.label}
+                        </Link>
+                      </li> 
                       )}
+                      
                       {item.submenu &&
-                        item.submenu.map((subItem, j) => (
-                          <Link key={j} href={subItem.link}>
-                            <li
+                        <ul>
+                          <li className="font-semibold">{item.label}</li>
+                        {
+                          item.submenu.map((subItem, j) => (
+                          
+                            <li key={j}
+                            
                               className={
                                 currentFilter ===
                                 (subItem && "filter" in subItem
@@ -65,34 +73,46 @@ export const Footer = () => {
                                   : inActiveFooter
                               }
                             >
+                              <Link  href={subItem.link}>
                               {subItem.label}
+                              </Link>
                             </li>
-                          </Link>
-                        ))}
+                            
+                          ))
+                        }
+                        </ul> 
+                        }
+                        
                     </React.Fragment>
                   );
                 })}
               </ul>
-              <ul className="text-sm ">
-                {secondHalfMenu.map((item, i) => {
+              <ul className="text-sm flex flex-col gap-4">
+              {secondHalfMenu.map((item, i) => {
                   return (
-                    <React.Fragment key={i}>
-                      {item.link ? (
-                        <Link
-                          href={item.link}
-                          className={`font-semibold ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
-                        >
-                          <li className="pt-4">{item.label}</li>
-                        </Link>
+                    <React.Fragment 
+                    key={i}>
+                      {item.submenu ? (
+                          ''
                       ) : (
-                        <p className={`${i !== 0 && "pt-4"} font-semibold`}>
-                          {item.label}
-                        </p>
+                        <li>
+                        <Link
+                        href={item.link}
+                        className={`font-semibold  ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
+                      >
+                        {item.label}
+                        </Link>
+                      </li> 
                       )}
+                      
                       {item.submenu &&
-                        item.submenu.map((subItem, j) => (
-                          <Link key={j} href={subItem.link}>
-                            <li
+                        <ul>
+                          <li className="font-semibold">{item.label}</li>
+                        {
+                          item.submenu.map((subItem, j) => (
+                          
+                            <li key={j}
+                            
                               className={
                                 currentFilter ===
                                 (subItem && "filter" in subItem
@@ -102,10 +122,16 @@ export const Footer = () => {
                                   : inActiveFooter
                               }
                             >
+                              <Link  href={subItem.link}>
                               {subItem.label}
+                              </Link>
                             </li>
-                          </Link>
-                        ))}
+                            
+                          ))
+                        }
+                        </ul> 
+                        }
+                        
                     </React.Fragment>
                   );
                 })}

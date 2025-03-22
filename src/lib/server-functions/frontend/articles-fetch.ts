@@ -2,7 +2,7 @@
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { postCardsSchema, PostCards } from "@/src/schemas/queries/articles";
-import { Rows } from "lucide-react";
+
 
 export const articlesCardFetch = async () => {
   const sqlConnection = await pool.connect();

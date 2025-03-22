@@ -3,98 +3,54 @@
 import { useState, useEffect } from "react";
 import { CommentCardInput } from "@/src/components/blog/commentCardInput";
 import CommentCard from "@/src/components/blog/commentCard";
+import { commentsFetch } from "@/src/lib/server-functions/frontend/comments-fetch";
+import { ParsedCommentsSchema } from "@/src/schemas/queries/comments";
+import { toast } from "sonner";
+import { commentInsert } from "@/src/lib/server-functions/backend/comment-insert";
 
-export const CommentComponent = ({ article }) => {
+export const CommentComponent = ({ slug } : {slug:string}) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState("");
   const [areaValue, setAreaValue] = useState("");
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<ParsedCommentsSchema>();
   const [disabled, setDisabled] = useState(true);
 
+
   useEffect(() => {
-    if (article) {
+    if (slug) {
       fetchComments();
     }
-  }, [article]);
+  }, [slug]);
 
   const fetchComments = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/comments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          article,
-          operation: "getter",
-        }),
-      });
-      if (!response.ok) {
-        console.error("Error fetching comments:", response.statusText);
-        return;
-      }
-
-      const data = await response.json();
-
-      const rows = data.result;
-
-      setComments(rows || []);
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    } finally {
-      setLoading(false);
-    }
+    const result = await commentsFetch(slug);
+    setComments(result)
   };
 
   const handleClick = async () => {
-    if (!areaValue) {
-      alert("není zadán komentář");
+    if (!areaValue.trim) {
+      toast.error('Není zadán komentář')
       return;
     }
-
-    if (!article) {
-      alert("chyba při zjištění ID článku");
+    if (!slug || !user) {
+      toast.error('Chyba při zjištění ID článku nebo nebyl zjištěn přihlášený uživatel, nelze uložit komentář, zkuste znovu načíst stránku.')
       return;
     }
-
-    if (!user) {
-      alert("nebyl zjištěn přihlášený uživatel");
-      return;
-    }
-
-    setLoading(true);
-    setDisabled(true);
-
-    try {
-      const response = await fetch("/api/comments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          areaValue,
-          user_account: user,
-          article_slug: article,
-          operation: "insert",
-        }),
-      });
-
+    setLoading(true)
+    setDisabled(true)
+      const response = await commentInsert(slug, user, areaValue)
       if (!response.ok) {
-        console.log(response.error);
+        toast.error(response.message)
+        setLoading(false)
+        setDisabled(false)
+        return
       }
-
+      toast.success(response.message)
       setAreaValue("");
-      fetchComments();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-      setDisabled(false);
-    }
-  };
-
+      await fetchComments();
+      setDisabled(false)
+      setLoading(false)
+  }
   return (
     <>
       <div className="flex flex-col justify-start">
