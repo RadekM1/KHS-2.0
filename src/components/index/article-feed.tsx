@@ -4,6 +4,7 @@ import { articlesCardFetch } from "@/src/lib/server-functions/frontend/articles-
 export const ArticleFeed = async () => {
   const rows = await articlesCardFetch();
 
+
   return (
     <div className="flex flex-col justify-center text-center">
       <div className="mb-2 mt-5 flex w-full justify-center text-center text-2xl font-bold text-gray-700  dark:text-white">

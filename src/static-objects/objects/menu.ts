@@ -28,7 +28,7 @@ export const menuObject = [
   },
   {
     label: "Články",
-    link: null,
+    link: '/clanky',
     mobileIcon: GiNewspaper,
     submenu: [
       {
@@ -74,7 +74,7 @@ export const menuObject = [
   },
   {
     label: "Kurzy",
-    link: null,
+    link: '/kurzy',
     mobileIcon: IoSchoolOutline,
     submenu: [
       {
@@ -117,7 +117,7 @@ export const menuObject = [
   },
   {
     label: "Pro členy",
-    link: null,
+    link: '/clenstvi-v-oddile',
     mobileIcon: GiSkis,
     submenu: [
       {
@@ -154,7 +154,7 @@ export const menuObject = [
   },
   {
     label: "O nás",
-    link: null,
+    link: '/o-nas',
     mobileIcon: IoPeopleOutline,
     submenu: [
       {
@@ -187,139 +187,5 @@ export const menuObject = [
     label: "Kontakt",
     link: "/kontakt",
     mobileIcon: FiPhone,
-  },
-];
-
-export const oNas = [
-  {
-    id: 1,
-    name: "Historie oddílu",
-    href: "/o-nas/historie-oddilu",
-    icon: MdHistory,
-  },
-  {
-    id: 2,
-    name: "Vedení oddílu",
-    href: "/o-nas/vedeni-oddilu",
-    icon: FaPeopleGroup,
-  },
-  {
-    id: 3,
-    name: "Instruktoři horoškoly",
-    href: "/o-nas/instruktori-horoskoly",
-    icon: LiaMountainSolid,
-  },
-  {
-    id: 4,
-    name: "Trenéři lezení",
-    href: "/o-nas/treneri-lezeni",
-    icon: BoulderIcon,
-  },
-];
-
-export const kurzy = [
-  {
-    id: 1,
-    name: "Horoškola - skály",
-    href: "/kurzy/horoskola-skaly",
-    icon: BoulderIcon,
-  },
-  {
-    id: 2,
-    name: "Horoškola - vícedélky",
-    href: "/kurzy/horoskola-vicedelky",
-    icon: GiMountainClimbing,
-  },
-  {
-    id: 3,
-    name: "Lavinová prevence",
-    href: "/kurzy/lavinova-prevence",
-    icon: FaHillAvalanche,
-  },
-  {
-    id: 4,
-    name: "Lezení v ledu",
-    href: "/kurzy/lezeni-v-ledu",
-    icon: FaIcicles,
-  },
-  {
-    id: 5,
-    name: "Zimní lezení",
-    href: "/kurzy/zimni-lezeni",
-    icon: FaRegSnowflake,
-  },
-  {
-    id: 6,
-    name: "Horokruh - lezecký kroužek pro mládež",
-    href: "/kurzy/horokruh",
-    icon: TbMoodBoy,
-  },
-];
-
-export const articles = [
-  {
-    id: 1,
-    name: "Skály",
-    description: "Od písků v Ádru až po rulu v Chamonix",
-    href: "/clanky?filter=skaly",
-    filter: "skaly",
-    icon: GiMountainClimbing,
-  },
-  {
-    id: 2,
-    name: "Horolezectví",
-    description: "Vícedélky v tatrách, alpách a občas i exotika",
-    href: "/clanky?filter=horolezectvi",
-    filter: "horolezectvi",
-    icon: LiaMountainSolid,
-  },
-  {
-    id: 3,
-    name: "Oddíl",
-    description: "Oddílové akce, soutěže, školení",
-    href: "/clanky?filter=oddil",
-    filter: "oddil",
-    icon: BoulderIcon,
-  },
-  {
-    id: 4,
-    name: "Ostatní",
-    description: "Zápisky z výprav po celém světě",
-    href: "/clanky?filter=ostatni",
-    filter: "ostatni",
-    icon: GiHiking,
-  },
-];
-
-export const proCleny = [
-  {
-    id: 1,
-    name: "Oddílové akce",
-    href: "/clenstvi-v-oddile/oddilove-akce",
-    icon: HiOutlineTrophy,
-  },
-  {
-    id: 2,
-    name: "Knihovna",
-    href: "/clenstvi-v-oddile/knihovna",
-    icon: IoLibraryOutline,
-  },
-  {
-    id: 3,
-    name: "Půjčovna vybavení",
-    href: "/clenstvi-v-oddile/pujcovna-vybaveni",
-    icon: GiSkis,
-  },
-  {
-    id: 4,
-    name: "Výhody členství",
-    href: "/clenstvi-v-oddile/vyhody-clenstvi",
-    icon: GoThumbsup,
-  },
-  {
-    id: 5,
-    name: "Podmínky členství",
-    href: "/clenstvi-v-oddile/podminky-clenstvi",
-    icon: FaListCheck,
   },
 ];

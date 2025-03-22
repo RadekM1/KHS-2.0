@@ -76,14 +76,18 @@ export const login = async (email: string, password: string) => {
         "UPDATE users SET wrong_pass_check = 0 WHERE account = $1 RETURNING wrong_pass_check",
       values: [cleanUser],
     });
-    return {
+
+    const user = {
       id: row.id.toString(),
       email: cleanUser,
       avatar: row.avatar,
       clearance: row.clearance,
       firstName: row.name,
       lastName: row.last_name,
+      nickName: row.nick_name
     };
+
+    return user
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : "Neznámá chyba");
   } finally {

@@ -68,7 +68,7 @@ export const MobileMenu = ({
                             <item.mobileIcon className="flex h-6 w-6 self-center dark:text-gray-400" />
                           </div>
                           <div
-                            className={` ${path.includes("/novinky") ? "text-orange-600 dark:text-orange-300" : "text-gray-700 dark:text-white"} flex w-5/6 justify-start pl-2 align-middle`}
+                            className={` ${path === item.link ? "text-orange-600 dark:text-orange-300" : "text-gray-700 dark:text-white"} flex w-5/6 justify-start pl-2 align-middle`}
                           >
                             {item.label}
                           </div>
@@ -85,7 +85,7 @@ export const MobileMenu = ({
                               <item.mobileIcon className="flex h-6 w-6 justify-center align-middle" />
                             </div>
                             <div
-                              className={` ${path.includes("/clanky") ? "text-orange-600 dark:text-orange-300" : "text-gray-700 dark:text-white"} flex w-5/6 justify-start align-middle`}
+                              className={` ${path.includes(item.link) ? "text-orange-600 dark:text-orange-300" : "text-gray-700 dark:text-white"} flex w-5/6 justify-start align-middle`}
                             >
                               <a href="#" className="align-middle">
                                 {item.label}

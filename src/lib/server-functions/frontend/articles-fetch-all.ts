@@ -2,9 +2,8 @@
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { postCardsSchema, PostCards } from "@/src/schemas/queries/articles";
-import { Rows } from "lucide-react";
 
-export const articlesCardFetch = async () => {
+export const articlesCardFetchAll = async () => {
   const sqlConnection = await pool.connect();
   try {
     const response = await executeQuery({
@@ -40,7 +39,6 @@ export const articlesCardFetch = async () => {
       GROUP BY 
         a.slug, a.title, a.created_time, a.description, a.thumbnail, a.category, u.account, a.nickname, u.avatar
       ORDER BY a.created_time DESC
-      LIMIT 3;
       `,
     });
 

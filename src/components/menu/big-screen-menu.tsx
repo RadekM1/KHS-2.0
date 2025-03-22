@@ -14,14 +14,23 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [whichIsOpen, setWhichIsOpen] = useState<number>(10);
 
+  console.log(isOpen)
+
   const popoverWrapperRef = useRef<HTMLDivElement>(null);
+
+  const btnRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        popoverWrapperRef.current &&
-        !popoverWrapperRef.current.contains(event.target as Node)
-      ) {
+      let isOpened:boolean = false
+    
+      btnRefs.current.forEach((btn, i) => {
+      if (btn && btn.contains(event.target as Node)) {
+        isOpened = true
+       }
+      });
+      if (!isOpened && !popoverWrapperRef.current?.contains(event.target as Node)) {
+        console.log('zatvoreno')
         setIsOpen(false);
       }
     }
@@ -29,13 +38,15 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  
+
   return (
-    <div className="hidden  lg:flex self-end items-center justify-center w-full lg:gap-x-7">
+    <div  className="hidden  lg:flex self-end items-center justify-center w-full lg:gap-x-7">
       {menuObject.map((item, i) => {
         return (
           <div
+          
             className="h-full max-w-min flex"
-            ref={popoverWrapperRef}
             key={i}
           >
             {!item.submenu ? (
@@ -52,36 +63,43 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
             ) : (
               <Popover
                 className={`z-50  hover:border-b-2 ${
-                  path === "/clanky"
+                  path.includes(item.link)
                     ? "text-orange-600 dark:text-orange-300 border-b-orange-600 dark:border-b-orange-200 border-b-2"
                     : "text-gray-700 dark:text-white dark:hover:text-orange-200  border-b-2  hover:text-orange-600"
                 } hover:border-b-orange-600 flex-nowrap pb-5 dark:hover:border-b-orange-200`}
               >
-                <PopoverButton
+                <button
+                  
                   onClick={() => {
                     setIsOpen(true), setWhichIsOpen(i);
                   }}
                   className="flex flex-nowrap text-nowrap items-center gap-x-1 text-sm leading-6 focus:outline-none"
                 >
-                  {item.label}
+                  <div
+                  ref={(el) => { btnRefs.current[i] = el; }}
+                  className="z-50 flex flex-row gap-1 h-full w-full"
+                  >
+                    {item.label}
                   <ChevronDownIcon
                     aria-hidden="true"
                     className={`h-5 w-5 flex-non ${isOpen && whichIsOpen === i ? "rotate-180" : "rotate-0"} text-gray-400 duration-300 ease-in-out transition-transform 
-                          
-                                `}
+                  `}
                   />
-                </PopoverButton>
+                  </div>
+                </button>
                 {isOpen && whichIsOpen === i && (
-                  <PopoverPanel className="absolute top-full z-10 w-full max-w-lg rounded-3xl bg-slate-100 shadow-lg drop-shadow-xl dark:bg-gray-800 dark:text-gray-300">
+                  <div 
+                  ref={popoverWrapperRef}
+                  className="absolute top-full z-10 w-full max-w-lg rounded-3xl bg-slate-100 shadow-lg drop-shadow-xl dark:bg-gray-800 dark:text-gray-300">
                     <div className="p-4">
                       {item.submenu.map((subitem, j) => (
                         <Link
                           href={subitem.link}
+                          onClick={()=>setIsOpen(false)}
                           key={j}
-                          onClick={() => close()}
                           className="ml-5 block font-semibold text-gray-700 dark:text-gray-300"
                         >
-                          <div className="group flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 hover:bg-white dark:hover:bg-gray-700">
+                          <div className="group flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 group-hover:bg-white dark:group-hover:bg-gray-700">
                             <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-slate-100 group-hover:bg-white dark:bg-gray-800 dark:group-hover:bg-gray-700">
                               <subitem.icon
                                 path={path}
@@ -102,7 +120,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                                 subitem.filter === filter
                                   ? "text-orange-600 dark:text-orange-200"
                                   : ""
-                              } hover:text-orange-600 dark:hover:text-orange-200 flex-auto`}
+                              } group-hover:text-orange-600 dark:group-hover:text-orange-200 flex-auto`}
                             >
                               {subitem.label}
                               <p className="mt-1 font-thin text-gray-600 dark:text-gray-300">
@@ -115,7 +133,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                         </Link>
                       ))}
                     </div>
-                  </PopoverPanel>
+                  </div>
                 )}
               </Popover>
             )}

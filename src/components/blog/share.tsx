@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import ShareIcon from "@mui/icons-material/Share";
+import { IoShareSocial } from "react-icons/io5";
 
 interface ShareProps {
   share: string;
@@ -19,14 +18,12 @@ export const Share = ({ share, title }: ShareProps) => {
           text: title,
           url: share,
         })
-        .then(() => console.log("Úspěšně sdíleno"))
         .catch((error) => console.log("Chyba při sdílení:", error));
     } else if (navigator.clipboard) {
       navigator.clipboard
         .writeText(share)
         .then(() => {
           setCopied(true);
-          console.log("Odkaz zkopírován do schránky");
           setTimeout(() => setCopied(false), 3000);
         })
         .catch((error) => console.log("Chyba při kopírování:", error));
@@ -36,11 +33,14 @@ export const Share = ({ share, title }: ShareProps) => {
   };
 
   return (
-    <div>
-      <IconButton onClick={handleClick} color="action">
-        <ShareIcon className="h-6 w-6 dark:text-gray-300" />
-      </IconButton>
+     <>
+      <button
+      className="h-full hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all p-1 m-1 hover:rounded-full"
+      onClick={()=>handleClick()}
+      >
+        <IoShareSocial className="w-6 h-6 text-gray-500 dark:text-gray-100 flex self-center"/>
+      </button>
       {copied && <span>Odkaz zkopírován do schránky</span>}
-    </div>
+     </>
   );
 };

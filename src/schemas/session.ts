@@ -5,6 +5,7 @@ export const sessionUserSchema = z.object({
   email: z.string(),
   firstName: z.string(),
   lastName: z.string(),
+  nickName: z.string()
 });
 
 export const sessionSchema = z.object({
