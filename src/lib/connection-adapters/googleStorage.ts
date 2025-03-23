@@ -1,7 +1,6 @@
 import { Storage } from "@google-cloud/storage";
 
 export function getBucket() {
-  
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not defined");
   }

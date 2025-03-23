@@ -13,7 +13,7 @@ export const CheckBox = ({ checked, label, id, handleChange }) => {
             checked={checked}
             onChange={(e) => handleChange(e.target.checked, id)}
             sx={{
-              color: 'black',
+              color: "black",
               "&.Mui-checked": {
                 color: orange[500],
               },
@@ -29,4 +29,4 @@ export const CheckBox = ({ checked, label, id, handleChange }) => {
       />
     </FormGroup>
   );
-}
+};

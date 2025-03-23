@@ -42,7 +42,6 @@ export const articlesCardFetchAll = async () => {
       `,
     });
 
-
     if (!(response.rowCount > 0)) {
       console.log(response);
       console.log("nepodařilo se získat data");

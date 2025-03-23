@@ -26,26 +26,26 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
             </div>
             <div className="flex w-2/3 flex-col justify-start bg-white dark:bg-zinc-800">
               <header className="w-full">
-              <h2 className="-mt-2 text-start text-xs font-black text-gray-700 dark:text-gray-300 md:mt-2 md:text-base">
-                {data.title}
-              </h2>
-              <div className="flex gap-2 flex-row flex-nowrap">
-                <div className="mt-1 flex flex-row overflow-hidden">
-                  <Image
-                    width={30}
-                    height={30}
-                    alt={`úvodní obrázek z článku na téma: ${data.title}`}
-                    src={data.avatar}
-                    className="inline-block h-6 w-6 self-center rounded-full object-fill ring-2 ring-white dark:ring-[#1E1E1E]"
-                  />
+                <h2 className="-mt-2 text-start text-xs font-black text-gray-700 dark:text-gray-300 md:mt-2 md:text-base">
+                  {data.title}
+                </h2>
+                <div className="flex gap-2 flex-row flex-nowrap">
+                  <div className="mt-1 flex flex-row overflow-hidden">
+                    <Image
+                      width={30}
+                      height={30}
+                      alt={`úvodní obrázek z článku na téma: ${data.title}`}
+                      src={data.avatar}
+                      className="inline-block h-6 w-6 self-center rounded-full object-fill ring-2 ring-white dark:ring-[#1E1E1E]"
+                    />
+                  </div>
+                  <div className="mx-2 flex self-center text-xs text-gray-500 dark:text-gray-500">
+                    {data.nickname}
+                  </div>
+                  <div className="mx-2 flex self-center text-xs text-gray-500 dark:text-gray-500">
+                    {data.created_time}
+                  </div>
                 </div>
-                <div className="mx-2 flex self-center text-xs text-gray-500 dark:text-gray-500">
-                  {data.nickname}
-                </div>
-                <div className="mx-2 flex self-center text-xs text-gray-500 dark:text-gray-500">
-                  {data.created_time}
-                </div>
-              </div>
               </header>
               <p className="mt-3 hidden text-start text-xs text-gray-500 dark:text-gray-200 sm:block md:text-sm">
                 {data.description}
@@ -60,19 +60,28 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
         <footer className="flex w-full ">
           <div className="flex w-full flex-row">
             <div className="flex flex-row ml-2 flex-nowrap justify-end text-xs">
-                <Link 
+              <Link
                 className="flex h-7 self-center mr-3 rounded-md flex-row hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all "
-                href={`/clanky/${data.slug}#komentare`}>
-                    <FaRegComment className="mx-2 flex h-5 w-5 self-center text-gray-400 dark:text-gray-600" />
-                    <span className="flex self-center px-1">{data.comments_count}</span>
-                </Link>
-                <Heart
-                    likes={data.hearts_count}
-                    heartsList={(data.liked_by ?? []).filter((item): item is { account: string; nickname: string; avatar: string; } => 
-                      !!item.account && !!item.nickname && !!item.avatar
-                    )}
-                    slug={slug}
-                />
+                href={`/clanky/${data.slug}#komentare`}
+              >
+                <FaRegComment className="mx-2 flex h-5 w-5 self-center text-gray-400 dark:text-gray-600" />
+                <span className="flex self-center px-1">
+                  {data.comments_count}
+                </span>
+              </Link>
+              <Heart
+                likes={data.hearts_count}
+                heartsList={(data.liked_by ?? []).filter(
+                  (
+                    item,
+                  ): item is {
+                    account: string;
+                    nickname: string;
+                    avatar: string;
+                  } => !!item.account && !!item.nickname && !!item.avatar,
+                )}
+                slug={slug}
+              />
             </div>
             <div className="mx-2 flex self-center text-sm">
               <Share share={share} title={data.title} />

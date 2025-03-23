@@ -28,7 +28,7 @@ export const menuObject = [
   },
   {
     label: "Články",
-    link: '/clanky',
+    link: "/clanky",
     mobileIcon: GiNewspaper,
     submenu: [
       {
@@ -74,7 +74,7 @@ export const menuObject = [
   },
   {
     label: "Kurzy",
-    link: '/kurzy',
+    link: "/kurzy",
     mobileIcon: IoSchoolOutline,
     submenu: [
       {
@@ -117,7 +117,7 @@ export const menuObject = [
   },
   {
     label: "Pro členy",
-    link: '/clenstvi-v-oddile',
+    link: "/clenstvi-v-oddile",
     mobileIcon: GiSkis,
     submenu: [
       {
@@ -154,7 +154,7 @@ export const menuObject = [
   },
   {
     label: "O nás",
-    link: '/o-nas',
+    link: "/o-nas",
     mobileIcon: IoPeopleOutline,
     submenu: [
       {

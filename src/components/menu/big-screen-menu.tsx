@@ -14,23 +14,24 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [whichIsOpen, setWhichIsOpen] = useState<number>(10);
 
-
-
   const popoverWrapperRef = useRef<HTMLDivElement>(null);
 
   const btnRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      let isOpened:boolean = false
-    
+      let isOpened: boolean = false;
+
       btnRefs.current.forEach((btn, i) => {
-      if (btn && btn.contains(event.target as Node)) {
-        isOpened = true
-       }
+        if (btn && btn.contains(event.target as Node)) {
+          isOpened = true;
+        }
       });
-      if (!isOpened && !popoverWrapperRef.current?.contains(event.target as Node)) {
-        console.log('zatvoreno')
+      if (
+        !isOpened &&
+        !popoverWrapperRef.current?.contains(event.target as Node)
+      ) {
+        console.log("zatvoreno");
         setIsOpen(false);
       }
     }
@@ -38,17 +39,11 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  
-
   return (
-    <div  className="hidden  lg:flex self-end items-center justify-center w-full lg:gap-x-7">
+    <div className="hidden  lg:flex self-end items-center justify-center w-full lg:gap-x-7">
       {menuObject.map((item, i) => {
         return (
-          <div
-          
-            className="h-full max-w-min flex"
-            key={i}
-          >
+          <div className="h-full max-w-min flex" key={i}>
             {!item.submenu ? (
               <Link
                 href={item.link}
@@ -69,33 +64,35 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                 } hover:border-b-orange-600 flex-nowrap pb-5 dark:hover:border-b-orange-200`}
               >
                 <button
-                  
                   onClick={() => {
                     setIsOpen(true), setWhichIsOpen(i);
                   }}
                   className="flex flex-nowrap text-nowrap items-center gap-x-1 text-sm leading-6 focus:outline-none"
                 >
                   <div
-                  ref={(el) => { btnRefs.current[i] = el; }}
-                  className="z-50 flex flex-row gap-1 h-full w-full"
+                    ref={(el) => {
+                      btnRefs.current[i] = el;
+                    }}
+                    className="z-50 flex flex-row gap-1 h-full w-full"
                   >
                     {item.label}
-                  <ChevronDownIcon
-                    aria-hidden="true"
-                    className={`h-5 w-5 flex-non ${isOpen && whichIsOpen === i ? "rotate-180" : "rotate-0"} text-gray-400 duration-300 ease-in-out transition-transform 
+                    <ChevronDownIcon
+                      aria-hidden="true"
+                      className={`h-5 w-5 flex-non ${isOpen && whichIsOpen === i ? "rotate-180" : "rotate-0"} text-gray-400 duration-300 ease-in-out transition-transform 
                   `}
-                  />
+                    />
                   </div>
                 </button>
                 {isOpen && whichIsOpen === i && (
-                  <div 
-                  ref={popoverWrapperRef}
-                  className="absolute top-full z-10 w-full max-w-lg rounded-3xl bg-slate-100 shadow-lg drop-shadow-xl dark:bg-gray-800 dark:text-gray-300">
+                  <div
+                    ref={popoverWrapperRef}
+                    className="absolute top-full z-10 w-full max-w-lg rounded-3xl bg-slate-100 shadow-lg drop-shadow-xl dark:bg-gray-800 dark:text-gray-300"
+                  >
                     <div className="p-4">
                       {item.submenu.map((subitem, j) => (
                         <Link
                           href={subitem.link}
-                          onClick={()=>setIsOpen(false)}
+                          onClick={() => setIsOpen(false)}
                           key={j}
                           className="ml-5 block font-semibold text-gray-700 dark:text-gray-300"
                         >

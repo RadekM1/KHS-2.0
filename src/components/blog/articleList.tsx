@@ -10,7 +10,11 @@ import { CheckboxWithText } from "../ui/inputs/checkbox";
 import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 import { categoryFilter } from "@/src/lib/functions/articles-category-filter";
 
-export default function ArticleList({ importedRows }: {importedRows: ParsedPostCardSchema[]}) {
+export default function ArticleList({
+  importedRows,
+}: {
+  importedRows: ParsedPostCardSchema[];
+}) {
   const [filteredRows, setFilteredRows] = useState(importedRows);
   const [currentPage, setCurrentPage] = useState(1);
   const [skaly, setSkaly] = useState(false);
@@ -21,38 +25,37 @@ export default function ArticleList({ importedRows }: {importedRows: ParsedPostC
   const currentFilter = searchParams.get("filter");
   const rowsPerPage = 5;
   const articleListCheckboxes = [
-    {label: 'Hory', checked: hory, functionLabel: 'hory'},
-    {label: 'Skály', checked: skaly, functionLabel: 'skaly'},
-    {label: 'Oddíl', checked: oddil, functionLabel: 'oddil'},
-    {label: 'Ostatní', checked: ostatni, functionLabel: 'ostatni'},
-  ]
+    { label: "Hory", checked: hory, functionLabel: "hory" },
+    { label: "Skály", checked: skaly, functionLabel: "skaly" },
+    { label: "Oddíl", checked: oddil, functionLabel: "oddil" },
+    { label: "Ostatní", checked: ostatni, functionLabel: "ostatni" },
+  ];
 
   useEffect(() => {
-      switch (currentFilter) {
-        case "skaly":
-          setSkaly(true);
-          break;
-        case "horolezectvi":
-          setHory(true);
-          break;
-        case "oddil":
-          setOddil(true);
-          break;
-        case "ostatni":
-          setOstatni(true);
-          break;
-        default:
-          setSkaly(true);
-          setHory(true);
-          setOddil(true);
-          setOstatni(true);
-      }
+    switch (currentFilter) {
+      case "skaly":
+        setSkaly(true);
+        break;
+      case "horolezectvi":
+        setHory(true);
+        break;
+      case "oddil":
+        setOddil(true);
+        break;
+      case "ostatni":
+        setOstatni(true);
+        break;
+      default:
+        setSkaly(true);
+        setHory(true);
+        setOddil(true);
+        setOstatni(true);
+    }
   }, []);
-
 
   useEffect(() => {
     const filter = importedRows.filter((row) => {
-      return categoryFilter(hory,skaly,oddil,ostatni,row)
+      return categoryFilter(hory, skaly, oddil, ostatni, row);
     });
     setFilteredRows(filter);
     const maxPage = Math.ceil(filter.length / rowsPerPage);
@@ -60,7 +63,6 @@ export default function ArticleList({ importedRows }: {importedRows: ParsedPostC
       setCurrentPage(1);
     }
   }, [importedRows, currentPage, skaly, hory, oddil, ostatni]);
-
 
   const HandleReset = () => {
     setFilteredRows(importedRows);
@@ -76,7 +78,7 @@ export default function ArticleList({ importedRows }: {importedRows: ParsedPostC
     startIndex + rowsPerPage,
   );
 
-  const handleCheckbox = (checkbox:string) => {
+  const handleCheckbox = (checkbox: string) => {
     switch (checkbox) {
       case "skaly":
         setSkaly(!skaly);
@@ -94,38 +96,38 @@ export default function ArticleList({ importedRows }: {importedRows: ParsedPostC
   };
 
   return (
-<div className="flex flex-col w-full">
-    <div className="flex-col w-full flex lg:flex-row-reverse">
-    <div className="flex m-4 p-4 min-w-[250px] flex-col max-h-min py-10 gap-5 flex-shrink rounded border border-gray-200 bg-white px-5 shadow-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
-        <p>Filtr článků dle témat</p>
-        <div className="flex-row gap-4 mx-3 flex self-center">
-          {articleListCheckboxes.map((checkbox,i)=>(
-            <CheckboxWithText
-            key={i}
-            id={checkbox.functionLabel}
-            label={checkbox.label}
-            checked={checkbox.checked}
-            handleChange={() => handleCheckbox(checkbox.functionLabel)}
+    <div className="flex flex-col w-full">
+      <div className="flex-col w-full flex lg:flex-row-reverse">
+        <div className="flex m-4 p-4 min-w-[250px] flex-col max-h-min py-10 gap-5 flex-shrink rounded border border-gray-200 bg-white px-5 shadow-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
+          <p>Filtr článků dle témat</p>
+          <div className="flex-row gap-4 mx-3 flex self-center">
+            {articleListCheckboxes.map((checkbox, i) => (
+              <CheckboxWithText
+                key={i}
+                id={checkbox.functionLabel}
+                label={checkbox.label}
+                checked={checkbox.checked}
+                handleChange={() => handleCheckbox(checkbox.functionLabel)}
+              />
+            ))}
+          </div>
+          <ResetBtn handleReset={HandleReset} />
+        </div>
+        <div className="flex flex-grow flex-col">
+          <div className="flex w-full min-w-[300px] min-h-[300px] flex-col justify-center text-center">
+            {paginatedRows.map((item) => (
+              <BlogCard key={item.slug} data={item} />
+            ))}
+          </div>
+          <PaginationComponent
+            rows={filteredRows}
+            rowsPerPage={rowsPerPage}
+            currentPage={currentPage}
+            handleChangePaginat={handleChangePaginat}
+            setCurrentPage={setCurrentPage}
           />
-          ))}
         </div>
-        <ResetBtn handleReset={HandleReset} />
       </div>
-      <div className="flex flex-grow flex-col">
-        <div className="flex w-full min-w-[300px] min-h-[300px] flex-col justify-center text-center">
-          {paginatedRows.map((item) => (
-            <BlogCard key={item.slug} data={item} />
-          ))}
-        </div>
-        <PaginationComponent 
-          rows={filteredRows}
-          rowsPerPage={rowsPerPage}
-          currentPage={currentPage}
-          handleChangePaginat={handleChangePaginat}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
-    </div>
     </div>
   );
 }

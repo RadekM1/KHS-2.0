@@ -1,21 +1,23 @@
-"use client"
+"use client";
 
-import { Checkbox } from "../../btns/checkbox-v2"
+import { Checkbox } from "../../btns/checkbox-v2";
 
-interface CheckBoxProps{
-    checked: boolean;
-    label: string;
-    handleChange: ((checked: string) => void)
-    id: string;
+interface CheckBoxProps {
+  checked: boolean;
+  label: string;
+  handleChange: (checked: string) => void;
+  id: string;
 }
 
-export const CheckboxWithText = ({checked, id, label, handleChange}: CheckBoxProps) => {
+export const CheckboxWithText = ({
+  checked,
+  id,
+  label,
+  handleChange,
+}: CheckBoxProps) => {
   return (
     <div className="items-top flex space-x-2">
-      <Checkbox 
-      checked={checked}
-      onClick={ ()=> handleChange(id)}
-      id={id} />
+      <Checkbox checked={checked} onClick={() => handleChange(id)} id={id} />
       <div className="grid gap-1.5 select-none leading-none">
         <label
           htmlFor={id}
@@ -25,5 +27,5 @@ export const CheckboxWithText = ({checked, id, label, handleChange}: CheckBoxPro
         </label>
       </div>
     </div>
-  )
-}
+  );
+};

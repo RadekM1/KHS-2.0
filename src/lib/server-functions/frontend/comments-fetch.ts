@@ -3,7 +3,7 @@ import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { CommentsSchema, commentsSchema } from "@/src/schemas/queries/comments";
 
-export const commentsFetch = async (slug:string) => {
+export const commentsFetch = async (slug: string) => {
   const sqlConnection = await pool.connect();
   try {
     const response = await executeQuery({
@@ -22,10 +22,10 @@ export const commentsFetch = async (slug:string) => {
         JOIN users u 
         ON c.user_account = u.account
         WHERE c.article_slug = $1
+        ORDER BY c.created ASC
       `,
       values: [slug],
     });
-
 
     if (!(response.rowCount > 0)) {
       return [];
@@ -34,7 +34,7 @@ export const commentsFetch = async (slug:string) => {
 
     const data = parsedRows.map((row) => ({
       ...row,
-      created: new Date(row.created).toLocaleDateString("cs-CZ")
+      created: new Date(row.created).toLocaleDateString("cs-CZ"),
     }));
 
     return data;

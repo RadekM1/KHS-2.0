@@ -3,7 +3,6 @@ import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { postCardsSchema, PostCards } from "@/src/schemas/queries/articles";
 
-
 export const articlesCardFetch = async () => {
   const sqlConnection = await pool.connect();
   try {
@@ -43,7 +42,6 @@ export const articlesCardFetch = async () => {
       LIMIT 3;
       `,
     });
-
 
     if (!(response.rowCount > 0)) {
       console.log(response);

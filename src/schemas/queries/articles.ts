@@ -34,3 +34,39 @@ export const postCardsSchema = z.array(postCardSchema);
 export type PostCard = z.infer<typeof postCardSchema>;
 export type PostCards = z.infer<typeof postCardsSchema>;
 export type ParsedPostCardSchema = z.infer<typeof parsedPostCardSchema>;
+
+export const articleImgSchema = z.object({
+  file: z.string(),
+  alt: z.string(),
+  description: z.string(),
+});
+
+export const prepaderArticleImgSchema = z.object({
+  src: z.string(),
+  media_type: z.string(),
+  description: z.string(),
+  alt: z.string(),
+});
+
+export const defaultArticleSchema = z.object({
+  title: z.string(),
+  clanek: z.string(),
+  thumbnail: z.string(),
+  article_img_gallery: z.array(articleImgSchema),
+  category: z.string(),
+  nickname: z.string(),
+  avatar: z.string(),
+});
+
+export const fetchedArticleSchema = defaultArticleSchema.extend({
+  article_img_gallery: z.array(articleImgSchema),
+  created_time: z.date(),
+});
+
+export const preparedArticleSchema = defaultArticleSchema.extend({
+  article_img_gallery: z.array(prepaderArticleImgSchema),
+  created_time: z.string(),
+});
+
+export type FetchedArticleSchema = z.infer<typeof fetchedArticleSchema>;
+export type PreparedArticleSchema = z.infer<typeof preparedArticleSchema>;

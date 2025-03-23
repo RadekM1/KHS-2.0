@@ -84,10 +84,10 @@ export const login = async (email: string, password: string) => {
       clearance: row.clearance,
       firstName: row.name,
       lastName: row.last_name,
-      nickName: row.nick_name
+      nickName: row.nick_name,
     };
 
-    return user
+    return user;
   } catch (error) {
     throw new Error(error instanceof Error ? error.message : "Neznámá chyba");
   } finally {

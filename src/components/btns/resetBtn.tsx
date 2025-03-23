@@ -13,4 +13,4 @@ export const ResetBtn: React.FC<ResetBtnProps> = ({ handleReset }) => {
       <span>Resetovat filtr</span>
     </button>
   );
-}
+};

@@ -33,18 +33,17 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }: { token: JWT; user: any }) {
       if (user) {
-        token.nickName = user.nickName
+        token.nickName = user.nickName;
         token.email = user.email;
         token.avatar = user.avatar;
         token.clearance = user.clearance;
         token.firstName = user.firstName;
         token.lastName = user.lastName;
       }
-  
+
       return token;
     },
 
-  
     async session({ session, token }: { session: any; token: JWT }) {
       if (session.user) {
         session.user.nickName = token.nickName;
@@ -54,7 +53,7 @@ export const authOptions: AuthOptions = {
         session.user.firstName = token.firstName;
         session.user.lastName = token.lastName;
       }
-    
+
       return session;
     },
   },

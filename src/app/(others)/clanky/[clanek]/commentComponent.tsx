@@ -8,58 +8,63 @@ import { ParsedCommentsSchema } from "@/src/schemas/queries/comments";
 import { toast } from "sonner";
 import { commentInsert } from "@/src/lib/server-functions/backend/comment-insert";
 
-export const CommentComponent = ({ slug } : {slug:string}) => {
+export const CommentComponent = ({ slug }: { slug: string }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState("");
   const [areaValue, setAreaValue] = useState("");
   const [comments, setComments] = useState<ParsedCommentsSchema>();
   const [disabled, setDisabled] = useState(true);
 
-
   useEffect(() => {
     if (slug) {
       fetchComments();
     }
-  }, [slug]);
+  }, []);
 
   const fetchComments = async () => {
     const result = await commentsFetch(slug);
-    setComments(result)
+    setComments(result);
   };
 
   const handleClick = async () => {
     if (!areaValue.trim) {
-      toast.error('Není zadán komentář')
+      toast.error("Není zadán komentář");
       return;
     }
     if (!slug || !user) {
-      toast.error('Chyba při zjištění ID článku nebo nebyl zjištěn přihlášený uživatel, nelze uložit komentář, zkuste znovu načíst stránku.')
+      toast.error(
+        "Chyba při zjištění ID článku nebo nebyl zjištěn přihlášený uživatel, nelze uložit komentář, zkuste znovu načíst stránku.",
+      );
       return;
     }
-    setLoading(true)
-    setDisabled(true)
-      const response = await commentInsert(slug, user, areaValue)
-      if (!response.ok) {
-        toast.error(response.message)
-        setLoading(false)
-        setDisabled(false)
-        return
-      }
-      toast.success(response.message)
-      setAreaValue("");
-      await fetchComments();
-      setDisabled(false)
-      setLoading(false)
-  }
+    setLoading(true);
+    setDisabled(true);
+
+    const response = await commentInsert(slug, user, areaValue);
+    if (!response.ok) {
+      toast.error(response.message);
+      setLoading(false);
+      setDisabled(false);
+      return;
+    }
+    toast.success(response.message);
+    setAreaValue("");
+    await fetchComments();
+    setDisabled(false);
+    setLoading(false);
+  };
   return (
     <>
-      <div className="flex flex-col justify-start">
+      <ul
+        aria-label="Article comments"
+        role="comments"
+        className="flex w-full items-start flex-col justify-start"
+      >
         {comments &&
           comments.map((comment) => (
             <CommentCard key={comment.id} comment={comment} />
           ))}
-      </div>
-
+      </ul>
       <CommentCardInput
         setAreaValue={setAreaValue}
         disabled={disabled}
@@ -71,4 +76,4 @@ export const CommentComponent = ({ slug } : {slug:string}) => {
       />
     </>
   );
-}
+};

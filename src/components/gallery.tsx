@@ -1,76 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import { useState } from "react";
 import Image from "next/image";
+import { ImgInGallerySchema } from "../schemas/gallery";
+import LightBox from "./ui/lightbox";
 
-import Captions from "yet-another-react-lightbox/plugins/captions";
+interface ProductGallery {
+  gallery: ImgInGallerySchema[];
+}
 
-import "yet-another-react-lightbox/plugins/captions.css";
+export const Gallery = ({ gallery }: ProductGallery) => {
+  const [activeId, setActiveId] = useState<number>(0);
+  const [toggler, setToggler] = useState<boolean>(false);
 
-export const Gallery = ({ dataIn }) => {
-  const [open, setOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [zoomLevel, setZoomLevel] = useState(1);
-
-  const handleThumbnailClick = (index) => {
-    setCurrentIndex(index);
-    setOpen(true);
+  const handleImgClick = (id: number) => {
+    setActiveId(id);
+    setToggler(true);
   };
-
-  const slides = dataIn.map((slide) => ({
-    src: slide.file, 
-    title: slide.title,
-    description: slide.description,
-  }));
 
   return (
     <>
-      <div className="flex flex-row flex-wrap">
-        {dataIn.map((slide, index) => (
-          <Image
-            key={index}
-            onClick={() => handleThumbnailClick(index)}
-            src={slide.file}
-            title={slide.title}
-            width={400}
-            height={400}
-            alt={`Thumbnail ${index + 1}`}
-            className="h-100 w-1/2 cursor-pointer rounded-xl object-cover p-2 md:w-1/4"
-          />
-        ))}
+      <div className="flex w-full px-4 pb-4 items-center justify-center">
+        <div className=" my-10 flex flex-wrap sm:grid sm:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4  self-center justify-start w-full">
+          {gallery.map((img, i) => {
+            return (
+              <div
+                key={i}
+                onClick={() => handleImgClick(i)}
+                className="cursor-pointer group relative min-h-max w-[47%] sm:w-full h-full object-cover"
+              >
+                <Image
+                  className=" object-cover rounded-md h-[150px] sm:h-[200px] duration-300 ease-in-out group-hover:brightness-50 self-center flex"
+                  src={img.src}
+                  alt={img.alt}
+                  width={500}
+                  height={500}
+                  loading="eager"
+                  priority={true}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={slides}
-        index={currentIndex}
-        plugins={[Thumbnails, Fullscreen, Zoom, Captions]}
-        zoom={{ maxZoomLevel: 3, zoomLevel, setZoomLevel }}
-        captions={{
-          description: dataIn.description,
-          descriptionTextAlign: "center",
-        }}
+      <LightBox
+        input={gallery}
+        active={activeId}
+        toggler={toggler}
+        setToggler={setToggler}
       />
-      <button
-        className="hidden"
-        type="button"
-        onClick={() => setZoomLevel((prevZoom) => Math.min(prevZoom + 0.5, 3))}
-      >
-        Zoom In
-      </button>
-      <button
-        className="hidden"
-        type="button"
-        onClick={() => setZoomLevel((prevZoom) => Math.max(prevZoom - 0.5, 1))}
-      >
-        Zoom Out
-      </button>
     </>
   );
-}
+};
