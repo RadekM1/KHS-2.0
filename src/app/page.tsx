@@ -9,6 +9,30 @@ import { LogoCloudPartners } from "../components/index/logo-cloud-partners";
 import { LogoCloudSponsors } from "../components/index/logo-cloud-sponsors";
 import { CalendarFrontEnd } from "@/src/components/index/calendar-frontend";
 import { czMonths } from "@/src/static-objects/conts/dates";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Klub horských sportů Zlín",
+  description:
+    "Klub horských sportů Zlín, horolezecký oddíl Zlín. Web od lezců pro lezce. Přehled akci a výprav.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  keywords: [
+    "horolezectví Zlín",
+    "alpinismus",
+    "kurzy alpinismu",
+    "skalní lezení",
+    "bouldering",
+    "kroužek lezení",
+    "Horolezecký oddíl Zlín",
+    "Klub horských sportů Zlín"
+  ],
+  authors: [{ name: "Radek Morong", url: "https://www.radekmorong.cz" }],
+  alternates: {
+    canonical: "https://www.khszlin.com/",
+  },
+};
 
 export default async function LandingPart() {
   const year = dayjs().year();

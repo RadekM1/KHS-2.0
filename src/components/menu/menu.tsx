@@ -41,7 +41,7 @@ export const Menu = () => {
               </Link>
             </div>
           </div>
-          <Link className="h-full flex self-center ml-3 " href="/">
+          <Link className="h-full flex  ml-3 " href="/">
             <img
               alt="logo"
               src="https://storage.googleapis.com/khs-zlin/logo.svg"
@@ -49,7 +49,7 @@ export const Menu = () => {
             />
           </Link>
           <BigScreenMenu path={pathName} filter={currentFilter} />
-          <div className="flex flex-row gap-x-3 flex-nowrap h-full self-end items-center">
+          <div className="flex flex-row gap-x-3 flex-nowrap h-full self-end items-end">
             <ThemeToggle />
             <DashboardMenu />
           </div>

@@ -14,7 +14,7 @@ export const articleFetch = async (slug: string) => {
     const response = await executeQuery({
       sqlConnection,
       query: `
-      SELECT a.title, a.clanek, a.created_time, a.thumbnail, a.article_img_gallery, a.category, a.nickname, u.avatar
+      SELECT a.title, a.clanek, a.created_time, a.description, a.slug, a.thumbnail, a.article_img_gallery, a.category, a.nickname, u.avatar
       FROM articles a
       JOIN users u ON a.user_email = u.account
       WHERE a.slug = $1
@@ -44,7 +44,7 @@ export const articleFetch = async (slug: string) => {
         "cs-CZ",
       ),
       category: foundedCategory,
-      article_img_gallery: parsedRows.article_img_gallery.map((item) => {
+      article_img_gallery: (parsedRows.article_img_gallery ?? []).map((item) => {
         return {
           media_type: "image",
           src: item.file,

@@ -59,7 +59,7 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
         </Link>
         <footer className="flex w-full ">
           <div className="flex w-full flex-row">
-            <div className="flex flex-row ml-2 flex-nowrap justify-end text-xs">
+            <div className="flex py-1 flex-row ml-2 flex-nowrap justify-end text-xs">
               <Link
                 className="flex h-7 self-center mr-3 rounded-md flex-row hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all "
                 href={`/clanky/${data.slug}#komentare`}

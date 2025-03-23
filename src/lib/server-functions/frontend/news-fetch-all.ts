@@ -7,7 +7,7 @@ import {
   newsFeedsSchema,
 } from "@/src/schemas/queries/news-feed";
 
-export const newsFetch = async () => {
+export const newsFetchAll = async () => {
   const sqlConnection = await pool.connect();
   try {
     const response = await executeQuery({
@@ -15,7 +15,6 @@ export const newsFetch = async () => {
       query: `SELECT id, title, created_time, description FROM news_feed
         WHERE active = TRUE
         ORDER BY created_time DESC
-        LIMIT 5
         `,
     });
     if (!(response.rowCount > 0)) {

@@ -10,10 +10,10 @@ import { heartInsert } from "@/src/lib/server-functions/backend/heart-insert";
 interface HeartProps {
   likes: number;
   heartsList: {
-    account: string;
-    nickname: string;
-    avatar: string;
-  }[];
+    account?: string;
+    nickname?: string;
+    avatar?: string;
+  }[] | null;
   slug: string;
 }
 
@@ -24,7 +24,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
   const [justClicked, setJustClicked] = useState<boolean>(false);
   const [heartList, setHeartList] = useState<typeof heartsList>(heartsList);
 
-  const isClicked = heartList.some(
+  const isClicked = heartList?.some(
     (account) => account.account === sessionContext?.user.email,
   );
 
@@ -48,7 +48,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
       nickname: sessionContext?.user.nickName,
       avatar: sessionContext.user.avatar,
     };
-    const tempHeartsList = [...heartList, tempUser];
+    const tempHeartsList = [...heartList ?? [], tempUser];
     setHeartList(tempHeartsList);
     handleClickAnimation();
     await heartInsert(slug, sessionContext.user.email);
@@ -62,7 +62,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
   };
 
   return (
-    <div className="w-16 flex self-center gap-[2px] ml-3 flex-row flex-nowrap border-l-gray-300 h-7">
+    <div className="w-16 flex h-full self-center gap-[2px] ml-3 flex-row flex-nowrap border-l-gray-300">
       <button
         disabled={clicked === true || !sessionContext}
         onClick={() => handleClick()}
@@ -77,7 +77,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
           `}
         />
       </button>
-      <HeartList clicks={clicks} heartList={heartList} />
+      <HeartList clicks={clicks} heartList={heartList ?? null} />
     </div>
   );
 };

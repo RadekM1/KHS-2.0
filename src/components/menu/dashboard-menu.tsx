@@ -32,6 +32,8 @@ export const DashboardMenu = () => {
     }
   }, [session]);
 
+  console.log(session?.user.clearance)
+
   const filteredMenu = dashboardMenuData.filter((item) =>
     item.clearance.includes(clearance),
   );

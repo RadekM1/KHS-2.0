@@ -10,11 +10,11 @@ import { CheckboxWithText } from "../ui/inputs/checkbox";
 import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 import { categoryFilter } from "@/src/lib/functions/articles-category-filter";
 
-export default function ArticleList({
-  importedRows,
+export const ArticleList = ({
+  importedRows
 }: {
   importedRows: ParsedPostCardSchema[];
-}) {
+}) => {
   const [filteredRows, setFilteredRows] = useState(importedRows);
   const [currentPage, setCurrentPage] = useState(1);
   const [skaly, setSkaly] = useState(false);

@@ -35,7 +35,7 @@ export const Share = ({ share, title }: ShareProps) => {
   return (
     <>
       <button
-        className="h-full hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all p-1 m-1 hover:rounded-full"
+        className="h-full hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all  hover:rounded-full"
         onClick={() => handleClick()}
       >
         <IoShareSocial className="w-6 h-6 text-gray-500 dark:text-gray-100 flex self-center" />

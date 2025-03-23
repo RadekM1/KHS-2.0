@@ -21,8 +21,8 @@ import { FaIcicles, FaRegSnowflake } from "react-icons/fa";
 
 export const menuObject = [
   {
-    label: "Novinky",
-    link: "/novinky",
+    label: "Aktuality",
+    link: "/aktuality",
     submenu: null,
     mobileIcon: IoIosInformationCircleOutline,
   },

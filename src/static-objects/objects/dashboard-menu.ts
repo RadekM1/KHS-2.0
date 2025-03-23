@@ -41,7 +41,7 @@ export const dashboardMenuData = [
     label: "Profil",
     link: "/dashboard/profil",
     icon: GiNewspaper,
-    clearance: ["user", "member", "editor", "admin"],
+    clearance: ["visitor", "member", "editor", "admin"],
   },
   {
     label: "Uživatelé",

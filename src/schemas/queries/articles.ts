@@ -52,19 +52,21 @@ export const defaultArticleSchema = z.object({
   title: z.string(),
   clanek: z.string(),
   thumbnail: z.string(),
-  article_img_gallery: z.array(articleImgSchema),
+  article_img_gallery: z.array(articleImgSchema).nullable(),
   category: z.string(),
   nickname: z.string(),
   avatar: z.string(),
+  description: z.string(),
+  slug: z.string()
 });
 
 export const fetchedArticleSchema = defaultArticleSchema.extend({
-  article_img_gallery: z.array(articleImgSchema),
+  article_img_gallery: z.array(articleImgSchema).nullable(),
   created_time: z.date(),
 });
 
 export const preparedArticleSchema = defaultArticleSchema.extend({
-  article_img_gallery: z.array(prepaderArticleImgSchema),
+  article_img_gallery: z.array(prepaderArticleImgSchema).nullable(),
   created_time: z.string(),
 });
 

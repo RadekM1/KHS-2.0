@@ -31,7 +31,6 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
         !isOpened &&
         !popoverWrapperRef.current?.contains(event.target as Node)
       ) {
-        console.log("zatvoreno");
         setIsOpen(false);
       }
     }
@@ -40,7 +39,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
   }, []);
 
   return (
-    <div className="hidden  lg:flex self-end items-center justify-center w-full lg:gap-x-7">
+    <div className="hidden  lg:flex self-end  justify-center w-full lg:gap-x-7">
       {menuObject.map((item, i) => {
         return (
           <div className="h-full max-w-min flex" key={i}>
@@ -51,7 +50,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                   item.link && path === item.link
                     ? "text-orange-600 dark:text-orange-300 border-b-orange-600 dark:border-b-orange-200 border-b-2"
                     : "text-gray-700 dark:text-white dark:hover:text-orange-200  border-b-2  hover:text-orange-600"
-                } z-50 hover:border-b-2 flex-nowrap border-b-2 border-transparent pb-5 hover:border-b-orange-600 dark:hover:border-b-orange-200`}
+                } z-50 hover:border-b-2 flex-nowrap border-b-2 border-transparent pb-3 hover:border-b-orange-600 dark:hover:border-b-orange-200`}
               >
                 {item.label}
               </Link>
@@ -61,7 +60,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                   path.includes(item.link)
                     ? "text-orange-600 dark:text-orange-300 border-b-orange-600 dark:border-b-orange-200 border-b-2"
                     : "text-gray-700 dark:text-white dark:hover:text-orange-200  border-b-2  hover:text-orange-600"
-                } hover:border-b-orange-600 flex-nowrap pb-5 dark:hover:border-b-orange-200`}
+                } hover:border-b-orange-600 flex-nowrap pb-3 dark:hover:border-b-orange-200`}
               >
                 <button
                   onClick={() => {

@@ -4,17 +4,57 @@ import { GiNewspaper } from "react-icons/gi";
 import { Share } from "@/src/components/blog/share";
 import { CommentComponent } from "./commentComponent";
 import { articleFetch } from "@/src/lib/server-functions/frontend/article-fetch";
+import { HeartFetchCover } from "./heartFetchCover";
+import type { Metadata, ResolvingMetadata } from 'next'
+import { articlesSitemapFetch } from "@/src/lib/server-functions/frontend/sitemap-articles-fetch";
 
-interface PageProps {
-  params: {
-    clanek: string;
-  };
+type Props = {
+  params: Promise<{ clanek: string }>
 }
 
-export default async function page({ params }: PageProps) {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { clanek } = await params;
+  const article = await articleFetch(clanek);
+  return {
+    title: article?.title || 'KHS ZLín - Článek',
+    description: article?.description || '',
+    keywords: [
+      "horolezectví",
+      "alpinismus",
+      "kurzy lezení",
+      "skalní lezení",
+      "bouldering",
+      "horolezectví Zlín",
+      "zprávy o lezení",
+      "klub horských sportů Zlín"
+    ],
+    alternates: {
+      canonical: `https://www.khszlin.com/clanky/${article?.slug}`,
+    },
+  }
+}
+
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const articles = await articlesSitemapFetch()
+  return articles.map((article) => {
+    return {
+      clanek: article.slug,
+    };
+  });  
+}
+
+
+const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
 
-  const article = await articleFetch(clanek);
+  const article = await articleFetch(clanek)
+
   if (!article) {
     return <div>Článek nenalezen</div>;
   }
@@ -22,9 +62,9 @@ export default async function page({ params }: PageProps) {
   const urlToShare = `https://www.khszlin.com/clanky/${clanek}`;
 
   return (
-    <section className="w-full flex min-h-screen flex-col text-gray-200 dark:text-white items-center text-center">
-      <div className="mb-4 flex flex-row items-center justify-start ">
-        <h1 className="items-center flex flex-nowrap flex-row text-2xl">
+    <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
+      <div className="flex flex-row items-center justify-start ">
+        <h1 className="items-center my-10 flex flex-nowrap flex-row text-2xl">
           <GiNewspaper className="mr-3 h-8 w-8 " />
           {article.title}
         </h1>
@@ -51,28 +91,19 @@ export default async function page({ params }: PageProps) {
           <div className="my-1 text-xs  md:text-sm">
             kategorie: {article.category}
           </div>
-          <div className="flex flex-row">
-            <div className="my-1">
-              {/* 
-              <Heart
-                likes={lajky}
-                heartsList={srdickaSeznam}
-                slug={article}
-              />
-             */}
-            </div>
-            <div>
-              <Share share={urlToShare} title={article.title} />
-            </div>
+          <div className="flex gap-3 h-full">
+            <HeartFetchCover slug={clanek} />
+            <Share share={urlToShare} title={article.title} />
           </div>
         </div>
       </header>
       <article
-        className="prose w-full px-4 overflow-hidden text-start dark:border-b-gray-700 dark:text-white"
+        className="prose w-full px-4 text-start text-gray-800 dark:text-white"
         dangerouslySetInnerHTML={{ __html: article.clanek }}
       />
-      <Gallery gallery={article.article_img_gallery} />
+      <Gallery gallery={article.article_img_gallery ?? []} />
       <CommentComponent slug={clanek} />
     </section>
   );
 }
+export default Page;

@@ -1,5 +1,4 @@
 import React from "react";
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/src/context/app-provider";
@@ -13,11 +12,6 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Klub horských sportů Zlín",
-  description:
-    "Klub horských sportů Zlín, horolezecký oddíl Zlín. Web od lezců pro lezce. Přehled akci a výprav.",
-};
 
 export default function RootLayout({
   children,

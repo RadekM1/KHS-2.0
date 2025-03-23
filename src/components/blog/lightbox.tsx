@@ -5,14 +5,14 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { Slide } from "yet-another-react-lightbox";
-import { Captions, Zoom } from "yet-another-react-lightbox/plugins";
+import { Captions } from "yet-another-react-lightbox/plugins";
 import { Video } from "yet-another-react-lightbox/plugins";
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { ImgInGallerySchema } from "@/src/schemas/gallery";
+import { ImgGallery } from "@/schema/gallery";
 
 interface lightBoxProps {
-  input: ImgInGallerySchema[];
+  input: ImgGallery[];
   active: number;
   toggler: boolean;
   // eslint-disable-next-line
@@ -44,10 +44,10 @@ const LightBox = ({ input, active, toggler, setToggler }: lightBoxProps) => {
         close={() => setToggler(false)}
         slides={filteredInput}
         index={active}
-        plugins={[Fullscreen, Captions, Video, Zoom]}
+        plugins={[Fullscreen, Captions, Video]}
         controller={{ closeOnBackdropClick: true }}
         styles={{
-          container: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
+          container: { backgroundColor: "rgba(0, 0, 0, 0.8)" },
         }}
         render={{
           iconPrev: () => <IoIosArrowDropleftCircle className="h-12 w-12" />,

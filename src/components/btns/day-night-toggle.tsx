@@ -21,7 +21,7 @@ export const ThemeToggle = () => {
   return (
     <button
       aria-label="light or dark theme button"
-      className="h-full flex"
+      className="h-full pb-4 flex"
       onClick={() => {
         const newTheme = resolvedTheme === "light" ? "dark" : "light";
         setTheme(newTheme);
