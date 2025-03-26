@@ -14,7 +14,7 @@ import { menuObject } from "@/src/static-objects/objects/menu";
 
 interface MobileMenuProps {
   mobileMenuOpen: boolean;
-  // eslint-disable-next-line
+
   setMobileMenuOpen: (mobileMenuOpen: boolean) => void;
   path: string;
   filter?: string;

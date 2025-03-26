@@ -1,4 +1,3 @@
-
 import { MdRssFeed } from "react-icons/md";
 import { BtnArticleShow } from "@/src/components/blog/btn-article-show";
 import { newsFetchAll } from "@/src/lib/server-functions/frontend/news-fetch-all";
@@ -6,8 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - seznam aktualit",
-  description:
-    "Seznam aktualit v rámci klubu horských sportů zlín",
+  description: "Seznam aktualit v rámci klubu horských sportů zlín",
   icons: {
     icon: "/favicon.ico",
   },
@@ -20,7 +18,7 @@ export const metadata: Metadata = {
     "kroužek lezení",
     "Horolezecký oddíl Zlín",
     "Klub horských sportů Zlín",
-    "Aktuální informace"
+    "Aktuální informace",
   ],
   authors: [{ name: "Radek Morong", url: "https://www.radekmorong.cz" }],
   alternates: {
@@ -29,9 +27,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const rows = await newsFetchAll();
 
-  const rows = await newsFetchAll()
-  
   return (
     <section className="mx-2  w-full mb-10">
       <div className="mx-10 flex items-center justify-center self-center border-gray-100 pb-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
@@ -39,8 +36,8 @@ export default async function Page() {
           <MdRssFeed className="mr-3 h-8 w-8 " />
           <span>Aktuality</span>
         </h1>
-      </div>     
-        <div className="flex w-full">
+      </div>
+      <div className="flex w-full">
         <ul
           aria-label="Aktuality"
           role="feed"
@@ -54,7 +51,7 @@ export default async function Page() {
             >
               <article className="mr-3 gap-3 flex flex-1 flex-grow flex-col text-start">
                 <h2 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-gray-200 lg:text-base">
-                  <span  className="mr-5 text-end text-xs text-slate-400">
+                  <span className="mr-5 text-end text-xs text-slate-400">
                     {item.created_time}
                   </span>
                   {item.title}

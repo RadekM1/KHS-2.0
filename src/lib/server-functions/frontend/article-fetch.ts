@@ -44,14 +44,16 @@ export const articleFetch = async (slug: string) => {
         "cs-CZ",
       ),
       category: foundedCategory,
-      article_img_gallery: (parsedRows.article_img_gallery ?? []).map((item) => {
-        return {
-          media_type: "image",
-          src: item.file,
-          description: item.description,
-          alt: item.alt,
-        };
-      }),
+      article_img_gallery: (parsedRows.article_img_gallery ?? []).map(
+        (item) => {
+          return {
+            media_type: "image",
+            src: item.file,
+            description: item.description,
+            alt: item.alt,
+          };
+        },
+      ),
     };
 
     return preparedData;

@@ -1,6 +1,5 @@
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  
-redirect('/dashboard/profil')
+  redirect("/dashboard/profil");
 }

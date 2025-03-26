@@ -14,7 +14,7 @@ interface FormInputProps {
   register: UseFormRegister<RegistrationSchema | RestorePassSchema>;
   error: string;
   password: string;
-  // eslint-disable-next-line
+
   setPassword: (password: string) => void;
   isSamePass: boolean;
 }

@@ -31,6 +31,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
+    //eslint-disable-next-line
     async jwt({ token, user }: { token: JWT; user: any }) {
       if (user) {
         token.nickName = user.nickName;
@@ -43,7 +44,7 @@ export const authOptions: AuthOptions = {
 
       return token;
     },
-
+    //eslint-disable-next-line
     async session({ session, token }: { session: any; token: JWT }) {
       if (session.user) {
         session.user.nickName = token.nickName;

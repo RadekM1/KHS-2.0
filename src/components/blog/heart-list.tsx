@@ -2,15 +2,16 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface HeartListProps {
   clicks: number;
-  heartList: {
-    account?: string;
-    nickname?: string;
-    avatar?: string;
-  }[] | null;
+  heartList:
+    | {
+        account?: string;
+        nickname?: string;
+        avatar?: string;
+      }[]
+    | null;
 }
 
 export const HeartList = ({ clicks, heartList }: HeartListProps) => {
-
   return (
     <Popover>
       <PopoverTrigger className="border-gray-300 hover:border-gray-200 p-2  hover:bg-gray-300 dark:hover:bg-zinc-700 self-center flex hover:ease-in-out hover:transition-all dark:border-gray-800 rounded-full hover:duration-300">

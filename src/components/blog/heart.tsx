@@ -9,11 +9,13 @@ import { heartInsert } from "@/src/lib/server-functions/backend/heart-insert";
 
 interface HeartProps {
   likes: number;
-  heartsList: {
-    account?: string;
-    nickname?: string;
-    avatar?: string;
-  }[] | null;
+  heartsList:
+    | {
+        account?: string;
+        nickname?: string;
+        avatar?: string;
+      }[]
+    | null;
   slug: string;
 }
 
@@ -48,7 +50,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
       nickname: sessionContext?.user.nickName,
       avatar: sessionContext.user.avatar,
     };
-    const tempHeartsList = [...heartList ?? [], tempUser];
+    const tempHeartsList = [...(heartList ?? []), tempUser];
     setHeartList(tempHeartsList);
     handleClickAnimation();
     await heartInsert(slug, sessionContext.user.email);

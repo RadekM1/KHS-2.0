@@ -12,7 +12,6 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{

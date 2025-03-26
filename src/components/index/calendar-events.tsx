@@ -14,16 +14,14 @@ export const CalendarEventsTable = ({ rows }: { rows: CalendarEvents }) => {
           const tempDay = dayjs(row.date);
           const dayInWeek = tempDay.day();
           const dayInMonth = tempDay.date();
-          let eventStartInCycle;
-          let eventEndInCycle;
           const eventStartTime = new Date(`1970-01-01T${row.event_start}`);
           const formattedEventStart = eventStartTime.toTimeString().slice(0, 5);
           const eventEndTime = new Date(`1970-01-01T${row.event_end}`);
           const formattedEventEnd = eventEndTime.toTimeString().slice(0, 5);
           const checkDay = row.check_whole_day === true ? "celodenní" : "";
           const checkNoEnd = row.check_no_end === true ? "neurčeno" : "";
-          eventStartInCycle = row.event_start ? formattedEventStart : "";
-          eventEndInCycle = row.event_end ? formattedEventEnd : "";
+          const eventStartInCycle = row.event_start ? formattedEventStart : "";
+          const eventEndInCycle = row.event_end ? formattedEventEnd : "";
 
           return (
             <tr

@@ -15,8 +15,8 @@ interface lightBoxProps {
   input: ImgInGallerySchema[];
   active: number;
   toggler: boolean;
-  // eslint-disable-next-line
-  setToggler: (toggler:boolean)=>void
+
+  setToggler: (toggler: boolean) => void;
 }
 
 const LightBox = ({ input, active, toggler, setToggler }: lightBoxProps) => {

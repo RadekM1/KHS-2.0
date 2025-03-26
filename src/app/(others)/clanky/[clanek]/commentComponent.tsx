@@ -54,9 +54,7 @@ export const CommentComponent = ({ slug }: { slug: string }) => {
     setLoading(false);
   };
   return (
-    <div 
-    id="komentare"
-    className="w-full">
+    <div id="komentare" className="w-full">
       <ul
         aria-label="Article comments"
         role="comments"

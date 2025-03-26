@@ -8,7 +8,15 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["eslint:recommended", "next", "plugin:prettier/recommended"],
+    extends: [
+      "eslint:recommended",
+      "next",
+      'next/core-web-vitals',
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+    ],
+    parser: "@typescript-eslint/parser",
+    plugins: ["@typescript-eslint"],
   }),
   {
     ignores: [".next/*", ".prettierrc.js", "out/*"],

@@ -1,4 +1,5 @@
 interface QueryParams {
+  //eslint-disable-next-line
   sqlConnection: any;
   query: string;
   values?: (string | number)[];

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { Popover } from "@headlessui/react";
 import Link from "next/link";
 import { menuObject } from "@/src/static-objects/objects/menu";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -22,7 +22,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
     function handleClickOutside(event: MouseEvent) {
       let isOpened: boolean = false;
 
-      btnRefs.current.forEach((btn, i) => {
+      btnRefs.current.forEach((btn) => {
         if (btn && btn.contains(event.target as Node)) {
           isOpened = true;
         }
@@ -64,6 +64,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
               >
                 <button
                   onClick={() => {
+                    //eslint-disable-next-line
                     setIsOpen(true), setWhichIsOpen(i);
                   }}
                   className="flex flex-nowrap text-nowrap items-center gap-x-1 text-sm leading-6 focus:outline-none"

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "bouldering",
     "kroužek lezení",
     "Horolezecký oddíl Zlín",
-    "Klub horských sportů Zlín"
+    "Klub horských sportů Zlín",
   ],
   authors: [{ name: "Radek Morong", url: "https://www.radekmorong.cz" }],
   alternates: {

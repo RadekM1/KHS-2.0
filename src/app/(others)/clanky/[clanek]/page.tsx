@@ -5,22 +5,19 @@ import { Share } from "@/src/components/blog/share";
 import { CommentComponent } from "./commentComponent";
 import { articleFetch } from "@/src/lib/server-functions/frontend/article-fetch";
 import { HeartFetchCover } from "./heartFetchCover";
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from "next";
 import { articlesSitemapFetch } from "@/src/lib/server-functions/frontend/sitemap-articles-fetch";
 
 type Props = {
-  params: Promise<{ clanek: string }>
-}
+  params: Promise<{ clanek: string }>;
+};
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { clanek } = await params;
   const article = await articleFetch(clanek);
   return {
-    title: article?.title || 'KHS ZLín - Článek',
-    description: article?.description || '',
+    title: article?.title || "KHS ZLín - Článek",
+    description: article?.description || "",
     keywords: [
       "horolezectví",
       "alpinismus",
@@ -29,31 +26,30 @@ export async function generateMetadata(
       "bouldering",
       "horolezectví Zlín",
       "zprávy o lezení",
-      "klub horských sportů Zlín"
+      "klub horských sportů Zlín",
     ],
     alternates: {
       canonical: `https://www.khszlin.com/clanky/${article?.slug}`,
     },
-  }
+  };
 }
 
 export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const articles = await articlesSitemapFetch()
+  const articles = await articlesSitemapFetch();
   return articles.map((article) => {
     return {
       clanek: article.slug,
     };
-  });  
+  });
 }
-
 
 const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
 
-  const article = await articleFetch(clanek)
+  const article = await articleFetch(clanek);
 
   if (!article) {
     return <div>Článek nenalezen</div>;
@@ -105,5 +101,5 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
       <CommentComponent slug={clanek} />
     </section>
   );
-}
+};
 export default Page;

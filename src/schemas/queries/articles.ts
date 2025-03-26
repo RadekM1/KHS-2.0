@@ -57,7 +57,7 @@ export const defaultArticleSchema = z.object({
   nickname: z.string(),
   avatar: z.string(),
   description: z.string(),
-  slug: z.string()
+  slug: z.string(),
 });
 
 export const fetchedArticleSchema = defaultArticleSchema.extend({

@@ -11,7 +11,7 @@ import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 import { categoryFilter } from "@/src/lib/functions/articles-category-filter";
 
 export const ArticleList = ({
-  importedRows
+  importedRows,
 }: {
   importedRows: ParsedPostCardSchema[];
 }) => {
@@ -130,4 +130,4 @@ export const ArticleList = ({
       </div>
     </div>
   );
-}
+};
