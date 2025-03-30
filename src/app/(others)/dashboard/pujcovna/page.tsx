@@ -1,0 +1,21 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/src/app/api/auth/[...nextauth]/route";
+import { RentalTable } from "@/src/components/tables/rentalTable";
+import { redirect } from "next/navigation";
+
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.clearance || session.user.clearance === "user" || session.user.clearance === "visitor") {
+    redirect("/rejected");
+  }
+
+  return (
+    <div className="flex w-full flex-col">
+      <span className="text-2xl pb-6">Půjčovna</span>
+      <div className="flex justify-center">
+          <RentalTable />
+      </div>
+    </div>
+  );
+}

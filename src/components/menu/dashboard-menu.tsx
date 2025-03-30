@@ -32,8 +32,6 @@ export const DashboardMenu = () => {
     }
   }, [session]);
 
-  console.log(session?.user.clearance);
-
   const filteredMenu = dashboardMenuData.filter((item) =>
     item.clearance.includes(clearance),
   );
@@ -90,7 +88,7 @@ export const DashboardMenu = () => {
               return (
                 <Link
                   key={i}
-                  onClick={() => close()}
+                  onClick={() => setIsClosed(true)}
                   href={item.link}
                   className="text-sm leading-6 text-gray-700 dark:text-gray-300"
                 >
