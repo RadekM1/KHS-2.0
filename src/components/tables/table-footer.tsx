@@ -1,14 +1,21 @@
-'use client'
+"use client";
 
 import Pagination from "@mui/material/Pagination";
 import { handleChangePaginat } from "@/src/lib/functions/handleChangePaginat";
 import { UserRowsSchema } from "@/src/schemas/queries/tables/user-table-schema";
 import { RentalRowsSchema } from "@/src/schemas/queries/tables/rental-table-schema";
 import { BookRowsSchema } from "@/src/schemas/queries/tables/books-table-schema";
+import { ArticlesBackendSchema } from "@/src/schemas/queries/articles-dashboard";
+import { NewsArticlesSchema } from "@/src/schemas/queries/news";
 import { useTheme } from "next-themes";
 
 interface TableFooterProps {
-  filteredRows: UserRowsSchema | RentalRowsSchema | BookRowsSchema;
+  filteredRows:
+    | UserRowsSchema
+    | RentalRowsSchema
+    | BookRowsSchema
+    | ArticlesBackendSchema
+    | NewsArticlesSchema;
   currentPage: number;
   rowsPerPage: number;
   setCurrentPage: (currentPage: number) => void;
@@ -20,10 +27,8 @@ export const TableFooter = ({
   rowsPerPage,
   setCurrentPage,
 }: TableFooterProps) => {
-
-  const theme = useTheme()
-  const color = theme.resolvedTheme === 'dark' ? 'white' : 'black'
-
+  const theme = useTheme();
+  const color = theme.resolvedTheme === "dark" ? "white" : "black";
 
   return (
     <div className="flex flex-col">
@@ -36,7 +41,7 @@ export const TableFooter = ({
             handleChangePaginat(event, value, setCurrentPage)
           }
           sx={{
-            '& .MuiPaginationItem-root': {
+            "& .MuiPaginationItem-root": {
               color: `${color}`,
             },
           }}

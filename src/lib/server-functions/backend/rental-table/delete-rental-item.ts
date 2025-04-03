@@ -3,7 +3,7 @@
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 
-export const deleteRental = async (id:number) => {
+export const deleteRental = async (id: number) => {
   const sqlConnection = await pool.connect();
   try {
     const result = await executeQuery({

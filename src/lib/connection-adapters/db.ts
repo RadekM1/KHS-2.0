@@ -2,7 +2,7 @@ interface QueryParams {
   //eslint-disable-next-line
   sqlConnection: any;
   query: string;
-  values?: (string | number)[];
+  values?: (string | number | JSON | Boolean)[];
 }
 
 export const executeQuery = async ({

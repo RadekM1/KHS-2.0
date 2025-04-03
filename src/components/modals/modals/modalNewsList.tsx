@@ -1,19 +1,32 @@
 "use client";
 
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import NewsTable from "../table/newsTable";
+import { NewsTable } from "../../tables/newsTable";
+import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
 
-export default function ModalRental({
+interface ModalArticleListProps {
+  open: boolean;
+  setIdToEdit: (id: number) => void;
+  setOpen: (open: boolean) => void;
+  setTitle: (title: string) => void;
+  setGallery: (gallery: ArticleGallerySchema) => void;
+  setEditActive: (active: boolean) => void;
+  setEditorContent: (content: string) => void;
+  setSummary: (summary: string)=>void;
+  setExpirationDate: (expirationDate: string)=>void;
+}
+
+export const ModalNewsList = ({
   open,
   setIdToEdit,
   setOpen,
   setTitle,
   setSummary,
-  setAccount,
   setEditActive,
   setEditorContent,
   setExpirationDate,
-}) {
+  setGallery,
+}: ModalArticleListProps) => {
   return (
     <Dialog
       open={open}
@@ -31,10 +44,10 @@ export default function ModalRental({
                   setTitle={setTitle}
                   setSummary={setSummary}
                   setEditActive={setEditActive}
-                  setAccount={setAccount}
                   setEditorContent={setEditorContent}
                   setExpirationDate={setExpirationDate}
                   setOpen={setOpen}
+                  setGallery={setGallery}
                 />
               </div>
             </div>
@@ -52,4 +65,4 @@ export default function ModalRental({
       </div>
     </Dialog>
   );
-}
+};

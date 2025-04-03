@@ -18,9 +18,9 @@ import { deleteRental } from "@/src/lib/server-functions/backend/rental-table/de
 import { createRentalItem } from "@/src/lib/server-functions/backend/rental-table/create-rental-item";
 import { RentalRowsSchema } from "@/src/schemas/queries/tables/rental-table-schema";
 
-export const RentalTable =() => {
+export const RentalTable = () => {
   const [rows, setRows] = useState<RentalRowsSchema>([]);
-  const [sortingColumn, setsortingColumn] = useState<string>('');
+  const [sortingColumn, setsortingColumn] = useState<string>("");
   const [sortingOrder, setSortingOrder] = useState<string>("asc");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchField, setSearchField] = useState<string>("");
@@ -47,31 +47,31 @@ export const RentalTable =() => {
 
   const fetchData = async () => {
     setRowsLoading(true);
-    const response = await getRentals()
-    if(!response.ok){
-      toast.error(response.message)
-      setRowsLoading(false)
-      return
+    const response = await getRentals();
+    if (!response.ok) {
+      toast.error(response.message);
+      setRowsLoading(false);
+      return;
     }
-    setRows(response.rows)
+    setRows(response.rows);
     setRowsLoading(false);
-    }
+  };
 
-  const handleDel = async (id:number) => {
+  const handleDel = async (id: number) => {
     const confirmDel = confirm(`opravdu chcete smazat produkt č. ${id} ?`);
     if (!confirmDel) {
       return;
     }
-    const response = await deleteRental(id)
-    if(!response.ok){
-      toast.error(response.message)
-      setRowsLoading(false)
-      return
+    const response = await deleteRental(id);
+    if (!response.ok) {
+      toast.error(response.message);
+      setRowsLoading(false);
+      return;
     }
-    fetchData()
+    toast.success(response.message)
+    fetchData();
     setRowsLoading(false);
-  }
-
+  };
 
   const handleItemChange = async () => {
     if (productName.length <= 1 || pieces < 1) {
@@ -86,19 +86,18 @@ export const RentalTable =() => {
       onStock,
       whoRented,
       whoReserved,
-      idToEdit, 
-    )
+      idToEdit,
+    );
     if (!response.ok) {
-      toast.error(response.message)
-      setRowsLoading(false)
+      toast.error(response.message);
+      setRowsLoading(false);
       return;
     }
     setEditActive(false);
     fetchData();
     handleResetForm();
-    setRowsLoading(false)
+    setRowsLoading(false);
   };
-
 
   const handleAdd = async () => {
     if (productName.length <= 1 || pieces < 1) {
@@ -113,17 +112,16 @@ export const RentalTable =() => {
       onStock,
       whoRented,
       whoReserved,
-    )
+    );
     if (!response.ok) {
-      toast.error(response.message)
-      setRowsLoading(false)
+      toast.error(response.message);
+      setRowsLoading(false);
       return;
     }
     fetchData();
     handleResetForm();
     setRowsLoading(false);
-    }
-
+  };
 
   const rowsPerPage = 20;
 
@@ -145,7 +143,6 @@ export const RentalTable =() => {
       setCurrentPage(1);
     }
   }, [searchField, rows, currentPage]);
-
 
   const handleChange = (event: SearchChangeEvent): void => {
     setSearchField(event.target.value);
@@ -257,7 +254,7 @@ export const RentalTable =() => {
       </div>
       <div className="scrollbar-thumb-rounded overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-800">
         <table className="relative min-w-full dark:border-gray-800 overflow-auto text-xs text-black dark:text-wh md:text-start md:text-sm">
-          <TableHead 
+          <TableHead
             columns={rentalTableColumns}
             handleSorting={handleSorting}
             sortingColumn={sortingColumn}
@@ -381,7 +378,7 @@ export const RentalTable =() => {
                       >
                         <span>OK</span>
                       </button>
-                    ) }
+                    )}
                   </td>
                   <td className="max-w whitespace-normal border-[1px] bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                     <button
@@ -398,77 +395,82 @@ export const RentalTable =() => {
               )}
             </tr>
             {paginatedRows.map((row, i) => (
-                <tr key={i} className="dark:hover:bg-gray border-b text-start dark:text-white text-black text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50   dark:even:bg-zinc-700 md:text-sm">
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.id}
-                  </td>
+              <tr
+                key={i}
+                className="dark:hover:bg-gray border-b text-start dark:text-white text-black text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50   dark:even:bg-zinc-700 md:text-sm"
+              >
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.id}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.item_name}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.item_name}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.pieces}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.pieces}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.on_stock ? (
-                      <FaThumbsUp className="h-5 w-5 text-green-700 dark:text-green-400" />
-                    ) : (
-                      <FaThumbsDown className="h-5 w-5 text-red-700 dark:text-red-400" />
-                    )}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.on_stock ? (
+                    <FaThumbsUp className="h-5 w-5 text-green-700 dark:text-green-400" />
+                  ) : (
+                    <FaThumbsDown className="h-5 w-5 text-red-700 dark:text-red-400" />
+                  )}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.reserved ? (
-                      <span className="text-red-700 dark:text-green-400">ANO</span>
-                    ) : (
-                      <span className="text-green-700 dark:text-red-400">NE</span>
-                    )}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.reserved ? (
+                    <span className="text-red-700 dark:text-green-400">
+                      ANO
+                    </span>
+                  ) : (
+                    <span className="text-green-700 dark:text-red-400">NE</span>
+                  )}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.member_reserved}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.member_reserved}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    {row.member_rented}
-                  </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  {row.member_rented}
+                </td>
 
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                      <button
-                        disabled={rowsLoading}
-                        onClick={() => handleDel(row.id)}
-                      >
-                        <MdDeleteForever
-                          className={`h-7 w-7 hover:cursor-pointer ${
-                            rowsLoading
-                              ? "text-red-200 disabled:text-gray-100 dark:disabled:text-gray-800 dark:text-red-800"
-                              : "text-red-500"
-                          }`}
-                        />
-                      </button>
-                  </td>
-                  <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                    <button
-                      disabled={rowsLoading}
-                      onClick={() => handleProductEdit(row.id)}
-                    >
-                      <CiEdit
-                        className={`h-7 w-7 hover:cursor-pointer ${
-                          rowsLoading
-                            ? "text-orange-200 disabled:text-gray-100 dark:disabled:text-gray-800 dark:text-orange-800"
-                            : "text-orange-600"
-                        }`}
-                      />
-                    </button>
-                  </td>
-                </tr>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  <button
+                    disabled={rowsLoading}
+                    onClick={() => handleDel(row.id)}
+                  >
+                    <MdDeleteForever
+                      className={`h-7 w-7 hover:cursor-pointer ${
+                        rowsLoading
+                          ? "text-red-200 disabled:text-gray-100 dark:disabled:text-gray-800 dark:text-red-800"
+                          : "text-red-500"
+                      }`}
+                    />
+                  </button>
+                </td>
+                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  <button
+                    disabled={rowsLoading}
+                    onClick={() => handleProductEdit(row.id)}
+                  >
+                    <CiEdit
+                      className={`h-7 w-7 hover:cursor-pointer ${
+                        rowsLoading
+                          ? "text-orange-200 disabled:text-gray-100 dark:disabled:text-gray-800 dark:text-orange-800"
+                          : "text-orange-600"
+                      }`}
+                    />
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <TableFooter 
+      <TableFooter
         filteredRows={filteredRows}
         rowsPerPage={rowsPerPage}
         currentPage={currentPage}
@@ -476,4 +478,4 @@ export const RentalTable =() => {
       />
     </div>
   );
-}
+};

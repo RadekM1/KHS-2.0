@@ -1,9 +1,23 @@
 "use client";
 
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import ArticleTable from "../table/articleTable";
+import { ArticleTable } from "../../tables/articleTable";
+import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
 
-export default function ModarArticleList({
+interface ModalArticleListProps {
+  open: boolean;
+  setEditedArticleSlug: (slug: string) => void;
+  setIdToEdit: (id: number) => void;
+  setOpen: (open: boolean) => void;
+  setTitle: (title: string) => void;
+  setCategory: (category: string) => void;
+  setGallery: (gallery: ArticleGallerySchema) => void;
+  setThumbnail: (thumbnail: string) => void;
+  setEditActive: (active: boolean) => void;
+  setEditorContent: (content: string) => void;
+}
+
+export const ModalArticleList = ({
   open,
   setEditedArticleSlug,
   setIdToEdit,
@@ -11,11 +25,11 @@ export default function ModarArticleList({
   setTitle,
   setCategory,
   setGallery,
-  setThumbnail,
-  setAccount,
   setEditActive,
   setEditorContent,
-}) {
+  setThumbnail
+}: ModalArticleListProps) => {
+
   return (
     <Dialog
       open={open}
@@ -33,7 +47,6 @@ export default function ModarArticleList({
                   setEditedArticleSlug={setEditedArticleSlug}
                   setTitle={setTitle}
                   setEditActive={setEditActive}
-                  setAccount={setAccount}
                   setEditorContent={setEditorContent}
                   setThumbnail={setThumbnail}
                   setGallery={setGallery}
@@ -56,4 +69,4 @@ export default function ModarArticleList({
       </div>
     </Dialog>
   );
-}
+};

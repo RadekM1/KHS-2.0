@@ -4,7 +4,7 @@ import * as React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-export default function SpinnerSmallWhite() {
+export const SpinnerSmallWhite = () => {
   return (
     <Box
       sx={{
@@ -17,4 +17,4 @@ export default function SpinnerSmallWhite() {
       <CircularProgress size={20} sx={{ color: "white" }} />
     </Box>
   );
-}
+};

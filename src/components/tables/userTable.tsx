@@ -19,13 +19,13 @@ import { lockUser } from "@/src/lib/server-functions/backend/users/user-table/lo
 
 export default function UserTable() {
   const [rows, setRows] = useState<UserRowsSchema>([]);
-  const [sortingColumn, setsortingColumn] = useState<string>('');
+  const [sortingColumn, setsortingColumn] = useState<string>("");
   const [sortingOrder, setSortingOrder] = useState<string>("asc");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchField, setSearchField] = useState<string>("");
   const [filteredRows, setFilteredRows] = useState<UserRowsSchema>(rows);
   const [rowsLoading, setRowsLoading] = useState(false);
-   useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -35,7 +35,7 @@ export default function UserTable() {
     };
   }
 
-  const rowsPerPage = 50
+  const rowsPerPage = 50;
 
   const fetchData = async () => {
     setRowsLoading(true);
@@ -60,7 +60,7 @@ export default function UserTable() {
       toast.error(response.message);
     }
     fetchData();
-    toast.success(response.message)
+    toast.success(response.message);
     setRowsLoading(false);
   };
 
@@ -77,7 +77,7 @@ export default function UserTable() {
     toast.success(response.message);
   };
 
-  const handleLocked = async (account:string, locked:boolean) =>{
+  const handleLocked = async (account: string, locked: boolean) => {
     const confirmDel = confirm(`opravdu chcete zablokovat účet ${account} ?`);
     if (!confirmDel) {
       return;
@@ -89,9 +89,9 @@ export default function UserTable() {
       toast.error(response.message);
     }
     fetchData();
-    toast.success(response.message)
+    toast.success(response.message);
     setRowsLoading(false);
-  }
+  };
 
   useEffect(() => {
     const filter = rows.filter((row) => {
@@ -111,8 +111,6 @@ export default function UserTable() {
       setCurrentPage(1);
     }
   }, [searchField, rows, currentPage]);
-
- 
 
   const handleChange = (event: SearchFieldChangeEvent): void => {
     setSearchField(event.target.value);
@@ -138,7 +136,8 @@ export default function UserTable() {
   const startIndex = (currentPage - 1) * rowsPerPage;
   const paginatedRows = filteredRows.slice(
     startIndex,
-    startIndex + rowsPerPage,);
+    startIndex + rowsPerPage,
+  );
 
   return (
     <div className="w-full flex-grow bg-white dark:border-gray-500 dark:bg-zinc-800">
@@ -153,7 +152,7 @@ export default function UserTable() {
       </div>
       <div className="scrollbar-thumb-rounded overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-800">
         <table className="relative min-w-full overflow-auto text-xs md:text-start md:text-sm">
-          <TableHead 
+          <TableHead
             columns={userTableColumns}
             handleSorting={handleSorting}
             sortingColumn={sortingColumn}
@@ -161,90 +160,93 @@ export default function UserTable() {
           />
           <tbody>
             {paginatedRows.map((row, i) => (
-                <tr key={i} className="dark:hover:bg-gray border-b text-start text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50 dark:bg-zinc-500-300  dark:even:bg-zinc-700 md:text-sm">
-                  {userTableColumns.map((column) => {
-                    let cellContent;
-                    if (column.id === "delLabel") {
-                      cellContent = (
-                        <button
-                          disabled={rowsLoading}
-                          onClick={() => handleDel(row.account)}
-                        >
-                          <MdDeleteForever
-                            className={`h-6 w-6 hover:cursor-pointer ${rowsLoading ? "text-red-200 dark:text-red-800" : "text-red-500"} `}
-                          />
-                        </button>
-                      );
-                    } else {
-                      switch (column.key) {
-                        case "clearance":
-                          cellContent = (
-                            <select
-                              value={row.clearance}
-                              disabled={rowsLoading}
-                              onChange={(event) =>
-                                handleClearanceChange(
-                                  row.account,
-                                  event.target.value,
-                                )
-                              }
-                              className="h-8 rounded border   bg-white  dark:bg-gray-600"
-                            >
-                              <option value="visitor">Visitor</option>
-                              <option value="member">Member</option>
-                              <option value="editor">Editor</option>
-                              <option value="admin">Admin</option>
-                            </select>
-                          );
-                          break;
-                        case "locked":
-                          cellContent = (
-                            <select
-                              value={row.locked ? "true" : "false"}
-                              disabled={rowsLoading}
-                              onChange={(event) =>
-                                handleLocked(
-                                  row.account,
-                                  event.target.value === "true",
-                                )
-                              }
-                              className="h-8 rounded border   bg-white   dark:bg-gray-600 "
-                            >
-                              <option value="false">Odemčeno</option>
-                              <option value="true">Zamčeno</option>
-                            </select>
-                          );
-                          break;
-                        default:
-                          const value = row[column.key as keyof typeof row];
-                          if (value instanceof Date) {
-                            cellContent = value.toLocaleString(); 
-                          } else {
-                            cellContent = value;
-                          }
-                          break;
-                      }
-                    }
-                    return (
-                      <td
-                        key={column.label}
-                        className="max-w whitespace-normal border-[1px]   py-2 text-xs  md:mx-2 md:px-2 md:text-sm"
+              <tr
+                key={i}
+                className="dark:hover:bg-gray border-b text-start text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50 dark:bg-zinc-500-300  dark:even:bg-zinc-700 md:text-sm"
+              >
+                {userTableColumns.map((column) => {
+                  let cellContent;
+                  if (column.id === "delLabel") {
+                    cellContent = (
+                      <button
+                        disabled={rowsLoading}
+                        onClick={() => handleDel(row.account)}
                       >
-                        {cellContent}
-                      </td>
+                        <MdDeleteForever
+                          className={`h-6 w-6 hover:cursor-pointer ${rowsLoading ? "text-red-200 dark:text-red-800" : "text-red-500"} `}
+                        />
+                      </button>
                     );
-                  })}
-                </tr>
+                  } else {
+                    switch (column.key) {
+                      case "clearance":
+                        cellContent = (
+                          <select
+                            value={row.clearance}
+                            disabled={rowsLoading}
+                            onChange={(event) =>
+                              handleClearanceChange(
+                                row.account,
+                                event.target.value,
+                              )
+                            }
+                            className="h-8 rounded border   bg-white  dark:bg-gray-600"
+                          >
+                            <option value="visitor">Visitor</option>
+                            <option value="member">Member</option>
+                            <option value="editor">Editor</option>
+                            <option value="admin">Admin</option>
+                          </select>
+                        );
+                        break;
+                      case "locked":
+                        cellContent = (
+                          <select
+                            value={row.locked ? "true" : "false"}
+                            disabled={rowsLoading}
+                            onChange={(event) =>
+                              handleLocked(
+                                row.account,
+                                event.target.value === "true",
+                              )
+                            }
+                            className="h-8 rounded border   bg-white   dark:bg-gray-600 "
+                          >
+                            <option value="false">Odemčeno</option>
+                            <option value="true">Zamčeno</option>
+                          </select>
+                        );
+                        break;
+                      default:
+                        const value = row[column.key as keyof typeof row];
+                        if (value instanceof Date) {
+                          cellContent = value.toLocaleString();
+                        } else {
+                          cellContent = value;
+                        }
+                        break;
+                    }
+                  }
+                  return (
+                    <td
+                      key={column.label}
+                      className="max-w whitespace-normal border-[1px]   py-2 text-xs  md:mx-2 md:px-2 md:text-sm"
+                    >
+                      {cellContent}
+                    </td>
+                  );
+                })}
+              </tr>
             ))}
           </tbody>
         </table>
       </div>
-        <TableFooter 
-          filteredRows={filteredRows}
-          currentPage={currentPage}
-          rowsPerPage={rowsPerPage}
-          setCurrentPage={setCurrentPage}
-        />
+      <TableFooter
+        filteredRows={filteredRows}
+        currentPage={currentPage}
+        rowsPerPage={rowsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 }

@@ -9,8 +9,10 @@ interface SearchFieldProps {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const SearchField = ({ searchField, handleChange }: SearchFieldProps) => {
-
+export const SearchField = ({
+  searchField,
+  handleChange,
+}: SearchFieldProps) => {
   return (
     <InputWithIcon
       value={searchField}

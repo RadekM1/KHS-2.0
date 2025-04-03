@@ -18,7 +18,7 @@ import { BookRowsSchema } from "@/src/schemas/queries/tables/books-table-schema"
 export const BooksTable = () => {
   const fileInputRef = useRef(null);
   const [rows, setRows] = useState<BookRowsSchema>([]);
-  const [sortingColumn, setsortingColumn] = useState<string>('');
+  const [sortingColumn, setsortingColumn] = useState<string>("");
   const [sortingOrder, setSortingOrder] = useState<string>("asc");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchField, setSearchField] = useState<string>("");
@@ -46,19 +46,19 @@ export const BooksTable = () => {
 
   const fetchData = async () => {
     setRowsLoading(true);
-    const response = await getBooks()
-    if(!response.ok){
-      toast.error(response.message)
-      setRowsLoading(false)
-      return
+    const response = await getBooks();
+    if (!response.ok) {
+      toast.error(response.message);
+      setRowsLoading(false);
+      return;
     }
-    setRows(response.rows)
+    setRows(response.rows);
     setRowsLoading(false);
     const nextDatabaseId = Math.max(...response.rows.map((row) => row.id)) + 1;
     setNextHighestId(nextDatabaseId);
-    }
-    
-  const handleDel = async (id:number) => {
+  };
+
+  const handleDel = async (id: number) => {
     const confirmDel = confirm(`opravdu chcete smazat knihu č. ${id} ?`);
     if (!confirmDel) {
       return;
@@ -279,11 +279,11 @@ export const BooksTable = () => {
     }
   };
 
-  const handleProductEdit = (rowId : number) => {
+  const handleProductEdit = (rowId: number) => {
     const tempId = rowId;
     const row = rows.find((row) => tempId === row.id);
     if (!row) return;
-    
+
     const RepairedUrl = row.picture_url === null ? "" : row.picture_url;
     const whoRentedRepaired =
       row.member_rented === null ? "" : row.member_rented;
@@ -372,8 +372,8 @@ export const BooksTable = () => {
       </div>
       <div className="scrollbar-thumb-rounded overflow-x-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-800">
         <table className="relative min-w-full overflow-auto text-xs text-gray-500 md:text-start md:text-sm">
-          <TableHead 
-            columns={bookColumnList} 
+          <TableHead
+            columns={bookColumnList}
             handleSorting={handleSorting}
             sortingColumn={sortingColumn}
             sortingOrder={sortingOrder}
@@ -499,15 +499,15 @@ export const BooksTable = () => {
               {editActive && (
                 <>
                   <td className="max-w whitespace-normal border-[1px]    py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
-                      <button
-                        className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
-                        disabled={disabled}
-                        onClick={() => {
-                          handleSqlProductChange();
-                        }}
-                      >
-                        <span>OK</span>
-                      </button>
+                    <button
+                      className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
+                      disabled={disabled}
+                      onClick={() => {
+                        handleSqlProductChange();
+                      }}
+                    >
+                      <span>OK</span>
+                    </button>
                   </td>
                   <td className="max-w whitespace-normal border-[1px]    py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
                     <button
@@ -569,18 +569,18 @@ export const BooksTable = () => {
                     {row.description}
                   </td>
                   <td className="max-w whitespace-normal border-[1px]  py-2 text-xs  md:mx-2 md:px-2 md:text-sm">
-                      <button
-                        disabled={disabled}
-                        onClick={() => handleDel(row.id)}
-                      >
-                        <MdDeleteForever
-                          className={`h-7 w-7 hover:cursor-pointer ${
-                            rowsLoading
-                              ? "text-red-200 dark:text-red-800"
-                              : "text-red-500"
-                          }`}
-                        />
-                      </button>
+                    <button
+                      disabled={disabled}
+                      onClick={() => handleDel(row.id)}
+                    >
+                      <MdDeleteForever
+                        className={`h-7 w-7 hover:cursor-pointer ${
+                          rowsLoading
+                            ? "text-red-200 dark:text-red-800"
+                            : "text-red-500"
+                        }`}
+                      />
+                    </button>
                   </td>
 
                   <td className="max-w whitespace-normal border-[1px]  py-2 text-xs md:mx-2 md:px-2 md:text-sm">
@@ -611,4 +611,4 @@ export const BooksTable = () => {
       />
     </div>
   );
-}
+};

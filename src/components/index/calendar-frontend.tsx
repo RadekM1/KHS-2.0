@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import { SpinnerBigOrange } from "../spinners/spinnerBigOrange";
 import { calendarFetch } from "@/src/lib/server-functions/frontend/calendar-fetch";
 import { CalendarEvents } from "@/src/schemas/queries/calendar";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/style.css";
+import { Calendar } from "../ui/calendar/calendar";
 import { cs } from "date-fns/locale";
 import { CalendarEventsTable } from "./calendar-events";
 
@@ -33,16 +32,12 @@ export const CalendarFrontEnd = () => {
         <SpinnerBigOrange />
       ) : (
         <>
-          <DayPicker
-            animate
+          <Calendar
             disabled={true}
-            onSelect={setSelected}
             selected={selected}
             disableNavigation={true}
             mode="multiple"
-            required={true}
             locale={cs}
-            classNames={{}}
             className="calendar-no-arrows rounded-xl individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
           />
           <CalendarEventsTable rows={rows} />

@@ -5,10 +5,15 @@ interface InputProps {
   label: string;
   Icon: IconType;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
-  value:string
+  value: string;
 }
 
-export const InputWithIcon = ({ label, Icon, handleChange, value }: InputProps) => {
+export const InputWithIcon = ({
+  label,
+  Icon,
+  handleChange,
+  value,
+}: InputProps) => {
   return (
     <>
       <div className="relative w-[280px]  dark:border-slate-600">

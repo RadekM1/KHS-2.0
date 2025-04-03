@@ -14,6 +14,10 @@ export const googleUrlSign = async (
       fullFileName = `img-gallery/${imgNameToGoogle}`;
     }
 
+    if (target === "news") {
+      fullFileName = `news-img-gallery/${imgNameToGoogle}`;
+    }
+
     if (target === "avatar") {
       fullFileName = `avatars/${imgNameToGoogle}`;
     }
@@ -30,7 +34,7 @@ export const googleUrlSign = async (
       expires: Date.now() + 10 * 60 * 1000,
       contentType,
     });
-    return { ok: true, url: url };
+    return { ok: true, url: url[0] };
   } catch (error) {
     console.log("Failed to generate signed URL:", error);
     return { ok: false, url: "" };

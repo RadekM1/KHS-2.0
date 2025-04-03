@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import AvatarEditor from "react-avatar-editor";
 import { useSession } from "next-auth/react";
-import SpinnerSmallWhite from "../spinners/spinnerSmallWhite";
+import { SpinnerSmallWhite } from "../spinners/spinnerSmallWhite";
 import { sendImgToGoogle } from "@/src/lib/server-functions/backend/google-cloud/google-img-transfer";
 import { updateAvatarInSql } from "@/src/lib/server-functions/backend/users/avatar-update";
 import { toast } from "sonner";

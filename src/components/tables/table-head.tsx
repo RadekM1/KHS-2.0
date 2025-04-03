@@ -3,7 +3,7 @@
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 interface TableHeadProps {
-  columns: { key: string; id?: string, label: string; sorting: boolean }[];
+  columns: { key: string; id?: string; label: string; sorting: boolean }[];
   handleSorting: (key: string) => void;
   sortingColumn: string;
   sortingOrder: string;

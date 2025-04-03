@@ -5,7 +5,7 @@ export const newsFeedSchemaCard = z.object({
   id: z.number(),
   title: z.string(),
   created_time: z.date(),
-  description: z.string(),
+  summary: z.string(),
 });
 
 export const newsFeedsSchema = z.array(newsFeedSchemaCard);
@@ -17,18 +17,16 @@ export const newsArticleSchema = z.object({
   id: z.number(),
   title: z.string(),
   created_time: z.date(),
-  description: z.string(),
+  summary: z.string(),
   gallery: z.array(articleImgSchema).nullable(),
-  active: z.boolean(),
 });
 
 export const parsedNewsArticleSchema = z.object({
   id: z.number(),
   title: z.string(),
   created_time: z.string(),
-  description: z.string(),
+  summary: z.string(),
   gallery: z.array(prepaderArticleImgSchema).nullable(),
-  active: z.boolean(),
 });
 
 export type NewsArticleSchema = z.infer<typeof newsArticleSchema>;

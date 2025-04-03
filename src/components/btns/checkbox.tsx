@@ -4,7 +4,16 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { orange } from "@mui/material/colors";
 
-export const CheckBox = ({ checked, label, id, handleChange }) => {
+interface CheckBoxProps {
+    handleChange: (checked: boolean, id: string) => void;
+    checked: boolean;
+    disabled?: boolean;
+    id: string;
+    label: string;
+}
+
+export const CheckBox = ({ 
+  checked, label, id, handleChange }: CheckBoxProps) => {
   return (
     <FormGroup>
       <FormControlLabel
@@ -13,7 +22,7 @@ export const CheckBox = ({ checked, label, id, handleChange }) => {
             checked={checked}
             onChange={(e) => handleChange(e.target.checked, id)}
             sx={{
-              color: "black",
+              color: "gray",
               "&.Mui-checked": {
                 color: orange[500],
               },

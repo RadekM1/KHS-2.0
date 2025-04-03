@@ -12,8 +12,8 @@ export const newsFetch = async () => {
   try {
     const response = await executeQuery({
       sqlConnection,
-      query: `SELECT id, title, created_time, description FROM news_feed
-        WHERE active = TRUE
+      query: `SELECT id, title, created_time, summary FROM news_feed
+        WHERE created_time > NOW()
         ORDER BY created_time DESC
         LIMIT 5
         `,

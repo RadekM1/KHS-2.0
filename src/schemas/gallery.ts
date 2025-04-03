@@ -9,3 +9,12 @@ export const imgInGallerySchema = z.object({
 });
 
 export type ImgInGallerySchema = z.infer<typeof imgInGallerySchema>;
+
+
+export const allInGallerySchema = z.array(z.object({
+  file: z.string(),
+  alt: z.string(),
+  description: z.string()
+}) 
+)
+export type AllInGallerySchema = z.infer<typeof allInGallerySchema>
