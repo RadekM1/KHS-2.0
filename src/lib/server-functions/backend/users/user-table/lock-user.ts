@@ -6,8 +6,6 @@ import { executeQuery } from "@/src/lib/connection-adapters/db";
 export const lockUser = async (account: string, locked: boolean) => {
   const isLocked = locked === true ? 1 : 0;
 
-  console.log(locked);
-
   const sqlConnection = await pool.connect();
   try {
     const result = await executeQuery({

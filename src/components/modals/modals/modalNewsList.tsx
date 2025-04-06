@@ -12,7 +12,7 @@ interface ModalArticleListProps {
   setGallery: (gallery: ArticleGallerySchema) => void;
   setEditActive: (active: boolean) => void;
   setEditorContent: (content: string) => void;
-  setActive: (active: boolean)=>void;
+  setActive: (active: boolean) => void;
 }
 
 export const ModalNewsList = ({

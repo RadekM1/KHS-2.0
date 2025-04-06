@@ -23,9 +23,8 @@ export const newsFetch = async () => {
       return [];
     }
 
-
     const parsedData: NewsFeedsSchema = newsFeedsSchema.parse(response.rows);
-    
+
     return parsedData.map((row) => ({
       ...row,
       created_time: new Date(row.created_time).toLocaleDateString("cs-CZ"),

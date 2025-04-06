@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 
-export default function CommentCard({ comment }) {
+interface CommentProps {
+  avatar: string;
+  nick_name: string;
+  created: string;
+  comment: string;
+}
+
+export default function CommentCard({ comment }: { comment: CommentProps }) {
   return (
     <li className="flex text-black dark:text-white flex-col">
       <div className="flex flex-row flex-wrap self-start md:m-2">

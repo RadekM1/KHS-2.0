@@ -5,18 +5,16 @@ import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
 
 export const editArticleNews = async (
-    idToEdit: number,
-    title: string,
-    editorContent: string,
-    account: string,
-    summary: string,
-    metadataToApi: ArticleGallerySchema, 
-    active: boolean,
+  idToEdit: number,
+  title: string,
+  editorContent: string,
+  account: string,
+  summary: string,
+  metadataToApi: ArticleGallerySchema,
+  active: boolean,
 ) => {
-    const sqlConnection = await pool.connect();
-    try {
-
-
+  const sqlConnection = await pool.connect();
+  try {
     const metadataToSqlString = JSON.stringify(metadataToApi);
 
     const result = await executeQuery({
@@ -36,10 +34,10 @@ export const editArticleNews = async (
 
     if (!(result.rowCount > 0)) {
       return {
-          message: 'Nepodařilo se upravit článek',
-          ok: false, 
-      }
-    } 
+        message: "Nepodařilo se upravit článek",
+        ok: false,
+      };
+    }
     return {
       message: "Článek byl úspěšně upraven",
       idToEdit,
@@ -48,10 +46,10 @@ export const editArticleNews = async (
   } catch (error) {
     console.log("Chyba při úpravě článku:", error);
     return {
-      message: 'Nepodařilo se upravit článek',
-      ok: false, 
-  }
+      message: "Nepodařilo se upravit článek",
+      ok: false,
+    };
   } finally {
     sqlConnection.release();
   }
-  }
+};

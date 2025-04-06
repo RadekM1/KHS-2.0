@@ -88,13 +88,13 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                     ref={popoverWrapperRef}
                     className="absolute top-full z-10 w-full max-w-lg rounded-3xl bg-slate-100 shadow-lg drop-shadow-xl dark:bg-gray-800 dark:text-gray-300"
                   >
-                    <div className="p-4">
+                    <div className="p-4 ">
                       {item.submenu.map((subitem, j) => (
                         <Link
                           href={subitem.link}
                           onClick={() => setIsOpen(false)}
                           key={j}
-                          className="ml-5 block font-semibold text-gray-700 dark:text-gray-300"
+                          className="ml-5 block font-semibold text-gray-700 hover:bg-white rounded-xl dark:hover:bg-gray-700 dark:text-gray-300"
                         >
                           <div className="group flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 group-hover:bg-white dark:group-hover:bg-gray-700">
                             <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-slate-100 group-hover:bg-white dark:bg-gray-800 dark:group-hover:bg-gray-700">

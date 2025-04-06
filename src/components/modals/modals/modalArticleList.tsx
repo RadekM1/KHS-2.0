@@ -27,9 +27,8 @@ export const ModalArticleList = ({
   setGallery,
   setEditActive,
   setEditorContent,
-  setThumbnail
+  setThumbnail,
 }: ModalArticleListProps) => {
-
   return (
     <Dialog
       open={open}
@@ -37,7 +36,7 @@ export const ModalArticleList = ({
       className="relative z-50"
     >
       <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div className="fixed inset-0 z-10 h-full w-screen overflow-y-auto">
         <div className="mx-5 flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 md:mx-10 lg:mx-32">
           <DialogPanel className="relative w-full max-w-none transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-gray-900 sm:my-8">
             <div className="bg-white px-4 pb-4 pt-5 dark:bg-gray-800 sm:p-6 sm:pb-4">

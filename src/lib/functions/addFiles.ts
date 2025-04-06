@@ -1,12 +1,6 @@
-'use client'
+"use client";
 import { toast } from "sonner";
 import { galerySharpOptim } from "../server-functions/backend/img-optimize/gallery";
-
-
-
-interface SetFilesFunction {
-  (prevFiles: FileWithPreview[]): FileWithPreview[];
-}
 
 interface SetImgResizeFunction {
   (value: boolean): void;
@@ -17,13 +11,11 @@ interface FileWithPreview extends File {
   description?: string;
 }
 
-
-  
 export const addFiles = async (
-  newFiles: File[], 
-  setImgResize: SetImgResizeFunction, 
+  newFiles: File[],
+  setImgResize: SetImgResizeFunction,
   setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[]>>,
-  files: FileWithPreview[]
+  files: FileWithPreview[],
 ): Promise<void> => {
   setImgResize(true);
   const maxFileSize: number = 9 * 1024 * 1024;
@@ -64,22 +56,24 @@ export const addFiles = async (
     );
   }
 
-  const optimizationPromises: Promise<void>[] = filteredFiles.map(async (file: File) => {
-    const response = await galerySharpOptim(file);
-    if (!response.ok || !response.file) {
-      toast.error(`Nepodařila se optimalizace souboru: ${file.name}`);
-      return;
-    }
-    const optimizedPreview: string = response.file;
-    
-    setFiles((prevFiles: FileWithPreview[]) => [
-      ...prevFiles,
-      {
-        name: file.name,
-        preview: optimizedPreview,
-      } as FileWithPreview,
-    ]);
-  });
+  const optimizationPromises: Promise<void>[] = filteredFiles.map(
+    async (file: File) => {
+      const response = await galerySharpOptim(file);
+      if (!response.ok || !response.file) {
+        toast.error(`Nepodařila se optimalizace souboru: ${file.name}`);
+        return;
+      }
+      const optimizedPreview: string = response.file;
+
+      setFiles((prevFiles: FileWithPreview[]) => [
+        ...prevFiles,
+        {
+          name: file.name,
+          preview: optimizedPreview,
+        } as FileWithPreview,
+      ]);
+    },
+  );
 
   await Promise.all(optimizationPromises);
 

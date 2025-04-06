@@ -1,8 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import {AdminCalendar} from "@/src/components/dashboad/calendar/admin-calendar";
-
+import { AdminCalendar } from "@/src/components/dashboad/calendar/admin-calendar";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);

@@ -1,14 +1,14 @@
-"use client"
- 
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
- 
-import { cn } from "@/src/lib/utils"
-import { buttonVariants } from "@/src/components/ui/calendar/calendar-button"
- 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
- 
+"use client";
+
+import * as React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker } from "react-day-picker";
+
+import { cn } from "@/src/lib/utils";
+import { buttonVariants } from "@/src/components/ui/calendar/calendar-button";
+
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+
 function Calendar({
   className,
   classNames,
@@ -20,14 +20,15 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 justify-center sm:space-x-4 sm:space-y-0",
+        months:
+          "flex flex-col sm:flex-row space-y-4 justify-center sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "default" }),
-          "h-7 w-7  p-0  hover:opacity-100"
+          "h-7 w-7  p-0  hover:opacity-100",
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
@@ -39,7 +40,7 @@ function Calendar({
         cell: "h-9 w-9 text-center text-black dark:text-black text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:  [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md ",
         day: cn(
           buttonVariants({ variant: "default" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
+          "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
         ),
         day_range_end: "day-range-end",
         day_selected:
@@ -63,8 +64,8 @@ function Calendar({
       }}
       {...props}
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
- 
-export { Calendar }
+Calendar.displayName = "Calendar";
+
+export { Calendar };

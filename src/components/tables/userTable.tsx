@@ -218,6 +218,7 @@ export default function UserTable() {
                         );
                         break;
                       default:
+                        // eslint-disable-next-line
                         const value = row[column.key as keyof typeof row];
                         if (value instanceof Date) {
                           cellContent = value.toLocaleString();

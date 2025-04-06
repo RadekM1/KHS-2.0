@@ -68,7 +68,7 @@ export const RentalTable = () => {
       setRowsLoading(false);
       return;
     }
-    toast.success(response.message)
+    toast.success(response.message);
     fetchData();
     setRowsLoading(false);
   };
@@ -127,7 +127,7 @@ export const RentalTable = () => {
 
   useEffect(() => {
     const filter = rows.filter((row) => {
-      const keys = Object.keys(row);
+      const keys = Object.keys(row) as Array<keyof typeof row>;
       const fulltextTrue = keys.some((key) =>
         String(row[key])
           .toLowerCase()
@@ -153,7 +153,7 @@ export const RentalTable = () => {
     setFilteredRows(rows);
   };
 
-  const handleSorting = (key) => {
+  const handleSorting = (key: string) => {
     if (sortingColumn === key) {
       const newOrder = sortingOrder === "asc" ? "desc" : "asc";
       setSortingOrder(newOrder);
@@ -171,7 +171,18 @@ export const RentalTable = () => {
     startIndex + rowsPerPage,
   );
 
-  const handleProductChange = (e, id) => {
+  interface ProductChangeValues {
+    productName: string;
+    pieces: string;
+    onStock: string;
+    isReserved: string;
+    whoReserved: string;
+    whoRented: string;
+  }
+
+  type ProductChangeId = keyof ProductChangeValues;
+
+  const handleProductChange = (e: string, id: ProductChangeId): void => {
     const tempE = e;
     const tempId = id;
 
@@ -183,17 +194,17 @@ export const RentalTable = () => {
         break;
       case "pieces":
         {
-          setPieces(tempE);
+          setPieces(parseInt(tempE));
         }
         break;
       case "onStock":
         {
-          setOnStock(tempE);
+          setOnStock(tempE === "true");
         }
         break;
       case "isReserved":
         {
-          setIsReserved(tempE);
+          setIsReserved(tempE === "true");
         }
         break;
       case "whoReserved":
@@ -225,10 +236,8 @@ export const RentalTable = () => {
     setPieces(row.pieces);
     setOnStock(row.on_stock);
     setIsReserved(row.reserved);
-    setWhoResereved(row.member_reserved) === null
-      ? setWhoRented("")
-      : setWhoResereved(reservedPerson);
-    setWhoRented(row.member_rented) === setWhoRented(rentedPerson);
+    setWhoResereved(reservedPerson);
+    setWhoRented(rentedPerson);
   };
 
   const handleResetForm = () => {
@@ -383,9 +392,7 @@ export const RentalTable = () => {
                   <td className="max-w whitespace-normal border-[1px] dark:bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                     <button
                       disabled={rowsLoading}
-                      onClick={() => {
-                        setEditActive(false), handleResetForm();
-                      }}
+                      onClick={() => (setEditActive(false), handleResetForm())}
                       className="inline-flex h-8 items-center justify-center gap-2 text-white whitespace-nowrap rounded bg-orange-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-orange-600 focus:bg-orange-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
                     >
                       <span> x </span>

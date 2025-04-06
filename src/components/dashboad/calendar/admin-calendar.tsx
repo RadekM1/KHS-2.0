@@ -27,27 +27,25 @@ export const AdminCalendar = () => {
   const [checkBoxDayValue, setCheckBoxDayValue] = useState(false);
   const [checkBoxNoEndValue, setCheckBoxNoEndValue] = useState(false);
   const [editActive, setEditActive] = useState(false);
-  const [date, setDate] = React.useState<Date[]>([new Date()])
+  const [date, setDate] = React.useState<Date[]>([new Date()]);
 
-
-  const handleEdit = (id:number) => {
+  const handleEdit = (id: number) => {
     const row = rows.find((row) => id === row.id);
     if (!row) {
       return;
     }
     setEditActive(true);
     setIdToHandle(id);
-    setEvent(row.event ?? '');
+    setEvent(row.event ?? "");
     setEventDate(row.date ? dayjs(row.date).format("YYYY-MM-DD") : "");
     setStartTime(row.event_start ?? "");
     setEndTime(row.event_end ?? "");
     setCheckBoxDayValue(row.check_whole_day);
     setCheckBoxNoEndValue(row.check_no_end);
-    setDate(row.date ? [row.date] : [new Date()])
+    setDate(row.date ? [row.date] : [new Date()]);
   };
 
   const handleChange = (checked: boolean, id: string) => {
-
     const tempVal = checked;
     const tempId = id;
 
@@ -69,11 +67,12 @@ export const AdminCalendar = () => {
           setStartTime("");
           setEndTime("");
         }
+        break;
       default:
         break;
     }
   };
- 
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -100,7 +99,7 @@ export const AdminCalendar = () => {
     handleReset();
   };
 
-  const handleDel = (id:number) => {
+  const handleDel = (id: number) => {
     handleDeleteEvent(id, setLoading, fetchData);
   };
 
@@ -113,10 +112,10 @@ export const AdminCalendar = () => {
     setEndTime("15:00");
     setCheckBoxDayValue(false);
     setCheckBoxNoEndValue(false);
-    setDate([new Date()])
+    setDate([new Date()]);
   };
 
-  const handleAddEvent = () =>{
+  const handleAddEvent = () => {
     handleAdd(
       event,
       endTime,
@@ -125,9 +124,9 @@ export const AdminCalendar = () => {
       checkBoxNoEndValue,
       setLoading,
       date,
-      fetchData
-    )
-  }
+      fetchData,
+    );
+  };
 
   const handleRowEdit = () => {
     handleEditEvent(
@@ -139,48 +138,48 @@ export const AdminCalendar = () => {
       checkBoxNoEndValue,
       setLoading,
       date,
-      fetchData
-    )
+      fetchData,
+    );
   };
 
   return (
     <div className="flex flex-col min-h-screen w-full">
-    <div className="w-full min-h-[4px]">
-    {loading && <LinearProgressBar />}
+      <div className="w-full min-h-[4px]">
+        {loading && <LinearProgressBar />}
+      </div>
+      <div className="mx-3 flex w-full flex-col lg:flex-row">
+        <Calendar
+          onMonthChange={(month) => setCurrentMonth(dayjs(month))}
+          selected={date}
+          onSelect={setDate}
+          mode="multiple"
+          locale={cs}
+          className="calendar-no-arrows max-h-min rounded-xl individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
+        />
+        <CalendarInterface
+          event={event}
+          setEvent={setEvent}
+          eventDate={eventDate}
+          setEventDate={setEventDate}
+          startTime={startTime}
+          setStartTime={setStartTime}
+          endTime={endTime}
+          setEndTime={setEndTime}
+          checkBoxDayValue={checkBoxDayValue}
+          checkBoxNoEndValue={checkBoxNoEndValue}
+          handleChange={handleChange}
+          handleAdd={handleAddEvent}
+          handleReset={handleReset}
+          editActive={editActive}
+          handleRowEdit={handleRowEdit}
+          loading={loading}
+          sortedRows={sortedRows}
+          handleEdit={handleEdit}
+          handleDel={handleDel}
+          setSelectedDay={setSelectedDay}
+          date={date}
+        />
+      </div>
     </div>
-    <div className="mx-3 flex w-full flex-col lg:flex-row"> 
-    <Calendar
-      onMonthChange={(month) => setCurrentMonth(dayjs(month))}
-      selected={date}
-      onSelect={setDate}
-      mode="multiple"
-      locale={cs}
-      className="calendar-no-arrows max-h-min rounded-xl individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
-    />
-    <CalendarInterface 
-      event={event}
-      setEvent={setEvent}
-      eventDate={eventDate}
-      setEventDate={setEventDate}
-      startTime={startTime}
-      setStartTime={setStartTime}
-      endTime={endTime}
-      setEndTime={setEndTime}
-      checkBoxDayValue={checkBoxDayValue}
-      checkBoxNoEndValue={checkBoxNoEndValue}
-      handleChange={handleChange}
-      handleAdd={handleAddEvent}
-      handleReset={handleReset}
-      editActive={editActive}
-      handleRowEdit={handleRowEdit}
-      loading={loading}
-      sortedRows={sortedRows}
-      handleEdit={handleEdit}
-      handleDel={handleDel}
-      setSelectedDay={setSelectedDay}
-      date={date}
-    />
-    </div>
-  </div>
   );
-}
+};

@@ -44,12 +44,14 @@ export default function ArticlesMainComponent() {
   const [selectedGoogleImage, setSelectedGoogleImage] = useState("");
   const [editorContent, setEditorContent] = useState("");
   const [allInGallery, setAllInGallery] = useState<AllInGallerySchema>([]);
-  const [readyToUploadFiles, setReadyToUploadFiles] = useState<ReadyToUploadFilesSchema[]>([]);
+  const [readyToUploadFiles, setReadyToUploadFiles] = useState<
+    ReadyToUploadFilesSchema[]
+  >([]);
   const [imgResize, setImgResize] = useState(false);
   const [editedArticleSlug, setEditedArticleSlug] = useState("");
 
-  const nickName = session?.user.nickName ?? '';
-  const account = session?.user.email ?? '';
+  const nickName = session?.user.nickName ?? "";
+  const account = session?.user.email ?? "";
 
   useEffect(() => {
     interface PreventEventProps {
@@ -114,7 +116,11 @@ export default function ArticlesMainComponent() {
     addFiles(selectedFiles, setImgResize, setFiles, files);
   };
 
-  const handleGoogleImageClick = (image:{file: string, description: string, alt: string}) => {
+  const handleGoogleImageClick = (image: {
+    file: string;
+    description: string;
+    alt: string;
+  }) => {
     setSelectedGoogleImage(image.file);
     setThumbnail(image.file);
     setSelectedFile("");
@@ -135,7 +141,7 @@ export default function ArticlesMainComponent() {
     setDescription(generatedDescription);
   }, [title, textFromEditor]);
 
-  const onChange = (e:string, id:string) => {
+  const onChange = (e: string, id: string) => {
     const tempE = e;
     const tempId = id;
 
@@ -168,10 +174,10 @@ export default function ArticlesMainComponent() {
     setSelectedGoogleImage("");
     setAllInGallery([]);
     setFiles([]);
-    setSelectedFile('');
+    setSelectedFile("");
   };
 
-  const handleAddClick = () =>{
+  const handleAddClick = () => {
     handleAddArticle(
       title,
       category,
@@ -186,11 +192,11 @@ export default function ArticlesMainComponent() {
       setLoading,
       allInGallery,
       setEditActive,
-      handleResetForm
-    )
-  }
+      handleResetForm,
+    );
+  };
 
-  const handleEditedUploadClick = () =>{
+  const handleEditedUploadClick = () => {
     handleArticleChange(
       idToEdit,
       title,
@@ -204,9 +210,9 @@ export default function ArticlesMainComponent() {
       allInGallery,
       setEditActive,
       handleResetForm,
-      editedArticleSlug
-    )
-  }
+      editedArticleSlug,
+    );
+  };
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex flex-col items-center self-center md:flex-row">
@@ -224,9 +230,7 @@ export default function ArticlesMainComponent() {
 
                 <button
                   disabled={loading}
-                  onClick={() => {
-                    setEditActive(false), handleResetForm();
-                  }}
+                  onClick={() => (setEditActive(false), handleResetForm())}
                   className="mx-4 flex h-10 items-center justify-center gap-2 self-center whitespace-nowrap rounded bg-red-500 px-4 font-medium tracking-wide text-white transition duration-300 hover:bg-red-600 focus:bg-red-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
                 >
                   <span> Zrušit úpravy </span>
@@ -325,7 +329,7 @@ export default function ArticlesMainComponent() {
         />
       </div>
       <div className="my-3 flex flex-col pt-24 text-xl">
-        <DropZone 
+        <DropZone
           handleDrop={handleDrop}
           handleFileChange={handleFileChange}
           imgResize={imgResize}

@@ -6,6 +6,16 @@ import { SpinnerSmallOrange } from "../spinners/spinnerSmallOrange";
 import { useState, useEffect } from "react";
 import { useSessionContext } from "@/src/context/session-provider";
 
+interface CommentCardInputProps {
+  setAreaValue: (value: string) => void;
+  areaValue: string;
+  disabled: boolean;
+  setUser: (email: string) => void;
+  handleClick: () => void;
+  loading: boolean;
+  setDisabled: (value: boolean) => void;
+}
+
 export const CommentCardInput = ({
   setAreaValue,
   areaValue,
@@ -14,7 +24,7 @@ export const CommentCardInput = ({
   handleClick,
   loading,
   setDisabled,
-}) => {
+}: CommentCardInputProps) => {
   const [avatar, setAvatar] = useState(
     "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
   );

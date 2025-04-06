@@ -10,14 +10,14 @@ interface PageProps {
 }
 
 export default async function page({ params }: PageProps) {
-  const slug = params.aktualita;
+  const { aktualita } = await params;
 
-  const article = await newsArticleFetch(slug);
+  const article = await newsArticleFetch(aktualita);
   if (!article) {
     return <div>Článek nenalezen</div>;
   }
 
-  const urlToShare = `https://www.khszlin.com/clanky/${slug}`;
+  const urlToShare = `https://www.khszlin.com/clanky/${aktualita}`;
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
@@ -40,7 +40,7 @@ export default async function page({ params }: PageProps) {
       </header>
       <article
         className="prose w-full px-4 overflow-hidden text-start dark:border-b-gray-700 dark:text-white"
-        dangerouslySetInnerHTML={{ __html: article.description }}
+        dangerouslySetInnerHTML={{ __html: article.clanek }}
       />
       <Gallery gallery={article.gallery ?? []} />
     </section>

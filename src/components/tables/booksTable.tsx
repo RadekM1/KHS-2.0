@@ -22,7 +22,7 @@ import { handleBookEdit } from "@/src/lib/functions/books/edit-book";
 interface SearchFieldChangeEvent {
   target: {
     value: string;
-  }
+  };
 }
 
 export const BooksTable = () => {
@@ -40,10 +40,10 @@ export const BooksTable = () => {
   const [creator, setCreator] = useState<string>("");
   const [onStock, setOnStock] = useState<boolean>(false);
   const [whoRented, setWhoRented] = useState<string>("");
-  const [release, setRelease] = useState<string>('');
+  const [release, setRelease] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [editBookImgExist, setEditBookImgExist] = useState<boolean>(false)
+  const [editBookImgExist, setEditBookImgExist] = useState<boolean>(false);
   const rowsPerPage = 20;
 
   useEffect(() => {
@@ -63,24 +63,21 @@ export const BooksTable = () => {
   };
 
   const handleDel = async (id: number) => {
-      const confirmDel = confirm(`opravdu chcete smazat článek č. ${id} ?`);
-      if (!confirmDel) {
-        return;
-      }
-      const response = await deleteBook(id);
-      if (!response.ok) {
-        toast.error(response.message);
-        setRowsLoading(false);
-        return;
-      }
-      toast.success(response.message)
-      fetchData();
-      setRowsLoading(false);
-      fetchData();
+    const confirmDel = confirm(`opravdu chcete smazat článek č. ${id} ?`);
+    if (!confirmDel) {
+      return;
     }
-
-
-    
+    const response = await deleteBook(id);
+    if (!response.ok) {
+      toast.error(response.message);
+      setRowsLoading(false);
+      return;
+    }
+    toast.success(response.message);
+    fetchData();
+    setRowsLoading(false);
+    fetchData();
+  };
 
   const handleSqlProductChange = async () => {
     handleBookEdit(
@@ -95,8 +92,8 @@ export const BooksTable = () => {
       fetchData,
       setRowsLoading,
       handleResetForm,
-      editBookImgExist
-    )
+      editBookImgExist,
+    );
   };
 
   const handleAdd = async () => {
@@ -203,12 +200,12 @@ export const BooksTable = () => {
   const handleProductEdit = (rowId: number) => {
     const tempId = rowId;
     const row = rows.find((row) => tempId === row.id);
-    if (!row){
-      toast.error('nepodařilo se načíst data knížky pro úpravu')
+    if (!row) {
+      toast.error("nepodařilo se načíst data knížky pro úpravu");
       return;
-    } 
+    }
     const tempisImg = row.picture_url ? true : false;
-    setEditBookImgExist(tempisImg)
+    setEditBookImgExist(tempisImg);
     setEditActive(true);
     setIdToEdit(row.id);
     setName(row.name);
@@ -228,7 +225,7 @@ export const BooksTable = () => {
     setDescription("");
     setRelease("");
     setSelectedFile(null);
-    if (fileInputRef.current){
+    if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
   };
@@ -365,7 +362,7 @@ export const BooksTable = () => {
                     className="inline-flex h-8 items-center min-w-[120px] justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
                     disabled={rowsLoading}
                   >
-                    {rowsLoading ? <SpinnerSmallOrange/> : <span>Přidat</span>}
+                    {rowsLoading ? <SpinnerSmallOrange /> : <span>Přidat</span>}
                   </button>
                 </td>
               )}
@@ -380,15 +377,13 @@ export const BooksTable = () => {
                         handleSqlProductChange();
                       }}
                     >
-                      {rowsLoading ? <SpinnerSmallOrange/> : <span>OK</span>}
+                      {rowsLoading ? <SpinnerSmallOrange /> : <span>OK</span>}
                     </button>
                   </td>
                   <td className="max-w whitespace-normal border-[1px]    py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
                     <button
                       disabled={rowsLoading}
-                      onClick={() => {
-                        setEditActive(false), handleResetForm();
-                      }}
+                      onClick={() => (setEditActive(false), handleResetForm())}
                       className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-orange-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-orange-600 focus:bg-orange-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
                     >
                       <span> x </span>

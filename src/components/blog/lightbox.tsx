@@ -9,10 +9,10 @@ import { Captions } from "yet-another-react-lightbox/plugins";
 import { Video } from "yet-another-react-lightbox/plugins";
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { ImgGallery } from "@/schema/gallery";
+import { ImgInGallerySchema } from "@/src/schemas/gallery";
 
 interface lightBoxProps {
-  input: ImgGallery[];
+  input: ImgInGallerySchema[];
   active: number;
   toggler: boolean;
 

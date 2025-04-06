@@ -26,11 +26,6 @@ export default function AvatarCrop() {
     };
   }
 
-  interface OptimizationResponse {
-    ok: boolean;
-    buffer?: Buffer;
-  }
-
   const handleImageChange = async (e: FileInputEvent): Promise<void> => {
     setLoading(true);
     const file: File = e.target.files[0];

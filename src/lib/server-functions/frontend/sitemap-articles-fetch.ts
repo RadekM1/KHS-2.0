@@ -21,11 +21,7 @@ export const articlesSitemapFetch = async () => {
       return [];
     }
 
-    console.log(response.rows);
-
     const parsedRows: SitemapSchema = sitemapSchema.parse(response.rows);
-
-    console.log(parsedRows);
 
     return parsedRows;
   } catch (error) {

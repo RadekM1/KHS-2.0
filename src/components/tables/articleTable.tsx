@@ -59,7 +59,6 @@ export const ArticleTable = ({
     setFilteredRows(rows);
   };
 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -77,21 +76,21 @@ export const ArticleTable = ({
   };
 
   const handleDel = async (id: number) => {
-      const confirmDel = confirm(`opravdu chcete smazat článek č. ${id} ?`);
-      if (!confirmDel) {
-        return;
-      }
-      const response = await deleteArticle(id);
-      if (!response.ok) {
-        toast.error(response.message);
-        setRowsLoading(false);
-        return;
-      }
-      toast.success(response.message)
-      fetchData();
-      setRowsLoading(false);
+    const confirmDel = confirm(`opravdu chcete smazat článek č. ${id} ?`);
+    if (!confirmDel) {
+      return;
     }
-  
+    const response = await deleteArticle(id);
+    if (!response.ok) {
+      toast.error(response.message);
+      setRowsLoading(false);
+      return;
+    }
+    toast.success(response.message);
+    fetchData();
+    setRowsLoading(false);
+  };
+
   const rowsPerPage = 10;
 
   useEffect(() => {

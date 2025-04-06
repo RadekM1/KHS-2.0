@@ -40,11 +40,13 @@ export const NewsMainComponent = () => {
   const [selectedGoogleImage, setSelectedGoogleImage] = useState("");
   const [editorContent, setEditorContent] = useState("");
   const [allInGallery, setAllInGallery] = useState<AllInGallerySchema>([]);
-  const [readyToUploadFiles, setReadyToUploadFiles] = useState<ReadyToUploadFilesSchema[]>([]);
+  const [readyToUploadFiles, setReadyToUploadFiles] = useState<
+    ReadyToUploadFilesSchema[]
+  >([]);
   const [imgResize, setImgResize] = useState(false);
-  const [active,setActive] = useState<boolean>(true);
+  const [active, setActive] = useState<boolean>(true);
 
-  const account = session?.user.email ?? '';
+  const account = session?.user.email ?? "";
 
   useEffect(() => {
     interface PreventEventProps {
@@ -109,12 +111,16 @@ export const NewsMainComponent = () => {
     addFiles(selectedFiles, setImgResize, setFiles, files);
   };
 
-  const handleGoogleImageClick = (image:{file: string, description: string, alt: string}) => {
+  const handleGoogleImageClick = (image: {
+    file: string;
+    description: string;
+    alt: string;
+  }) => {
     setSelectedGoogleImage(image.file);
     setSelectedFile("");
   };
 
-  const onChange = (e:string, id:string) => {
+  const onChange = (e: string, id: string) => {
     const tempE = e;
     const tempId = id;
 
@@ -138,11 +144,11 @@ export const NewsMainComponent = () => {
     setSelectedGoogleImage("");
     setAllInGallery([]);
     setFiles([]);
-    setSelectedFile('');
-    setActive(true)
+    setSelectedFile("");
+    setActive(true);
   };
 
-  const handleAddClick = () =>{
+  const handleAddClick = () => {
     handleAddNew(
       title,
       editorContent,
@@ -153,10 +159,10 @@ export const NewsMainComponent = () => {
       handleResetForm,
       textFromEditor,
       active,
-    )
-  }
+    );
+  };
 
-   const handleEditedUploadClick = () =>{
+  const handleEditedUploadClick = () => {
     handleNewsChange(
       idToEdit,
       title,
@@ -165,13 +171,12 @@ export const NewsMainComponent = () => {
       setLoading,
       setEditActive,
       handleResetForm,
-      textFromEditor, 
+      textFromEditor,
       active,
       allInGallery,
-      account
-    )
-  }
-
+      account,
+    );
+  };
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
@@ -190,9 +195,7 @@ export const NewsMainComponent = () => {
 
                 <button
                   disabled={loading}
-                  onClick={() => {
-                    setEditActive(false), handleResetForm();
-                  }}
+                  onClick={() => (setEditActive(false), handleResetForm())}
                   className="mx-4 flex h-10 items-center justify-center gap-2 self-center whitespace-nowrap rounded bg-red-500 px-4 font-medium tracking-wide text-white transition duration-300 hover:bg-red-600 focus:bg-red-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
                 >
                   <span> Zrušit úpravy </span>
@@ -225,20 +228,20 @@ export const NewsMainComponent = () => {
           >
             <span>Seznam článků</span>
             <ModalNewsList
-            open={open}
-            setIdToEdit={setIdToEdit}
-            setEditActive={setEditActive}
-            setTitle={setTitle}
-            setEditorContent={setEditorContent}
-            setActive={setActive}
-            setOpen={setOpen}
-            setGallery={setGallery}
-          />
+              open={open}
+              setIdToEdit={setIdToEdit}
+              setEditActive={setEditActive}
+              setTitle={setTitle}
+              setEditorContent={setEditorContent}
+              setActive={setActive}
+              setOpen={setOpen}
+              setGallery={setGallery}
+            />
             <CiViewList />
           </button>
         </div>
       </div>
-      <NewsArticleInputs 
+      <NewsArticleInputs
         title={title}
         disabled={loading}
         onChange={onChange}
@@ -253,7 +256,7 @@ export const NewsMainComponent = () => {
         />
       </div>
       <div className="my-3 flex flex-col pt-24 text-xl">
-        <DropZoneNews 
+        <DropZoneNews
           handleDrop={handleDrop}
           handleFileChange={handleFileChange}
           imgResize={imgResize}
@@ -275,4 +278,4 @@ export const NewsMainComponent = () => {
       </div>
     </div>
   );
-}
+};

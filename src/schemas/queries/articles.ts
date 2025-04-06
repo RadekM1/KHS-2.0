@@ -45,9 +45,8 @@ export const readyToUploadFilesSchema = z.object({
   alt: z.string(),
   description: z.string(),
   file: z.string(),
-  preview: z.string()
-})
-
+  preview: z.string(),
+});
 
 export const prepaderArticleImgSchema = z.object({
   src: z.string(),
@@ -80,4 +79,4 @@ export const preparedArticleSchema = defaultArticleSchema.extend({
 
 export type FetchedArticleSchema = z.infer<typeof fetchedArticleSchema>;
 export type PreparedArticleSchema = z.infer<typeof preparedArticleSchema>;
-export type ReadyToUploadFilesSchema = z.infer<typeof readyToUploadFilesSchema>
+export type ReadyToUploadFilesSchema = z.infer<typeof readyToUploadFilesSchema>;

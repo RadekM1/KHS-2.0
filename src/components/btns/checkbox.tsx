@@ -5,15 +5,19 @@ import Checkbox from "@mui/material/Checkbox";
 import { orange } from "@mui/material/colors";
 
 interface CheckBoxProps {
-    handleChange: (checked: boolean, id: string) => void;
-    checked: boolean;
-    disabled?: boolean;
-    id: string;
-    label: string;
+  handleChange: (checked: boolean, id: string) => void;
+  checked: boolean;
+  disabled?: boolean;
+  id: string;
+  label: string;
 }
 
-export const CheckBox = ({ 
-  checked, label, id, handleChange }: CheckBoxProps) => {
+export const CheckBox = ({
+  checked,
+  label,
+  id,
+  handleChange,
+}: CheckBoxProps) => {
   return (
     <FormGroup>
       <FormControlLabel

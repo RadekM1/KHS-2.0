@@ -1,20 +1,15 @@
-export const ArraySort = (
-  rows: [],
+// eslint-disable-next-line
+export const ArraySort = <T extends Record<string, any>>(
+  rows: T[],
   sortingColumn: string,
   sortingOrder: string,
-  setRows: (sortedArray: []) => void,
+  setRows: (sortedArray: T[]) => void,
 ) => {
   const sortedArray = [...rows].sort((a, b) => {
     const aValue = a[sortingColumn];
     const bValue = b[sortingColumn];
 
     const dateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
-
-    interface DateParts {
-      day: number;
-      month: number;
-      year: number;
-    }
 
     const parseDate = (dateString: string): Date => {
       const parts = dateString.split(".").map(Number);

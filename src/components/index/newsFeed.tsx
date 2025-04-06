@@ -10,8 +10,8 @@ export default async function NewsFeed() {
     <div className="scrollbar-thumb-rounded w-full border-gradient-to-r my-6 flex flex-col rounded border-[1px] bg-white dark:bg-zinc-900 from-blue-400 via-purple-500 to-pink-500 py-4 text-center shadow-[0_10px_25px_rgba(0,0,0,0.1),0_10px_50px_rgba(0,0,0,0.2)] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:border-gray-600  dark:scrollbar-track-gray-800 lg:max-h-[600px] lg:overflow-auto">
       <div className="mb-3 flex w-full border-gray-100 pb-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
         <h2 className="mt-3 flex w-full md:text-2xl flex-nowrap gap-2 flex-grow flex-row justify-center">
-            <MdRssFeed className="h-8 w-8 self-end text-gray-400" />
-            <span>Aktuality</span>
+          <MdRssFeed className="h-8 w-8 self-end text-gray-400" />
+          <span>Aktuality</span>
         </h2>
       </div>
       <div className="flex">
@@ -27,7 +27,7 @@ export default async function NewsFeed() {
               key={item.id}
             >
               <div className="mr-3 flex flex-1 flex-grow flex-col text-start">
-                <h3 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-gray-200 lg:text-base">
+                <h3 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 dark:text-orange-400 text-orange-600 dark:border-gray-600  lg:text-base">
                   {item.title}
                 </h3>
                 <p className="mt ml-2 text-start text-xs text-slate-500 dark:text-gray-300 md:text-sm">

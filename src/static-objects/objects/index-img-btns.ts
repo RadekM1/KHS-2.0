@@ -1,11 +1,11 @@
 export const imgSectionBtns = [
   {
-    src: "https://storage.googleapis.com/khs-zlin/horoskola_main.jpg",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/course.webp",
     title: "Kurzy",
     url: "/kurzy",
   },
   {
-    src: "https://storage.googleapis.com/khs-zlin/vyhody3.png",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/benefit.webp",
     title: "Výhody členství",
     url: "/clenstvi-v-oddile/vyhody-clenstvi",
   },
@@ -23,22 +23,22 @@ export const imgSectionBtns = [
 
 export const imgArticleBtns = [
   {
-    src: "https://storage.googleapis.com/khs-zlin/picture_btn/horolezectvi.png",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/climb.webp",
     title: "HOROLEZECTVÍ",
     url: "/clanky?filter=horolezectvi",
   },
   {
-    src: "https://storage.googleapis.com/khs-zlin/picture_btn/skalni_lezeni.jpg",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/rock.webp",
     title: "SKÁLY",
     url: "/clanky?filter=skaly",
   },
   {
-    src: "https://storage.googleapis.com/khs-zlin/picture_btn/oddil.jpeg",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/oddil.webp",
     title: "ODDÍL",
     url: "/clanky?filter=oddil",
   },
   {
-    src: "https://storage.googleapis.com/khs-zlin/blog/blog4.jpg",
+    src: "https://storage.googleapis.com/khs-zlin/picture_btn/others.webp",
     title: "OSTATNÍ",
     url: "/clanky?filter=ostatni",
   },

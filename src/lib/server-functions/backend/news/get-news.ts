@@ -13,12 +13,11 @@ export const getNews = async () => {
               `,
     });
 
-    
     if (!(result.rowCount > 0)) {
       return {
         ok: false,
         message: "nepodařilo se stáhnout novinky z databáze",
-        rows:[]
+        rows: [],
       };
     }
     const rows = newsArticlesSchema.parse(result.rows);
@@ -29,7 +28,7 @@ export const getNews = async () => {
     return {
       ok: false,
       message: "nepodařilo se stáhnout data novinek",
-      rows: []
+      rows: [],
     };
   } finally {
     sqlConnection.release();

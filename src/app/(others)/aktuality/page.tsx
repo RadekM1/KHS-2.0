@@ -50,14 +50,14 @@ export default async function Page() {
               key={item.id}
             >
               <article className="mr-3 gap-3 flex flex-1 flex-grow flex-col text-start">
-                <h2 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-gray-200 lg:text-base">
+                <h2 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-orange-400 lg:text-base">
                   <span className="mr-5 text-end text-xs text-slate-400">
                     {item.created_time}
                   </span>
                   {item.title}
                 </h2>
                 <p className="mt ml-2 text-start text-xs text-slate-500 dark:text-gray-300 md:text-sm">
-                  {item.description}
+                  {item.summary}
                 </p>
                 <div className="flex justify-start">
                   <BtnArticleShow id={item.id} />

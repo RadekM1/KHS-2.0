@@ -16,7 +16,6 @@ import { NewsArticlesSchema } from "@/src/schemas/queries/news";
 import { newsArticlesColumn } from "@/src/static-objects/table-columns/newsArticles";
 import { deleteNewsArticle } from "@/src/lib/server-functions/backend/news/delete-news";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
-import { FaPowerOff } from "react-icons/fa6";
 
 interface NewsTableProps {
   setTitle: (title: string) => void;
@@ -43,7 +42,7 @@ export const NewsTable = ({
   setGallery,
 }: NewsTableProps) => {
   const [rows, setRows] = useState<NewsArticlesSchema>([]);
-  const [sortingColumn, setsortingColumn] = useState('');
+  const [sortingColumn, setsortingColumn] = useState("");
   const [sortingOrder, setSortingOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchField, setSearchField] = useState("");
@@ -82,10 +81,10 @@ export const NewsTable = ({
       setRowsLoading(false);
       return;
     }
-    toast.success(response.message)
+    toast.success(response.message);
     fetchData();
     setRowsLoading(false);
-  }
+  };
 
   const rowsPerPage = 10;
 
@@ -108,13 +107,11 @@ export const NewsTable = ({
     }
   }, [searchField, rows, currentPage]);
 
-
-
   const handleChange = (event: SearchChangeEvent): void => {
     setSearchField(event.target.value);
   };
 
-  const handleNewsPropsEdit = (idNewsToEdit:number) => {
+  const handleNewsPropsEdit = (idNewsToEdit: number) => {
     const tempId = idNewsToEdit;
     const tempRow = rows.find((row) => row.id === tempId);
     if (!tempRow) {
@@ -127,8 +124,8 @@ export const NewsTable = ({
     setEditActive(true);
     setOpen(false);
     setIdToEdit(tempId);
-    setGallery(tempRow.gallery ?? [])
-  }
+    setGallery(tempRow.gallery ?? []);
+  };
 
   const handleSorting = (key: string) => {
     if (sortingColumn === key) {
@@ -183,8 +180,10 @@ export const NewsTable = ({
                     {new Date(row.created_time).toLocaleString()}
                   </td>
 
-                  <td className={`max-w whitespace-normal ${row.active ? 'text-green-500' : 'text-red-500'} border-[1px] text-center border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm`}>
-                    {row.active ? 'ano' : 'ne'}
+                  <td
+                    className={`max-w whitespace-normal ${row.active ? "text-green-500" : "text-red-500"} border-[1px] text-center border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm`}
+                  >
+                    {row.active ? "ano" : "ne"}
                   </td>
 
                   <td className="max-w whitespace-normal border-[1px] border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">

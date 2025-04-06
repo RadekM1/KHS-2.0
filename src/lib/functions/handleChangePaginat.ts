@@ -1,4 +1,7 @@
-export const handleChangePaginat = (event, value, setCurrentPage) => {
+export const handleChangePaginat = (
+  value: number,
+  setCurrentPage: (page: number) => void,
+): void => {
   const temp = value;
   setCurrentPage(temp);
 };

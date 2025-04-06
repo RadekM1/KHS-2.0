@@ -15,7 +15,7 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
       <article className="flex flex-row flex-wrap rounded border border-gray-200 bg-white shadow-lg transition-shadow duration-500 hover:shadow-lg ease-in-out  dark:hover:shadow-zinc-700 hover:shadow-gray-400 dark:border-gray-600 dark:bg-zinc-800  md:m-2">
         <Link href={`/clanky/${data.slug}`}>
           <div className="mx-auto flex flex-row space-y-3 p-1 transition-opacity duration-300  md:flex-row md:space-x-5 md:space-y-0">
-            <div className="w-1/3 max-w-[200px] relative h-[110px] md:h-[150px] self-start bg-white px-3 py-1 pl-2 dark:bg-zinc-800">
+            <div className=" w-[130px] md:w-[200px] relative h-[110px] md:h-[150px] self-start bg-white px-3 py-1 pl-2 dark:bg-zinc-800">
               <Image
                 src={data.thumbnail}
                 alt={data.title}
