@@ -12,8 +12,7 @@ interface ModalArticleListProps {
   setGallery: (gallery: ArticleGallerySchema) => void;
   setEditActive: (active: boolean) => void;
   setEditorContent: (content: string) => void;
-  setSummary: (summary: string)=>void;
-  setExpirationDate: (expirationDate: string)=>void;
+  setActive: (active: boolean)=>void;
 }
 
 export const ModalNewsList = ({
@@ -21,10 +20,9 @@ export const ModalNewsList = ({
   setIdToEdit,
   setOpen,
   setTitle,
-  setSummary,
   setEditActive,
   setEditorContent,
-  setExpirationDate,
+  setActive,
   setGallery,
 }: ModalArticleListProps) => {
   return (
@@ -42,10 +40,9 @@ export const ModalNewsList = ({
                 <NewsTable
                   setIdToEdit={setIdToEdit}
                   setTitle={setTitle}
-                  setSummary={setSummary}
                   setEditActive={setEditActive}
                   setEditorContent={setEditorContent}
-                  setExpirationDate={setExpirationDate}
+                  setActive={setActive}
                   setOpen={setOpen}
                   setGallery={setGallery}
                 />

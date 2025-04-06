@@ -50,7 +50,7 @@ export default async function LandingPart() {
             </div>
           </div>
           <div className="mt-10 w-full  lg:w-1/2">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center w-full justify-center">
               <NewsFeed />
             </div>
           </div>

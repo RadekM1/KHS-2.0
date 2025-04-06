@@ -94,7 +94,7 @@ export const handleAddArticle = async (
           setLoading(false)
           return
         } 
-        toast.success('Uloženo')
       }
+      toast.success('Uloženo')
       setLoading(false);
   };

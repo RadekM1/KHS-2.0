@@ -7,16 +7,12 @@ export default async function NewsFeed() {
   const rows = await newsFetch();
 
   return (
-    <div className="scrollbar-thumb-rounded border-gradient-to-r my-6 flex flex-col rounded border-[1px] bg-white dark:bg-zinc-900 from-blue-400 via-purple-500 to-pink-500 py-4 text-center shadow-[0_10px_25px_rgba(0,0,0,0.1),0_10px_50px_rgba(0,0,0,0.2)] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:border-gray-600  dark:scrollbar-track-gray-800 lg:max-h-[600px] lg:overflow-auto">
-      <div className="mb-3 flex border-gray-100 pb-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
-        <div className="mt-3 flex flex-grow flex-row justify-center">
-          <div className="flex flex-shrink">
+    <div className="scrollbar-thumb-rounded w-full border-gradient-to-r my-6 flex flex-col rounded border-[1px] bg-white dark:bg-zinc-900 from-blue-400 via-purple-500 to-pink-500 py-4 text-center shadow-[0_10px_25px_rgba(0,0,0,0.1),0_10px_50px_rgba(0,0,0,0.2)] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-400 dark:border-gray-600  dark:scrollbar-track-gray-800 lg:max-h-[600px] lg:overflow-auto">
+      <div className="mb-3 flex w-full border-gray-100 pb-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
+        <h2 className="mt-3 flex w-full md:text-2xl flex-nowrap gap-2 flex-grow flex-row justify-center">
             <MdRssFeed className="h-8 w-8 self-end text-gray-400" />
-          </div>
-          <div className="ml-5 flex flex-shrink text-lg dark:text-gray-200 md:text-2xl">
-            Aktuality
-          </div>
-        </div>
+            <span>Aktuality</span>
+        </h2>
       </div>
       <div className="flex">
         <ul
@@ -35,9 +31,9 @@ export default async function NewsFeed() {
                   {item.title}
                 </h3>
                 <p className="mt ml-2 text-start text-xs text-slate-500 dark:text-gray-300 md:text-sm">
-                  {item.description}
+                  {item.summary}
                 </p>
-                <div className="flex h-full items-center flex-row justify-end">
+                <div className="flex h-full gap-3 mt-2 items-center flex-row justify-end">
                   <Share share={`/novinky/${item.id}`} title={item.title} />
                   <BtnArticleShow id={item.id} />
                 </div>

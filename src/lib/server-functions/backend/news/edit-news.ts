@@ -11,7 +11,7 @@ export const editArticleNews = async (
     account: string,
     summary: string,
     metadataToApi: ArticleGallerySchema, 
-    expirationDate: string,
+    active: boolean,
 ) => {
     const sqlConnection = await pool.connect();
     try {
@@ -22,14 +22,14 @@ export const editArticleNews = async (
     const result = await executeQuery({
       sqlConnection,
       query:
-        "UPDATE news_feed SET title = $2, clanek = $3, account = $4, summary = $5, expiration_date = $6, gallery = $7 WHERE id = $1",
+        "UPDATE news_feed SET title = $2, clanek = $3, account = $4, summary = $5, active = $6, gallery = $7 WHERE id = $1",
       values: [
         idToEdit,
         title,
         editorContent,
         account,
         summary,
-        expirationDate,
+        active,
         metadataToSqlString,
       ],
     });

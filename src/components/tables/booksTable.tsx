@@ -14,9 +14,19 @@ import { getBooks } from "@/src/lib/server-functions/backend/books-table/get-boo
 import { toast } from "sonner";
 import { TableHead } from "./table-head";
 import { BookRowsSchema } from "@/src/schemas/queries/tables/books-table-schema";
+import { deleteBook } from "@/src/lib/server-functions/backend/books-table/delete-book";
+import { handleBookAdd } from "@/src/lib/functions/books/add-book";
+import { SpinnerSmallOrange } from "../spinners/spinnerSmallOrange";
+import { handleBookEdit } from "@/src/lib/functions/books/edit-book";
+
+interface SearchFieldChangeEvent {
+  target: {
+    value: string;
+  }
+}
 
 export const BooksTable = () => {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [rows, setRows] = useState<BookRowsSchema>([]);
   const [sortingColumn, setsortingColumn] = useState<string>("");
   const [sortingOrder, setSortingOrder] = useState<string>("asc");
@@ -24,21 +34,17 @@ export const BooksTable = () => {
   const [searchField, setSearchField] = useState<string>("");
   const [filteredRows, setFilteredRows] = useState<BookRowsSchema>(rows);
   const [rowsLoading, setRowsLoading] = useState<boolean>(false);
-  const [disabled, setDisabled] = useState<boolean>(false);
   const [editActive, setEditActive] = useState<boolean>(false);
-  const [idToEdit, setIdToEdit] = useState<string>("");
+  const [idToEdit, setIdToEdit] = useState<number>(0);
   const [name, setName] = useState<string>("");
   const [creator, setCreator] = useState<string>("");
   const [onStock, setOnStock] = useState<boolean>(false);
   const [whoRented, setWhoRented] = useState<string>("");
-  const [release, setRelease] = useState<string>("");
-  const [pictureUrl, setPictureUrl] = useState<string>("");
+  const [release, setRelease] = useState<string>('');
   const [description, setDescription] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [imgNameToSql, setImgNameToSql] = useState<string>("");
-  const [imgNameToGoogle, setImgNameToGoogle] = useState<string>("");
-  const [nextHighestId, setNextHighestId] = useState<number>(0);
+  const [editBookImgExist, setEditBookImgExist] = useState<boolean>(false)
+  const rowsPerPage = 20;
 
   useEffect(() => {
     fetchData();
@@ -54,143 +60,63 @@ export const BooksTable = () => {
     }
     setRows(response.rows);
     setRowsLoading(false);
-    const nextDatabaseId = Math.max(...response.rows.map((row) => row.id)) + 1;
-    setNextHighestId(nextDatabaseId);
   };
 
   const handleDel = async (id: number) => {
-    const confirmDel = confirm(`opravdu chcete smazat knihu č. ${id} ?`);
-    if (!confirmDel) {
-      return;
-    }
-    setDisabled(true);
-    setLoading(true);
-    try {
-      const response = await fetch("/api/books", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          operation: "bookDel",
-          bookId: id,
-        }),
-      });
-
-      if (!response.ok) {
-        console.log(response.error);
-      }
-      fetchData();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setDisabled(false);
-      setLoading(false);
-    }
-  };
-
-  const handleSqlProductChange = async () => {
-    setDisabled(true);
-    setLoading(true);
-    if (name.length <= 1) {
-      alert("není zadán název knihy");
-      return;
-    }
-
-    if (selectedFile) {
-      await handleFileChange(selectedFile, imgNameToGoogle);
-    }
-
-    try {
-      const response = await fetch("/api/books", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          bookId: idToEdit,
-          name,
-          creator,
-          onStock,
-          whoRented,
-          release,
-          pictureUrl: imgNameToSql,
-          description,
-          operation: "bookUpdate",
-        }),
-      });
-      console.log(response);
-      if (!response.ok) {
-        console.log(response.error);
+      const confirmDel = confirm(`opravdu chcete smazat článek č. ${id} ?`);
+      if (!confirmDel) {
         return;
       }
-      setEditActive(false);
+      const response = await deleteBook(id);
+      if (!response.ok) {
+        toast.error(response.message);
+        setRowsLoading(false);
+        return;
+      }
+      toast.success(response.message)
       fetchData();
-      handleResetForm();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setDisabled(false);
-
-      setLoading(false);
+      setRowsLoading(false);
+      fetchData();
     }
+
+
+    
+
+  const handleSqlProductChange = async () => {
+    handleBookEdit(
+      idToEdit,
+      name,
+      creator,
+      onStock,
+      whoRented,
+      release,
+      description,
+      selectedFile,
+      fetchData,
+      setRowsLoading,
+      handleResetForm,
+      editBookImgExist
+    )
   };
 
   const handleAdd = async () => {
-    if (name.length <= 1) {
-      alert("není zadán název knihy");
-      return;
-    }
-
-    if (selectedFile) {
-      await handleFileChange(selectedFile, imgNameToGoogle);
-    }
-
-    setDisabled(true);
-    setLoading(true);
-    try {
-      const response = await fetch("/api/books", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          creator,
-          onStock,
-          whoRented,
-          release,
-          pictureUrl: imgNameToSql,
-          description,
-          operation: "bookAdd",
-        }),
-      });
-      console.log(response.message);
-      if (!response.ok) {
-        console.log(response.error);
-        return;
-      }
-      setEditActive(false);
-      fetchData();
-      handleResetForm();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setDisabled(false);
-
-      setLoading(false);
-    }
+    handleBookAdd(
+      name,
+      creator,
+      onStock,
+      whoRented,
+      release,
+      description,
+      selectedFile,
+      fetchData,
+      setRowsLoading,
+      handleResetForm,
+    );
   };
-
-  //-------------ADD API up   ------------------------------------
-
-  const rowsPerPage = 20;
 
   useEffect(() => {
     const filter = rows.filter((row) => {
-      const keys = Object.keys(row);
+      const keys = Object.keys(row) as Array<keyof typeof row>;
       const fulltextTrue = keys.some((key) =>
         String(row[key])
           .toLowerCase()
@@ -207,7 +133,7 @@ export const BooksTable = () => {
     }
   }, [searchField, rows, currentPage]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: SearchFieldChangeEvent): void => {
     setSearchField(event.target.value);
   };
 
@@ -264,11 +190,6 @@ export const BooksTable = () => {
           setRelease(tempE);
         }
         break;
-      case "pictureUrl":
-        {
-          setPictureUrl(tempE);
-        }
-        break;
       case "description":
         {
           setDescription(tempE);
@@ -282,80 +203,33 @@ export const BooksTable = () => {
   const handleProductEdit = (rowId: number) => {
     const tempId = rowId;
     const row = rows.find((row) => tempId === row.id);
-    if (!row) return;
-
-    const RepairedUrl = row.picture_url === null ? "" : row.picture_url;
-    const whoRentedRepaired =
-      row.member_rented === null ? "" : row.member_rented;
-
+    if (!row){
+      toast.error('nepodařilo se načíst data knížky pro úpravu')
+      return;
+    } 
+    const tempisImg = row.picture_url ? true : false;
+    setEditBookImgExist(tempisImg)
     setEditActive(true);
-    setIdToEdit(String(row.id));
+    setIdToEdit(row.id);
     setName(row.name);
     setCreator(row.creator);
     setOnStock(row.on_stock);
-    setPictureUrl(RepairedUrl);
     setRelease(row.release);
-    setWhoRented(whoRentedRepaired);
+    setWhoRented(row.member_rented);
     setDescription(row.description);
   };
 
   const handleResetForm = () => {
-    setIdToEdit("");
+    setIdToEdit(0);
     setName("");
     setCreator("");
     setOnStock(false);
     setWhoRented("");
     setDescription("");
     setRelease("");
-    setPictureUrl("");
     setSelectedFile(null);
-    fileInputRef.current.value = "";
-  };
-
-  useEffect(() => {
-    let bookName = "";
-    let googleBookName = "";
-    if (editActive === true) {
-      bookName = `https://storage.googleapis.com/khs-zlin/books/book-${idToEdit}.png`;
-      googleBookName = `book-${idToEdit}.png`;
-    } else {
-      bookName = `https://storage.googleapis.com/khs-zlin/books/book-${nextHighestId}.png`;
-      googleBookName = `book-${nextHighestId}.png`;
-    }
-
-    setImgNameToSql(bookName);
-    setImgNameToGoogle(googleBookName);
-  }, [editActive, idToEdit, nextHighestId]);
-
-  useEffect(() => {}, [imgNameToSql, imgNameToGoogle]);
-
-  const handleFileChange = async (file) => {
-    const response = await fetch(
-      `/api/book-img-upload?file=${imgNameToGoogle}`,
-      {
-        method: "GET",
-      },
-    );
-
-    const data = await response.json();
-
-    if (response.ok && data.url) {
-      const uploadResponse = await fetch(data.url, {
-        method: "PUT",
-        headers: {
-          "Content-Type": file.type,
-        },
-        body: file,
-      });
-
-      if (uploadResponse.ok) {
-        console.log("Soubor byl úspěšně nahrán");
-        setPictureUrl(data.url);
-      } else {
-        console.error("Nahrání souboru selhalo", uploadResponse);
-      }
-    } else {
-      console.error("Získání podpisovaného URL selhalo:", data.error);
+    if (fileInputRef.current){
+      fileInputRef.current.value = "";
     }
   };
 
@@ -491,7 +365,7 @@ export const BooksTable = () => {
                     className="inline-flex h-8 items-center min-w-[120px] justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
                     disabled={rowsLoading}
                   >
-                    {!loading && <span>Přidat</span>}
+                    {rowsLoading ? <SpinnerSmallOrange/> : <span>Přidat</span>}
                   </button>
                 </td>
               )}
@@ -501,17 +375,17 @@ export const BooksTable = () => {
                   <td className="max-w whitespace-normal border-[1px]    py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
                     <button
                       className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide text-white transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
-                      disabled={disabled}
+                      disabled={rowsLoading}
                       onClick={() => {
                         handleSqlProductChange();
                       }}
                     >
-                      <span>OK</span>
+                      {rowsLoading ? <SpinnerSmallOrange/> : <span>OK</span>}
                     </button>
                   </td>
                   <td className="max-w whitespace-normal border-[1px]    py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
                     <button
-                      disabled={disabled}
+                      disabled={rowsLoading}
                       onClick={() => {
                         setEditActive(false), handleResetForm();
                       }}
@@ -560,7 +434,7 @@ export const BooksTable = () => {
                         <img
                           alt=""
                           src={row.picture_url}
-                          className="rounded object-cover"
+                          className="rounded max-h-[100px] object-cover"
                         />
                       )}
                     </div>
@@ -570,7 +444,7 @@ export const BooksTable = () => {
                   </td>
                   <td className="max-w whitespace-normal border-[1px]  py-2 text-xs  md:mx-2 md:px-2 md:text-sm">
                     <button
-                      disabled={disabled}
+                      disabled={rowsLoading}
                       onClick={() => handleDel(row.id)}
                     >
                       <MdDeleteForever

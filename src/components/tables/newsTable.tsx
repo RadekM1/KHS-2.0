@@ -16,14 +16,14 @@ import { NewsArticlesSchema } from "@/src/schemas/queries/news";
 import { newsArticlesColumn } from "@/src/static-objects/table-columns/newsArticles";
 import { deleteNewsArticle } from "@/src/lib/server-functions/backend/news/delete-news";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
+import { FaPowerOff } from "react-icons/fa6";
 
 interface NewsTableProps {
   setTitle: (title: string) => void;
   setIdToEdit: (id: number) => void;
-  setSummary: (summary: string) => void;
   setEditActive: (active: boolean) => void;
   setEditorContent: (content: string) => void;
-  setExpirationDate: (date: string) => void;
+  setActive: (active: boolean) => void;
   setOpen: (open: boolean) => void;
   setGallery: (gallery: ArticleGallerySchema) => void;
 }
@@ -36,10 +36,9 @@ interface SearchChangeEvent {
 export const NewsTable = ({
   setTitle,
   setIdToEdit,
-  setSummary,
   setEditActive,
   setEditorContent,
-  setExpirationDate,
+  setActive,
   setOpen,
   setGallery,
 }: NewsTableProps) => {
@@ -86,7 +85,6 @@ export const NewsTable = ({
     toast.success(response.message)
     fetchData();
     setRowsLoading(false);
-    await fetchData();
   }
 
   const rowsPerPage = 10;
@@ -123,13 +121,9 @@ export const NewsTable = ({
       toast.error("Článek nenalezen");
       return;
     }
-    const tempExpDate = new Date(tempRow.expiration_date)
-      .toISOString()
-      .split("T")[0];
     setTitle(tempRow.title);
-    setSummary(tempRow.summary);
     setEditorContent(tempRow.clanek);
-    setExpirationDate(tempExpDate);
+    setActive(tempRow.isActive);
     setEditActive(true);
     setOpen(false);
     setIdToEdit(tempId);
@@ -189,8 +183,8 @@ export const NewsTable = ({
                     {new Date(row.created_time).toLocaleString()}
                   </td>
 
-                  <td className="max-w whitespace-normal border-[1px] border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">
-                    {new Date(row.expiration_date).toLocaleString()}
+                  <td className={`max-w whitespace-normal ${row.active ? 'text-green-500' : 'text-red-500'} border-[1px] text-center border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm`}>
+                    {row.active ? 'ano' : 'ne'}
                   </td>
 
                   <td className="max-w whitespace-normal border-[1px] border-gray-300 py-2 text-xs text-gray-800 md:mx-2 md:px-2 md:text-sm">

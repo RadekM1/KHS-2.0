@@ -1,5 +1,5 @@
 export const bookColumnList = [
-  { key: "id", label: "kod", sorting: true },
+  { key: "id", label: "kód", sorting: true },
   { key: "name", label: "Název", sorting: true },
   { key: "creator", label: "Autor", sorting: true },
   { key: "on_stock", label: "Skladem", sorting: true },

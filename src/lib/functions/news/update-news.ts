@@ -14,14 +14,14 @@ export const handleNewsChange = async (
         setLoading: (loading: boolean)=>void,
         setEditActive: (editActive: boolean)=>void,
         handleResetForm: ()=>void,
-        summary: string,
-        expirationDate: string,
+        textFromEditor: string,
+        active: boolean,
         allInGallery: AllInGallerySchema,
         account: string
 ) => {
     
-    if (!title || !summary || !editorContent) {
-      toast.error("není zadán jeden ze tří parametrů: (titulek, shrnutí, článek)");
+    if (!title || !editorContent) {
+      toast.error("není zadán jeden ze tří parametrů: (titulek, článek)");
       return;
     }
 
@@ -38,6 +38,8 @@ export const handleNewsChange = async (
       );
       return;
     }
+
+    const summary = `${textFromEditor.slice(0,150)}...`
     setLoading(true);
     
         setLoading(true);
@@ -48,7 +50,7 @@ export const handleNewsChange = async (
           account,
           summary,
           allInGallery,
-          expirationDate,
+          active,
         )
 
       if (!response.ok) {

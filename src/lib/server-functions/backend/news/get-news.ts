@@ -12,7 +12,7 @@ export const getNews = async () => {
       query: `SELECT * FROM news_feed
               `,
     });
-    console.log(result)
+
     
     if (!(result.rowCount > 0)) {
       return {

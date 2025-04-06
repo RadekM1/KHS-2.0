@@ -8,7 +8,7 @@ export const bookRowSchema = z.object({
   name: z.string(),
   on_stock: z.boolean(),
   picture_url: z.string(),
-  release: z.number(),
+  release: z.string(),
 });
 
 export const bookRowsSchema = z.array(bookRowSchema);

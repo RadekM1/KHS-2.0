@@ -276,7 +276,7 @@ export const RentalTable = () => {
                 <input
                   type="text"
                   placeholder="Zadejte název"
-                  className="h-8 w-full min-w-32 bg-zinc-600 rounded border  "
+                  className="h-8 w-full min-w-32 dark:bg-zinc-600 rounded border  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "productName")
                   }
@@ -289,7 +289,7 @@ export const RentalTable = () => {
                 <input
                   type="number"
                   placeholder="Zadejte počet"
-                  className="h-8 w-full rounded bg-zinc-600 border  "
+                  className="h-8 w-full rounded dark:bg-zinc-600 border  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "pieces")
                   }
@@ -300,7 +300,7 @@ export const RentalTable = () => {
 
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <select
-                  className="h-8 w-full bg-zinc-600 min-w-20 rounded border  "
+                  className="h-8 w-full dark:bg-zinc-600 min-w-20 rounded border  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "onStock")
                   }
@@ -314,7 +314,7 @@ export const RentalTable = () => {
 
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <select
-                  className="h-8 w-full bg-zinc-600 min-w-20 rounded border  "
+                  className="h-8 w-full dark:bg-zinc-600 min-w-20 rounded border  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "isReserved")
                   }
@@ -329,7 +329,7 @@ export const RentalTable = () => {
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <input
                   type="text"
-                  className="h-8 w-full min-w-24 bg-zinc-600 rounded border px-1  "
+                  className="h-8 w-full min-w-24 dark:bg-zinc-600 rounded border px-1  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "whoReserved")
                   }
@@ -341,7 +341,7 @@ export const RentalTable = () => {
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <input
                   type="text"
-                  className="h-8 w-full min-w-24 bg-zinc-600 rounded border px-1  "
+                  className="h-8 w-full min-w-24 dark:bg-zinc-600 rounded border px-1  "
                   onChange={(event) =>
                     handleProductChange(event.target.value, "whoRented")
                   }
@@ -353,11 +353,11 @@ export const RentalTable = () => {
               {!editActive && (
                 <td
                   colSpan={2}
-                  className="max-w whitespace-normal border-[1px] bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm"
+                  className="max-w whitespace-normal border-[1px] dark:bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm"
                 >
                   <button
                     onClick={() => handleAdd()}
-                    className="inline-flex h-8 items-center min-w-[100px] justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
+                    className="inline-flex h-8 items-center min-w-[100px] text-white justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
                     disabled={rowsLoading}
                   >
                     {!rowsLoading && <span>Přidat</span>}
@@ -367,10 +367,10 @@ export const RentalTable = () => {
 
               {editActive && (
                 <>
-                  <td className="max-w whitespace-normal border-[1px] bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  <td className="max-w whitespace-normal border-[1px] dark:bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                     {!rowsLoading && (
                       <button
-                        className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
+                        className="inline-flex h-8 items-center justify-center text-white gap-2 whitespace-nowrap rounded bg-green-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-green-600 focus:bg-green-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300 disabled:shadow-none"
                         disabled={rowsLoading}
                         onClick={() => {
                           handleItemChange();
@@ -380,13 +380,13 @@ export const RentalTable = () => {
                       </button>
                     )}
                   </td>
-                  <td className="max-w whitespace-normal border-[1px] bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                  <td className="max-w whitespace-normal border-[1px] dark:bg-zinc-600  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                     <button
                       disabled={rowsLoading}
                       onClick={() => {
                         setEditActive(false), handleResetForm();
                       }}
-                      className="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded bg-orange-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-orange-600 focus:bg-orange-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
+                      className="inline-flex h-8 items-center justify-center gap-2 text-white whitespace-nowrap rounded bg-orange-500 px-4 text-xs font-medium tracking-wide   transition duration-300 hover:bg-orange-600 focus:bg-orange-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-orange-300 disabled:bg-orange-300 disabled:shadow-none"
                     >
                       <span> x </span>
                     </button>

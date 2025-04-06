@@ -42,9 +42,7 @@ export const NewsMainComponent = () => {
   const [allInGallery, setAllInGallery] = useState<AllInGallerySchema>([]);
   const [readyToUploadFiles, setReadyToUploadFiles] = useState<ReadyToUploadFilesSchema[]>([]);
   const [imgResize, setImgResize] = useState(false);
-  const [expirationDate,setExpirationDate] = useState<string>('');
-  const [summary, setSummary] = useState<string>('')
-
+  const [active,setActive] = useState<boolean>(true);
 
   const account = session?.user.email ?? '';
 
@@ -126,16 +124,6 @@ export const NewsMainComponent = () => {
           setTitle(tempE);
         }
         break;
-        case "summary":
-          {
-            setSummary(tempE);
-          }
-          break;
-        case "expirationDate":
-          {
-            setExpirationDate(tempE);
-          }
-          break;
       default:
         break;
     }
@@ -150,9 +138,8 @@ export const NewsMainComponent = () => {
     setSelectedGoogleImage("");
     setAllInGallery([]);
     setFiles([]);
-    setSummary('')
     setSelectedFile('');
-    setExpirationDate('')
+    setActive(true)
   };
 
   const handleAddClick = () =>{
@@ -160,12 +147,12 @@ export const NewsMainComponent = () => {
       title,
       editorContent,
       account,
-      summary,
       readyToUploadFiles,
       setLoading,
       setEditActive,
       handleResetForm,
-      expirationDate,
+      textFromEditor,
+      active,
     )
   }
 
@@ -178,14 +165,13 @@ export const NewsMainComponent = () => {
       setLoading,
       setEditActive,
       handleResetForm,
-      summary, 
-      expirationDate,
+      textFromEditor, 
+      active,
       allInGallery,
       account
     )
   }
 
-  console.log(allInGallery)
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
@@ -243,9 +229,8 @@ export const NewsMainComponent = () => {
             setIdToEdit={setIdToEdit}
             setEditActive={setEditActive}
             setTitle={setTitle}
-            setSummary={setSummary}
             setEditorContent={setEditorContent}
-            setExpirationDate={setExpirationDate}
+            setActive={setActive}
             setOpen={setOpen}
             setGallery={setGallery}
           />
@@ -257,8 +242,8 @@ export const NewsMainComponent = () => {
         title={title}
         disabled={loading}
         onChange={onChange}
-        expirationDate={expirationDate}
-        summary={summary}
+        active={active}
+        setActive={setActive}
       />
       <div className="flex w-full">
         <ArticleSimpleEditor

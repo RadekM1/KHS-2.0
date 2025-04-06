@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import Delta from "quill-delta";
+import { toast } from "sonner";
 
 interface ArticleSimpleEditorProps {
   editorContent: string;
@@ -56,14 +57,14 @@ export const ArticleSimpleEditor = ({
       });
 
       quill.clipboard.addMatcher("IMG", () => {
-        alert(
-          "Vkládání obrázků do textu není povoleno, nahrajte prosím fotografie jako přílohy fotogalerie",
+        toast.error(
+          "Vkládání obrázků do textu není povoleno, nahrajte prosím fotky jako přílohy fotogalerie",
         );
         return new Delta();
       });
 
       quill.clipboard.addMatcher("VIDEO", () => {
-        alert(
+        toast.error(
           "Vkládání videí do textu není povoleno, pouze odkaz na videa (např youtube)",
         );
         return new Delta();

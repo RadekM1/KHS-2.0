@@ -22,6 +22,10 @@ export const googleUrlSign = async (
       fullFileName = `avatars/${imgNameToGoogle}`;
     }
 
+    if (target === "book") {
+      fullFileName = `books/${imgNameToGoogle}`;
+    }
+
     if (!target) {
       throw new Error("unknow target string");
     }

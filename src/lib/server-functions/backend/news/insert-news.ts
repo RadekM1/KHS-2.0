@@ -10,7 +10,7 @@ export const newsInsert = async (
     account: string,
     summary: string,
     metadataToApi: ArticleGallerySchema, 
-    expirationDate: string,
+    active: boolean,
 ) => {
     const sqlConnection = await pool.connect();
     try {
@@ -38,14 +38,14 @@ export const newsInsert = async (
       const result = await executeQuery({
         sqlConnection,
         query:
-          "INSERT INTO news_feed (id, title, clanek, account, summary, expiration_date, gallery) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+          "INSERT INTO news_feed (id, title, clanek, account, summary, active, gallery) VALUES ($1, $2, $3, $4, $5, $6, $7)",
         values: [
           id,
           title,
           editorContent,
           account,
           summary,
-          expirationDate,
+          active,
           metadataToSqlString,
         ],
       });

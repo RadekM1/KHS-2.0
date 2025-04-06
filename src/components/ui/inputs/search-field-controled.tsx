@@ -17,7 +17,7 @@ export const SearchField = ({
     <InputWithIcon
       value={searchField}
       handleChange={handleChange}
-      label="Prohledat články"
+      label="Hledat"
       Icon={FaSearch}
     />
   );

@@ -13,7 +13,7 @@ export const newsFetchAll = async () => {
     const response = await executeQuery({
       sqlConnection,
       query: `SELECT id, title, created_time, summary FROM news_feed
-        WHERE created_time > NOW()
+        WHERE active = TRUE
         ORDER BY created_time DESC
         `,
     });
@@ -29,7 +29,7 @@ export const newsFetchAll = async () => {
       created_time: new Date(row.created_time).toLocaleDateString("cs-CZ"),
     }));
   } catch (error) {
-    console.log("zachycená chyba z kalendáře:", error);
+    console.log("zachycená chyba z novinek:", error);
     return [];
   } finally {
     sqlConnection.release();

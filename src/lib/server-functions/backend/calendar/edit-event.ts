@@ -34,7 +34,6 @@ export const editEvent = async (
         ],
       });
 
-      console.log(result)
 
       if (result.rowCount < 1) {
         return {

@@ -7,15 +7,15 @@ export const handleAddNew = async (
     title:string, 
     editorContent:string,
     account:string,
-    summary:string,
     readyToUploadFiles:ReadyToUploadFilesSchema[],
     setLoading: (loading: boolean)=>void,
     setEditActive: (editActive: boolean)=>void,
     handleResetForm: ()=>void,
-    expirationDate: string,
+    textFromEditor: string,
+    active: boolean,
 ) => {
-    if (!editorContent || !expirationDate || !summary) {
-      toast.error("není zadán jeden ze tří parametrů: (článek, datum expirace, shrnutí)");
+    if (!editorContent) {
+      toast.error("není zadán článek");
       return;
     }
 
@@ -34,6 +34,8 @@ export const handleAddNew = async (
       return;
     }
 
+    const summary = `${textFromEditor.slice(0,150)}...`
+
     const metadataToApi = readyToUploadFiles.map(
       ({ file, alt, description }) => ({ file, description, alt }),
     );
@@ -44,7 +46,7 @@ export const handleAddNew = async (
       account,
       summary,
       metadataToApi,
-      expirationDate,
+      active,
     )
     if(!response.ok){
       toast.error(response.message)
@@ -61,8 +63,8 @@ export const handleAddNew = async (
         if (!googleResponse) {
           toast.error("vyskytl se problém při nahrávání fotografií. Zkuste znovu nebo kontaktujte administrátora");
           return
-        } 
-        toast.success('Uloženo')
+        }
       }
+      toast.success('Uloženo')
       setLoading(false);
   };

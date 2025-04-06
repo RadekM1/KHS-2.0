@@ -8,7 +8,7 @@ export const newsArticleSchema = z.object({
   clanek: z.string(),
   account: z.string(),
   created_time: z.date(),
-  expiration_date: z.date(),
+  active: z.boolean(),
   summary: z.string(),
   gallery: z.array(articleImgSchema).nullable(),
 });

@@ -31,7 +31,7 @@ export const CalendarEventsTable = ({ rows }: { rows: CalendarEvents }) => {
               <td className="flex-shrink py-2 pl-3 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
                 {`${dayInMonth}. ${czMonths[tempDay.month()]} (${czDays[dayInWeek]})`}
               </td>
-              <td className="flex-grow py-2 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
+              <td className="flex-grow py-2 mr-4 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
                 {` - ${row.event}`}
               </td>
               <td className="flex-shrink py-2 text-end text-xs font-thin text-orange-600 dark:text-orange-200 sm:text-sm">

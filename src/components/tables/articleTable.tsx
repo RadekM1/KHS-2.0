@@ -90,7 +90,6 @@ export const ArticleTable = ({
       toast.success(response.message)
       fetchData();
       setRowsLoading(false);
-      await fetchData();
     }
   
   const rowsPerPage = 10;
