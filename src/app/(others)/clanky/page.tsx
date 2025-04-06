@@ -4,6 +4,8 @@ import { articlesCardFetchAll } from "@/src/lib/server-functions/frontend/articl
 import { H1 } from "@/src/components/typography/h-1";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - seznam článků",
   description:

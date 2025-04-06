@@ -1,6 +1,8 @@
 import { articlesSitemapFetch } from "../lib/server-functions/frontend/sitemap-articles-fetch";
 const ROOT = "https://www.khszlin.com/";
 
+export const dynamic = "force-dynamic";
+
 import type { MetadataRoute } from "next";
 
 const articlesSlug = await articlesSitemapFetch();

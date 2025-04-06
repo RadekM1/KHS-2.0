@@ -5,6 +5,9 @@ import { AppProviders } from "@/src/context/app-provider";
 import { Toaster } from "@/src/components/ui/sonner";
 import { Menu } from "../components/menu/menu";
 import { Footer } from "../components/footer";
+import { Suspense } from "react";
+import { FooterNoParams } from "../components/footer-no-params";
+import { MenuNoParams } from "../components/menu/menu-no-params";
 
 const roboto = Roboto({
   weight: "400",
@@ -23,12 +26,16 @@ export default function RootLayout({
         className={`${roboto.variable} mx-auto font-roboto w-full flex flex-col justify-center bg-gray-100 dark:bg-zinc-950 antialiased`}
       >
         <AppProviders>
-          <Menu />
+          <Suspense fallback={<MenuNoParams />}>
+            <Menu />
+          </Suspense>
           <main className="mx-auto flex w-full max-w-screen-xl flex-grow flex-col items-center justify-center">
             {children}
             <Toaster richColors expand={true} />
           </main>
-          <Footer />
+          <Suspense fallback={<FooterNoParams />}>
+            <Footer />
+          </Suspense>
         </AppProviders>
       </body>
     </html>
