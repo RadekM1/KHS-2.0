@@ -38,8 +38,8 @@ export const AdminCalendar = () => {
     setIdToHandle(id);
     setEvent(row.event ?? "");
     setEventDate(row.date ? dayjs(row.date).format("YYYY-MM-DD") : "");
-    setStartTime(row.event_start ?? "");
-    setEndTime(row.event_end ?? "");
+    setStartTime(row.event_start ?? "9:00:00");
+    setEndTime(row.event_end ?? "15:00:00");
     setCheckBoxDayValue(row.check_whole_day);
     setCheckBoxNoEndValue(row.check_no_end);
     setDate(row.date ? [row.date] : [new Date()]);
@@ -58,14 +58,14 @@ export const AdminCalendar = () => {
       case "checkBoxNoEnd":
         setCheckBoxNoEndValue(tempVal);
         if (tempVal === true) {
-          setEndTime("");
+          setEndTime("00:00");
         }
         break;
       case "checkBoxDay":
         setCheckBoxDayValue(tempVal);
         if (tempVal === true) {
-          setStartTime("");
-          setEndTime("");
+          setStartTime("00:00");
+          setEndTime("00:00");
         }
         break;
       default:

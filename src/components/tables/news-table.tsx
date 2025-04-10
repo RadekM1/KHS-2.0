@@ -13,7 +13,7 @@ import { TableHead } from "./table-head";
 import { getNews } from "@/src/lib/server-functions/backend/news/get-news";
 import { toast } from "sonner";
 import { NewsArticlesSchema } from "@/src/schemas/queries/news";
-import { newsArticlesColumn } from "@/src/static-objects/table-columns/newsArticles";
+import { newsArticlesColumn } from "@/src/static-objects/table-columns/news-articles";
 import { deleteNewsArticle } from "@/src/lib/server-functions/backend/news/delete-news";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
 

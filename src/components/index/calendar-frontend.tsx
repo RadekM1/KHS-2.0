@@ -27,7 +27,7 @@ export const CalendarFrontEnd = () => {
   };
 
   return (
-    <div className="flex w-full flex-col lg:flex-row">
+    <div className="flex w-full flex-col items-center justify-center lg:flex-row">
       {rowsLoading ? (
         <SpinnerBigOrange />
       ) : (
@@ -38,7 +38,7 @@ export const CalendarFrontEnd = () => {
             disableNavigation={true}
             mode="multiple"
             locale={cs}
-            className="calendar-no-arrows rounded-xl individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
+            className="calendar-no-arrows rounded-xl justify-center self-center items-center individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
           />
           <CalendarEventsTable rows={rows} />
         </>

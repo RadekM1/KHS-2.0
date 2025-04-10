@@ -9,6 +9,7 @@ export const getEvents = async () => {
     const result = await executeQuery({
       sqlConnection,
       query: `SELECT * FROM calendar
+              ORDER BY date DESC
               `,
     });
     if (!(result.rowCount > 0)) {

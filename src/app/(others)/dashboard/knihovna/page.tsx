@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/route";
-import { BooksTable } from "@/src/components/tables/booksTable";
+import { BooksTable } from "@/src/components/tables/books-table";
 import { redirect } from "next/navigation";
 
 export default async function Page() {

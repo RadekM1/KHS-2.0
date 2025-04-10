@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/route";
-import { RentalTable } from "@/src/components/tables/rentalTable";
+import { RentalTable } from "@/src/components/tables/rental-table";
 import { redirect } from "next/navigation";
 
 export default async function Page() {

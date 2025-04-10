@@ -12,6 +12,7 @@ export const calendarFetch = async () => {
       query: `
         select * from calendar 
         WHERE date_trunc('month', date) = date_trunc('month',CURRENT_DATE)
+        ORDER BY date ASC
         `,
     });
     if (!(response.rowCount > 0)) {

@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/route";
-import UserTable from "@/src/components/tables/userTable";
+import UserTable from "@/src/components/tables/user-table";
 import { redirect } from "next/navigation";
 
 export default async function Page() {

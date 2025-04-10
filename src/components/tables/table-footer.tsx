@@ -1,7 +1,7 @@
 "use client";
 
+
 import Pagination from "@mui/material/Pagination";
-import { handleChangePaginat } from "@/src/lib/functions/handleChangePaginat";
 import { UserRowsSchema } from "@/src/schemas/queries/tables/user-table-schema";
 import { RentalRowsSchema } from "@/src/schemas/queries/tables/rental-table-schema";
 import { BookRowsSchema } from "@/src/schemas/queries/tables/books-table-schema";
@@ -21,6 +21,17 @@ interface TableFooterProps {
   setCurrentPage: (currentPage: number) => void;
 }
 
+const handleChangePaginat = (
+  _event: React.ChangeEvent<HTMLElement>,
+  value: string,
+  setCurrentPage: (page: string) => void
+) => {
+  const temp = value;
+  setCurrentPage(temp);
+};
+
+
+
 export const TableFooter = ({
   filteredRows,
   currentPage,
@@ -37,7 +48,7 @@ export const TableFooter = ({
           count={Math.ceil(filteredRows.length / rowsPerPage)}
           page={currentPage}
           color="standard"
-          onChange={(event, value) =>
+          onChange={(event: React.ChangeEvent<unknown>, value: number) =>
             handleChangePaginat(event, value, setCurrentPage)
           }
           sx={{

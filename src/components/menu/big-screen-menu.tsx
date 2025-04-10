@@ -59,7 +59,7 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                 className={`z-50  hover:border-b-2 ${
                   path.includes(item.link)
                     ? "text-orange-600 dark:text-orange-300 border-b-orange-600 dark:border-b-orange-200 border-b-2"
-                    : "text-gray-700 dark:text-white dark:hover:text-orange-200  border-b-2  hover:text-orange-600"
+                    : "text-gray-700 dark:text-white dark:hover:text-orange-200 border-b-transparent  border-b-2  hover:text-orange-600"
                 } hover:border-b-orange-600 flex-nowrap pb-3 dark:hover:border-b-orange-200`}
               >
                 <button

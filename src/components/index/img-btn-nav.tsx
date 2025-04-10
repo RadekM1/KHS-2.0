@@ -5,7 +5,7 @@ export const ImgBtnNav = (img: ImgSectionBtnType) => {
     <div className="h-[100px] relative group   text-white w-full">
       <img
         alt={img.title}
-        className="object-cover brightness-[0.4] group-hover:brightness-[0.6] transform-gpu transition-all ease-in-out duration-500 h-full w-full"
+        className="object-cover brightness-[0.5]  group-hover:brightness-[0.8] transform-gpu transition-all ease-in-out duration-500 h-full w-full"
         src={img.src}
       />
       <p className="absolute  text-2xl font-bold text-nowrap top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">

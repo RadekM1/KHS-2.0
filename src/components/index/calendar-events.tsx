@@ -26,15 +26,15 @@ export const CalendarEventsTable = ({ rows }: { rows: CalendarEvents }) => {
           return (
             <tr
               key={row.id}
-              className="flex border-b-[1px] border-b-slate-200 dark:border-b-slate-800"
+              className="flex border-b-[1px] mt-2 lg:mt-0 border-b-slate-200 dark:border-b-slate-800"
             >
-              <td className="flex-shrink py-2 pl-3 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
+              <td className="flex-shrink py-2 pl-3 text-start text-sm font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
                 {`${dayInMonth}. ${czMonths[tempDay.month()]} (${czDays[dayInWeek]})`}
               </td>
-              <td className="flex-grow py-2 mr-4 text-start text-xs font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
+              <td className="flex-grow py-2 mr-4 text-start text-sm font-thin text-slate-800 dark:text-gray-200 sm:text-sm">
                 {` - ${row.event}`}
               </td>
-              <td className="flex-shrink py-2 text-end text-xs font-thin text-orange-600 dark:text-orange-200 sm:text-sm">
+              <td className="flex-shrink py-2 text-end text-sm font-thin text-orange-600 dark:text-orange-200 sm:text-sm">
                 {` ${checkDay && checkDay} ${checkDay ? "" : eventStartInCycle} ${checkDay ? "" : "-"} ${checkNoEnd ? checkNoEnd : ""} ${checkDay || checkNoEnd ? "" : eventEndInCycle}`}
               </td>
             </tr>

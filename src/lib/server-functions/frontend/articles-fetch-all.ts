@@ -10,6 +10,7 @@ export const articlesCardFetchAll = async () => {
       sqlConnection,
       query: `
         SELECT 
+        a.article_id,
         a.slug, 
         a.title, 
         a.created_time, 
@@ -37,8 +38,8 @@ export const articlesCardFetchAll = async () => {
       LEFT JOIN users hu ON h.user_account_heart = hu.account 
       LEFT JOIN comments c ON a.slug = c.article_slug
       GROUP BY 
-        a.slug, a.title, a.created_time, a.description, a.thumbnail, a.category, u.account, a.nickname, u.avatar
-      ORDER BY a.created_time DESC
+        a.slug, a.title, a.created_time, a.description, a.thumbnail, a.category, u.account, a.nickname, u.avatar, a.article_id
+      ORDER BY a.article_id DESC
       `,
     });
 

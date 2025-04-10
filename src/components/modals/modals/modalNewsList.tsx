@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { NewsTable } from "../../tables/newsTable";
+import { NewsTable } from "../../tables/news-table";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
 
 interface ModalArticleListProps {
