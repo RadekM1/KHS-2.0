@@ -1,4 +1,3 @@
-import { MdRssFeed } from "react-icons/md";
 import { Share } from "@/src/components/blog/share";
 import { newsArticleFetch } from "@/src/lib/server-functions/frontend/news-article-fetch";
 import { Gallery } from "@/src/components/gallery";
@@ -23,7 +22,6 @@ export default async function page({ params }: PageProps) {
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
       <div className="mb-4 flex flex-row items-center justify-start ">
         <h1 className="items-center flex flex-nowrap flex-row text-2xl">
-          <MdRssFeed className="mr-3 h-8 w-8 " />
           {article.title}
         </h1>
       </div>

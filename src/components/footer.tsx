@@ -132,7 +132,7 @@ export const Footer = () => {
           rel="noreferrer"
         >
           <span className="mr-10 mb-10 col-span-2 text-sm">
-            &copy; 2024 crafted by Radek Morong
+            &copy; 2025 crafted by Radek Morong
           </span>
         </a>
       </div>
