@@ -17,7 +17,7 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
           <div className="mx-auto flex flex-row space-y-3 p-1 transition-opacity duration-300  md:flex-row md:space-x-5 md:space-y-0">
             <div className=" w-[130px] md:w-[200px] relative h-[110px] md:h-[150px] self-start bg-white px-3 py-1 pl-2 dark:bg-zinc-800">
               <Image
-                src={data.thumbnail}
+                src={`${data.thumbnail}`}
                 alt={data.title}
                 className="flex w-full h-full self-start rounded object-cover"
                 width={250}

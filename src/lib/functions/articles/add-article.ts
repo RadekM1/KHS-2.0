@@ -2,7 +2,6 @@ import { ReadyToUploadFilesSchema } from "@/src/schemas/queries/articles";
 import { articleInsert } from "../../server-functions/backend/articles/insert-article";
 import { toast } from "sonner";
 import { handleGoogleUpload } from "./handle-google-upload";
-import { AllInGallerySchema } from "@/src/schemas/gallery";
 
 export const handleAddArticle = async (
   title: string,
@@ -14,12 +13,11 @@ export const handleAddArticle = async (
   nickName: string,
   readyToUploadFiles: ReadyToUploadFilesSchema[],
   thumbnail: string,
-  setThumbnail: (thumbnail: string) => void,
   setLoading: (loading: boolean) => void,
-  allInGallery: AllInGallerySchema,
   setEditActive: (editActive: boolean) => void,
   handleResetForm: () => void,
 ) => {
+  let tempThumb = thumbnail;
   if (!title || !category || !editorContent) {
     alert("není zadán jeden ze tří parametrů: (titulek, kategorie, článek)");
     return;
@@ -48,7 +46,7 @@ export const handleAddArticle = async (
     }
   }
 
-  if (allInGallery && allInGallery.length > 30) {
+  if (readyToUploadFiles && readyToUploadFiles.length > 30) {
     toast.error(
       "maximální počet obrázků v galerii je 30, dle uvážení některé odeberte",
     );
@@ -56,8 +54,12 @@ export const handleAddArticle = async (
     return;
   }
 
-  if (readyToUploadFiles.length > 0 && !thumbnail && allInGallery[0]?.file) {
-    setThumbnail(allInGallery[0].file);
+  if (
+    readyToUploadFiles.length > 0 &&
+    !thumbnail &&
+    readyToUploadFiles[0]?.file
+  ) {
+    tempThumb = readyToUploadFiles[0].file;
   }
 
   const metadataToApi = readyToUploadFiles.map(
@@ -70,7 +72,7 @@ export const handleAddArticle = async (
     editorContent,
     account,
     description,
-    thumbnail,
+    tempThumb,
     metadataToApi,
     category,
     nickName,

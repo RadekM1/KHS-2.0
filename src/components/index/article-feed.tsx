@@ -1,6 +1,8 @@
 import { BlogCard } from "../blog/blog-card";
 import { articlesCardFetch } from "@/src/lib/server-functions/frontend/articles-fetch";
 
+export const dynamic = "force-dynamic";
+
 export const ArticleFeed = async () => {
   const rows = await articlesCardFetch();
 

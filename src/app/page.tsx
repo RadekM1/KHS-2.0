@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LandingPart() {
+export default function LandingPart() {
   const year = dayjs().year();
   const currentMonth = dayjs().month();
 

@@ -188,9 +188,7 @@ export default function ArticlesMainComponent() {
       nickName,
       readyToUploadFiles,
       thumbnail,
-      setThumbnail,
       setLoading,
-      allInGallery,
       setEditActive,
       handleResetForm,
     );
