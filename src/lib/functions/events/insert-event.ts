@@ -33,15 +33,17 @@ export const handleAdd = async (
   setLoading(true);
 
   const tempEventObject = date.map((eventDate) => {
+    eventDate.setHours(12, 0, 0, 0);
     return {
       date: eventDate.toISOString(),
       event: event,
-      startTime: startTime ?? "",
-      endTime: endTime ?? "",
+      startTime: startTime ?? "00:00",
+      endTime: endTime ?? "00:00",
       checkBoxDayValue,
       checkBoxNoEndValue,
     };
   });
+
   const response = await insertEvents(tempEventObject);
   if (!response.ok) {
     toast.error(response.message);

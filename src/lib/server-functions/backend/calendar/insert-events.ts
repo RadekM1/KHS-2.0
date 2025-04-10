@@ -15,6 +15,7 @@ export const insertEvents = async (
 ) => {
   const sqlConnection = await pool.connect();
   let failedCount = 0;
+
   try {
     await sqlConnection.query("BEGIN");
 

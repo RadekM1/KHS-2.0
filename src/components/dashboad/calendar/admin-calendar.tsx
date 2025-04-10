@@ -29,6 +29,8 @@ export const AdminCalendar = () => {
   const [editActive, setEditActive] = useState(false);
   const [date, setDate] = React.useState<Date[]>([new Date()]);
 
+  console.log(date);
+
   const handleEdit = (id: number) => {
     const row = rows.find((row) => id === row.id);
     if (!row) {
@@ -151,7 +153,7 @@ export const AdminCalendar = () => {
         <Calendar
           onMonthChange={(month) => setCurrentMonth(dayjs(month))}
           selected={date}
-          onSelect={setDate}
+          onSelect={(days) => (days ? setDate(days) : setDate([]))}
           mode="multiple"
           locale={cs}
           className="calendar-no-arrows max-h-min rounded-xl individual-calendar dark:bg-zinc-800  border-[1px] border-gray-300 p-4 dark:border-gray-600 text-gray-800 dark:text-white text-base"
