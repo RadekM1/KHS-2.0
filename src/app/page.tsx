@@ -11,6 +11,8 @@ import { CalendarFrontEnd } from "@/src/components/index/calendar-frontend";
 import { czMonths } from "@/src/static-objects/conts/dates";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín",
   description:
