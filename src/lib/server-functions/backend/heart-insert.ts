@@ -14,8 +14,6 @@ export const heartInsert = async (slug: string, user: string) => {
       return;
     }
 
-    console.log("fire test");
-
     const response = await executeQuery({
       sqlConnection,
       query:

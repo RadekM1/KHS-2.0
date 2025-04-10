@@ -27,7 +27,8 @@ export const DashboardMenu = () => {
   const session = useSessionContext();
   useEffect(() => {
     if (session) {
-      setAvatar(session.user.avatar);
+      const avatarImg = `${session.user.avatar}?v=${Date.now()}`
+      setAvatar(`${avatarImg}`);
       setClearance(session.user.clearance ?? "");
     }
   }, [session]);
