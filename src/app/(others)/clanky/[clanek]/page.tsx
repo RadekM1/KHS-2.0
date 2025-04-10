@@ -54,7 +54,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
     return <div>Článek nenalezen</div>;
   }
 
-  const urlToShare = `https://www.khszlin.com/clanky/${clanek}`;
+  const urlToShare = `https://new.khszlin.com/clanky/${clanek}`;
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">

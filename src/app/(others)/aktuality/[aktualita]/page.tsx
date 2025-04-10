@@ -16,7 +16,7 @@ export default async function page({ params }: PageProps) {
     return <div>Článek nenalezen</div>;
   }
 
-  const urlToShare = `https://www.khszlin.com/clanky/${aktualita}`;
+  const urlToShare = `https://new.khszlin.com/clanky/${aktualita}`;
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">

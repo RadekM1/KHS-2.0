@@ -7,8 +7,8 @@ export const bookColumnList = [
   { key: "release", label: "Rok vydání", sorting: true },
   { key: "picture_url", label: "Fotka", sorting: false },
   { key: "description", label: "Popis", sorting: true },
-  { key: "", label: "del", id: "delLabel", sorting: false },
-  { key: "", label: "edit", id: "editLabel", sorting: false },
+  { key: "", label: "", id: "delLabel", sorting: false },
+  { key: "", label: "", id: "editLabel", sorting: false },
 ];
 
 export const bookColumnListFrontend = [
