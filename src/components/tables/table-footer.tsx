@@ -1,6 +1,5 @@
 "use client";
 
-
 import Pagination from "@mui/material/Pagination";
 import { UserRowsSchema } from "@/src/schemas/queries/tables/user-table-schema";
 import { RentalRowsSchema } from "@/src/schemas/queries/tables/rental-table-schema";
@@ -24,13 +23,11 @@ interface TableFooterProps {
 const handleChangePaginat = (
   _event: React.ChangeEvent<HTMLElement>,
   value: string,
-  setCurrentPage: (page: string) => void
+  setCurrentPage: (page: string) => void,
 ) => {
   const temp = value;
   setCurrentPage(temp);
 };
-
-
 
 export const TableFooter = ({
   filteredRows,

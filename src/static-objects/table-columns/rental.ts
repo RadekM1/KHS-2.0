@@ -10,7 +10,6 @@ export const rentalTableColumns = [
   { key: "", label: "edit", id: "editLabel", sorting: false },
 ];
 
-
 export const rentalTableFrontendColumns = [
   { key: "id", label: "kod", sorting: true },
   { key: "item_name", label: "Vybavení", sorting: true },

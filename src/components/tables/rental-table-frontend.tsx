@@ -44,7 +44,6 @@ export const RentalTableFrontend = () => {
     setRowsLoading(false);
   };
 
-
   const rowsPerPage = 20;
 
   useEffect(() => {
@@ -92,8 +91,6 @@ export const RentalTableFrontend = () => {
     startIndex,
     startIndex + rowsPerPage,
   );
-
-
 
   return (
     <div className="w-full flex-grow bg-white  dark:bg-zinc-700">
@@ -147,7 +144,7 @@ export const RentalTableFrontend = () => {
                   ) : (
                     <span className="text-green-700 dark:text-red-400">NE</span>
                   )}
-                </td>  
+                </td>
               </tr>
             ))}
           </tbody>

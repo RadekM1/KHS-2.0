@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { TableFooter } from "./table-footer";
 import ArraySort from "@/src/lib/functions/arraySort";
 import { SearchField } from "../ui/inputs/search-field-controled";
@@ -12,7 +12,6 @@ import { getBooksFrontend } from "@/src/lib/server-functions/frontend/books-fetc
 import { toast } from "sonner";
 import { TableHead } from "./table-head";
 import { BookRowsSchemaFrontend } from "@/src/schemas/queries/tables/books-table-schema";
-
 
 interface SearchFieldChangeEvent {
   target: {
@@ -26,7 +25,8 @@ export const BooksTableFrontend = () => {
   const [sortingOrder, setSortingOrder] = useState<string>("asc");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchField, setSearchField] = useState<string>("");
-  const [filteredRows, setFilteredRows] = useState<BookRowsSchemaFrontend>(rows);
+  const [filteredRows, setFilteredRows] =
+    useState<BookRowsSchemaFrontend>(rows);
   const [rowsLoading, setRowsLoading] = useState<boolean>(false);
   const rowsPerPage = 20;
 
@@ -91,7 +91,6 @@ export const BooksTableFrontend = () => {
     startIndex,
     startIndex + rowsPerPage,
   );
-
 
   return (
     <div className="w-full flex-grow bg-white  dark:bg-zinc-600">

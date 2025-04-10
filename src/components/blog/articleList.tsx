@@ -13,8 +13,6 @@ import { SearchField } from "../ui/inputs/search-field-controled";
 import { useMemo } from "react";
 import { useDebounce } from "use-debounce";
 
-
-
 export const ArticleList = ({
   importedRows,
 }: {
@@ -75,7 +73,7 @@ export const ArticleList = ({
     setHory(true);
     setOddil(true);
     setOstatni(true);
-    setSearchField('')
+    setSearchField("");
   };
 
   const filteredAndSearchedRows = useMemo(() => {
