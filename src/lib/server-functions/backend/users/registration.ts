@@ -35,7 +35,7 @@ export const registration = async (data: RegistrationProps) => {
     const cleanFirstName = validator.escape(data.firstName);
     const cleanLastName = validator.escape(data.lastName);
     const banStamp = new Date("2022-01-01").toISOString();
-    const nickName = `${cleanFirstName}' '${cleanLastName.slice(0, 1)}.`;
+    const nickName = `${cleanFirstName} ${cleanLastName.slice(0, 1)}.`;
 
     const registrationAvatar =
       "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png";

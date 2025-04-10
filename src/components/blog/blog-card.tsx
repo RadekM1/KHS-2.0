@@ -7,7 +7,7 @@ import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 
 export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
   const tempShortDescription = `${data.description.slice(0, 100)}...`;
-  const share = `https://www.khszlin.com/clanky/${data.slug}`;
+  const share = `https://new.khszlin.com/clanky/${data.slug}`;
   const slug = data.slug;
 
   return (

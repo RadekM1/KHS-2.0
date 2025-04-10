@@ -34,7 +34,10 @@ export default async function NewsFeed() {
                   {item.summary}
                 </p>
                 <div className="flex h-full gap-3 mt-2 items-center flex-row justify-end">
-                  <Share share={`/novinky/${item.id}`} title={item.title} />
+                  <Share
+                    share={`https://new.khszlin.com/novinky/${item.id}`}
+                    title={item.title}
+                  />
                   <BtnArticleShow id={item.id} />
                 </div>
               </div>
