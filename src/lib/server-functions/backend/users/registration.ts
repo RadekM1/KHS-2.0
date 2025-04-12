@@ -65,7 +65,7 @@ export const registration = async (data: RegistrationProps) => {
       };
     }
 
-    const confirmLink = `https://khs-zlin.vercel.app/login?token=${verification_token}&UserToAuth=${data.email}`;
+    const confirmLink = `https://new.khszlin.com/login?token=${verification_token}&UserToAuth=${data.email}`;
     const subjectReg = "KHS Zlín - potvrzení registrace";
     const textReg = `Dobrý den, pro potvrzení registrace prosím přejděte na tento odkaz: ${confirmLink}
               S pozdravem, KHS Team`;
