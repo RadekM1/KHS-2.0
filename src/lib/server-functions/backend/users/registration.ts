@@ -74,7 +74,7 @@ export const registration = async (data: RegistrationProps) => {
     return {
       ok: true,
       message:
-        "Registrace byla úspěšná, byla odeslána ověřovací zpráva na váš email",
+        "Registrace proběhla úspěšně, byla odeslána ověřovací zpráva na váš email",
     };
   } catch (error) {
     console.log(error);
