@@ -9,7 +9,7 @@ export const HeartFetchSecondCover = ({ slug }: { slug: string }) => {
   const [fetchedData, setFetchedData] = useState<SingleHeartSchema | []>([]);
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [slug]);
 
   const fetchData = async () => {
     const data = await singleHeartFetch(slug);

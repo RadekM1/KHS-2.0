@@ -15,6 +15,8 @@ interface ModalArticleListProps {
   setThumbnail: (thumbnail: string) => void;
   setEditActive: (active: boolean) => void;
   setEditorContent: (content: string) => void;
+  clearance: string;
+  account: string;
 }
 
 export const ModalArticleList = ({
@@ -28,6 +30,8 @@ export const ModalArticleList = ({
   setEditActive,
   setEditorContent,
   setThumbnail,
+  clearance,
+  account,
 }: ModalArticleListProps) => {
   return (
     <Dialog
@@ -37,7 +41,7 @@ export const ModalArticleList = ({
     >
       <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
       <div className="fixed inset-0 z-10 h-full w-screen overflow-y-auto">
-        <div className="mx-5 flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 md:mx-10 lg:mx-32">
+        <div className="mx-5 flex min-h-full items-end justify-center  text-center sm:items-center p-0 md:mx-10 lg:mx-32">
           <DialogPanel className="relative w-full max-w-none transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-gray-900 sm:my-8">
             <div className="bg-white px-4 pb-4 pt-5 dark:bg-gray-800 sm:p-6 sm:pb-4">
               <div className="sm:flex sm:items-start">
@@ -51,6 +55,8 @@ export const ModalArticleList = ({
                   setGallery={setGallery}
                   setCategory={setCategory}
                   setOpen={setOpen}
+                  clearance={clearance}
+                  account={account}
                 />
               </div>
             </div>

@@ -52,6 +52,7 @@ export default function ArticlesMainComponent() {
 
   const nickName = session?.user.nickName ?? "";
   const account = session?.user.email ?? "";
+  const clearance = session?.user.clearance ?? "";
 
   useEffect(() => {
     interface PreventEventProps {
@@ -271,6 +272,8 @@ export default function ArticlesMainComponent() {
               setTitle={setTitle}
               setEditorContent={setEditorContent}
               setOpen={setOpen}
+              clearance={clearance}
+              account={account}
             />
             <CiViewList />
           </button>

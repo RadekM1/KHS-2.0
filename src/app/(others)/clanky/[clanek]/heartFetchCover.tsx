@@ -1,3 +1,4 @@
+"use client";
 import { HeartFetchSecondCover } from "./hearthSecondCover";
 
 export const HeartFetchCover = ({ slug }: { slug: string }) => {

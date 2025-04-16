@@ -1,5 +1,5 @@
-import Pagination from "@mui/material/Pagination";
 import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
+import Pagination from "@mui/material/Pagination";
 
 interface PaginationProps {
   rows: ParsedPostCardSchema[];

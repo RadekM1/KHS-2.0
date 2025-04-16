@@ -16,7 +16,7 @@ export const getNews = async () => {
     if (!(result.rowCount > 0)) {
       return {
         ok: false,
-        message: "nepodařilo se stáhnout novinky z databáze",
+        message: "žádné novinky v databázi",
         rows: [],
       };
     }

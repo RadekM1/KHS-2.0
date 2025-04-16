@@ -27,6 +27,8 @@ interface ArticleTableProps {
   setEditActive: (active: boolean) => void;
   setEditorContent: (content: string) => void;
   setOpen: (open: boolean) => void;
+  clearance: string;
+  account: string;
 }
 
 interface SearchFieldChangeEvent {
@@ -45,6 +47,8 @@ export const ArticleTable = ({
   setEditActive,
   setEditorContent,
   setOpen,
+  clearance,
+  account,
 }: ArticleTableProps) => {
   const [rows, setRows] = useState<ArticlesBackendSchema>([]);
   const [sortingColumn, setsortingColumn] = useState<string>("");
@@ -65,7 +69,7 @@ export const ArticleTable = ({
 
   const fetchData = async () => {
     setRowsLoading(true);
-    const response = await getArticles();
+    const response = await getArticles(clearance, account);
     if (!response.ok) {
       toast.error(response.message);
       setRowsLoading(false);

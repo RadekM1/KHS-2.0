@@ -36,6 +36,11 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
     }
   }, [isClicked]);
 
+  useEffect(() => {
+    setClicks(likes);
+    setHeartList(heartsList);
+  }, [likes]);
+
   const handleClick = async () => {
     if (sessionContext === null || !slug) {
       console.log(

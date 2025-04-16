@@ -11,7 +11,7 @@ export const heartInsert = async (slug: string, user: string) => {
       console.log(
         "nebyl rozlišen parametr id článku nebo uživatel, srdíčko nebude uloženo",
       );
-      return;
+      return { message: "chybé slug nebo user", response: "" };
     }
 
     const response = await executeQuery({
@@ -23,9 +23,10 @@ export const heartInsert = async (slug: string, user: string) => {
 
     if (!(response.rowCount > 0)) {
       console.log("nepodařilo se uložit srdíčko", response);
-      return;
+      return { message: "žádný řádek", response: response };
     }
   } catch (error) {
+    return { message: "chyba", response: error };
     console.log("Blíže nespecifikovaný problém při uložení srdíčka:", error);
   } finally {
     if (sqlConnection) sqlConnection.release();

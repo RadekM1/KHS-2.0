@@ -3,19 +3,23 @@ import { articlesBackendSchema } from "@/src/schemas/queries/articles-dashboard"
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 
-export const getArticles = async () => {
+export const getArticles = async (clearance: string, account: string) => {
+  const queryString =
+    clearance === "admin" || clearance === "editor"
+      ? "SELECT * FROM articles"
+      : `SELECT * FROM articles WHERE user_email = '${account}'`;
+
   const sqlConnection = await pool.connect();
   try {
     const result = await executeQuery({
       sqlConnection,
-      query: `SELECT * FROM articles
-              `,
+      query: queryString,
     });
 
     if (!(result.rowCount > 0)) {
       return {
         ok: false,
-        message: "nepodařilo se stáhnout články z databáze",
+        message: "žádné články v databázi",
         rows: [],
       };
     }

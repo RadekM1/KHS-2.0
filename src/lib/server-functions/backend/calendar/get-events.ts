@@ -15,7 +15,7 @@ export const getEvents = async () => {
     if (!(result.rowCount > 0)) {
       return {
         ok: false,
-        message: "nepodařilo se stáhnout data událostí z databáze",
+        message: "žádné události v kalendáři",
       };
     }
     const rows = result.rows;

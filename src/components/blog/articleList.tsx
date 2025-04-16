@@ -146,7 +146,7 @@ export const ArticleList = ({
             ))}
           </div>
           <PaginationComponent
-            rows={paginatedRows}
+            rows={filteredAndSearchedRows}
             rowsPerPage={rowsPerPage}
             currentPage={currentPage}
             handleChangePaginat={handleChangePaginat}
