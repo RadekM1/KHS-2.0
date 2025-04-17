@@ -57,7 +57,7 @@ export default function page() {
           <li>dobrovolným vystoupením</li>
           <li>úmrtím člena</li>
           <li>vyloučením výborem za porušení stanov</li>
-          <li>neuhrazením členského příspěvku do 31. 1. daného roku</li>
+          <li>neuhrazením členského příspěvku do 31. 1. daného roku</li>
           <li>zánikem spolku nebo změnou právní formy</li>
         </ul>
 
@@ -82,7 +82,7 @@ export default function page() {
         </ul>
         <p>
           Členové neručí za případné dluhy spolku. Seznam členů vede výbor, je
-          neveřejný a aktualizován každoročně k 31. 3.
+          neveřejný a aktualizován každoročně k 31. 3.
         </p>
       </article>
     </section>
