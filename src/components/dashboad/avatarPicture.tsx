@@ -11,9 +11,21 @@ export default function AvatarPicture({
   const [imageSrc, setImageSrc] = useState("");
   const session = useSessionContext();
   useEffect(() => {
-    if (session) {
-      setImageSrc(session.user.avatar);
-    }
+    if (!session) return;
+    const url = `${session.user.avatar}?v=${Date.now()}`;
+
+    fetch(url, { method: "HEAD" })
+      .then((res) => {
+        const ct = res.headers.get("content-type") || "";
+        if (res.ok && ct.startsWith("image/")) {
+          setImageSrc(url);
+        }
+      })
+      .catch(() => {
+        setImageSrc(
+          "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
+        );
+      });
   }, [session]);
 
   return (

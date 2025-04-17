@@ -19,7 +19,7 @@ export const addFiles = async (
 ): Promise<void> => {
   setImgResize(true);
   const maxFileSize: number = 9 * 1024 * 1024;
-  const maxFiles: number = 30;
+  const maxFiles: number = 20;
   const rejectedFiles: string[] = [];
   const duplicateFiles: string[] = [];
 
@@ -80,6 +80,6 @@ export const addFiles = async (
   setImgResize(false);
 
   if (files.length >= maxFiles) {
-    alert(`Byl dosažen maximální počet souborů (30).`);
+    toast.error(`Byl dosažen maximální počet souborů (20).`);
   }
 };

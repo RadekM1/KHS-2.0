@@ -25,13 +25,15 @@ export const handleArticleChange = async (
   setLoading(true);
 
   if (!title || !category || !editorContent) {
-    alert("není zadán jeden ze tří parametrů: (titulek, kategorie, článek)");
+    toast.error(
+      "není zadán jeden ze tří parametrů: (titulek, kategorie, článek)",
+    );
     setLoading(false);
     return;
   }
 
   if (!description || !slug) {
-    alert(
+    toast.error(
       "chyba při ukládání parametrů článku které se mají generovat automaticky (popisek z textu na hlavní stránku, identifikátor úpravy), zkuste ještě jednou, případně kontaktujte administrátora.",
     );
     setLoading(false);
@@ -56,9 +58,9 @@ export const handleArticleChange = async (
     }
   }
 
-  if (allInGallery.length > 30) {
-    alert(
-      "u článku je přiložených více jak 30 fotografií, některé je potřeba vymazat.",
+  if (allInGallery.length > 20) {
+    toast.error(
+      "u článku je přiložených více jak 20 fotografií, některé je potřeba vymazat.",
     );
     setLoading(false);
     return;
@@ -69,8 +71,8 @@ export const handleArticleChange = async (
   }
 
   if (allInGallery && allInGallery.length > 30) {
-    alert(
-      "maximální počet obrázků v galerii je 30, dle uvážení některé odeberte",
+    toast.error(
+      "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
     );
     return;
   }

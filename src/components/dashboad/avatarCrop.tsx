@@ -9,8 +9,10 @@ import { updateAvatarInSql } from "@/src/lib/server-functions/backend/users/avat
 import { toast } from "sonner";
 import { shiftCharsBy4 } from "@/src/lib/functions/avatar-name-encrypt";
 import { avatarSharpOptim } from "@/src/lib/server-functions/backend/img-optimize/avatar";
+import { useRouter } from "next/navigation";
 
 export default function AvatarCrop() {
+  const router = useRouter();
   const [previewImage, setPreviewImage] = useState(
     "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
   );
@@ -97,12 +99,17 @@ export default function AvatarCrop() {
       return;
     }
     await update({ avatar: avatarToSql });
+
     const response = await updateAvatarInSql(avatarToSql, userToSql);
     if (!response.ok) {
       setLoading(false);
       toast.error(response.message);
       return;
     }
+    const bustedUrl = avatarToSql + "?v=" + Date.now();
+    setPreviewImage(bustedUrl);
+
+    router.refresh();
     toast.success("Avatar aktualizován");
     setLoading(false);
   };

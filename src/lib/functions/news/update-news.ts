@@ -31,9 +31,9 @@ export const handleNewsChange = async (
     return;
   }
 
-  if (allInGallery && allInGallery.length > 30) {
+  if (allInGallery && allInGallery.length > 20) {
     toast.error(
-      "maximální počet obrázků v galerii je 30, dle uvážení některé odeberte",
+      "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
     );
     return;
   }

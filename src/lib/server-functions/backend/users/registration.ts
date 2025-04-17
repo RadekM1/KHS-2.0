@@ -7,6 +7,7 @@ import { hash } from "bcryptjs";
 import validator from "validator";
 import nodeMailer from "@/src/lib/functions/nodeMailer";
 import crypto from "crypto";
+import { shiftCharsBy4 } from "@/src/lib/functions/avatar-name-encrypt";
 
 interface RegistrationProps {
   password: string;
@@ -37,8 +38,9 @@ export const registration = async (data: RegistrationProps) => {
     const banStamp = new Date("2022-01-01").toISOString();
     const nickName = `${cleanFirstName} ${cleanLastName.slice(0, 1)}.`;
 
-    const registrationAvatar =
-      "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png";
+    const avatarName = shiftCharsBy4(cleanUser);
+    const fileName = `${avatarName}.jpg`;
+    const registrationAvatar = `https://storage.googleapis.com/khs-zlin/avatars/${fileName}`;
 
     const result = await executeQuery({
       sqlConnection,

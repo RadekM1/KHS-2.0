@@ -26,9 +26,9 @@ export const handleAddNew = async (
     return;
   }
 
-  if (readyToUploadFiles && readyToUploadFiles.length > 30) {
+  if (readyToUploadFiles && readyToUploadFiles.length > 20) {
     toast.error(
-      "maximální počet obrázků v galerii je 30, dle uvážení některé odeberte",
+      "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
     );
     setLoading(false);
     return;

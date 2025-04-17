@@ -255,7 +255,7 @@ export const NewsMainComponent = () => {
           setTextFromEditor={setTextFromEditor}
         />
       </div>
-      <div className="my-3 flex flex-col pt-24 text-xl">
+      <div className="my-3 flex w-full flex-col pt-24 text-xl">
         <DropZoneNews
           handleDrop={handleDrop}
           handleFileChange={handleFileChange}

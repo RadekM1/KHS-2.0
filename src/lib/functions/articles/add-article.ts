@@ -19,12 +19,14 @@ export const handleAddArticle = async (
 ) => {
   let tempThumb = thumbnail;
   if (!title || !category || !editorContent) {
-    alert("není zadán jeden ze tří parametrů: (titulek, kategorie, článek)");
+    toast.error(
+      "není zadán jeden ze tří parametrů: (titulek, kategorie, článek)",
+    );
     return;
   }
 
   if (!slug || !account || !description || !nickName) {
-    alert(
+    toast.error(
       "chyba při ukládání parametrů článku které se mají generovat automaticky (odkaz, účet, popis nebo přezdívka), zkuste znovu, případně kontaktujte administrátora.",
     );
     return;
@@ -48,7 +50,7 @@ export const handleAddArticle = async (
 
   if (readyToUploadFiles && readyToUploadFiles.length > 30) {
     toast.error(
-      "maximální počet obrázků v galerii je 30, dle uvážení některé odeberte",
+      "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
     );
     setLoading(false);
     return;

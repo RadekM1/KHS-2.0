@@ -23,14 +23,25 @@ export const DashboardMenu = () => {
       callbackUrl: "/login?filter=logout",
     });
   };
-
   const session = useSessionContext();
+
   useEffect(() => {
-    if (session) {
-      const avatarImg = `${session.user.avatar}?v=${Date.now()}`;
-      setAvatar(`${avatarImg}`);
-      setClearance(session.user.clearance ?? "");
-    }
+    if (!session) return;
+    const url = `${session.user.avatar}?v=${Date.now()}`;
+    setClearance(session.user.clearance ?? "");
+
+    fetch(url, { method: "HEAD" })
+      .then((res) => {
+        const ct = res.headers.get("content-type") || "";
+        if (res.ok && ct.startsWith("image/")) {
+          setAvatar(url);
+        }
+      })
+      .catch(() => {
+        setAvatar(
+          "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
+        );
+      });
   }, [session]);
 
   const filteredMenu = dashboardMenuData.filter((item) =>

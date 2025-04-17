@@ -49,8 +49,8 @@ export const DropZoneNews = ({
               <span className="text-slate-500 w-full">
                 Fotky nahrajte kliknutím nebo přetáhnutím do vyhrazené oblasti
               </span>
-              <span className="text-slate-600"> PNG, JPG, JPEG max 3MB</span>
-              <span className="text-slate-600"> max 30 fotek u článku</span>
+              <span className="text-slate-600"> PNG, JPG, JPEG max 8MB</span>
+              <span className="text-slate-600"> max 20 fotek u článku</span>
             </p>
           ) : (
             <div className="flex items-center align-center flex-col">
