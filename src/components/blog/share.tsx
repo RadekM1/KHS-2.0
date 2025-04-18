@@ -35,6 +35,7 @@ export const Share = ({ share, title }: ShareProps) => {
   return (
     <>
       <button
+        aria-label={`${title} article share btn`}
         className="h-full hover:bg-gray-200 dark:hover:bg-zinc-700 duration-300 ease-in-out transition-all  hover:rounded-full"
         onClick={() => handleClick()}
       >

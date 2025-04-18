@@ -71,6 +71,7 @@ export const Heart = ({ likes, heartsList, slug }: HeartProps) => {
   return (
     <div className="w-16 flex h-full self-center gap-[2px] ml-3 flex-row flex-nowrap border-l-gray-300">
       <button
+        aria-label={`${slug} article like btn`}
         disabled={clicked === true || !sessionContext}
         onClick={() => handleClick()}
         className={`${!sessionContext ? " cursor-not-allowed" : "cursor-poiner"} flex self-center h-full`}

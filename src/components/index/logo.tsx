@@ -5,7 +5,7 @@ export default function Logo() {
     <div className="flex mt-16 text-center flex-col">
       <div className="flex-center flex w-full text-center filter transition duration-500 ease-in-out dark:brightness-75">
         <Image
-          src="https://storage.googleapis.com/khs-zlin/launch.webp"
+          src="/launch.webp"
           alt="Landing Image"
           width={1700}
           height={500}
