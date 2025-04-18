@@ -9,5 +9,4 @@ export const userTableColumns = [
     sorting: false,
   },
   { key: "locked", label: "Blokovaný účet", sorting: false },
-  { key: "", label: "", id: "delLabel", sorting: false },
 ];

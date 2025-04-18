@@ -166,67 +166,54 @@ export default function UserTable() {
               >
                 {userTableColumns.map((column) => {
                   let cellContent;
-                  if (column.id === "delLabel") {
-                    cellContent = (
-                      <button
-                        disabled={rowsLoading}
-                        onClick={() => handleDel(row.account)}
-                      >
-                        <MdDeleteForever
-                          className={`h-6 w-6 hover:cursor-pointer ${rowsLoading ? "text-red-200 dark:text-red-800" : "text-red-500"} `}
-                        />
-                      </button>
-                    );
-                  } else {
-                    switch (column.key) {
-                      case "clearance":
-                        cellContent = (
-                          <select
-                            value={row.clearance}
-                            disabled={rowsLoading}
-                            onChange={(event) =>
-                              handleClearanceChange(
-                                row.account,
-                                event.target.value,
-                              )
-                            }
-                            className="h-8 rounded border   bg-white  dark:bg-gray-600"
-                          >
-                            <option value="visitor">Visitor</option>
-                            <option value="member">Member</option>
-                            <option value="editor">Editor</option>
-                            <option value="admin">Admin</option>
-                          </select>
-                        );
-                        break;
-                      case "locked":
-                        cellContent = (
-                          <select
-                            value={row.locked ? "true" : "false"}
-                            disabled={rowsLoading}
-                            onChange={(event) =>
-                              handleLocked(
-                                row.account,
-                                event.target.value === "true",
-                              )
-                            }
-                            className="h-8 rounded border   bg-white   dark:bg-gray-600 "
-                          >
-                            <option value="false">Odemčeno</option>
-                            <option value="true">Zamčeno</option>
-                          </select>
-                        );
-                        break;
-                      default:
-                        // eslint-disable-next-line
-                        const value = row[column.key as keyof typeof row];
-                        if (value instanceof Date) {
-                          cellContent = value.toLocaleString();
-                        } else {
-                          cellContent = value;
-                        }
-                        break;
-                    }
+                  switch (column.key) {
+                    case "clearance":
+                      cellContent = (
+                        <select
+                          value={row.clearance}
+                          disabled={rowsLoading}
+                          onChange={(event) =>
+                            handleClearanceChange(
+                              row.account,
+                              event.target.value,
+                            )
+                          }
+                          className="h-8 rounded border   bg-white  dark:bg-gray-600"
+                        >
+                          <option value="visitor">Visitor</option>
+                          <option value="member">Member</option>
+                          <option value="editor">Editor</option>
+                          <option value="admin">Admin</option>
+                        </select>
+                      );
+                      break;
+                    case "locked":
+                      cellContent = (
+                        <select
+                          value={row.locked ? "true" : "false"}
+                          disabled={rowsLoading}
+                          onChange={(event) =>
+                            handleLocked(
+                              row.account,
+                              event.target.value === "true",
+                            )
+                          }
+                          className="h-8 rounded border   bg-white   dark:bg-gray-600 "
+                        >
+                          <option value="false">Odemčeno</option>
+                          <option value="true">Zamčeno</option>
+                        </select>
+                      );
+                      break;
+                    default:
+                      // eslint-disable-next-line
+                      const value = row[column.key as keyof typeof row];
+                      if (value instanceof Date) {
+                        cellContent = value.toLocaleString();
+                      } else {
+                        cellContent = value;
+                      }
+                      break;
                   }
                   return (
                     <td
