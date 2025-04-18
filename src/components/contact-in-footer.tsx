@@ -44,6 +44,7 @@ export const ContactInFooter = () => (
 
     <div className="flex justify-start">
       <a
+        aria-label="facebook link"
         href="https://www.facebook.com/khszlin/?locale=cs_CZ"
         target="_blank"
         rel="noreferrer"

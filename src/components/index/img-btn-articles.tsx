@@ -4,7 +4,7 @@ export const ImgBtnArticles = (img: ImgArticleBtnType) => {
   return (
     <div className="h-[200px] md:h-[280px] relative group   text-white w-full">
       <img
-        alt={img.title}
+        alt={img.alt}
         className="object-cover brightness-[0.6] group-hover:brightness-[0.8] transform-gpu transition-all ease-in-out duration-300 h-full w-full"
         src={img.src}
       />
