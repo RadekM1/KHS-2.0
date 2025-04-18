@@ -54,6 +54,11 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
     return <div>Článek nenalezen</div>;
   }
 
+  const htmlWithHttps = article.clanek.replace(
+    /src="http:\/\//g,
+    'src="https://',
+  );
+
   const urlToShare = `https://new.khszlin.com/clanky/${clanek}`;
 
   return (
@@ -91,7 +96,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
       </header>
       <article
         className="prose w-full px-4 text-start text-gray-800 dark:text-white"
-        dangerouslySetInnerHTML={{ __html: article.clanek }}
+        dangerouslySetInnerHTML={{ __html: htmlWithHttps }}
       />
       <Gallery gallery={article.article_img_gallery ?? []} />
       <CommentComponent slug={clanek} />

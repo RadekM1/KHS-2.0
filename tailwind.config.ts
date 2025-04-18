@@ -7,6 +7,16 @@ export default {
   darkMode: ["class"],
   theme: {
   	extend: {
+		DEFAULT: {
+			css: {
+			  'iframe': {
+				display: 'block',
+				margin: '1.5em auto',
+				maxWidth: '100%',
+				borderRadius: '0.5rem',
+			  },
+			},
+		},
   		screens: {
   			short: {
   				raw: '(max-height: 380px)'
