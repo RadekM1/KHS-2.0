@@ -11,8 +11,8 @@ export const imgSectionBtns = [
   },
   {
     src: "https://storage.googleapis.com/khs-zlin/for_members.jpg",
-    title: "Pro členy",
-    url: "/clenstvi-v-oddile",
+    title: "Půjčovna",
+    url: "/clenstvi-v-oddile/pujcovna-vybaveni",
   },
   {
     src: "https://storage.googleapis.com/khs-zlin/about_us.jpg",

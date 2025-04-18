@@ -20,6 +20,9 @@ export const HeartList = ({ clicks, heartList }: HeartListProps) => {
       <PopoverContent>
         <ul className="flex gap-2 hover:text-gray-500 group  h-full flex-col">
           {heartList?.map((heartItem, i) => {
+            const defaultAvatar =
+              "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png";
+            const url = `${heartItem.avatar}?v=${Date.now()}`;
             return (
               <li
                 key={i}
@@ -27,7 +30,11 @@ export const HeartList = ({ clicks, heartList }: HeartListProps) => {
               >
                 <div className="flex gap-3 flex-row">
                   <img
-                    src={heartItem.avatar}
+                    src={url}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = defaultAvatar;
+                    }}
                     alt="obrázek uživatele"
                     className="rounded-full h-8 w-8 "
                   />
