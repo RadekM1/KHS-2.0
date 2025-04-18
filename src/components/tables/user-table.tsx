@@ -7,11 +7,9 @@ import { UserRowsSchema } from "@/src/schemas/queries/tables/user-table-schema";
 import ArraySort from "@/src/lib/functions/arraySort";
 import { SearchField } from "../ui/inputs/search-field-controled";
 import { ResetBtn } from "../btns/resetBtn";
-import { MdDeleteForever } from "react-icons/md";
 import { LinearProgressBar } from "../spinners/linear";
 import { toast } from "sonner";
 import { updateUserClearance } from "@/src/lib/server-functions/backend/users/user-table/update-clearance";
-import { deleteUser } from "@/src/lib/server-functions/backend/users/user-table/delete-user";
 import { userTableColumns } from "@/src/static-objects/table-columns/users";
 import { getUsers } from "@/src/lib/server-functions/backend/users/user-table/get-users";
 import { TableHead } from "./table-head";
@@ -46,21 +44,6 @@ export default function UserTable() {
       return [];
     }
     setRows(response.rows);
-    setRowsLoading(false);
-  };
-
-  const handleDel = async (account: string) => {
-    const confirmDel = confirm(`opravdu chcete smazat účet ${account} ?`);
-    if (!confirmDel) {
-      return;
-    }
-    setRowsLoading(true);
-    const response = await deleteUser(account);
-    if (!response.ok) {
-      toast.error(response.message);
-    }
-    fetchData();
-    toast.success(response.message);
     setRowsLoading(false);
   };
 
