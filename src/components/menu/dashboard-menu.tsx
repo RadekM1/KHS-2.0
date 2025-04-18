@@ -13,9 +13,7 @@ import { useSessionContext } from "@/src/context/session-provider";
 export const DashboardMenu = () => {
   const avatarRef = useRef<HTMLElement>(null);
   const [clearance, setClearance] = useState<string>("");
-  const [avatar, setAvatar] = useState(
-    "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
-  );
+
   const [isClosed, setIsClosed] = useState<boolean>(true);
   const router = useRouter();
   const handleLogout = () => {
@@ -24,24 +22,21 @@ export const DashboardMenu = () => {
     });
   };
   const session = useSessionContext();
+  const defaultAvatar =
+    "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png";
+
+  const [avatar, setAvatar] = useState(defaultAvatar);
 
   useEffect(() => {
     if (!session) return;
     const url = `${session.user.avatar}?v=${Date.now()}`;
+    const fallback = defaultAvatar;
     setClearance(session.user.clearance ?? "");
 
-    fetch(url, { method: "HEAD" })
-      .then((res) => {
-        const ct = res.headers.get("content-type") || "";
-        if (res.ok && ct.startsWith("image/")) {
-          setAvatar(url);
-        }
-      })
-      .catch(() => {
-        setAvatar(
-          "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png",
-        );
-      });
+    const img = new window.Image();
+    img.onload = () => setAvatar(url);
+    img.onerror = () => setAvatar(fallback);
+    img.src = url;
   }, [session]);
 
   const filteredMenu = dashboardMenuData.filter((item) =>
