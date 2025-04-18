@@ -74,7 +74,11 @@ export const CommentCardInput = ({
               </label>
             </div>
             <div className="absolute end-0 right-0 m-2 self-end text-end">
-              <button onClick={() => handleClick()} disabled={disabled}>
+              <button
+                aria-label="add comment"
+                onClick={() => handleClick()}
+                disabled={disabled}
+              >
                 {!loading ? (
                   <IoMdSend className="h-6 w-6 text-gray-400 hover:text-orange-400 " />
                 ) : (
