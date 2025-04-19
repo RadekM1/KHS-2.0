@@ -51,7 +51,10 @@ export const DropZone = ({
                 Fotky nahrajte kliknutím nebo přetáhnutím do vyhrazené oblasti
               </span>
               <span className="text-slate-600"> PNG, JPG, JPEG max 8MB</span>
-              <span className="text-slate-600"> max 20 fotek u článku</span>
+              <span className="text-slate-600">
+                {" "}
+                Najednou lze nahrát max 20 fotek
+              </span>
             </p>
           ) : (
             <div className="flex items-center align-center flex-col">

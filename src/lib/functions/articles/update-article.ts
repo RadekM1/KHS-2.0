@@ -58,9 +58,9 @@ export const handleArticleChange = async (
     }
   }
 
-  if (allInGallery.length > 20) {
+  if (readyToUploadFiles.length > 20) {
     toast.error(
-      "u článku je přiložených více jak 20 fotografií, některé je potřeba vymazat.",
+      "Ke článku lze najednou nahrát pouze 20 fotografií. Zkuste postupně (nahrát, upravit, uložit).",
     );
     setLoading(false);
     return;
@@ -70,9 +70,9 @@ export const handleArticleChange = async (
     newThumbnail = allInGallery[0].file;
   }
 
-  if (allInGallery && allInGallery.length > 30) {
+  if (allInGallery && allInGallery.length > 60) {
     toast.error(
-      "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
+      "maximální počet obrázků v galerii je 60, dle uvážení některé odeberte",
     );
     return;
   }
