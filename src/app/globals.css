@@ -9,6 +9,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
+article.prose h2 {
+  @apply text-2xl;
+}
 
 @layer base {
   :root {

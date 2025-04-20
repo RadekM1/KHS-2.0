@@ -63,7 +63,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
-      <h1 className="items-center my-10 flex flex-nowrap flex-row text-2xl">
+      <h1 className="items-center my-10 flex flex-nowrap flex-row text-3xl md:text-4xl font-bold">
         {article.title}
       </h1>
       <header className="flex w-full px-4 flex-row">
@@ -80,7 +80,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
             Datum: {article.created_time}
           </div>
           <div className="my-1 text-xs  md:text-sm">
-            kategorie: {article.category}
+            Kategorie: {article.category}
           </div>
           <div className="flex gap-3 h-full">
             <HeartFetchCover slug={clanek} />
@@ -89,7 +89,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         </div>
       </header>
       <article
-        className="prose w-full px-4 text-start text-gray-800 dark:text-white"
+        className="prose prose-h2:text-2xl prose-h2:md:text-3xl w-full px-4 text-start text-gray-800 dark:text-white"
         dangerouslySetInnerHTML={{ __html: htmlWithHttps }}
       />
       <Gallery gallery={article.article_img_gallery ?? []} />
