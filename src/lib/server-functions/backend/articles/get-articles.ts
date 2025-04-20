@@ -6,8 +6,8 @@ import { executeQuery } from "@/src/lib/connection-adapters/db";
 export const getArticles = async (clearance: string, account: string) => {
   const queryString =
     clearance === "admin" || clearance === "editor"
-      ? "SELECT * FROM articles"
-      : `SELECT * FROM articles WHERE user_email = '${account}'`;
+      ? "SELECT * FROM articles ORDER BY article_id DESC"
+      : `SELECT * FROM articles WHERE user_email = '${account}' ORDER BY article_id DESC`;
 
   const sqlConnection = await pool.connect();
   try {
