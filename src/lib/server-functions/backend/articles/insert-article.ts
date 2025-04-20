@@ -3,6 +3,7 @@
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 import { ArticleGallerySchema } from "@/src/schemas/queries/articles-dashboard";
+import { revalidatePath } from "next/cache";
 
 export const articleInsert = async (
   slug: string,
@@ -68,6 +69,7 @@ export const articleInsert = async (
         slug: "",
       };
     }
+    revalidatePath(`/clanky/${slug}`);
     return {
       message: "Článek byl úspěšně vytvořen",
       slug,

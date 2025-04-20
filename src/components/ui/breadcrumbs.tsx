@@ -20,6 +20,8 @@ export const Breadcrumbs = () => {
 
           const label = item.includes("-") ? item.replaceAll("-", " ") : item;
 
+          const preparedLabel = label === "clanky" ? "články" : label;
+
           return (
             <span key={i}>
               {"/"}
@@ -27,7 +29,7 @@ export const Breadcrumbs = () => {
                 className="text-gray-600 text-xs sm:text-sm md:text-base  hover:text-orange-600 dark:text-gray-200 dark:hover:text-orange-200"
                 href={odkaz}
               >
-                &nbsp;{label}&nbsp;
+                &nbsp;{preparedLabel}&nbsp;
               </Link>
             </span>
           );
