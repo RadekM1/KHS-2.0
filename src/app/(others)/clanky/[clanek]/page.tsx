@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AvatarCover } from "./avatar-cover";
 import { Gallery } from "@/src/components/gallery";
 import { Share } from "@/src/components/blog/share";
 import { CommentComponent } from "./commentComponent";
@@ -71,13 +71,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
           <div className="text-xs md:text-sm">
             <div className="flex flex-row">
               <div className="mr-2">
-                <Image
-                  width={30}
-                  height={30}
-                  alt="avatar uživatele"
-                  src={article.avatar}
-                  className="inline-block h-6 w-6 self-center rounded-full object-fill ring-2 ring-white dark:ring-[#1E1E1E]"
-                />
+                <AvatarCover avatar={article.avatar} />
               </div>
               <div>{article.nickname}</div>
             </div>

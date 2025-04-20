@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import { Heart } from "./heart";
 import { Share } from "./share";
@@ -6,9 +9,18 @@ import { FaRegComment } from "react-icons/fa";
 import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 
 export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
+  const mainImage = data.thumbnail;
+  const avatar = data.avatar;
+  const [avatarSrc, setAvatarSrc] = useState(avatar);
+  const [imageSrc, setImageSrc] = useState(mainImage);
   const tempShortDescription = `${data.description.slice(0, 100)}...`;
   const share = `https://new.khszlin.com/clanky/${data.slug}`;
   const slug = data.slug;
+
+  const thumbnailFallback =
+    "https://storage.googleapis.com/khs-zlin/card-fallback.svg";
+  const avatarFallback =
+    "https://storage.googleapis.com/khs-zlin/avatars/User-avatar.svg.png";
 
   return (
     <div className="mt-4 flex flex-col max-w-[800px] md:mt-2">
@@ -17,11 +29,12 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
           <div className="mx-auto flex flex-row space-y-3 p-1 transition-opacity duration-300  md:flex-row md:space-x-5 md:space-y-0">
             <div className=" w-[130px] md:w-[200px] relative h-[110px] md:h-[150px] self-start bg-white px-3 py-1 pl-2 dark:bg-zinc-800">
               <Image
-                src={`${data.thumbnail}`}
+                src={imageSrc}
+                onError={() => setImageSrc(thumbnailFallback)}
                 alt={data.title}
-                className="flex w-full h-full self-start rounded object-cover"
                 width={250}
                 height={100}
+                className="w-full h-full self-start rounded object-cover"
               />
             </div>
             <div className="flex w-2/3 flex-col justify-start bg-white dark:bg-zinc-800">
@@ -34,8 +47,9 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
                     <Image
                       width={30}
                       height={30}
+                      onError={() => setAvatarSrc(avatarFallback)}
                       alt={`úvodní obrázek z článku na téma: ${data.title}`}
-                      src={data.avatar}
+                      src={avatarSrc}
                       className="inline-block h-6 w-6 self-center rounded-full object-fill ring-2 ring-white dark:ring-[#1E1E1E]"
                     />
                   </div>
