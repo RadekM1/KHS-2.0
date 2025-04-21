@@ -13,18 +13,20 @@ export const editArticle = async (
   gallery: string,
   category: string,
 ) => {
+  const prepairedThumbNailUrl = gallery
+    ? thumbnail
+    : "https://storage.googleapis.com/khs-zlin/card-fallback.svg";
   const sqlConnection = await pool.connect();
   try {
     const result = await executeQuery({
       sqlConnection,
-      query:
-        "UPDATE articles SET title = $2, clanek = $3, description = $4, thumbnail = $5, article_img_gallery = $6, category = $7 WHERE article_id = $1",
+      query: `UPDATE articles SET title = $2, clanek = $3, description = $4, thumbnail = $5, article_img_gallery = $6, category = $7 WHERE article_id = $1`,
       values: [
         idToEdit,
         title,
         editorContent,
         description,
-        thumbnail,
+        prepairedThumbNailUrl,
         gallery,
         category,
       ],

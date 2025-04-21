@@ -9,6 +9,7 @@ export const AvatarCover = ({ avatar }: { avatar: string }) => {
 
   return (
     <Image
+      unoptimized
       width={30}
       height={30}
       alt="avatar uživatele"

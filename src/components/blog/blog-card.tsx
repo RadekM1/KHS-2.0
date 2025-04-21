@@ -45,6 +45,7 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
                 <div className="flex gap-2 flex-row flex-nowrap">
                   <div className="mt-1 flex flex-row overflow-hidden">
                     <Image
+                      unoptimized
                       width={30}
                       height={30}
                       onError={() => setAvatarSrc(avatarFallback)}

@@ -42,7 +42,9 @@ export const articleInsert = async (
 
     const metadataToSqlString = JSON.stringify(metadataToSql);
 
-    const prepairedThumbNailUrl = `https://storage.googleapis.com/khs-zlin/img-gallery/${slug}/${thumbnail}`;
+    const prepairedThumbNailUrl = metadataToApi
+      ? `https://storage.googleapis.com/khs-zlin/img-gallery/${slug}/${thumbnail}`
+      : "https://storage.googleapis.com/khs-zlin/card-fallback.svg";
 
     const result = await executeQuery({
       sqlConnection,
