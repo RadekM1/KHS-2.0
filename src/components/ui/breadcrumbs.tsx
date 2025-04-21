@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import { IoHomeSharp } from "react-icons/io5";
 import Link from "next/link";
+import { breadcrumbsLabel } from "@/src/static-objects/objects/breadcrumbs-label";
 
 export const Breadcrumbs = () => {
   const pathName = usePathname();
@@ -18,9 +19,11 @@ export const Breadcrumbs = () => {
         {pathNames.map((item, i) => {
           const odkaz = `/${pathNames.slice(0, i + 1).join("/")}`;
 
-          const label = item.includes("-") ? item.replaceAll("-", " ") : item;
+          const testedLabel = breadcrumbsLabel.find(
+            (breadcrumb) => item === breadcrumb.breadcrumb,
+          );
 
-          const preparedLabel = label === "clanky" ? "články" : label;
+          const preparedLabel = testedLabel ? testedLabel.label : item;
 
           return (
             <span key={i}>
