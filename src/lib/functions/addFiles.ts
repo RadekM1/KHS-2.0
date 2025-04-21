@@ -25,7 +25,7 @@ export const addFiles = async (
 
   const remainingSlots: number = maxFiles - files.length;
   if (remainingSlots <= 0) {
-    alert(`Maximální počet souborů (30) již byl nahrán.`);
+    alert(`Maximální počet souborů (20) již byl nahrán.`);
     setImgResize(false);
     return;
   }

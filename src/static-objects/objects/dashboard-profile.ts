@@ -6,43 +6,44 @@ export const profileText = [
   },
   {
     title: "Jak funguje navigace v administrační části ?",
-    text: "Povolené stránky naleznete pod vaší profilovkou v pravém horním rohu. Případně ještě pod logem v pravo od ikony domečku klikněte na tlačítko dashboard a zobrazí se základní navigace stránek.",
+    text: "Povolené stránky naleznete pod vaší profilovkou v pravém horním rohu.",
     clearance: "visitor",
   },
   {
     title: "Změna hesla",
-    text: "Změna hesla není v adminu zatím naprogramovaná, nicméně lze změnit bez problému heslo před přihlášením kliknutím na zapomenuté heslo.",
+    text: "Změna hesla není přímo v administraci možná. Je potřeba o změnu hesla požádat na stránce 'příhlásit' a kliknout na zapomenuté heslo. Po obdržení emailu kliknout na odkaz a heslo změnit na uvedené stránce.",
     clearance: "visitor, member, editor, admin",
   },
   {
     title: "Profil a výměna obrázku",
-    text: "Úvodní profilová stránka slouží převážně pro poskytnutí informací o úrovni oprávnění, jaké lze provádět operace, změnu úvodní fotografie. Nahrání nové fotografie by mělo proběhnout rychle, změna fotografie se dle zvolené architektury webu může projevit se zpožděním až několika minut.",
+    text: "Úvodní profilová stránka slouží převážně pro poskytnutí informací o úrovni oprávnění, jaké lze provádět operace a pro změnu úvodní fotografie.",
     clearance: "visitor, member, editor, admin",
   },
   {
     title: "Vkládání komentářů a lajkování (srdíčka)",
-    text: "Ke každému článku lze vložit komentáře a lajk buď pod hlavní textem článku, případně srdíčko ještě na kartě článku buď v sekci články nebo u nejnovějších článků na hlavní straně.",
+    text: "Ke každému článku lze vložit komentáře a lajk buď pod hlavní textem článku, případně srdíčko ještě na kartě článku buď v sekci články nebo u nejnovějších článků na domovské stránce webu.",
     clearance: "visitor, member, editor, admin",
   },
   {
-    title: "Přidání článku krok za krokem",
+    title: "Přidání článku včetně návodu",
     text: `Po kliknutí na tlačítko články v menu:
             - Vyberte kategorii příspěvku
             - Zadejte titulek článku
             - Vyplňte obsah článku
             - Nahrajte fotografie
             - Klikněte na některou z fotografií (zvolí se jako náhledá v kartě článků) Pokud nebude zvolena stane se náhledovou automaticky první nahraná.
-            - Pokud budete chtít provést na článku po nahrátí nějaké změnu tak v seznamu článků najděte publikovaný článek, klikněte na ikonku tužky a článek se objeví k editování. Proveďte úpravy, klikněte na uložit.`,
+            - Pokud budete chtít provést na článku po nahrátí nějaké změnu tak v seznamu článků najděte publikovaný článek, klikněte na ikonku tužky a článek se objeví k editování. Proveďte úpravy, klikněte na uložit.
+            ke článku lze nahrát nejvíce 60 fotografií, nicméně aby upload fotek do cloudu proběhl bez problémů lze najednou pouze 20. Tzn když zakládáte nový článek tak nahrejte maximálně 20 fotek, následně klikněte na upravit článek a dalších 20 fotek můžete dohrát. Admin a editor vidí články všech, member pouze své články.`,
     clearance: "member, editor, admin",
   },
   {
     title: "Nahrání novinky",
-    text: `Nahrání novinky funguje ve stejném duchu jako článek s tou vyjímkou že obsahuje jiný (komplexnější) textový editor a nelze nahrávat fotogalerii (z důvodu povahy novinky jenž má omezenou platnost a následně se maže). Nicméně jedná se o zdarma verzi s omezením (1000x načtení měsíčně zdarma) tak moc neklikejte refresh :). Po zvoleném expiračním datu se nebude novinka již nadále zobrazovat v seznamu.`,
+    text: `Nahrání novinky funguje stejně jako článek. Novinky vidí pouze editor a admin. Dostupný seznam je pro všechny bez omezení práv.`,
     clearance: "editor, admin",
   },
   {
     title: "Kalendář",
-    text: `To co nahrajete na kalendář se automaticky projeví na hlavní stránce. Na rozdíl od hlavní stránky je kalendář v adminu interaktivní (na hlavní stránce je zamčený). Lze vkládat, mazat, editovat nové události. Na hlavní stránce se zobrazuje pouze aktuální měsíc, v adminu lze vyplnit dopředu. Akce na více dní je bohužel nutno naklikat po dni. Zadání v intervalech taky není naprogramováno, musí se naklikat.`,
+    text: `To co nahrajete na kalendář se automaticky projeví na hlavní stránce. Na rozdíl od hlavní stránky je kalendář v adminu interaktivní (na hlavní stránce je zamčený). Lze vkládat, mazat, editovat nové události. Na hlavní stránce se zobrazuje pouze aktuální měsíc, v adminu lze vyplnit dopředu. Pokud má akce stejný název pro více dní (např tréninky) lze naklikat více datumů které se vloží do databáze.`,
     clearance: "editor, admin",
   },
   {
