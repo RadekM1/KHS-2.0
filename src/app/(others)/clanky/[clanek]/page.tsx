@@ -14,21 +14,30 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { clanek } = await params;
   const article = await articleFetch(clanek);
+  const url = `https://new.khszlin.com/clanky/${article?.slug}`;
+  const imageUrl =
+    article?.thumbnail ||
+    "https://storage.googleapis.com/khs-zlin/card-fallback.svg";
+
   return {
     title: article?.title || "KHS ZLín - Článek",
     description: article?.description || "",
-    keywords: [
-      "horolezectví",
-      "alpinismus",
-      "kurzy lezení",
-      "skalní lezení",
-      "bouldering",
-      "horolezectví Zlín",
-      "zprávy o lezení",
-      "klub horských sportů Zlín",
-    ],
     alternates: {
-      canonical: `https://www.khszlin.com/clanky/${article?.slug}`,
+      canonical: url,
+    },
+    openGraph: {
+      title: article?.title,
+      description: article?.description,
+      url,
+      images: [imageUrl],
+      siteName: "KHS Zlín",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article?.title,
+      description: article?.description,
+      images: [imageUrl],
     },
   };
 }
