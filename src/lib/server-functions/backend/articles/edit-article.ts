@@ -2,6 +2,7 @@
 
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
+import { revalidatePath } from "next/cache";
 
 export const editArticle = async (
   idToEdit: number,
@@ -39,6 +40,7 @@ export const editArticle = async (
         slug: "",
       };
     }
+    await revalidatePath(`/clanky/${slug}`);
     await fetch(`https://new.khszlin.com/clanky/${slug}`);
     return {
       message: "Článek byl úspěšně aktualizován",
