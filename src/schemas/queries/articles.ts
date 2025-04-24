@@ -11,7 +11,7 @@ export const baseCardSchema = z.object({
   title: z.string(),
   created_time: z.date(),
   description: z.string(),
-  thumbnail: z.string().url(),
+  thumbnail: z.string().nullable(),
   category: z.string(),
   account: z.string().email(),
   nickname: z.string(),
@@ -58,7 +58,7 @@ export const prepaderArticleImgSchema = z.object({
 export const defaultArticleSchema = z.object({
   title: z.string(),
   clanek: z.string(),
-  thumbnail: z.string(),
+  thumbnail: z.string().nullable(),
   article_img_gallery: z.array(articleImgSchema).nullable(),
   category: z.string(),
   nickname: z.string(),
