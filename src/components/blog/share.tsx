@@ -15,7 +15,6 @@ export const Share = ({ share, title }: ShareProps) => {
       navigator
         .share({
           title: "",
-          text: title,
           url: share,
         })
         .catch((error) => console.log("Chyba při sdílení:", error));
