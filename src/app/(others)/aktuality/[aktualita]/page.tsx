@@ -8,8 +8,8 @@ interface PageProps {
   };
 }
 
-export default async function page({ params }: PageProps) {
-  const { aktualita } = await params;
+export default async function Page({ params }: PageProps) {
+  const { aktualita } = params;
 
   const article = await newsArticleFetch(aktualita);
   if (!article) {
