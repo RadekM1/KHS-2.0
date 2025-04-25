@@ -35,10 +35,15 @@ export default async function page({ params }: PageProps) {
         </div>
       </header>
       <article
-        className="prose w-full px-4 overflow-hidden text-start dark:border-b-gray-700 dark:text-white"
+        className="prose prose-h2:text-xl prose-h1:text-2xl w-full px-4 overflow-hidden text-start dark:border-b-gray-700 dark:text-white"
         dangerouslySetInnerHTML={{ __html: article.clanek }}
       />
-      <Gallery gallery={article.gallery ?? []} />
+      <Gallery
+        gallery={(article.gallery ?? []).map((item) => ({
+          ...item,
+          thumbnail: null,
+        }))}
+      />
     </section>
   );
 }

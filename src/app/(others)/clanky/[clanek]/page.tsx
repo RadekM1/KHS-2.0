@@ -88,7 +88,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         </div>
       </header>
       <article
-        className="prose prose-h2:text-2xl prose-h2:md:text-3xl w-full px-4 text-start text-gray-800 dark:text-white"
+        className="prose prose-h2:text-xl prose-h1:text-2xl w-full px-4 text-start text-gray-800 dark:text-white"
         dangerouslySetInnerHTML={{ __html: htmlWithHttps }}
       />
       <Gallery
