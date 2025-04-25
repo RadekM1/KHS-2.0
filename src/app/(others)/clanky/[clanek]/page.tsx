@@ -5,7 +5,6 @@ import { CommentComponent } from "./commentComponent";
 import { articleFetch } from "@/src/lib/server-functions/frontend/article-fetch";
 import { HeartFetchCover } from "./heartFetchCover";
 import type { Metadata } from "next";
-import { articlesSitemapFetch } from "@/src/lib/server-functions/frontend/sitemap-articles-fetch";
 
 type Props = {
   params: Promise<{ clanek: string }>;
@@ -42,17 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 3;
+export const dynamic = "force-dynamic";
 export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const articles = await articlesSitemapFetch();
-  return articles.map((article) => {
-    return {
-      clanek: article.slug,
-    };
-  });
-}
 
 const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
@@ -101,7 +91,12 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         className="prose prose-h2:text-2xl prose-h2:md:text-3xl w-full px-4 text-start text-gray-800 dark:text-white"
         dangerouslySetInnerHTML={{ __html: htmlWithHttps }}
       />
-      <Gallery gallery={article.article_img_gallery ?? []} />
+      <Gallery
+        gallery={(article.article_img_gallery ?? []).map((img) => ({
+          ...img,
+          thumbnail: null,
+        }))}
+      />
       <CommentComponent slug={clanek} />
     </section>
   );
