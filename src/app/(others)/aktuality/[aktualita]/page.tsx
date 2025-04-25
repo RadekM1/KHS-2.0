@@ -20,7 +20,7 @@ export default async function page({ params }: PageProps) {
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
-      <h1 className="items-center flex flex-nowrap flex-row text-2xl">
+      <h1 className="items-center my-4 flex flex-nowrap flex-row text-3xl">
         {article.title}
       </h1>
       <header className="flex w-full px-4 flex-row">

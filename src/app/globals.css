@@ -21,7 +21,7 @@ article.prose h2 {
 }
 
 article.prose p {
-  @apply mb-4;
+  @apply mb-2;
 }
 
 

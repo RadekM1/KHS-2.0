@@ -62,7 +62,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
-      <h1 className="items-center my-10 flex flex-nowrap flex-row text-3xl md:text-4xl font-bold">
+      <h1 className="items-center my-10 flex flex-nowrap flex-row text-3xl font-bold">
         {article.title}
       </h1>
       <header className="flex w-full px-4 flex-row">
