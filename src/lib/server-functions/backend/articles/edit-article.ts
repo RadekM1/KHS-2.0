@@ -39,7 +39,6 @@ export const editArticle = async (
         slug: "",
       };
     }
-    await fetch(`https://new.khszlin.com/clanky/${slug}`);
     return {
       message: "Článek byl úspěšně aktualizován",
       slug,

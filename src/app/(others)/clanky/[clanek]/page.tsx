@@ -41,8 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const dynamic = "force-dynamic";
 export const dynamicParams = true;
+export const dynamic = "force-dynamic";
 
 const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
@@ -95,6 +95,8 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         gallery={(article.article_img_gallery ?? []).map((img) => ({
           ...img,
           thumbnail: null,
+          type: undefined,
+          alt: img.description,
         }))}
       />
       <CommentComponent slug={clanek} />

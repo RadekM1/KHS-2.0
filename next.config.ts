@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
   images: {
     remotePatterns: [
@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  assetPrefix: process.env.NODE_ENV === 'production'
+    ? 'https://new.khszlin.com'
+    : '',
+
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb',
