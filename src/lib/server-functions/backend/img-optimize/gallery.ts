@@ -5,9 +5,12 @@ import sharp from "sharp";
 export const galerySharpOptim = async (file: File) => {
   try {
     const buffer = await file.arrayBuffer();
+    const metadata = await sharp(buffer).metadata();
     const optimizedBuffer = await sharp(buffer)
+      .rotate()
       .resize({ width: 1300 })
       .jpeg({ quality: 80 })
+      .withMetadata({ orientation: metadata.orientation })
       .toBuffer();
 
     const base64 = optimizedBuffer.toString("base64");
