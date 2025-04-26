@@ -42,18 +42,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-  export const revalidate = 5;
-  export const dynamicParams = true;
- 
- export async function generateStaticParams() {
-   const articles = await articlesSitemapFetch();
-   return articles.map((article) => {
-     return {
-       clanek: article.slug,
-     };
-   });
- }
- 
+export const revalidate = 5;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const articles = await articlesSitemapFetch();
+  return articles.map((article) => {
+    return {
+      clanek: article.slug,
+    };
+  });
+}
 
 const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
