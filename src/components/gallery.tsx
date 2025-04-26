@@ -18,6 +18,8 @@ export const Gallery = ({ gallery }: ProductGallery) => {
     setToggler(true);
   };
 
+  console.log(gallery);
+
   return (
     <>
       <div className="flex w-full px-4 pb-4 items-center justify-center">
