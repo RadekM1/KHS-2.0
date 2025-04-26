@@ -5,7 +5,6 @@ import { CommentComponent } from "./commentComponent";
 import { articleFetch } from "@/src/lib/server-functions/frontend/article-fetch";
 import { HeartFetchCover } from "./heartFetchCover";
 import type { Metadata } from "next";
-import { articlesSitemapFetch } from "@/src/lib/server-functions/frontend/sitemap-articles-fetch";
 
 type Props = {
   params: Promise<{ clanek: string }>;
@@ -42,17 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 5;
-export const dynamicParams = true;
+export const dynamic = "force-dynamic";
 
-export async function generateStaticParams() {
-  const articles = await articlesSitemapFetch();
-  return articles.map((article) => {
-    return {
-      clanek: article.slug,
-    };
-  });
-}
 
 const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const { clanek } = await params;
