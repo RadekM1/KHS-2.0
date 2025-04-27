@@ -9,6 +9,7 @@ const pool = new Pool({
   max: 40,
   connectionTimeoutMillis: 4000,
   idleTimeoutMillis: 30000,
+  statement_timeout: 4000,
   allowExitOnIdle: false,
 });
 

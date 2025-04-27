@@ -7,7 +7,7 @@ import { FcCalendar } from "react-icons/fc";
 import dayjs from "dayjs";
 import { LogoCloudPartners } from "../components/index/logo-cloud-partners";
 import { LogoCloudSponsors } from "../components/index/logo-cloud-sponsors";
-import { CalendarFrontEnd } from "@/src/components/index/calendar-frontend";
+import CalendarFrontEndCover from "@/src/components/index/calendar-frontend-cover";
 import { czMonths } from "@/src/static-objects/conts/dates";
 import type { Metadata } from "next";
 
@@ -80,7 +80,7 @@ export default function LandingPart() {
                 </div>
               </div>
               <div className="flex w-full">
-                <CalendarFrontEnd />
+                <CalendarFrontEndCover />
               </div>
             </div>
           </div>

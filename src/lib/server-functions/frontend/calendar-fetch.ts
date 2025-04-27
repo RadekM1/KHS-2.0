@@ -17,14 +17,14 @@ export const calendarFetch = async () => {
     });
     if (!(response.rowCount > 0)) {
       console.log(response);
-      return { ok: false, message: "nepodařilo se získat data" };
+      return [];
     }
 
     const data: CalendarEvents = eventsSchema.parse(response.rows);
-    return { ok: true, data: data };
+    return data;
   } catch (error) {
     console.log("zachycená chyba z kalendáře:", error);
-    return { ok: false, message: "nepodařilo se získat data" };
+    return [];
   } finally {
     sqlConnection.release();
   }
