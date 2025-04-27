@@ -2,15 +2,13 @@
 
 import { useSearchParams } from "next/navigation";
 import { BlogCard } from "./blog-card";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ResetBtn } from "../btns/resetBtn";
 import { PaginationComponent } from "../ui/pagination";
-import { handleChangePaginat } from "@/src/lib/functions/handleChangePaginat";
 import { CheckboxWithText } from "../ui/inputs/checkbox";
 import { ParsedPostCardSchema } from "@/src/schemas/queries/articles";
 import { categoryFilter } from "@/src/lib/functions/articles-category-filter";
 import { SearchField } from "../ui/inputs/search-field-controled";
-import { useMemo } from "react";
 import { useDebounce } from "use-debounce";
 
 export const ArticleList = ({
@@ -19,36 +17,41 @@ export const ArticleList = ({
   importedRows: ParsedPostCardSchema[];
 }) => {
   const [searchField, setSearchField] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [skaly, setSkaly] = useState(false);
-  const [hory, setHory] = useState(false);
-  const [oddil, setOddil] = useState(false);
-  const [ostatni, setOstatni] = useState(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [skaly, setSkaly] = useState<boolean>(true);
+  const [hory, setHory] = useState<boolean>(true);
+  const [oddil, setOddil] = useState<boolean>(true);
+  const [ostatni, setOstatni] = useState<boolean>(true);
+
   const searchParams = useSearchParams();
   const currentFilter = searchParams.get("filter");
   const rowsPerPage = 15;
-  const articleListCheckboxes = [
-    { label: "Hory", checked: hory, functionLabel: "hory" },
-    { label: "Skály", checked: skaly, functionLabel: "skaly" },
-    { label: "Oddíl", checked: oddil, functionLabel: "oddil" },
-    { label: "Ostatní", checked: ostatni, functionLabel: "ostatni" },
-  ];
-
-  const [debouncedSearch] = useDebounce(searchField, 1000);
 
   useEffect(() => {
     switch (currentFilter) {
       case "skaly":
         setSkaly(true);
+        setHory(false);
+        setOddil(false);
+        setOstatni(false);
         break;
       case "horolezectvi":
         setHory(true);
+        setSkaly(false);
+        setOddil(false);
+        setOstatni(false);
         break;
       case "oddil":
         setOddil(true);
+        setSkaly(false);
+        setHory(false);
+        setOstatni(false);
         break;
       case "ostatni":
         setOstatni(true);
+        setSkaly(false);
+        setHory(false);
+        setOddil(false);
         break;
       default:
         setSkaly(true);
@@ -56,25 +59,9 @@ export const ArticleList = ({
         setOddil(true);
         setOstatni(true);
     }
-  }, []);
+  }, [currentFilter]);
 
-  useEffect(() => {
-    const filter = importedRows.filter((row) => {
-      return categoryFilter(hory, skaly, oddil, ostatni, row);
-    });
-    const maxPage = Math.ceil(filter.length / rowsPerPage);
-    if (currentPage > maxPage) {
-      setCurrentPage(1);
-    }
-  }, [importedRows, currentPage, skaly, hory, oddil, ostatni]);
-
-  const HandleReset = () => {
-    setSkaly(true);
-    setHory(true);
-    setOddil(true);
-    setOstatni(true);
-    setSearchField("");
-  };
+  const [debouncedSearch] = useDebounce(searchField, 300);
 
   const filteredAndSearchedRows = useMemo(() => {
     let filtered = importedRows.filter((row) =>
@@ -92,7 +79,15 @@ export const ArticleList = ({
     }
 
     return filtered;
-  }, [importedRows, skaly, hory, oddil, ostatni, debouncedSearch]);
+  }, [importedRows, hory, skaly, oddil, ostatni, debouncedSearch]);
+
+  useEffect(() => {
+    const maxPage = Math.max(
+      1,
+      Math.ceil(filteredAndSearchedRows.length / rowsPerPage),
+    );
+    setCurrentPage((prev) => Math.min(prev, maxPage));
+  }, [filteredAndSearchedRows.length]);
 
   const startIndex = (currentPage - 1) * rowsPerPage;
   const paginatedRows = filteredAndSearchedRows.slice(
@@ -100,33 +95,49 @@ export const ArticleList = ({
     startIndex + rowsPerPage,
   );
 
+  const HandleReset = () => {
+    setSkaly(true);
+    setHory(true);
+    setOddil(true);
+    setOstatni(true);
+    setSearchField("");
+    setCurrentPage(1);
+  };
+
   const handleCheckbox = (checkbox: string) => {
     switch (checkbox) {
       case "skaly":
-        setSkaly(!skaly);
+        setSkaly((v) => !v);
         break;
       case "hory":
-        setHory(!hory);
+        setHory((v) => !v);
         break;
       case "oddil":
-        setOddil(!oddil);
+        setOddil((v) => !v);
         break;
       case "ostatni":
-        setOstatni(!ostatni);
+        setOstatni((v) => !v);
         break;
     }
   };
 
+  const articleListCheckboxes = [
+    { label: "Hory", checked: hory, functionLabel: "hory" },
+    { label: "Skály", checked: skaly, functionLabel: "skaly" },
+    { label: "Oddíl", checked: oddil, functionLabel: "oddil" },
+    { label: "Ostatní", checked: ostatni, functionLabel: "ostatni" },
+  ];
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex-col w-full flex lg:flex-row-reverse">
-        <div className="flex m-4 p-4 min-w-[250px] flex-col max-h-min py-10 gap-5 flex-shrink rounded border border-gray-200 bg-white px-5 shadow-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
+        <div className="flex m-4 p-4 min-w-[250px] flex-col py-10 gap-5 rounded border border-gray-200 bg-white shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
           <SearchField
             searchField={searchField}
             handleChange={(e) => setSearchField(e.target.value)}
           />
           <p>Filtr článků dle témat</p>
-          <div className="flex-row gap-4 mx-3 flex self-center">
+          <div className="flex flex-wrap gap-4 mx-3 self-center">
             {articleListCheckboxes.map((checkbox, i) => (
               <CheckboxWithText
                 key={i}
@@ -139,8 +150,9 @@ export const ArticleList = ({
           </div>
           <ResetBtn handleReset={HandleReset} />
         </div>
+
         <div className="flex flex-grow flex-col">
-          <div className="flex w-full min-w-[300px] min-h-[300px] flex-col justify-center text-center">
+          <div className="flex w-full min-w-[300px] flex-col justify-center text-center">
             {paginatedRows.map((item) => (
               <BlogCard key={item.slug} data={item} />
             ))}
@@ -149,8 +161,10 @@ export const ArticleList = ({
             rows={filteredAndSearchedRows}
             rowsPerPage={rowsPerPage}
             currentPage={currentPage}
-            handleChangePaginat={handleChangePaginat}
             setCurrentPage={setCurrentPage}
+            handleChangePaginat={(_, value, setCurrentPage) =>
+              setCurrentPage(value)
+            }
           />
         </div>
       </div>
