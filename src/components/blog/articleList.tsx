@@ -131,7 +131,7 @@ export const ArticleList = ({
   return (
     <div className="flex flex-col w-full">
       <div className="flex-col w-full flex lg:flex-row-reverse">
-        <div className="flex m-4 p-4 min-w-[250px] flex-col py-10 gap-5 rounded border border-gray-200 bg-white shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
+        <div className="flex m-4 p-4 min-w-[250px] max-h-[300px] flex-col py-10 gap-5 rounded border border-gray-200 bg-white shadow-lg hover:shadow-gray-400 dark:border-gray-600 dark:bg-[#1E1E1E] dark:hover:shadow-gray-800">
           <SearchField
             searchField={searchField}
             handleChange={(e) => setSearchField(e.target.value)}
