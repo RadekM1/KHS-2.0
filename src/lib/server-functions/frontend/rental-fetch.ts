@@ -9,7 +9,7 @@ export const getRentalsFrontEnd = async () => {
     const result = await executeQuery({
       sqlConnection,
       query: `SELECT 
-            id, item_name, member_rented, member_reserved, on_stock, pieces, reserved 
+            id, item_name, pieces
             FROM rental
               `,
     });

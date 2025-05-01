@@ -5,7 +5,6 @@ import ArraySort from "@/src/lib/functions/arraySort";
 import { SearchField } from "../ui/inputs/search-field-controled";
 import { ResetBtn } from "../btns/resetBtn";
 import { LinearProgressBar } from "../spinners/linear";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { rentalTableFrontendColumns } from "@/src/static-objects/table-columns/rental";
 import { TableHead } from "./table-head";
 import { TableFooter } from "./table-footer";
@@ -93,7 +92,7 @@ export const RentalTableFrontend = () => {
   );
 
   return (
-    <div className="w-full flex-grow bg-white  dark:bg-zinc-700">
+    <div className="w-full px-4 flex-grow bg-white  dark:bg-zinc-700">
       {rowsLoading && <LinearProgressBar />}
       <div className="flex flex-col overflow-hidden md:flex-row">
         <div className="m-4">
@@ -118,32 +117,11 @@ export const RentalTableFrontend = () => {
                 className="dark:hover:bg-gray border-b text-start dark:text-white text-black text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50   dark:even:bg-zinc-700 md:text-sm"
               >
                 <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.id}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   {row.item_name}
                 </td>
 
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                <td className="max-w whitespace-normal border-[1px] w-[80px]  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   {row.pieces}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.on_stock ? (
-                    <FaThumbsUp className="h-5 w-5 text-green-700 dark:text-green-400" />
-                  ) : (
-                    <FaThumbsDown className="h-5 w-5 text-red-700 dark:text-red-400" />
-                  )}
-                </td>
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.reserved ? (
-                    <span className="text-red-700 dark:text-green-400">
-                      ANO
-                    </span>
-                  ) : (
-                    <span className="text-green-700 dark:text-red-400">NE</span>
-                  )}
                 </td>
               </tr>
             ))}

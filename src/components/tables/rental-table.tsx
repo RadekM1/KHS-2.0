@@ -7,7 +7,6 @@ import { ResetBtn } from "../btns/resetBtn";
 import { MdDeleteForever } from "react-icons/md";
 import { LinearProgressBar } from "../spinners/linear";
 import { CiEdit } from "react-icons/ci";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { rentalTableColumns } from "@/src/static-objects/table-columns/rental";
 import { TableHead } from "./table-head";
 import { TableFooter } from "./table-footer";
@@ -30,15 +29,16 @@ export const RentalTable = () => {
   const [idToEdit, setIdToEdit] = useState<number>(0);
   const [productName, setProductName] = useState<string>("");
   const [pieces, setPieces] = useState<number>(0);
-  const [onStock, setOnStock] = useState<boolean>(false);
-  const [isReserved, setIsReserved] = useState<boolean>(false);
-  const [whoReserved, setWhoResereved] = useState<string>("");
-  const [whoRented, setWhoRented] = useState<string>("");
 
   interface SearchChangeEvent {
     target: {
       value: string;
     };
+  }
+
+  interface ProductChangeValues {
+    productName: string;
+    pieces: string;
   }
 
   useEffect(() => {
@@ -79,20 +79,13 @@ export const RentalTable = () => {
       return;
     }
     setRowsLoading(true);
-    const response = await updateRentalItem(
-      productName,
-      pieces,
-      isReserved,
-      onStock,
-      whoRented,
-      whoReserved,
-      idToEdit,
-    );
+    const response = await updateRentalItem(productName, pieces, idToEdit);
     if (!response.ok) {
       toast.error(response.message);
       setRowsLoading(false);
       return;
     }
+    toast.success(response.message);
     setEditActive(false);
     fetchData();
     handleResetForm();
@@ -105,19 +98,13 @@ export const RentalTable = () => {
       return;
     }
     setRowsLoading(true);
-    const response = await createRentalItem(
-      productName,
-      pieces,
-      isReserved,
-      onStock,
-      whoRented,
-      whoReserved,
-    );
+    const response = await createRentalItem(productName, pieces);
     if (!response.ok) {
       toast.error(response.message);
       setRowsLoading(false);
       return;
     }
+    toast.success(response.message);
     fetchData();
     handleResetForm();
     setRowsLoading(false);
@@ -171,15 +158,6 @@ export const RentalTable = () => {
     startIndex + rowsPerPage,
   );
 
-  interface ProductChangeValues {
-    productName: string;
-    pieces: string;
-    onStock: string;
-    isReserved: string;
-    whoReserved: string;
-    whoRented: string;
-  }
-
   type ProductChangeId = keyof ProductChangeValues;
 
   const handleProductChange = (e: string, id: ProductChangeId): void => {
@@ -197,26 +175,6 @@ export const RentalTable = () => {
           setPieces(parseInt(tempE));
         }
         break;
-      case "onStock":
-        {
-          setOnStock(tempE === "true");
-        }
-        break;
-      case "isReserved":
-        {
-          setIsReserved(tempE === "true");
-        }
-        break;
-      case "whoReserved":
-        {
-          setWhoResereved(tempE);
-        }
-        break;
-      case "whoRented":
-        {
-          setWhoRented(tempE);
-        }
-        break;
       default:
         break;
     }
@@ -226,32 +184,21 @@ export const RentalTable = () => {
     const tempId = rowId;
     const row = rows.find((row) => tempId === row.id);
     if (!row) return;
-    const rentedPerson = row.member_rented === null ? "" : row.member_rented;
-    const reservedPerson =
-      row.member_reserved === null ? "" : row.member_reserved;
 
     setEditActive(true);
     setIdToEdit(row.id);
     setProductName(row.item_name);
     setPieces(row.pieces);
-    setOnStock(row.on_stock);
-    setIsReserved(row.reserved);
-    setWhoResereved(reservedPerson);
-    setWhoRented(rentedPerson);
   };
 
   const handleResetForm = () => {
     setIdToEdit(0);
     setProductName("");
     setPieces(0);
-    setOnStock(false);
-    setIsReserved(false);
-    setWhoResereved("");
-    setWhoRented("");
   };
 
   return (
-    <div className="w-full flex-grow bg-white  dark:bg-zinc-700">
+    <div className="w-full flex-grow px-1 md:px-4 bg-white  dark:bg-zinc-700">
       {rowsLoading && <LinearProgressBar />}
       <div className="flex flex-col overflow-hidden md:flex-row">
         <div className="m-4">
@@ -274,16 +221,6 @@ export const RentalTable = () => {
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <input
                   type="text"
-                  placeholder="ID"
-                  className="h-8 w-full  rounded border"
-                  disabled
-                  value={idToEdit}
-                />
-              </td>
-
-              <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                <input
-                  type="text"
                   placeholder="Zadejte název"
                   className="h-8 w-full min-w-32 dark:bg-zinc-600 rounded border  "
                   onChange={(event) =>
@@ -293,7 +230,6 @@ export const RentalTable = () => {
                   disabled={rowsLoading}
                 />
               </td>
-
               <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                 <input
                   type="number"
@@ -303,58 +239,6 @@ export const RentalTable = () => {
                     handleProductChange(event.target.value, "pieces")
                   }
                   value={pieces}
-                  disabled={rowsLoading}
-                />
-              </td>
-
-              <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                <select
-                  className="h-8 w-full dark:bg-zinc-600 min-w-20 rounded border  "
-                  onChange={(event) =>
-                    handleProductChange(event.target.value, "onStock")
-                  }
-                  value={String(onStock)}
-                  disabled={rowsLoading}
-                >
-                  <option value="true">Ano</option>
-                  <option value="false">Ne</option>
-                </select>
-              </td>
-
-              <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                <select
-                  className="h-8 w-full dark:bg-zinc-600 min-w-20 rounded border  "
-                  onChange={(event) =>
-                    handleProductChange(event.target.value, "isReserved")
-                  }
-                  value={String(isReserved)}
-                  disabled={rowsLoading}
-                >
-                  <option value="true">Ano</option>
-                  <option value="false">Ne</option>
-                </select>
-              </td>
-
-              <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                <input
-                  type="text"
-                  className="h-8 w-full min-w-24 dark:bg-zinc-600 rounded border px-1  "
-                  onChange={(event) =>
-                    handleProductChange(event.target.value, "whoReserved")
-                  }
-                  value={whoReserved}
-                  disabled={rowsLoading}
-                />
-              </td>
-
-              <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                <input
-                  type="text"
-                  className="h-8 w-full min-w-24 dark:bg-zinc-600 rounded border px-1  "
-                  onChange={(event) =>
-                    handleProductChange(event.target.value, "whoRented")
-                  }
-                  value={whoRented}
                   disabled={rowsLoading}
                 />
               </td>
@@ -407,44 +291,13 @@ export const RentalTable = () => {
                 className="dark:hover:bg-gray border-b text-start dark:text-white text-black text-xs odd:bg-white dark:odd:bg-zinc-800 even:bg-gray-100 hover:bg-gray-50   dark:even:bg-zinc-700 md:text-sm"
               >
                 <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.id}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   {row.item_name}
                 </td>
 
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                <td className="max-w whitespace-normal border-[1px] w-[80px]  py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   {row.pieces}
                 </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.on_stock ? (
-                    <FaThumbsUp className="h-5 w-5 text-green-700 dark:text-green-400" />
-                  ) : (
-                    <FaThumbsDown className="h-5 w-5 text-red-700 dark:text-red-400" />
-                  )}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.reserved ? (
-                    <span className="text-red-700 dark:text-green-400">
-                      ANO
-                    </span>
-                  ) : (
-                    <span className="text-green-700 dark:text-red-400">NE</span>
-                  )}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.member_reserved}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
-                  {row.member_rented}
-                </td>
-
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                <td className="max-w whitespace-normal border-[1px]  w-[80px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   <button
                     disabled={rowsLoading}
                     onClick={() => handleDel(row.id)}
@@ -458,7 +311,7 @@ export const RentalTable = () => {
                     />
                   </button>
                 </td>
-                <td className="max-w whitespace-normal border-[1px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
+                <td className="max-w whitespace-normal border-[1px] w-[80px]   py-2 text-xs   md:mx-2 md:px-2 md:text-sm">
                   <button
                     disabled={rowsLoading}
                     onClick={() => handleProductEdit(row.id)}

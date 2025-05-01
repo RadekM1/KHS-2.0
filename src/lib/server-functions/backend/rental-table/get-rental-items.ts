@@ -8,7 +8,9 @@ export const getRentals = async () => {
   try {
     const result = await executeQuery({
       sqlConnection,
-      query: `SELECT * FROM rental
+      query: `SELECT 
+      id, item_name, pieces
+      FROM rental
               `,
     });
     if (!(result.rowCount > 0)) {

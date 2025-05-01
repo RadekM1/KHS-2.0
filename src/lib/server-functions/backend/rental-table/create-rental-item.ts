@@ -3,33 +3,15 @@
 import pool from "@/src/lib/connection-adapters/pool";
 import { executeQuery } from "@/src/lib/connection-adapters/db";
 
-export const createRentalItem = async (
-  productName: string,
-  pieces: number,
-  isReserved: boolean,
-  onStock: boolean,
-  whoRented: string,
-  whoReserved: string,
-) => {
+export const createRentalItem = async (productName: string, pieces: number) => {
   const sqlConnection = await pool.connect();
   try {
-    const isReservedNum = isReserved ? 1 : 0;
-    const onStockNum = onStock ? 1 : 0;
-
     const sqlConnection = await pool.connect();
 
     const result = await executeQuery({
       sqlConnection,
-      query:
-        "INSERT INTO rental (item_name, pieces, reserved, on_stock, member_reserved, member_rented) VALUES ($1, $2, $3, $4, $5, $6)",
-      values: [
-        productName,
-        pieces,
-        isReservedNum,
-        onStockNum,
-        whoReserved,
-        whoRented,
-      ],
+      query: "INSERT INTO rental (item_name, pieces) VALUES ($1, $2)",
+      values: [productName, pieces],
     });
 
     if (!(result.rowCount > 0)) {
