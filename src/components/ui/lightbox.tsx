@@ -47,6 +47,10 @@ const LightBox = ({ input, active, toggler, setToggler }: lightBoxProps) => {
         close={() => setToggler(false)}
         slides={filteredInput}
         index={active}
+        captions={{
+          descriptionTextAlign: "center",
+          descriptionMaxLines: 5,
+        }}
         plugins={[Fullscreen, Captions, Video]}
         controller={{ closeOnBackdropClick: true }}
         styles={{

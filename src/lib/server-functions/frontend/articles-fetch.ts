@@ -40,7 +40,7 @@ export const articlesCardFetch = async () => {
       GROUP BY 
         a.slug, a.title, a.created_time, a.description, a.thumbnail, a.category, u.account, a.nickname, u.avatar, a.article_id
       ORDER BY a.article_id DESC
-      LIMIT 3;
+      LIMIT 4;
       `,
     });
 
