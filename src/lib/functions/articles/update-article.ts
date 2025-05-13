@@ -70,9 +70,9 @@ export const handleArticleChange = async (
     newThumbnail = allInGallery[0].file;
   }
 
-  if (allInGallery && allInGallery.length > 60) {
+  if (allInGallery && allInGallery.length > 100) {
     toast.error(
-      "maximální počet obrázků v galerii je 60, dle uvážení některé odeberte",
+      "maximální počet obrázků v galerii je 100, dle uvážení některé odeberte",
     );
     return;
   }
