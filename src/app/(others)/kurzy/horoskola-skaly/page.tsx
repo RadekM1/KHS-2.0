@@ -178,13 +178,13 @@ export default function page() {
           situacích. Je to sport, který kombinuje pohyb, myšlení a důvěru ve
           vlastní schopnosti i ve své lezecké parťáky.
         </p>
-        <div className="w-full flex flex-col text-start py-10 rounded-xl my-12 dark:bg-zinc-800 bg-gray-100">
-          <div className="w-full ml-10 italic text-gray-400 flex flex-col border-l-[1px] border-gray-600">
-            <span className="px-10">
+        <div className="w-full flex flex-col text-start py-2 md:py-10 rounded-xl my-12 dark:bg-zinc-800 bg-gray-100">
+          <div className="w-full md:ml-10 italic text-gray-400 flex flex-col md:border-l-[1px] border-gray-600">
+            <span className="md:px-10 px-2">
               Ruce se trochu klepou, nohy ještě hledají balanc. První expreska
               cvaknutá, dýcháš. Parťák dole jistí. „Máááš to!“{" "}
             </span>
-            <span className="px-10">
+            <span className="md:px-10 px-2">
               Zbytek už leze jen tvá hlava. Je to tady. Tvoje první cesta.
             </span>
           </div>
@@ -197,6 +197,16 @@ export default function page() {
         </p>
         <Gallery gallery={rockCourseGallery} />
       </article>
+      <div className="w-full relative flex">
+        <img
+          className="w-full"
+          src="https://storage.googleapis.com/khs-zlin/others/moutain-vector.svg"
+          alt="grafika hory"
+        />
+        <h2 className="mt-20 bottom-0 left-0 text-gray-400 absolute mb-10 font-bold text-2xl md:text-4xl">
+          #KHSZLINCREW
+        </h2>
+      </div>
     </section>
   );
 }
