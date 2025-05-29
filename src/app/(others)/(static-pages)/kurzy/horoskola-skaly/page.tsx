@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function page() {
   return (
     <section className="w-full px-2 md:px-6 lg:px-10 flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">
-      <h1 className="items-center my-10 font-bold text-2xl md:text-4xl">
+      <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         HOROŠKOLA SKÁLY
       </h1>
       <article className="border-t-[1px] pt-6 w-full overflow-hidden dark:border-b-gray-700">
@@ -64,15 +64,15 @@ export default function page() {
               rok.
             </p>
           </div>
-          <div className="flex pl-0 justify-center md:pl-4 md:min-w-[300px] md:w-full">
+          <div className="flex pl-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
             <img
               className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
-              src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/skaly-kurz/kurz-skaly-text.png"
+              src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/skaly-kurz/kurz-skaly.png"
               alt="obrázek lezení skály"
             />
           </div>
         </div>
-        <h2 className="items-center my-16 lg:my-24  font-bold text-2xl md:text-3xl">
+        <h2 className="items-center mt-20 mb-10 lg:mt-32  font-bold text-2xl md:text-3xl">
           Co tě čeká?
         </h2>
         <p className="mt-8 my-6 text-start">
@@ -98,7 +98,7 @@ export default function page() {
             ozve: „Co tady hergot dělám?!“
           </li>
         </ul>
-        <div className="w-full flex flex-col py-10 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
+        <div className="w-full flex flex-col md:py-10 lg:py-16 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
           <h2 className="items-center pb-10 lg:pb-16 font-bold text-2xl md:text-3xl">
             Praktické informace
           </h2>
@@ -128,7 +128,7 @@ export default function page() {
               26 let 4.000 Kč
             </li>
           </ul>
-          <div className="w-full pl-6 md:pl-16 flex text-start md:justify-between leading-loose font-semibold flex-col md:flex-row">
+          <div className="w-full pl-6 gap-6 my-6 md:pl-16 flex text-start md:justify-between leading-loose font-semibold flex-col md:flex-row">
             <div>
               <span className="text-orange-400 ">
                 Tak co kamzíku, chceš taky zkusit viset na štandu a nejen na
@@ -137,9 +137,9 @@ export default function page() {
               <br />
               Těšíme se na tebe. Hore zdar!
             </div>
-            <div className="mx-16 text-nowrap">
+            <div className="mx-0 md:mx-16  flex justify-center text-nowrap">
               <a
-                className="bg-orange-400 text-white p-3 px-8 rounded-full transition-all duration-500 ease-in-out hover:bg-orange-600"
+                className="bg-orange-400 text-white flex self-center py-2 px-8 rounded-full transition-all duration-500 ease-in-out hover:bg-orange-600"
                 target="blank"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSeFqp3X_hDj2-pc1Au_3CxOxgVXS6jFVH3SNfXtcwrch6sVHA/closedform"
               >
@@ -148,7 +148,7 @@ export default function page() {
             </div>
           </div>
         </div>
-        <h2 className="my-20 lg:my-28 font-bold text-2xl md:text-3xl">
+        <h2 className="mt-24 mb-10 lg:mt-32 font-bold text-2xl md:text-3xl">
           Co je to vlastně skalní lezení?
         </h2>
         <p className="my-16  text-start text-base">

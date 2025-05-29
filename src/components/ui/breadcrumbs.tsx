@@ -9,7 +9,7 @@ export const Breadcrumbs = () => {
   const pathNames = pathName.split("/").filter((path) => path);
 
   return (
-    <div className=" mx-auto  flex w-full max-w-screen-xl flex-grow flex-row justify-start  border-b-gray-300 px-2 dark:border-b-gray-600 dark:text-gray-500 sm:px-6 md:px-8 lg:px-4">
+    <div className=" mx-auto mt-1 flex w-full max-w-screen-xl flex-grow flex-row justify-start  border-b-gray-300 px-2 dark:border-b-gray-600 dark:text-gray-500 sm:px-6 md:px-8 lg:px-4">
       <div className="flex items-center">
         <Link href="/">
           {" "}

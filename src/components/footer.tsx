@@ -124,7 +124,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-2 flex col-span-2 w-full justify-end border-t-[1px] border-t-gray-300 bg-slate-100 text-gray-400 hover:text-orange-600 dark:border-t-gray-600 dark:bg-[#121212] dark:hover:text-orange-200">
+      <div className="mt-2 flex col-span-2 w-full justify-end border-t-[1px] border-t-gray-300 bg-slate-100 text-gray-400 dark:text-gray-200 hover:text-orange-600 dark:border-t-gray-600 dark:bg-[#121212] dark:hover:text-orange-200">
         <a
           href="https://www.radekmorong.cz"
           target="_blank"
