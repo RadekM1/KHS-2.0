@@ -12,7 +12,7 @@ export default function Layout({
       {children}
       <div className="w-full flex">
         <img
-          className="w-full"
+          className="w-full dark:brightness-[.25]"
           src="https://storage.googleapis.com/khs-zlin/others/moutain-vector.svg"
           alt="grafika hory"
         />
