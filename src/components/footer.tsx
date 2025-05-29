@@ -23,7 +23,7 @@ export const Footer = () => {
   const secondHalfMenu = menuObject.slice(3);
 
   return (
-    <div className="flex w-full flex-col items-center border-t-gray-300 bg-gray-100 text-gray-700 dark:border-t-gray-500 dark:bg-[#121212] dark:text-white">
+    <div className="flex w-full flex-col items-center border-t-gray-300 bg-gray-100 text-gray-700 dark:border-t-gray-500 dark:bg-zinc-950 dark:text-white">
       <div className="my-5 w-full max-w-screen-lg px-4 lg:px-0">
         <div className="grid grid-cols-1 justify-center  gap-4 md:grid-cols-2">
           <div className="m-2">

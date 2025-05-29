@@ -16,8 +16,8 @@ import { IoLibraryOutline } from "react-icons/io5";
 import { TbMoodBoy } from "react-icons/tb";
 import { GoThumbsup } from "react-icons/go";
 
-import { FaPeopleGroup, FaHillAvalanche, FaListCheck } from "react-icons/fa6";
-import { FaIcicles, FaRegSnowflake } from "react-icons/fa";
+import { FaPeopleGroup, FaListCheck } from "react-icons/fa6";
+import { FaRegSnowflake } from "react-icons/fa";
 
 export const menuObject = [
   {
@@ -87,18 +87,6 @@ export const menuObject = [
         label: "Horoškola - vícedélky",
         link: "/kurzy/horoskola-vicedelky",
         icon: GiMountainClimbing,
-        isVisible: true,
-      },
-      {
-        label: "Lavinová prevence",
-        link: "/kurzy/lavinova-prevence",
-        icon: FaHillAvalanche,
-        isVisible: true,
-      },
-      {
-        label: "Lezení v ledu",
-        link: "/kurzy/lezeni-v-ledu",
-        icon: FaIcicles,
         isVisible: true,
       },
       {
