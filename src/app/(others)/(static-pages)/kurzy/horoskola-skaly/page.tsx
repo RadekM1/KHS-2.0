@@ -72,7 +72,7 @@ export default function page() {
             />
           </div>
         </div>
-        <h2 className="items-center my-16 font-bold text-2xl md:text-3xl">
+        <h2 className="items-center my-16 lg:my-24  font-bold text-2xl md:text-3xl">
           Co tě čeká?
         </h2>
         <p className="mt-8 my-6 text-start">
@@ -99,7 +99,7 @@ export default function page() {
           </li>
         </ul>
         <div className="w-full flex flex-col py-10 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
-          <h2 className="items-center pb-10 font-bold text-2xl md:text-3xl">
+          <h2 className="items-center pb-10 lg:pb-16 font-bold text-2xl md:text-3xl">
             Praktické informace
           </h2>
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
@@ -148,7 +148,7 @@ export default function page() {
             </div>
           </div>
         </div>
-        <h2 className="my-20 font-bold text-2xl md:text-3xl">
+        <h2 className="my-20 lg:my-28 font-bold text-2xl md:text-3xl">
           Co je to vlastně skalní lezení?
         </h2>
         <p className="my-16  text-start text-base">
@@ -189,24 +189,11 @@ export default function page() {
             </span>
           </div>
         </div>
-        <h2 className="mt-20 mb-10 font-bold text-2xl md:text-3xl">
+        <h2 className="mt-20 lg:mt-28 mb-10 font-bold text-2xl md:text-3xl">
           Fotky z kurzu
         </h2>
-        <p className="text-start text-base">
-          Mrkni na pár fotek, nasaj atmošku a přidej se k nám. :-)
-        </p>
         <Gallery gallery={rockCourseGallery} />
       </article>
-      <div className="w-full relative flex">
-        <img
-          className="w-full"
-          src="https://storage.googleapis.com/khs-zlin/others/moutain-vector.svg"
-          alt="grafika hory"
-        />
-        <h2 className="mt-20 bottom-0 left-0 text-gray-400 absolute mb-10 font-bold text-2xl md:text-4xl">
-          #KHSZLINCREW
-        </h2>
-      </div>
     </section>
   );
 }
