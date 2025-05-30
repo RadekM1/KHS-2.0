@@ -29,13 +29,13 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <section className="w-full px-2 md:px-6 lg:px-10 flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">
+    <section className="w-full px-1 md:px-6 lg:px-10 flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">
       <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         VYPRÁVĚNÍ O HOROLEZECKÝCH ZAČÁTCÍCH
       </h1>
       <article className="border-t-[1px] dark:border-b-gray-700 w-full overflow-hidden">
-        <div className="w-full flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-16">
-          <div className="flex flex-col p-6 md:p-8 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
+        <div className="w-full flex flex-col md:py-10 lg:py-16 p-1 lg:p-6 my-16">
+          <div className="flex flex-col p-3 md:p-8 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
             <h2 className="items-center mt-6 w-full text-center text-orange-400 dark:text-orange-300 font-bold text-xl md:text-2xl mb-8">
               Horolezecké začátky a založení oddílu (1944)
             </h2>

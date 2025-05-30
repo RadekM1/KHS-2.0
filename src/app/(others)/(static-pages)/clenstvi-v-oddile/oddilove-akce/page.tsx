@@ -20,7 +20,7 @@ export default function page() {
       <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         ODDÍLOVÉ AKCE
       </h1>
-      <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
+      <article className="prose prose-gray dark:prose-invert w-full px-2 md:px-4 overflow-hidden text-start dark:border-b-gray-700">
         <p className="text-start md:text-center">
           Horolezci, horolezkyně a horolezčata!{" "}
           <span className="font-semibold text-orange-400 dark:text-orange-300">
@@ -35,8 +35,8 @@ export default function page() {
           </span>
           Ať je teplo nebo mráz, pořád se něco děje.
         </p>
-        <div className="w-full  flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-24 ">
-          <div className="flex flex-col p-2 md:p-6 w-full text-center md:text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
+        <div className="w-full  flex flex-col md:py-10 lg:py-16 p-1 lg:p-6 my-24 ">
+          <div className="flex flex-col p-1 md:p-6 w-full text-center md:text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
             {clubEvents.map((clubEvent, i) => {
               return (
                 <div key={i}>

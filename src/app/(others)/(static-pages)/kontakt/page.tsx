@@ -30,7 +30,7 @@ export default function page() {
         </p>
 
         <div className="w-full flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-12">
-          <div className="flex flex-col md:flex-row gap-5 lg:gap-10 p-2 lg:p-6 w-full text-center md:text-start  items-start  justify-start">
+          <div className="flex flex-col md:flex-row items-center gap-5 lg:gap-10 p-2 lg:p-6 w-full text-center md:text-start  md:items-start  justify-start">
             <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
               <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ZÁKLADNÍ INFORMACE</span>
@@ -65,9 +65,7 @@ export default function page() {
 
             <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-10 py-5">
               <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
-                <span className="lg:ml-2 dark:text-orange-300">
-                  ODDÍLOVÉ KONTAKTY
-                </span>
+                <span className="dark:text-orange-300">ODDÍLOVÉ KONTAKTY</span>
               </h2>
               <div className="mt-6 text-start ml-1">
                 <p>
@@ -96,10 +94,10 @@ export default function page() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-5 lg:gap-10 p-2 lg:p-6 w-full text-center md:text-start  items-start  justify-start">
+          <div className="flex flex-col md:flex-row gap-5 lg:gap-10 p-2 mt-1 lg:p-6 w-full text-center md:text-start items-center  md:items-start  justify-start">
             <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
               <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
-                <span className="lg:ml-2 dark:text-orange-300">HOROŠKOLA</span>
+                <span className=" dark:text-orange-300">HOROŠKOLA</span>
               </h2>
               <div className="mt-6 text-start ml-1">
                 <p>
@@ -114,9 +112,7 @@ export default function page() {
 
               <div>
                 <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
-                  <span className="lg:ml-2 dark:text-orange-300">
-                    CHATA NA LUKOVĚ
-                  </span>
+                  <span className=" dark:text-orange-300">CHATA NA LUKOVĚ</span>
                 </h2>
                 <div className="mt-6 text-start ml-1">
                   <p>
@@ -134,7 +130,7 @@ export default function page() {
 
               <div>
                 <h2 className="items-center mt-10 text-2xl md:text-3xl">
-                  <span className="lg:ml-2 font-semibold dark:text-orange-300">
+                  <span className="font-semibold dark:text-orange-300">
                     KNIHOVNA PRŮVODCŮ
                   </span>
                 </h2>
@@ -154,9 +150,7 @@ export default function page() {
             </div>
             <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
               <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
-                <span className="lg:ml-2 dark:text-orange-300">
-                  OSTATNÍ KONTAKTY
-                </span>
+                <span className=" dark:text-orange-300">OSTATNÍ KONTAKTY</span>
               </h2>
               <ul className="list-disc leading-tight mt-6 space-y-5 pb-10 pl-8 md:pl-10 text-start">
                 <li>
