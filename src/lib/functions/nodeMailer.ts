@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-import { base64Logo } from "@/src/static-objects/objects/base64-khs-logo";
 
 export default async function nodeMailer(
   to: string,
@@ -29,9 +28,6 @@ export default async function nodeMailer(
         <strong>KHS TEAM</strong>
         <br>
         <br>
-        <img src="${base64Logo}" 
-             alt="KHS Logo" 
-             style="max-width: 200px; height: auto;" />
       </p>
     `;
 
@@ -44,5 +40,6 @@ export default async function nodeMailer(
     });
   } catch (error) {
     console.log("Chyba při odeslání emailu:", error);
+    throw new Error("Chyba při odeslání emailu");
   }
 }
