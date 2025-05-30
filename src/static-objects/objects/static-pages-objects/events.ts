@@ -5,12 +5,12 @@ export const clubEvents = [
       "Pravidelně organizujeme lezecké oddílovky v zahraničí, často i mimo hlavní sezónu.",
     bullets: [
       {
-        bold: "Skály a vícedélky -",
+        bold: "Skály a vícedélky - ",
         text: "kamkoliv za pěkným počasím autem nebo letecky",
       },
       {
-        bold: "Hory -",
-        text: " kamkoliv za pěkným počasím autem nebo letecky",
+        bold: "Hory - ",
+        text: "kamkoliv za pěkným počasím autem nebo letecky",
       },
     ],
   },
@@ -19,20 +19,20 @@ export const clubEvents = [
     summary: "Veškeré info o jednotlivých kurzech najdeš v sekci Kurzy.",
     bullets: [
       {
-        bold: "Skály -",
+        bold: "Skály - ",
         text: "základní kurz",
       },
       {
-        bold: "Vícedélkové lezení -",
-        text: " navazující kurz",
+        bold: "Vícedélkové lezení - ",
+        text: "navazující kurz",
       },
       {
-        bold: "Zimní lezení -",
-        text: " navazující kurz",
+        bold: "Zimní lezení - ",
+        text: "navazující kurz",
       },
       {
-        bold: "Horokruh -",
-        text: " lezecký kroužek pro děti",
+        bold: "Horokruh - ",
+        text: "lezecký kroužek pro děti",
       },
     ],
   },

@@ -12,12 +12,12 @@ interface CourseCardProps {
 
 export const CourseCard = ({ cards }: CourseCardProps) => {
   return (
-    <div className="flex flex-wrap gap-2 md:gap-10 justify-center  w-full">
+    <div className="flex flex-wrap gap-2 md:gap-6 justify-center  w-full">
       {cards.map((card, i) => {
         return (
           <Link
             key={i}
-            className="p-2 md:p-4 group  rounded-xl bg-white dark:bg-zinc-900  hover:bg-gray-300 hover:ease-in-out hover:duration-300  hover:text-white flex flex-col w-[45%] lg:w-[20%] text-center"
+            className="p-2 md:p-4 group  rounded-xl bg-white dark:bg-zinc-900  hover:bg-gray-300 hover:ease-in-out hover:duration-300  hover:text-white flex flex-col w-[48%] lg:w-[23%] text-center"
             href={card.link}
           >
             <div className="w-full">
@@ -37,7 +37,7 @@ export const CourseCard = ({ cards }: CourseCardProps) => {
               </div>
               <div className=" py-4 group-hover:text-orange-600 dark:group-hover:text-orange-300 text-start flex flex-col self-center items-center">
                 <p className="font-semibold underline">{card.title}</p>
-                <p className="mt-4">{card.summary}</p>
+                <p className="mt-4 text-sm md:text-base">{card.summary}</p>
               </div>
             </div>
           </Link>

@@ -35,27 +35,23 @@ export default function page() {
       <article className="border-t-[1px] pt-16 lg:pt-24 w-full overflow-hidden dark:border-b-gray-700">
         <div className="w-full flex leading-loose flex-col md:flex-row">
           <div className="text-start">
-            Tak jo, kamzíku. Víš, jak se jistí u stěny a jak postavit štand.{" "}
-            <span className="font-semibold">
-              Víš ale, co dělá sníh, když ho napadne moc? A co když se terén
-              změní v ledový vodopád? Nebo tě překvapí návěj, vítr a zmrzlý
-              svah?
+            Tak jo, kamzíku. Základní kurz máš za sebou a chuť lézt dál? Paráda!{" "}
+            V tomto navazujícím kurzu tě čekají{" "}
+            <span className="font-semibold text-orange-400 dark:text-orange-300">
+              výstupy, které nekončí jednou lanovou délkou{" "}
             </span>
-            Zimní hory nejsou jen krásné. Znamenají lavinové svahy, zmrzlé
-            skály, led, promrzlé prsty a rozhodnutí, která umí zachránit život.
+            ale vedou až k vrcholům.{" "}
             <p className="mt-10">
-              <span className="font-semibold text-orange-400 dark:text-orange-300">
-                Tento kurz tě vezme do zimního terénu,
-              </span>{" "}
-              kde se naučíš, jak přežít a fungovat bezpečně. Budeš plánovat
-              túry, lézt v ledu, kopat cepínem, vyhledávat v lavině a zvládat
-              krizovky s chladnou hlavou.
+              <span className="font-semibold">
+                Čeká tě víc délek, víc výšky a víc zážitků.{" "}
+              </span>
+              Ať už v rakouských Alpách nebo na tatranské žule, podle podmínek a
+              počasí.
             </p>
-            <p className="mt-10">...když visíš pár set metrů nad zemí.</p>
           </div>
-          <div className="flex pl-0 mt-10 md:mt-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
+          <div className="flex pl-0 mt-10 md:mt-0 justify-center md:pl-6  md:min-w-[300px] md:w-full">
             <img
-              className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
+              className="max-w-[400px] md:w-full self-start flex rounded-xl object-contain "
               src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/vicedelky-kurz/vicedelky.png"
               alt="obrázek lezení skály vícedélky"
             />
@@ -88,8 +84,8 @@ export default function page() {
               základního skalního kurzu
             </li>
             <li>
-              <span className="font-semibold">Místo konání:</span> Rakousko alpy
-              nebo Slovensko tatry
+              <span className="font-semibold">Místo konání:</span> Rakousko Alpy
+              nebo Slovensko Tatry
             </li>
             <li>
               <span className="font-semibold">Termín:</span> Standardně v

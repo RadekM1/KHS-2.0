@@ -27,16 +27,18 @@ export default function page() {
       <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         HOROŠKOLA
       </h1>
-      <article className="border-t-[1px] mt-5 flex flex-col pt-16 lg:pt-24 w-full overflow-hidden dark:border-b-gray-700">
+      <article className="border-t-[1px] flex flex-col pt-12 lg:pt-16 w-full overflow-hidden dark:border-b-gray-700">
         <p className="italic">
           „Horolezci, horolezkyně, horolezčata... Nelezte na skálu, co je hodně
           špičatá.“
         </p>
         <p className="mt-3">
           Radši pojď lézt s náma.{" "}
-          <span className="font-semibold">Pořádně, bezpečně a s rozumem.</span>
+          <span className="font-semibold dark:text-orange-300">
+            Pořádně, bezpečně a s rozumem.
+          </span>
         </p>
-        <h2 className="mt-10 mb-10 lg:mt-16  text-xl md:text-2xl text-orange-400 dark:text-orange-300 font-semibold">
+        <h2 className="mt-10 mb-10 lg:mt-16  text-base md:text-xl text-orange-400 dark:text-orange-300 font-semibold">
           STAŇ SE LEZCEM NEBO HOROLEZCEM POD VEDENÍM ZKUŠENÝCH INSTRUKTORŮ.
         </h2>
         <div className="w-full flex mt-5 leading-loose flex-col md:flex-row">
