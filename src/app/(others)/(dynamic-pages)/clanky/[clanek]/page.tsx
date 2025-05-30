@@ -65,7 +65,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         {article.title}
       </h1>
       <header className="flex w-full px-4 flex-row">
-        <div className="mb-4 bg-gray-100 p-6 rounded-xl gap-4 flex flex-shrink flex-col text-start">
+        <div className="mb-4 bg-gray-100 dark:bg-zinc-700 p-6 rounded-xl gap-4 flex flex-shrink flex-col text-start">
           <div className="text-xs md:text-sm">
             <div className="flex flex-row">
               <div className="mr-2">
