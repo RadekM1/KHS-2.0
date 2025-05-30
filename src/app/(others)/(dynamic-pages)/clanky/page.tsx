@@ -1,7 +1,5 @@
 import { ArticleList } from "@/src/components/blog/articleList";
-import { GiNewspaper } from "react-icons/gi";
 import { articlesCardFetchAll } from "@/src/lib/server-functions/frontend/articles-fetch-all";
-import { H1 } from "@/src/components/typography/h-1";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -34,10 +32,9 @@ export default async function page() {
 
   return (
     <section className="flex min-h-screen w-full flex-col items-center text-center align-top">
-      <header className="flex my-10 gap-3 flex-row">
-        <GiNewspaper className="mr-3 h-8 w-8 text-gray-600 dark:text-gray-200" />
-        <H1 title="Články" />
-      </header>
+      <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
+        ČLÁNKY
+      </h1>
       <section className="flex flex-col">
         <ArticleList importedRows={fetchedRows} />
       </section>
