@@ -55,8 +55,7 @@ export const resetPassword = async (email: string) => {
 
     const resetLink = `https://new.khszlin.com/obnova-hesla?token=${resetToken}`;
     const subject = "KHS Zlín - obnova hesla";
-    const text = `Dobrý den, pro obnovu hesla prosím přejděte na tento odkaz: ${resetLink}
-            S pozdravem, KHS Team`;
+    const text = `Dobrý den, pro obnovu hesla prosím přejděte na tento odkaz: ${resetLink}`;
 
     await nodeMailer(cleanEmail, subject, text);
     await sqlConnection.query("COMMIT");
