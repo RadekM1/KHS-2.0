@@ -1,4 +1,3 @@
-import { MdRssFeed } from "react-icons/md";
 import { BtnArticleShow } from "@/src/components/blog/btn-article-show";
 import { newsFetchAll } from "@/src/lib/server-functions/frontend/news-fetch-all";
 import { Metadata } from "next";
