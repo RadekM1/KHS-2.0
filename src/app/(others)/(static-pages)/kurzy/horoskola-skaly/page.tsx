@@ -64,9 +64,9 @@ export default function page() {
               rok.
             </p>
           </div>
-          <div className="flex pl-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
+          <div className="flex pl-0 mt-10 md:mt-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
             <img
-              className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
+              className="w-[300px]  md:w-full self-start flex rounded-xl object-contain "
               src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/skaly-kurz/kurz-skaly.png"
               alt="obrázek lezení skály"
             />
@@ -99,7 +99,7 @@ export default function page() {
           </li>
         </ul>
         <div className="w-full flex flex-col md:py-10 lg:py-16 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
-          <h2 className="items-center pb-10 lg:pb-16 font-bold text-2xl md:text-3xl">
+          <h2 className="items-center pb-10 mt-5 lg:pb-16 font-bold text-2xl md:text-3xl">
             Praktické informace
           </h2>
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">

@@ -3,7 +3,7 @@ export const imgSectionBtns = [
     src: "https://storage.googleapis.com/khs-zlin/picture_btn/course.webp",
     title: "Kurzy",
     alt: "btn picture kurzy",
-    url: "/kurzy",
+    url: "/kurzy/uvodni-info",
   },
   {
     src: "https://storage.googleapis.com/khs-zlin/picture_btn/benefit.webp",

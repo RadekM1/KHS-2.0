@@ -58,7 +58,7 @@ export default function page() {
               </span>
             </p>
           </div>
-          <div className="flex pl-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
+          <div className="flex pl-0 mt-10 md:mt-0 justify-center md:pl-6 md:min-w-[300px] md:w-full">
             <img
               className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
               src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/horokruh/horokruh.png"

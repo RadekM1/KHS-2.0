@@ -24,4 +24,5 @@ export const breadcrumbsLabel = [
   { breadcrumb: "kalendar", label: "kalendář" },
   { breadcrumb: "pujcovna", label: "půjčovna" },
   { breadcrumb: "uzivatele", label: "uživatelé" },
+  { breadcrumb: "uvodni-info", label: "Úvodní informace" },
 ];

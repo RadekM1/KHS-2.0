@@ -15,7 +15,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IoLibraryOutline } from "react-icons/io5";
 import { TbMoodBoy } from "react-icons/tb";
 import { GoThumbsup } from "react-icons/go";
-
+import { IoInformationCircle } from "react-icons/io5";
 import { FaPeopleGroup, FaListCheck } from "react-icons/fa6";
 import { FaRegSnowflake } from "react-icons/fa";
 
@@ -77,6 +77,12 @@ export const menuObject = [
     link: "/kurzy",
     mobileIcon: IoSchoolOutline,
     submenu: [
+      {
+        label: "Úvodní info",
+        link: "/kurzy/uvodni-info",
+        icon: IoInformationCircle,
+        isVisible: true,
+      },
       {
         label: "Horoškola - skály",
         link: "/kurzy/horoskola-skaly",
