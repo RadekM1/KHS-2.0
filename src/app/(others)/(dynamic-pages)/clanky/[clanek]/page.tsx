@@ -60,12 +60,12 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
   const urlToShare = `https://new.khszlin.com/clanky/${clanek}`;
 
   return (
-    <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
+    <section className="w-full flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">
       <h1 className="items-center my-10 flex flex-nowrap flex-row text-3xl font-bold">
         {article.title}
       </h1>
       <header className="flex w-full px-4 flex-row">
-        <div className="mb-4 flex flex-grow flex-col text-start">
+        <div className="mb-4 bg-gray-100 p-6 rounded-xl gap-4 flex flex-shrink flex-col text-start">
           <div className="text-xs md:text-sm">
             <div className="flex flex-row">
               <div className="mr-2">
@@ -75,10 +75,12 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
             </div>
           </div>
           <div className="my-1 text-xs  md:text-sm">
-            Datum: {article.created_time}
+            <span className="font-semibold">Datum: </span>
+            {article.created_time}
           </div>
           <div className="my-1 text-xs  md:text-sm">
-            Kategorie: {article.category}
+            <span className="font-semibold">Kategorie: </span>
+            {article.category}
           </div>
           <div className="flex gap-3 h-full">
             <HeartFetchCover slug={clanek} />
@@ -87,7 +89,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
         </div>
       </header>
       <article
-        className="prose prose-h2:text-xl prose-h1:text-2xl w-full px-4 text-start text-gray-800 dark:text-white"
+        className="prose prose-h2:text-xl mt-10 prose-h1:text-2xl w-full px-4 text-start text-gray-700 dark:text-white"
         dangerouslySetInnerHTML={{ __html: htmlWithHttps }}
       />
       <Gallery

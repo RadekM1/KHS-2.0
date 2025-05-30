@@ -33,10 +33,9 @@ export default async function Page() {
 
   return (
     <section className="mx-2  w-full mb-10">
-      <div className="mx-10 flex items-center justify-center self-center border-gray-100 pb-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
-        <h1 className="items-center flex w-full justify-center text-center flex-nowrap flex-row text-2xl">
-          <MdRssFeed className="mr-3 h-8 w-8 " />
-          <span>Aktuality</span>
+      <div className="mx-10 flex items-center justify-center self-center border-gray-100 pb-2 text-2xl font-bold text-gray-600 dark:text-gray-100">
+        <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
+          AKTUALITY
         </h1>
       </div>
       <div className="flex w-full">
@@ -48,7 +47,7 @@ export default async function Page() {
           {rows.map((item) => (
             <li
               role="article"
-              className="relative my-1 pl-3 before:absolute before:left-0 before:top-4 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-orange-600 before:ring-2 before:ring-white dark:before:bg-gray-600 dark:before:ring-gray-600"
+              className="relative my-1 lg:my-3 pl-3 before:absolute before:left-0 before:top-4 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-orange-600 before:ring-2 before:ring-white dark:before:bg-gray-600 dark:before:ring-gray-600"
               key={item.id}
             >
               <article className="mr-3 gap-3 flex flex-1 flex-grow flex-col text-start">

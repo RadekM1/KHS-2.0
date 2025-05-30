@@ -24,7 +24,6 @@ export const MobileMenu = ({
   mobileMenuOpen,
   setMobileMenuOpen,
   path,
-  filter,
 }: MobileMenuProps) => {
   const activeMobile =
     "dark:border-orange-200 border-orange-600 text-orange-600 dark:text-orange-200 border-l ";
@@ -110,7 +109,7 @@ export const MobileMenu = ({
                                 passHref
                               >
                                 <div
-                                  className={`flex flex-grow p-2 ${"filter" in item && item.filter === filter ? activeMobile : inActiveMobile} `}
+                                  className={`flex flex-grow p-2 ${item.link === path && !path.includes("clanky") ? activeMobile : inActiveMobile} `}
                                 >
                                   <div className="ml-2 w-full text-start">
                                     {item.label}

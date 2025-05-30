@@ -4,12 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { menuObject } from "../static-objects/objects/menu";
 import { ContactInFooter } from "./contact-in-footer";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
   const path = usePathname();
-  const searchParams = useSearchParams();
-  const currentFilter = searchParams.get("filter");
 
   const activeFooterHeadline = "dark:text-orange-200 text-orange-600";
   const inActiveFooterHeadline =
@@ -48,7 +46,7 @@ export const Footer = () => {
                         <li>
                           <Link
                             href={item.link}
-                            className={`font-semibold  ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
+                            className={`font-semibold  ${path.includes(item.link) ? activeFooterHeadline : inActiveFooterHeadline} `}
                           >
                             {item.label}
                           </Link>
@@ -57,15 +55,17 @@ export const Footer = () => {
 
                       {item.submenu && (
                         <ul>
-                          <li className="font-semibold">{item.label}</li>
+                          <li
+                            className={`font-semibold  ${path.includes(item.link) ? activeFooterHeadline : inActiveFooterHeadline} `}
+                          >
+                            {item.label}
+                          </li>
                           {item.submenu.map((subItem, j) => (
                             <li
                               key={j}
                               className={
-                                currentFilter ===
-                                (subItem && "filter" in subItem
-                                  ? subItem.filter
-                                  : "")
+                                path === subItem.link &&
+                                !path.includes("clanky")
                                   ? activeFooter
                                   : inActiveFooter
                               }
@@ -89,7 +89,7 @@ export const Footer = () => {
                         <li>
                           <Link
                             href={item.link}
-                            className={`font-semibold  ${path.includes(item.link ?? "") ? activeFooterHeadline : inActiveFooterHeadline} `}
+                            className={`font-semibold  ${path.includes(item.link) ? activeFooterHeadline : inActiveFooterHeadline} `}
                           >
                             {item.label}
                           </Link>
@@ -98,22 +98,26 @@ export const Footer = () => {
 
                       {item.submenu && (
                         <ul>
-                          <li className="font-semibold">{item.label}</li>
-                          {item.submenu.map((subItem, j) => (
-                            <li
-                              key={j}
-                              className={
-                                currentFilter ===
-                                (subItem && "filter" in subItem
-                                  ? subItem.filter
-                                  : "")
-                                  ? activeFooter
-                                  : inActiveFooter
-                              }
-                            >
-                              <Link href={subItem.link}>{subItem.label}</Link>
-                            </li>
-                          ))}
+                          <li
+                            className={`font-semibold  ${path.includes(item.link) ? activeFooterHeadline : inActiveFooterHeadline} `}
+                          >
+                            {item.label}
+                          </li>
+                          {item.submenu.map((subItem, j) => {
+                            return (
+                              <li
+                                key={j}
+                                className={
+                                  path === subItem.link &&
+                                  !path.includes("clanky")
+                                    ? activeFooter
+                                    : inActiveFooter
+                                }
+                              >
+                                <Link href={subItem.link}>{subItem.label}</Link>
+                              </li>
+                            );
+                          })}
                         </ul>
                       )}
                     </React.Fragment>

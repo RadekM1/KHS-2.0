@@ -7,10 +7,9 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 interface BigScreenMenuProps {
   path: string;
-  filter: string;
 }
 
-export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
+export const BigScreenMenu = ({ path }: BigScreenMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [whichIsOpen, setWhichIsOpen] = useState<number>(10);
 
@@ -102,9 +101,8 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                                 path={path}
                                 aria-hidden="true"
                                 className={`${
-                                  subitem &&
-                                  "filter" in subitem &&
-                                  subitem.filter === filter
+                                  subitem.link === path &&
+                                  !path.includes("clanky")
                                     ? "text-orange-600 dark:text-orange-200"
                                     : "text-gray-600 group-hover:text-orange-600 dark:text-gray-300 dark:group-hover:text-orange-200"
                                 } h-6 w-6`}
@@ -112,9 +110,8 @@ export const BigScreenMenu = ({ path, filter }: BigScreenMenuProps) => {
                             </div>
                             <div
                               className={`${
-                                subitem &&
-                                "filter" in subitem &&
-                                subitem.filter === filter
+                                subitem.link === path &&
+                                !path.includes("clanky")
                                   ? "text-orange-600 dark:text-orange-200"
                                   : ""
                               } group-hover:text-orange-600 dark:group-hover:text-orange-200 flex-auto`}

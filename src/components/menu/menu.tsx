@@ -5,15 +5,13 @@ import { useState } from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { ThemeToggle } from "../btns/day-night-toggle";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { MobileMenu } from "./mobile-menu";
 import { BigScreenMenu } from "./big-screen-menu";
 import { DashboardMenu } from "./dashboard-menu";
 
 export const Menu = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const currentFilter = searchParams.get("filter") ?? "";
   const pathName = usePathname();
 
   return (
@@ -48,7 +46,7 @@ export const Menu = () => {
               className="hidden h-[70px] self-center object-contain lg:flex"
             />
           </Link>
-          <BigScreenMenu path={pathName} filter={currentFilter} />
+          <BigScreenMenu path={pathName} />
           <div className="flex flex-row gap-x-3 flex-nowrap h-full self-end items-end">
             <ThemeToggle />
             <DashboardMenu />
@@ -58,7 +56,6 @@ export const Menu = () => {
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           path={pathName}
-          filter={currentFilter}
         />
       </header>
     </>
