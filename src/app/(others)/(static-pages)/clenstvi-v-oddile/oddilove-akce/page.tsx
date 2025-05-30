@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { clubEvents } from "@/src/static-objects/objects/static-pages-objects/events";
 
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - oddílové akce",
@@ -15,53 +16,49 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
-      <h1 className="items-center flex my-4 pb-6 flex-nowrap flex-row text-2xl">
-        Oddílové akce
+    <section className="w-full flex min-h-screen flex-col text-gray-700 dark:text-white items-center text-center">
+      <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
+        ODDÍLOVÉ AKCE
       </h1>
       <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
-        <p>
-          Pravidelně v rámci KHS organizujeme lezecké oddílovky v zahraničí,
-          často i mimo hlavní sezónu.
+        <p className="text-center">
+          Horolezci, horolezkyně a horolezčata!{" "}
+          <span className="font-semibold text-orange-400">
+            V KHS Zlín nelezeš jen po skále, ale patříš do party, co drží při
+            sobě.{" "}
+          </span>
+          Náš oddíl je aktivní po celý rok. <br />
         </p>
-        <ul className="list-disc list-inside">
-          <li>
-            Skály a vícedélky – kamkoliv za pěkným počasím autem nebo letecky
-          </li>
-          <li>Hory – výstupy v Alpách, Dolomitech či Vysokých Tatrách</li>
-        </ul>
-
-        <h3 className="mt-6 text-xl font-semibold">Vzdělávání</h3>
-        <ul className="list-disc list-inside">
-          <li>Horoškola – výcvik začínajících lezců na skalách</li>
-          <li>Horoškola – vícedélkové lezení v horách</li>
-          <li>Lavinová prevence</li>
-          <li>Lezení v ledu</li>
-          <li>Pohyb v zimních horách</li>
-        </ul>
-
-        <h3 className="mt-6 text-xl font-semibold">Tradiční akce</h3>
-        <ul className="list-disc list-inside">
-          <li>Otevírání skal na jaře</li>
-          <li>HAMOT Cup – boulderingový závod</li>
-          <li>
-            Memoriál Vaška Tichavského a Jardy Vaculíka – půlmaraton, přeběh /
-            přejezd hřebene Javorníků v Beskydech
-          </li>
-          <li>
-            Horolezecká liška – tradiční oddílová bojovka s horolezeckou
-            tematikou
-          </li>
-          <li>
-            Vánoční setkání horolezců na Lukově – zdobení stromečku a setkání
-            místních lezců na Štědrý den
-          </li>
-        </ul>
-
-        <p>
-          Dále organizujeme pro mládež lezecký kroužek <strong>Horokruh</strong>
-          .
+        <p className="mt-4 text-center">
+          <span className="font-semibold">
+            Lezeme, vzděláváme se, závodíme a slavíme.{" "}
+          </span>
+          Ať je teplo nebo mráz, pořád se něco děje.
         </p>
+        <div className="w-full  flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-24 ">
+          <div className="flex flex-col p-6 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
+            {clubEvents.map((clubEvent, i) => {
+              return (
+                <div key={i}>
+                  <h2 className="items-center mt-10 border-l-[3px] border-gray-600 dark:border-white font-bold text-2xl md:text-3xl">
+                    <span className="ml-2">{clubEvent.heading}</span>
+                  </h2>
+                  <p className="mt-6 ml-1">{clubEvent.summary}</p>
+                  <ul className="list-disc leading-tight mt-6 md:mx-10 space-y-5 pb-10 pl-10 text-start">
+                    {clubEvent.bullets.map((bullet, i) => {
+                      return (
+                        <li key={i}>
+                          <span className="font-semibold">{bullet.bold}</span>
+                          {bullet.text}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </article>
     </section>
   );

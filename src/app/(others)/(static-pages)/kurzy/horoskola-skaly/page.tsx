@@ -28,7 +28,7 @@ export default function page() {
       <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         HOROŠKOLA SKÁLY
       </h1>
-      <article className="border-t-[1px] pt-6 w-full overflow-hidden dark:border-b-gray-700">
+      <article className="border-t-[1px] dark:border-b-gray-700 pt-6 w-full overflow-hidden ">
         <p className="items-center my-16 font-bold text-center text-base">
           Láká tě skála víc než Netflix? Tak pojď s náma!{" "}
           <span className="text-orange-400">

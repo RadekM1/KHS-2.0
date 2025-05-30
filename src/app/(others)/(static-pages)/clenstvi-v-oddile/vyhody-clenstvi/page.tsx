@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { benefitsBullets } from "@/src/static-objects/objects/static-pages-objects/benefits";
 
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - výhody členství",
@@ -15,29 +16,47 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <section className="w-full flex min-h-screen flex-col text-gray-800 dark:text-white items-center text-center">
-      <h1 className="items-center my-4 pb-6 flex flex-nowrap flex-row text-2xl">
-        Výhody členství
+    <section className="w-full px-2 md:px-6 lg:px-10 flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">
+      <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
+        VÝHODY ČLENSTVÍ
       </h1>
-      <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
-        <p>
-          Členství v oddíle stojí na dobrovolné bázi a přináší nesporné výhody:
+      <article className="border-t-[1px] dark:border-b-gray-700 pt-10 w-full overflow-hidden ">
+        <p className="text-center">
+          <span className="font-semibold text-orange-400">
+            Protože dobrá parta, lano a společný cíl dělají z lezení něco víc
+            než jen sport.
+          </span>
+          <br />
         </p>
-        <ul className="list-disc list-inside">
-          <li>kámoši a parťáci na hory</li>
-          <li>pravidelné lezecké akce v ČR i zahraničí</li>
-          <li>oddílové závody</li>
-          <li>tréninková stěna</li>
-          <li>oddílová chata</li>
-          <li>klubovna</li>
-          <li>knihovna průvodců a beletrie</li>
-          <li>půjčovna zimního vybavení</li>
-          <li>slevy u partnerů</li>
-          <li>know‑how</li>
-        </ul>
-        <p className="my-5">
-          Roční členský příspěvek slouží primárně k podpoře sportu a místní
-          lezecké komunity.
+        <p className="mt-4 text-center">
+          U nás nejde jen o výkon,{" "}
+          <span className="font-semibold">
+            ale o zážitky, přátelství a dobrodružství, na která se nezapomíná.
+          </span>{" "}
+          Ať jsi nováček nebo ostřílený kamzík, v oddílu najdeš svoje místo.
+          Jsme parta, která táhne za jedno lano.
+        </p>
+        <div className="w-full  flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-24 ">
+          <div className="flex flex-col p-6 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
+            <h2 className="items-center mt-10 w-full text-center dark:border-white font-bold text-2xl md:text-3xl">
+              Co všechno jako člen získáš?
+            </h2>
+            <ul className="list-disc leading-tight mt-8 md:mx-10 space-y-5 pb-10 pl-10 text-start">
+              {benefitsBullets.map((bullet, i) => {
+                return <li key={i}>{bullet}</li>;
+              })}
+            </ul>
+            <p className="py-10">
+              Roční příspěvek pomáhá udržet oddíl v chodu a umožňuje nám
+              rozvíjet místní lezeckou komunitu.
+            </p>
+          </div>
+        </div>
+        <p className="mt-16 font-semibold">
+          Tak kamzíku, neváhej a přidej se k nám!
+        </p>
+        <p className="mt-10 font-semibold text-orange-400 text-xl lg:text-2xl">
+          TĚŠÍME SE NA TEBE. HORE ZDAR!
         </p>
       </article>
     </section>

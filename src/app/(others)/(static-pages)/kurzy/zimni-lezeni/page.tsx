@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 import { Gallery } from "@/src/components/gallery";
 import { winterCourseGallery } from "@/src/static-objects/objects/static-pages-gallery/winter-course";
+import {
+  winterBulletsOne,
+  winterBulletsTwo,
+  winterBulletsThree,
+} from "@/src/static-objects/objects/static-pages-objects/winter-course";
 
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - zimní lezení",
@@ -65,33 +70,21 @@ export default function page() {
           Těšit se můžete na:
         </p>
         <ul className="list-disc md:mx-10 leading-tight space-y-5 pl-10 text-start">
-          <li>Jak číst lavinové předpovědi a chápat lavinové stupně</li>
-          <li>rozbor sněhového profilu a vrstev sněhu</li>
-          <li>plánování zimní túry</li>
-          <li>bezpečný pohyb v zasněženém terénu</li>
-          <li>práci s cepínem a mačkami</li>
-          <li>ledolezení</li>
-          <li>výstup na zimní vrchol</li>
-          <li>záchranné techniky a základy lavinové výbavy</li>
-          <li>simulaci lavinové nehody</li>
+          {winterBulletsOne.map((bullet, i) => (
+            <li key={i}>{bullet}</li>
+          ))}
         </ul>
         <div className="w-full flex  flex-col md:py-10 lg:py-16 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
           <h2 className="items-center mt-5 pb-10 lg:pb-16 font-bold text-2xl md:text-3xl">
             Praktické informace
           </h2>
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
-            <li>
-              <span className="font-semibold">Pro koho:</span> Absolventy
-              základního skalního kurzu
-            </li>
-            <li>
-              <span className="font-semibold">Místo konání:</span> Rakousko alpy
-              nebo Slovensko tatry
-            </li>
-            <li>
-              <span className="font-semibold">Termín:</span> Dle sněhových
-              podmínek většinou lednový víkend.
-            </li>
+            {winterBulletsTwo.map((bullet, i) => (
+              <li key={i}>
+                <span className="font-semibold">{bullet.bold}</span>
+                {bullet.text}
+              </li>
+            ))}
           </ul>
         </div>
         <h2 className="mt-24 mb-10 lg:mt-32 font-bold text-2xl md:text-3xl">
@@ -105,34 +98,12 @@ export default function page() {
           Co všechno řešíš v zimních horách?
         </h3>
         <ul className="list-disc mt-10 leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
-          <li>
-            <span className="font-semibold">Sníh – </span>
-            Ne každá vrstva sněhu je stabilní. Hrozbou jsou tzv. deskové laviny.
-            Vznikají ve chvíli, kdy se slabá vrstva pod tlakem zhroutí a celá
-            sněhová deska nad ní se dá do pohybu. Právě tyhle laviny způsobují
-            většinu nehod. Je důležité umět rozpoznat nebezpečný sněhový profil,
-            vliv větru, čerstvého sněhu nebo oteplení.
-          </li>
-          <li>
-            <span className="font-semibold">Terén –</span>
-            Největší riziko bývá na svazích se sklonem mezi 30 a 45 stupni,
-            hlavně v konkávních nebo závětrných částech. Nebezpečné jsou i žlaby
-            nebo místa pod hřebeny, kde se hromadí sníh. Právě tam se laviny
-            nejčastěji utrhnou. Reaguješ ve vteřinách, někdy už ani to ne.
-          </li>
-          <li>
-            <span className="font-semibold">Počasí –</span>
-            Nový sníh, vítr, oteplení nebo déšť zvyšují lavinové riziko. Sleduj
-            lavinový bulletin (předpověď lavinového nebezpečí pro danou oblast),
-            ale spoléhej i na svoje oči. Čti terén, sleduj podmínky, reaguj na
-            změny.
-          </li>
-          <li>
-            <span className="font-semibold">Lidi – </span>
-            Víš, kdo nejčastěji spustí lavinu? Ten, kdo první vstoupí na svah.
-            Rozhodnutí přitom často ovlivní i ostatní ve skupině, únava nebo
-            touha po vrcholu.
-          </li>
+          {winterBulletsThree.map((bullet, i) => (
+            <li key={i}>
+              <span className="font-semibold">{bullet.bold}</span>
+              {bullet.text}
+            </li>
+          ))}
         </ul>
         <p className="mt-16  text-start text-base">
           <span className="font-semibold text-orange-400">
