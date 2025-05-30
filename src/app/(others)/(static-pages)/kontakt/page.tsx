@@ -21,7 +21,7 @@ export default function page() {
       </h1>
       <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
         <p className="text-start md:text-center">
-          Máte dotaz nebo se chcete připojit?{" "}
+          Máte dotaz nebo se chcete připojit? <br />
           <span className="font-semibold text-orange-400 dark:text-orange-300">
             Jsme tu pro vás a rádi odpovíme na všechny vaše otázky.{" "}
           </span>

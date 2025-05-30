@@ -16,8 +16,9 @@ import { IoLibraryOutline } from "react-icons/io5";
 import { TbMoodBoy } from "react-icons/tb";
 import { GoThumbsup } from "react-icons/go";
 import { IoInformationCircle } from "react-icons/io5";
-import { FaPeopleGroup, FaListCheck } from "react-icons/fa6";
+import { FaListCheck } from "react-icons/fa6";
 import { FaRegSnowflake } from "react-icons/fa";
+import { FaHourglassStart } from "react-icons/fa6";
 
 export const menuObject = [
   {
@@ -154,25 +155,13 @@ export const menuObject = [
       {
         label: "Historie oddílu",
         link: "/o-nas/historie-oddilu",
+        icon: FaHourglassStart,
+        isVisible: true,
+      },
+      {
+        label: "Horolezecké začátky",
+        link: "/o-nas/zacatky",
         icon: MdHistory,
-        isVisible: true,
-      },
-      {
-        label: "Vedení oddílu",
-        link: "/o-nas/vedeni-oddilu",
-        icon: FaPeopleGroup,
-        isVisible: true,
-      },
-      {
-        label: "Instruktoři horoškoly",
-        link: "/o-nas/instruktori-horoskoly",
-        icon: LiaMountainSolid,
-        isVisible: true,
-      },
-      {
-        label: "Trenéři lezení",
-        link: "/o-nas/treneri-lezeni",
-        icon: BoulderIcon,
         isVisible: true,
       },
     ],
@@ -183,3 +172,29 @@ export const menuObject = [
     mobileIcon: FiPhone,
   },
 ];
+
+{
+  /* 
+  
+  ,
+      {
+        label: "Vedení oddílu",
+        link: "/o-nas/vedeni-oddilu",
+        icon: FaPeopleGroup,
+        isVisible: false,
+      },
+      {
+        label: "Instruktoři horoškoly",
+        link: "/o-nas/instruktori-horoskoly",
+        icon: LiaMountainSolid,
+        isVisible: false,
+      },
+      {
+        label: "Trenéři lezení",
+        link: "/o-nas/treneri-lezeni",
+        icon: BoulderIcon,
+        isVisible: false,
+      },
+  
+  */
+}

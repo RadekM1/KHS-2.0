@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Gallery } from "@/src/components/gallery";
-import { winterCourseGallery } from "@/src/static-objects/objects/static-pages-gallery/winter-course";
+import { childrenCourseGallery } from "@/src/static-objects/objects/static-pages-gallery/horokruh";
 
 export const metadata: Metadata = {
   title: "Klub horských sportů Zlín - zimní lezení",
@@ -62,14 +62,14 @@ export default function page() {
             <img
               className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
               src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/horokruh/horokruh.png"
-              alt="obrázek lezení skály vícedélky"
+              alt="obrázek lezení kroužek dětský"
             />
           </div>
         </div>
         <h2 className="items-center mt-20 mb-10 lg:mt-32  font-bold text-2xl md:text-3xl">
           Fotky z kroužku
         </h2>
-        <Gallery gallery={winterCourseGallery} />
+        <Gallery gallery={childrenCourseGallery} />
       </article>
     </section>
   );
