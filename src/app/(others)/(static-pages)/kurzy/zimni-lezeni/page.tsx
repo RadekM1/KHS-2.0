@@ -44,7 +44,7 @@ export default function page() {
             Zimní hory nejsou jen krásné. Znamenají lavinové svahy, zmrzlé
             skály, led, promrzlé prsty a rozhodnutí, která umí zachránit život.
             <p className="mt-10">
-              <span className="font-semibold text-orange-400">
+              <span className="font-semibold text-orange-400 dark:text-orange-300">
                 Tento kurz tě vezme do zimního terénu,
               </span>{" "}
               kde se naučíš, jak přežít a fungovat bezpečně. Budeš plánovat
@@ -106,7 +106,7 @@ export default function page() {
           ))}
         </ul>
         <p className="mt-16  text-start text-base">
-          <span className="font-semibold text-orange-400">
+          <span className="font-semibold text-orange-400 dark:text-orange-300">
             Bez výbavy to v zimních horách nejde.{" "}
           </span>
           Ale neexistuje jedna „zimní povinná výbava“.

@@ -36,7 +36,7 @@ export default function page() {
           Radši pojď lézt s náma.{" "}
           <span className="font-semibold">Pořádně, bezpečně a s rozumem.</span>
         </p>
-        <h2 className="mt-10 mb-10 lg:mt-16  text-xl md:text-2xl text-orange-400 font-semibold">
+        <h2 className="mt-10 mb-10 lg:mt-16  text-xl md:text-2xl text-orange-400 dark:text-orange-300 font-semibold">
           STAŇ SE LEZCEM NEBO HOROLEZCEM POD VEDENÍM ZKUŠENÝCH INSTRUKTORŮ.
         </h2>
         <div className="w-full flex mt-5 leading-loose flex-col md:flex-row">
@@ -47,7 +47,7 @@ export default function page() {
               kofola či pivko po lezení, anebo táboráček s kytarou a buřtem.
             </p>
             <p className="mt-4">
-              <span className="font-semibold text-orange-400">
+              <span className="font-semibold text-orange-400 dark:text-orange-300">
                 Horolezectví není jen sport, ale životní styl,{" "}
               </span>
               který ti dá víc, než si myslíš!

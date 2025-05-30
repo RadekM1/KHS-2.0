@@ -35,7 +35,7 @@ export default function page() {
             </p>
             <p className="mt-4">
               Přihlaste ho k nám do lezeckého kroužku{" "}
-              <span className="font-semibold text-orange-400">
+              <span className="font-semibold text-orange-400 dark:text-orange-300">
                 pro děti od 8 do 12 let.
               </span>
             </p>
@@ -53,7 +53,7 @@ export default function page() {
             </p>
             <p className="mt-4">
               Chcete vědět víc nebo přihlásit malého lezce?{" "}
-              <span className="font-semibold text-orange-400">
+              <span className="font-semibold text-orange-400 dark:text-orange-300">
                 Ozvěte se nám, rádi vás přivítáme.
               </span>
             </p>

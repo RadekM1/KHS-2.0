@@ -202,7 +202,7 @@ export const CalendarInterface = ({
                     {loading ? (
                       ""
                     ) : (
-                      <FaPen className="h-6 w-6 pl-2 pt-2 text-orange-400" />
+                      <FaPen className="h-6 w-6 pl-2 pt-2 text-orange-400 dark:text-orange-300" />
                     )}
                   </button>
                 </td>

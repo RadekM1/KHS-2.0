@@ -31,7 +31,7 @@ export default function page() {
       <article className="border-t-[1px] dark:border-b-gray-700 pt-6 w-full overflow-hidden ">
         <p className="items-center my-16 font-bold text-center text-base">
           Láká tě skála víc než Netflix? Tak pojď s náma!{" "}
-          <span className="text-orange-400">
+          <span className="text-orange-400 dark:text-orange-300">
             Pořádně, bezpečně a s rozumem.
           </span>
         </p>
@@ -40,7 +40,7 @@ export default function page() {
             <p>
               <span className="font-semibold">Horoškola – skály </span>
               je náš{" "}
-              <span className="text-orange-400 font-semibold">
+              <span className="text-orange-400 dark:text-orange-300 font-semibold">
                 základní kurz pro všechny
               </span>
               , kdo chtějí začít lézt ve skalách a naučit se to pořádně od
@@ -130,7 +130,7 @@ export default function page() {
           </ul>
           <div className="w-full pl-6 gap-6 my-6 md:pl-16 flex text-start md:justify-between leading-loose font-semibold flex-col md:flex-row">
             <div>
-              <span className="text-orange-400 ">
+              <span className="text-orange-400 dark:text-orange-300 ">
                 Tak co kamzíku, chceš taky zkusit viset na štandu a nejen na
                 gauči?
               </span>

@@ -80,7 +80,7 @@ export const CommentCardInput = ({
                 disabled={disabled}
               >
                 {!loading ? (
-                  <IoMdSend className="h-6 w-6 text-gray-400 hover:text-orange-400 " />
+                  <IoMdSend className="h-6 w-6 text-gray-400 hover:text-orange-400 dark:text-orange-300 " />
                 ) : (
                   <SpinnerSmallOrange />
                 )}

@@ -23,7 +23,7 @@ export default function page() {
       <article className="border-t-[1px] dark:border-b-gray-700 pt-10 w-full overflow-hidden ">
         <p className="text-start md:text-center">
           Ať to zní jakkoliv formálně, členství v oddíle má svá pravidla.{"  "}
-          <span className="font-semibold text-orange-400">
+          <span className="font-semibold text-orange-400 dark:text-orange-300">
             Aby to šlapalo jak ve stěně, tak mezi lidmi.
           </span>
           <br />
@@ -36,10 +36,12 @@ export default function page() {
           <div className="flex pb-10 flex-col p-6 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
             {membershipRules.map((rule, i) => (
               <section key={i} className="mt-10">
-                <span className="font-semibold">{rule.ruleName}</span>
+                <span className="font-semibold dark:text-orange-300">
+                  {rule.ruleName}
+                </span>
                 {rule.ruleText && rule.ruleText}
                 {rule.ruleList && (
-                  <ul className="list-[lower-alpha] leading-tight mt-3 md:mx-10 space-y-2 pl-4 text-start">
+                  <ul className="list-[lower-alpha] leading-tight ml-1 mt-3 md:mx-10 space-y-2 pl-4 text-start">
                     {rule.ruleList.map((bullet, i) => (
                       <li key={i}>{bullet}</li>
                     ))}

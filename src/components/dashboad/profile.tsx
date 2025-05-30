@@ -37,7 +37,7 @@ export const Profile = () => {
         <section className="w-full  divide-y divide-slate-200 rounded dark:divide-slate-600">
           <div className="flex  flex-row">
             <div className="mb-2 mr-4 text-start text-xl font-bold text-slate-700">
-              <IoMdHelpCircleOutline className="h-8 w-8 text-orange-400" />
+              <IoMdHelpCircleOutline className="h-8 w-8 text-orange-400 dark:text-orange-300" />
             </div>
             <div className="mb-2 text-start text-xl font-bold text-slate-700 dark:text-white dark:hover:text-white">
               Nápověda

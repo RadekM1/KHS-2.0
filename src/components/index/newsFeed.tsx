@@ -27,7 +27,7 @@ export default async function NewsFeed() {
               key={item.id}
             >
               <div className="mr-3 flex flex-1 flex-grow flex-col text-start">
-                <h3 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 dark:text-orange-400 text-orange-600 dark:border-gray-600  lg:text-base">
+                <h3 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 dark:text-orange-300 text-orange-600 dark:border-gray-600  lg:text-base">
                   {item.title}
                 </h3>
                 <p className="mt ml-2 text-start text-xs text-slate-500 dark:text-gray-300 md:text-sm">

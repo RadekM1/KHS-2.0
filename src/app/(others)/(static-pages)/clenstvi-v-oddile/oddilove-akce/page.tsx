@@ -23,7 +23,7 @@ export default function page() {
       <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
         <p className="text-start md:text-center">
           Horolezci, horolezkyně a horolezčata!{" "}
-          <span className="font-semibold text-orange-400">
+          <span className="font-semibold text-orange-400 dark:text-orange-300">
             V KHS Zlín nelezeš jen po skále, ale patříš do party, co drží při
             sobě.{" "}
           </span>
@@ -36,19 +36,23 @@ export default function page() {
           Ať je teplo nebo mráz, pořád se něco děje.
         </p>
         <div className="w-full  flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-24 ">
-          <div className="flex flex-col p-6 w-full text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
+          <div className="flex flex-col p-2 md:p-6 w-full text-center md:text-start rounded-xl items-start dark:bg-zinc-800 bg-gray-100 justify-start">
             {clubEvents.map((clubEvent, i) => {
               return (
                 <div key={i}>
-                  <h2 className="items-center mt-10 border-l-[3px] border-gray-600 dark:border-white font-bold text-2xl md:text-3xl">
-                    <span className="ml-2">{clubEvent.heading}</span>
+                  <h2 className="items-center mt-10 md:border-l-[3px] border-gray-600 dark:border-orange-300  font-bold text-2xl md:text-3xl">
+                    <span className="ml-2 dark:text-orange-300">
+                      {clubEvent.heading}
+                    </span>
                   </h2>
-                  <p className="mt-6 ml-1">{clubEvent.summary}</p>
-                  <ul className="list-disc leading-tight mt-6 md:mx-10 space-y-5 pb-10 pl-10 text-start">
+                  <p className="mt-6 text-start ml-1">{clubEvent.summary}</p>
+                  <ul className="list-disc leading-tight mt-6 md:mx-10 space-y-5 pb-10 pl-8 md:pl-10 text-start">
                     {clubEvent.bullets.map((bullet, i) => {
                       return (
                         <li key={i}>
-                          <span className="font-semibold">{bullet.bold}</span>
+                          <span className="font-semibold dark:text-orange-300">
+                            {bullet.bold}
+                          </span>
                           {bullet.text}
                         </li>
                       );

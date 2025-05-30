@@ -50,7 +50,7 @@ export default async function Page() {
               key={item.id}
             >
               <article className="mr-3 gap-3 flex flex-1 flex-grow flex-col text-start">
-                <h2 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-orange-400 lg:text-base">
+                <h2 className="ml-2 border-t border-gray-200 pt-1 text-xs leading-7 text-orange-600 dark:border-gray-600 dark:text-orange-300 lg:text-base">
                   <span className="mr-5 text-end text-xs text-slate-400">
                     {item.created_time}
                   </span>
