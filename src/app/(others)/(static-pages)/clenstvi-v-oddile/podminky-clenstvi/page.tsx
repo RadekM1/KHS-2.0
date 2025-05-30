@@ -21,14 +21,14 @@ export default function page() {
         PODMÍNKY ČLENSTVÍ
       </h1>
       <article className="border-t-[1px] dark:border-b-gray-700 pt-10 w-full overflow-hidden ">
-        <p className="text-center">
+        <p className="text-start md:text-center">
           Ať to zní jakkoliv formálně, členství v oddíle má svá pravidla.{"  "}
           <span className="font-semibold text-orange-400">
             Aby to šlapalo jak ve stěně, tak mezi lidmi.
           </span>
           <br />
         </p>
-        <p className="mt-4 text-center">
+        <p className="mt-8 text-start md:text-center">
           Níž najdeš přehled základních podmínek, práv a povinností každého
           člena KHS Zlín. Žádný paragrafový horor, ale fér systém.
         </p>

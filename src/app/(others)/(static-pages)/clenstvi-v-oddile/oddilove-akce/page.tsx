@@ -21,7 +21,7 @@ export default function page() {
         ODDÍLOVÉ AKCE
       </h1>
       <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
-        <p className="text-center">
+        <p className="text-start md:text-center">
           Horolezci, horolezkyně a horolezčata!{" "}
           <span className="font-semibold text-orange-400">
             V KHS Zlín nelezeš jen po skále, ale patříš do party, co drží při
@@ -29,7 +29,7 @@ export default function page() {
           </span>
           Náš oddíl je aktivní po celý rok. <br />
         </p>
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-start md:text-center">
           <span className="font-semibold">
             Lezeme, vzděláváme se, závodíme a slavíme.{" "}
           </span>

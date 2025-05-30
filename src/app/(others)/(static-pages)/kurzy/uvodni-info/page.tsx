@@ -78,7 +78,7 @@ export default function page() {
             />
           </div>
         </div>
-        <div className="flex flex-col w-full md:py-10 lg:py-16 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
+        <div className="flex flex-col w-full py-10 lg:py-16 rounded-xl my-24 dark:bg-zinc-800 bg-gray-100">
           <h2 className="items-center mb-10 font-bold text-2xl md:text-3xl">
             Jaké kurzy u nás najdeš?
           </h2>
