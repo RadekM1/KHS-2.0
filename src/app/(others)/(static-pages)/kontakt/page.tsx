@@ -22,7 +22,7 @@ export default function page() {
       <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
         <p className="text-start md:text-center">
           Máš dotaz nebo se chceš připojit? <br />
-          <span className="font-semibold text-orange-400 dark:text-orange-300">
+          <span className="font-semibold mt-4 text-orange-400 dark:text-orange-300">
             Jsme tu pro tebe a rádi odpovíme na všechny otázky.{" "}
           </span>
           Klub horských sportů Zlín má dveře otevřené pro všechny milovníky hor
