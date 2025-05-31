@@ -19,8 +19,8 @@ export default function page() {
       <h1 className="items-center my-16 font-bold text-2xl md:text-4xl">
         KONTAKT
       </h1>
-      <article className="prose prose-gray dark:prose-invert w-full px-4 overflow-hidden text-start dark:border-b-gray-700">
-        <p className="text-start md:text-center">
+      <article className="prose prose-gray dark:prose-invert w-full  md:px-4 overflow-hidden text-start dark:border-b-gray-700">
+        <p className="text-start px-2 md:text-center">
           Máš dotaz nebo se chceš připojit? <br />
           <span className="font-semibold mt-4 text-orange-400 dark:text-orange-300">
             Jsme tu pro tebe a rádi odpovíme na všechny otázky.{" "}
@@ -31,11 +31,11 @@ export default function page() {
 
         <div className="w-full flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-12">
           <div className="flex flex-col md:flex-row items-center gap-5 lg:gap-10 p-2 lg:p-6 w-full text-center md:text-start  md:items-start  justify-start">
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
-              <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-4 md:px-10 py-5">
+              <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ZÁKLADNÍ INFORMACE</span>
               </h2>
-              <div className="mt-6 text-start ml-1">
+              <div className="mt-6 text-sm md:text-base text-start ml-1">
                 <address className="not-italic">
                   <p>
                     Klub horských sportů Zlín, z.s.
@@ -53,7 +53,7 @@ export default function page() {
                     </a>
                   </p>
                 </address>
-                <p className="mt-4">
+                <p className="mt-4 text-sm md:text-base">
                   IČO: 65823494
                   <br />
                   Číslo účtu: 6683137002/5500
@@ -63,11 +63,11 @@ export default function page() {
               </div>
             </div>
 
-            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-10 py-5">
-              <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
+            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-2 md:px-10 py-5">
+              <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ODDÍLOVÉ KONTAKTY</span>
               </h2>
-              <div className="mt-6 text-start ml-1">
+              <div className="mt-6 text-sm md:text-base text-start ml-1">
                 <p>
                   <a
                     href="mailto:info@khszlin.com"
@@ -77,7 +77,7 @@ export default function page() {
                   </a>
                 </p>
               </div>
-              <ul className="list-disc leading-tight mt-6 space-y-5 pb-10 pl-4 md:pl-6 text-start">
+              <ul className="list-disc text-sm md:text-base leading-tight mt-6 space-y-5 pb-10 pl-4 md:pl-6 text-start">
                 <li>
                   <span className="font-semibold dark:text-orange-300">
                     Předseda
@@ -95,11 +95,11 @@ export default function page() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-5 lg:gap-10 p-2 mt-1 lg:p-6 w-full text-center md:text-start items-center  md:items-start  justify-start">
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
-              <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-4 md:px-10 py-5">
+              <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className=" dark:text-orange-300">HOROŠKOLA</span>
               </h2>
-              <div className="mt-6 text-start ml-1">
+              <div className="mt-6 text-sm md:text-base text-start ml-1">
                 <p>
                   <a
                     href="mailto:horoskola@khszlin.com"
@@ -110,11 +110,11 @@ export default function page() {
                 </p>
               </div>
 
-              <div>
-                <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
+              <div className="w-full">
+                <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                   <span className=" dark:text-orange-300">CHATA NA LUKOVĚ</span>
                 </h2>
-                <div className="mt-6 text-start ml-1">
+                <div className="mt-6 text-sm md:text-base text-start ml-1">
                   <p>
                     Petr Hrnčiřík, 603 192 047
                     <br />
@@ -129,12 +129,12 @@ export default function page() {
               </div>
 
               <div>
-                <h2 className="items-center mt-10 text-2xl md:text-3xl">
+                <h2 className="items-center text-center md:text-start mt-10 text-2xl md:text-3xl">
                   <span className="font-semibold dark:text-orange-300">
                     KNIHOVNA PRŮVODCŮ
                   </span>
                 </h2>
-                <div className="mt-6 text-start ml-1">
+                <div className="mt-6 text-sm md:text-base text-start ml-1">
                   <p>
                     Mirek Ingr, 737 741 740
                     <br />
@@ -148,13 +148,13 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
-              <h2 className="items-start text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-1 md:px-10 py-5">
+              <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className=" dark:text-orange-300">OSTATNÍ KONTAKTY</span>
               </h2>
-              <ul className="list-disc leading-tight mt-6 space-y-5 pb-10 pl-8 md:pl-10 text-start">
+              <ul className="list-disc leading-tight text-sm md:text-base mt-6 space-y-5 pb-10 pl-4 md:pl-10 text-start">
                 <li>
-                  <span className="font-semibold dark:text-orange-300">
+                  <span className="font-semibold  dark:text-orange-300">
                     Webmaster
                   </span>
                   {" – "}
@@ -166,7 +166,7 @@ export default function page() {
                   </a>
                 </li>
                 <li>
-                  <span className="font-semibold dark:text-orange-300">
+                  <span className="font-semibold  dark:text-orange-300">
                     Správce stěny
                   </span>
                   {" – Lubomír Polišenský, 603 165 526"}

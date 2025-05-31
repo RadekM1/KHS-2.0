@@ -10,9 +10,9 @@ export const Breadcrumbs = () => {
 
   return (
     <div className=" mx-auto mt-2 flex w-full max-w-screen-xl flex-grow flex-row justify-start  border-b-gray-300 px-2 dark:border-b-gray-600 dark:text-gray-500 sm:px-6 md:px-8 lg:px-4">
-      <div className="flex items-baseline">
+      <div className="flex ">
         <Link className="flex items-baseline" href="/">
-          <IoHomeSharp className="mr-1 pt-1 h-5 w-5 md:h-6 md:w-6 flex sm:mr-2 text-gray-500 hover:text-orange-600 dark:hover:text-orange-200" />
+          <IoHomeSharp className="mr-1 h-5 w-5 md:h-5 md:w-5 flex sm:mr-2 text-gray-500 hover:text-orange-600 dark:hover:text-orange-200" />
         </Link>
 
         {pathNames.map((item, i) => {

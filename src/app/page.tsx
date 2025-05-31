@@ -58,7 +58,7 @@ export default function LandingPart() {
           </div>
         </div>
         <div />
-        <div className="mb-5 mt-10 flex w-full justify-center text-center text-2xl font-bold text-gray-500  dark:text-white">
+        <div className="mb-5 mt-16 flex w-full justify-center text-center text-2xl font-bold text-gray-500  dark:text-white">
           Články dle témat
         </div>
         <ImgBtnsArticles />
