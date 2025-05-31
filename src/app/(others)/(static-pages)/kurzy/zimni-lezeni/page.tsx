@@ -36,7 +36,7 @@ export default function page() {
         <div className="w-full flex leading-loose flex-col md:flex-row">
           <div className="text-start">
             Tak jo, kamzíku.Víš, jak se jistí u stěny a jak postavit štand.{" "}
-            <span className="font-semibold">
+            <span className="font-semibold dark:text-orange-300">
               Víš ale, co dělá sníh, když ho napadne moc? A co když se terén
               změní v ledový vodopád? Nebo tě překvapí návěj, vítr a zmrzlý
               svah?{" "}
@@ -55,7 +55,7 @@ export default function page() {
           <div className="flex mt-5 md:mt-0 pl-0 justify-center md:pl-4 md:min-w-[300px] md:w-full">
             <img
               className="w-[300px] md:w-full self-start flex rounded-xl object-contain "
-              src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/zimni-kurz/winter-course.png"
+              src="https://storage.googleapis.com/khs-zlin/static-sites-gallery/zimni-kurz/winter.png"
               alt="obrázek lezení skály vícedélky"
             />
           </div>
@@ -64,7 +64,7 @@ export default function page() {
           Co tě čeká?
         </h2>
         <p className="mt-8 my-6 text-start">
-          <span className="font-semibold">
+          <span className="font-semibold dark:text-orange-300">
             Čeká tě kombinace praktického lezení a teoretických přednášek.
           </span>{" "}
           Těšit se můžete na:
@@ -81,7 +81,9 @@ export default function page() {
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
             {winterBulletsTwo.map((bullet, i) => (
               <li key={i}>
-                <span className="font-semibold">{bullet.bold}</span>
+                <span className="font-semibold dark:text-orange-300">
+                  {bullet.bold}
+                </span>
                 {bullet.text}
               </li>
             ))}
@@ -100,7 +102,9 @@ export default function page() {
         <ul className="list-disc mt-10 leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
           {winterBulletsThree.map((bullet, i) => (
             <li key={i}>
-              <span className="font-semibold">{bullet.bold}</span>
+              <span className="font-semibold dark:text-orange-300">
+                {bullet.bold}
+              </span>
               {bullet.text}
             </li>
           ))}
@@ -110,12 +114,14 @@ export default function page() {
             Bez výbavy to v zimních horách nejde.{" "}
           </span>
           Ale neexistuje jedna „zimní povinná výbava“.{" "}
-          <span className="font-semibold">Vždy záleží, co děláš. </span>
+          <span className="font-semibold dark:text-orange-300">
+            Vždy záleží, co děláš.{" "}
+          </span>
           Jinou výbavu si vezmeš do lavinového terénu, jinou na ledolezení a
           jinou na túru na sněžnicích nebo skialpech.
         </p>
         <p className="text-start mt-6">
-          <span className="font-semibold">
+          <span className="font-semibold dark:text-orange-300">
             Například při zimní vysokohorské túře v lavinovém nebo ledovcovém
             terénu{" "}
           </span>

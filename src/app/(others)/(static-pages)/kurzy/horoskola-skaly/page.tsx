@@ -38,7 +38,9 @@ export default function page() {
         <div className="w-full flex leading-loose flex-col md:flex-row">
           <div className="text-start">
             <p>
-              <span className="font-semibold">Horoškola – skály </span>
+              <span className="font-semibold dark:text-orange-300">
+                Horoškola – skály{" "}
+              </span>
               je náš{" "}
               <span className="text-orange-400 dark:text-orange-300 font-semibold">
                 základní kurz pro všechny
@@ -46,12 +48,15 @@ export default function page() {
               , kdo chtějí začít lézt ve skalách a naučit se to pořádně od
               základu, krok za krokem. Žádné chození kolem plotny (ledaže by
               byla skalní).
-              <span className="font-semibold"> Tady jdeš rovnou na věc. </span>
+              <span className="font-semibold dark:text-orange-300">
+                {" "}
+                Tady jdeš rovnou na věc.{" "}
+              </span>
               Dostaneš do ruky lezecké cajky, jako je třeba sedák, lano,
               karabiny a další vychytávky, co tě udrží na skále, a k tomu
               důležité vědomosti a sebevědomí, abys mohl(a) bezpečně lézt,
               jistit a orientovat se ve skalním terénu.
-              <span className="font-semibold">
+              <span className="font-semibold dark:text-orange-300">
                 {" "}
                 A to všechno pod vedením zkušených instruktorů.
               </span>
@@ -76,7 +81,7 @@ export default function page() {
           Co tě čeká?
         </h2>
         <p className="mt-8 my-6 text-start">
-          <span className="font-semibold">
+          <span className="font-semibold dark:text-orange-300">
             Čeká tě kombinace praktického lezení a teoretických přednášek.
           </span>{" "}
           Těšit se můžete na:
@@ -104,28 +109,38 @@ export default function page() {
           </h2>
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
             <li>
-              <span className="font-semibold">Termín zahájení:</span> V pátek 4.
-              dubna 2025 v 18:00
+              <span className="font-semibold dark:text-orange-300">
+                Termín zahájení:
+              </span>{" "}
+              V pátek 4. dubna 2025 v 18:00
             </li>
             <li>
-              <span className="font-semibold">Místo konání:</span> Oddílová
-              stěna a klubovna pod lyžařským svahem ve Zlíně
+              <span className="font-semibold dark:text-orange-300">
+                Místo konání:
+              </span>{" "}
+              Oddílová stěna a klubovna pod lyžařským svahem ve Zlíně
             </li>
             <li>
-              <span className="font-semibold">Pro koho:</span> Začátečníky i
-              mírně pokročilé, od 16 let
+              <span className="font-semibold dark:text-orange-300">
+                Pro koho:
+              </span>{" "}
+              Začátečníky i mírně pokročilé, od 16 let
             </li>
             <li>
-              <span className="font-semibold">Přednášky:</span> Každý pátek od
-              18:00 do 21:00
+              <span className="font-semibold dark:text-orange-300">
+                Přednášky:
+              </span>{" "}
+              Každý pátek od 18:00 do 21:00
             </li>
             <li>
-              <span className="font-semibold">Praktické nácviky:</span> Vždy v
-              sobotu, případně víkedovka
+              <span className="font-semibold dark:text-orange-300">
+                Praktické nácviky:
+              </span>{" "}
+              Vždy v sobotu, případně víkedovka
             </li>
             <li>
-              <span className="font-semibold">Cena</span> dospělí 6.000 Kč, do
-              26 let 4.000 Kč
+              <span className="font-semibold dark:text-orange-300">Cena</span>{" "}
+              dospělí 6.000 Kč, do 26 let 4.000 Kč
             </li>
           </ul>
           <div className="w-full pl-6 gap-6 my-6 md:pl-16 flex text-start md:justify-between leading-loose font-semibold flex-col md:flex-row">
@@ -135,7 +150,9 @@ export default function page() {
                 gauči?
               </span>
               <br />
-              Těšíme se na tebe. Hore zdar!
+              <span className="dark:text-orange-300">
+                Těšíme se na tebe. Hore zdar!
+              </span>
             </div>
             <div className="mx-0 md:mx-16  flex justify-center text-nowrap">
               <a
@@ -160,16 +177,24 @@ export default function page() {
         </h3>
         <ul className="list-disc mt-10 leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
           <li>
-            <span className="font-semibold">Tradiční lezení (trad) </span>-
-            jištění si lezec zakládá sám (např. friendy, vklíněnce, skoby)
+            <span className="font-semibold dark:text-orange-300">
+              Tradiční lezení (trad){" "}
+            </span>
+            - jištění si lezec zakládá sám (např. friendy, vklíněnce, skoby)
           </li>
           <li>
-            <span className="font-semibold">Sportovní lezení </span>- cesty mají
-            předem připravené jištění (např. borháky, nýty, expresky)
+            <span className="font-semibold dark:text-orange-300">
+              Sportovní lezení{" "}
+            </span>
+            - cesty mají předem připravené jištění (např. borháky, nýty,
+            expresky)
           </li>
           <li>
-            <span className="font-semibold">Bouldering </span>- lezení bez lana,
-            na balvanech, s dopadovými matracemi (bouldermatkami)
+            <span className="font-semibold dark:text-orange-300">
+              Bouldering{" "}
+            </span>
+            - lezení bez lana, na balvanech, s dopadovými matracemi
+            (bouldermatkami)
           </li>
         </ul>
         <p className="my-16  text-start text-base">

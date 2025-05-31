@@ -55,7 +55,9 @@ export default function page() {
               který ti dá víc, než si myslíš!
             </p>
             <p className="mt-4">
-              <span className="font-semibold">Ale pozor, </span>
+              <span className="font-semibold dark:text-orange-300">
+                Ale pozor,{" "}
+              </span>
               není to jen takový výlet na rozhlednu. Tato aktivita patří mezi
               náročné a extrémní sporty, při kterých může jít i o život. Nestačí
               jen síla a odvaha. Důležité jsou také znalosti a zkušenosti. V
@@ -63,7 +65,7 @@ export default function page() {
               rozhodují o bezpečnosti tebe i ostatních. A právě proto jsme tady!
             </p>
             <p className="mt-4">
-              <span className="font-semibold">
+              <span className="font-semibold dark:text-orange-300">
                 Naše vzdělávací kurzy tě provedou od úplných základů až po
                 složitější techniky.{" "}
               </span>

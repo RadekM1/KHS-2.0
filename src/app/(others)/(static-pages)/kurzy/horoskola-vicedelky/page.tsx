@@ -42,11 +42,19 @@ export default function page() {
             </span>
             ale vedou až k vrcholům.{" "}
             <p className="mt-10">
-              <span className="font-semibold">
+              <span className="font-semibold dark:text-orange-300">
                 Čeká tě víc délek, víc výšky a víc zážitků.{" "}
               </span>
               Ať už v rakouských Alpách nebo na tatranské žule, podle podmínek a
               počasí.
+            </p>
+            <p className="mt-10">
+              Vícedélky nejsou jen o lezení.{" "}
+              <span className="font-semibold dark:text-orange-300">
+                Potřebuješ taktiku, plánování, týmovou souhru a schopnost
+                rozhodovat se správně,
+              </span>{" "}
+              když jsi pár set metrů nad zemí. A přesně o tom je tento kurz.
             </p>
           </div>
           <div className="flex pl-0 mt-10 md:mt-0 justify-center md:pl-6  md:min-w-[300px] md:w-full">
@@ -69,7 +77,9 @@ export default function page() {
         <ul className="list-disc md:mx-10 leading-tight space-y-5 pl-10 text-start">
           {mountainClimbBulletsOne.map((bullet, i) => (
             <li key={i}>
-              <span className="font-semibold">{bullet.bold}</span>
+              <span className="font-semibold dark:text-orange-300">
+                {bullet.bold}
+              </span>
               {bullet.text}
             </li>
           ))}
@@ -80,16 +90,22 @@ export default function page() {
           </h2>
           <ul className="list-disc leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
             <li>
-              <span className="font-semibold">Pro koho:</span> Absolventy
-              základního skalního kurzu
+              <span className="font-semibold dark:text-orange-300">
+                Pro koho:
+              </span>{" "}
+              Absolventy základního skalního kurzu
             </li>
             <li>
-              <span className="font-semibold">Místo konání:</span> Rakousko Alpy
-              nebo Slovensko Tatry
+              <span className="font-semibold dark:text-orange-300 ">
+                Místo konání:
+              </span>{" "}
+              Rakousko Alpy nebo Slovensko Tatry
             </li>
             <li>
-              <span className="font-semibold">Termín:</span> Standardně v
-              průběhu léta
+              <span className="font-semibold dark:text-orange-300">
+                Termín:
+              </span>{" "}
+              Standardně v průběhu léta
             </li>
           </ul>
         </div>
@@ -105,16 +121,18 @@ export default function page() {
         <ul className="list-disc mt-10 leading-tight md:mx-10 space-y-5 pb-10 pl-10 text-start">
           {mountainClimbBulletsTwo.map((bullet, i) => (
             <li key={i}>
-              <span className="font-semibold">{bullet.bold}</span>
+              <span className="font-semibold dark:text-orange-300">
+                {bullet.bold}
+              </span>
               {bullet.text}
             </li>
           ))}
         </ul>
         <p className="my-16  text-start text-base">
-          Skalní lezení rozvíjí nejen fyzickou kondici, ale i schopnost
-          plánovat, soustředit se a zachovat chladnou hlavu v náročných
-          situacích. Je to sport, který kombinuje pohyb, myšlení a důvěru ve
-          vlastní schopnosti i ve své lezecké parťáky.
+          Vícedélkové lezení je komplexní disciplína, která klade nároky na
+          techniku, fyzickou kondici i psychickou odolnost. Patří k náročnějším
+          formám horolezectví a vyžaduje dobrou přípravu a důraz na bezpečnost.
+          Zkrátka je to jiný level, kamzíku.
         </p>
         <div className="w-full flex flex-col text-start py-2 md:py-10 rounded-xl my-12 dark:bg-zinc-800 bg-gray-100">
           <div className="w-full md:ml-10 italic text-gray-400 flex flex-col md:border-l-[1px] border-gray-600">

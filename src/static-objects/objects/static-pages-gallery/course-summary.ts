@@ -18,7 +18,7 @@ export const courseCards = [
     summary: "Navazující kurz pro pokročilé lezce, co chtějí zažít zimní hory.",
     link: "/kurzy/zimni-lezeni",
     thumbnail:
-      "https://storage.googleapis.com/khs-zlin/static-sites-gallery/zimni-kurz/winter-course.png",
+      "https://storage.googleapis.com/khs-zlin/static-sites-gallery/zimni-kurz/winter.png",
   },
   {
     title: "Kroužek lezení",
