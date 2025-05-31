@@ -35,7 +35,7 @@ export default function page() {
       <article className="border-t-[1px] pt-16 lg:pt-24 w-full overflow-hidden dark:border-b-gray-700">
         <div className="w-full flex leading-loose flex-col md:flex-row">
           <div className="text-start">
-            Tak jo, kamzíku. Víš, jak se jistí u stěny a jak postavit štand.
+            Tak jo, kamzíku.Víš, jak se jistí u stěny a jak postavit štand.{" "}
             <span className="font-semibold">
               Víš ale, co dělá sníh, když ho napadne moc? A co když se terén
               změní v ledový vodopád? Nebo tě překvapí návěj, vítr a zmrzlý
@@ -109,7 +109,7 @@ export default function page() {
           <span className="font-semibold text-orange-400 dark:text-orange-300">
             Bez výbavy to v zimních horách nejde.{" "}
           </span>
-          Ale neexistuje jedna „zimní povinná výbava“.
+          Ale neexistuje jedna „zimní povinná výbava“.{" "}
           <span className="font-semibold">Vždy záleží, co děláš. </span>
           Jinou výbavu si vezmeš do lavinového terénu, jinou na ledolezení a
           jinou na túru na sněžnicích nebo skialpech.

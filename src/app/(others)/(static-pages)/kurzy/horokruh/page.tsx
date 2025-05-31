@@ -40,7 +40,7 @@ export default function page() {
               </span>
             </p>
             <p className="mt-4">
-              Tréninky probíhají pravidelně během školního roku,
+              Tréninky probíhají pravidelně během školního roku,{" "}
               <span className="font-semibold">od září do června</span>, na
               oddílové stěně KHS Zlín, kde máme vlastní boulder i venkovní
               lezeckou stěnu. Děti vedou zkušení trenéři s lezeckou praxí a
