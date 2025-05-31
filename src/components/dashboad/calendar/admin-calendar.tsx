@@ -29,8 +29,6 @@ export const AdminCalendar = () => {
   const [editActive, setEditActive] = useState(false);
   const [date, setDate] = React.useState<Date[]>([new Date()]);
 
-  console.log(date);
-
   const handleEdit = (id: number) => {
     const row = rows.find((row) => id === row.id);
     if (!row) {
@@ -145,11 +143,11 @@ export const AdminCalendar = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex mt-5 flex-col min-h-screen w-full">
       <div className="w-full min-h-[4px]">
         {loading && <LinearProgressBar />}
       </div>
-      <div className="mx-3 flex w-full flex-col lg:flex-row">
+      <div className="flex w-full flex-col lg:flex-row">
         <Calendar
           onMonthChange={(month) => setCurrentMonth(dayjs(month))}
           selected={date}

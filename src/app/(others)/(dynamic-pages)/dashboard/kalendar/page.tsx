@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <div className="flex w-full flex-col">
-      <span className="text-2xl">Kalendář akcí</span>
+      <span className="text-2xl mt-5">Kalendář akcí</span>
       <div className="mx-2 flex justify-center">
         <AdminCalendar />
       </div>

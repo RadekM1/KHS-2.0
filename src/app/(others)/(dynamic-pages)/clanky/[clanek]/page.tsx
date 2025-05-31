@@ -82,7 +82,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
             <span className="font-semibold">Kategorie: </span>
             {article.category}
           </div>
-          <div className="flex gap-3 h-full">
+          <div className="flex -ml-3 gap-3 h-full">
             <HeartFetchCover slug={clanek} />
             <Share share={urlToShare} title={article.title} />
           </div>
