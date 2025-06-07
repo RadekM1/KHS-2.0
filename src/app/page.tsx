@@ -45,7 +45,7 @@ export default function LandingPart() {
       <Logo />
       <div className="mx-auto flex max-w-screen-xl flex-grow flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-4">
         <ImgBtnsNav />
-        <div className="relative flex w-full flex-grow flex-col gap-6 lg:flex-row">
+        <div className="relative mt-8 flex w-full flex-grow flex-col gap-6 lg:flex-row">
           <div className="w-full lg:w-1/2">
             <div className="relative flex justify-center">
               <ArticleFeed />
@@ -58,7 +58,7 @@ export default function LandingPart() {
           </div>
         </div>
         <div />
-        <div className="mb-5 mt-16 flex w-full justify-center text-center text-2xl font-bold text-gray-500  dark:text-white">
+        <div className="mb-5 mt-24 flex w-full justify-center text-center text-2xl font-bold text-gray-500  dark:text-white">
           Články dle témat
         </div>
         <ImgBtnsArticles />
