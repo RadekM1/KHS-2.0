@@ -1,5 +1,5 @@
 import { articlesSitemapFetch } from "../lib/server-functions/frontend/sitemap-articles-fetch";
-const ROOT = "https://www.khszlin.com/";
+const ROOT = "https://khszlin.com/";
 
 export const dynamic = "force-dynamic";
 

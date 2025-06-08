@@ -14,10 +14,6 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  assetPrefix: process.env.NODE_ENV === 'production'
-    ? 'https://khszlin.com'
-    : '',
-
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb',
