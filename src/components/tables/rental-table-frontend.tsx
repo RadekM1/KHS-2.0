@@ -43,7 +43,7 @@ export const RentalTableFrontend = () => {
     setRowsLoading(false);
   };
 
-  const rowsPerPage = 20;
+  const rowsPerPage = 35;
 
   useEffect(() => {
     const filter = rows.filter((row) => {
