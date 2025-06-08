@@ -81,7 +81,6 @@ export const addFiles = async (
       toast.dismiss(`optimize-progress`);
 
       if (!response.ok || !response.file) {
-        toast.error(`Nepodařila se optimalizace souboru: ${file.name}`);
         continue;
       }
 
@@ -110,8 +109,6 @@ export const addFiles = async (
   setImgResize(false);
 
   if (processedCount > 0) {
-    toast.success(
-      `🎉 Hotovo! Optimalizováno ${processedCount} z ${totalFiles} obrázků`,
-    );
+    toast.success(`🎉 Hotovo! Optimalizováno`);
   }
 };
