@@ -33,7 +33,7 @@ export const profileText = [
             - Nahrajte fotografie
             - Klikněte na některou z fotografií (zvolí se jako náhledá v kartě článků) Pokud nebude zvolena stane se náhledovou automaticky první nahraná.
             - Pokud budete chtít provést na článku po nahrátí nějaké změnu tak v seznamu článků najděte publikovaný článek, klikněte na ikonku tužky a článek se objeví k editování. Proveďte úpravy, klikněte na uložit.
-            ke článku lze nahrát nejvíce 60 fotografií, nicméně aby upload fotek do cloudu proběhl bez problémů lze najednou pouze 20. Tzn když zakládáte nový článek tak nahrejte maximálně 20 fotek, následně klikněte na upravit článek a dalších 20 fotek můžete dohrát. Admin a editor vidí články všech, member pouze své články.`,
+            ke článku lze nahrát nejvíce 60 fotografií, nicméně aby upload fotek do cloudu proběhl bez problémů lze najednou pouze 15. Tzn když zakládáte nový článek tak nahrejte maximálně 15 fotek, následně klikněte na upravit článek a dalších 15 fotek můžete dohrát. Admin a editor vidí články všech, member pouze své články.`,
     clearance: "member, editor, admin",
   },
   {

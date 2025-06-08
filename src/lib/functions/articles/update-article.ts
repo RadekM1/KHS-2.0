@@ -58,9 +58,9 @@ export const handleArticleChange = async (
     }
   }
 
-  if (readyToUploadFiles.length > 20) {
+  if (readyToUploadFiles.length > 15) {
     toast.error(
-      "Ke článku lze najednou nahrát pouze 20 fotografií. Zkuste postupně (nahrát, upravit, uložit).",
+      "Ke článku lze najednou nahrát pouze 15 fotografií. Zkuste postupně (nahrát, upravit, uložit).",
     );
     setLoading(false);
     return;

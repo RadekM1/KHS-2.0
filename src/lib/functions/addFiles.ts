@@ -17,15 +17,21 @@ export const addFiles = async (
   setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[]>>,
   files: FileWithPreview[],
 ): Promise<void> => {
-  setImgResize(true);
   const maxFileSize: number = 9 * 1024 * 1024;
-  const maxFiles: number = 20;
+  const maxFiles: number = 15;
   const rejectedFiles: string[] = [];
   const duplicateFiles: string[] = [];
 
+  if (newFiles.length > maxFiles) {
+    toast.error(`Nelze nahrát více než ${maxFiles} souborů najednou.`);
+    return;
+  }
+
+  setImgResize(true);
+
   const remainingSlots: number = maxFiles - files.length;
   if (remainingSlots <= 0) {
-    alert(`Maximální počet souborů (20) již byl nahrán.`);
+    alert(`Maximální počet souborů (15) již byl nahrán.`);
     setImgResize(false);
     return;
   }
@@ -52,7 +58,7 @@ export const addFiles = async (
 
   if (rejectedFiles.length > 0) {
     toast(
-      `Následující soubory byly odmítnuty, protože přesahují limit 9 MB:\n${rejectedFiles.join("\n")}`,
+      `Následující soubory byly odmítnuty, protože přesahují limit 8 MB:\n${rejectedFiles.join("\n")}`,
     );
   }
 
@@ -78,8 +84,4 @@ export const addFiles = async (
   await Promise.all(optimizationPromises);
 
   setImgResize(false);
-
-  if (files.length >= maxFiles) {
-    toast.error(`Byl dosažen maximální počet souborů (20).`);
-  }
 };
