@@ -2,7 +2,7 @@
 
 import sharp from "sharp";
 
-const MAX_CONCURRENT = 3;
+const MAX_CONCURRENT = 1;
 let currentProcessing = 0;
 
 export const galerySharpOptim = async (file: File) => {

@@ -17,8 +17,8 @@ export const addFiles = async (
   setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[]>>,
   files: FileWithPreview[],
 ): Promise<void> => {
-  const maxFileSize: number = 9 * 1024 * 1024;
-  const maxFiles: number = 15;
+  const maxFileSize: number = 8 * 1024 * 1024;
+  const maxFiles: number = 20;
   const rejectedFiles: string[] = [];
   const duplicateFiles: string[] = [];
 
@@ -31,7 +31,7 @@ export const addFiles = async (
 
   const remainingSlots: number = maxFiles - files.length;
   if (remainingSlots <= 0) {
-    alert(`Maximální počet souborů (15) již byl nahrán.`);
+    toast.error(`Maximální počet souborů (20) již byl nahrán.`);
     setImgResize(false);
     return;
   }
@@ -51,24 +51,40 @@ export const addFiles = async (
   });
 
   if (duplicateFiles.length > 0) {
-    toast(
-      `Následující soubory byly odmítnuty, protože již byly nahrány:\n${duplicateFiles.join("\n")}`,
+    toast.warning(
+      `Následující soubory byly odmítnuty, protože již byly nahrány: ${duplicateFiles.join(", ")}`,
     );
   }
 
   if (rejectedFiles.length > 0) {
-    toast(
-      `Následující soubory byly odmítnuty, protože přesahují limit 8 MB:\n${rejectedFiles.join("\n")}`,
+    toast.error(
+      `Následující soubory byly odmítnuty, protože přesahují limit 8 MB: ${rejectedFiles.join(", ")}`,
     );
   }
 
-  const optimizationPromises: Promise<void>[] = filteredFiles.map(
-    async (file: File) => {
+  let processedCount = 0;
+  const totalFiles = filteredFiles.length;
+
+  for (const file of filteredFiles) {
+    processedCount++;
+
+    try {
+      toast.loading(
+        `Optimalizuji ${processedCount}/${totalFiles}: ${file.name}`,
+        {
+          id: `optimize-progress`,
+        },
+      );
+
       const response = await galerySharpOptim(file);
+
+      toast.dismiss(`optimize-progress`);
+
       if (!response.ok || !response.file) {
         toast.error(`Nepodařila se optimalizace souboru: ${file.name}`);
-        return;
+        continue;
       }
+
       const optimizedPreview: string = response.file;
 
       setFiles((prevFiles: FileWithPreview[]) => [
@@ -78,10 +94,24 @@ export const addFiles = async (
           preview: optimizedPreview,
         } as FileWithPreview,
       ]);
-    },
-  );
+    } catch (error) {
+      toast.dismiss(`optimize-progress`);
+      toast.error(
+        `Chyba při optimalizaci ${file.name}: ${error instanceof Error ? error.message : "Neznámá chyba"}`,
+      );
+      console.error("Chyba při optimalizaci:", error);
+    }
 
-  await Promise.all(optimizationPromises);
+    if (processedCount < totalFiles) {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+  }
 
   setImgResize(false);
+
+  if (processedCount > 0) {
+    toast.success(
+      `🎉 Hotovo! Optimalizováno ${processedCount} z ${totalFiles} obrázků`,
+    );
+  }
 };

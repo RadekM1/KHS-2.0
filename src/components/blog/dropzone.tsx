@@ -53,7 +53,7 @@ export const DropZone = ({
               <span className="text-slate-600"> PNG, JPG, JPEG max 8MB</span>
               <span className="text-slate-600">
                 {" "}
-                Najednou lze nahrát max 15 fotek
+                Najednou lze nahrát max 20 fotek
               </span>
             </p>
           ) : (
