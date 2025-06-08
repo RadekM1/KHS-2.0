@@ -13,7 +13,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { clanek } = await params;
   const article = await articleFetch(clanek);
-  const url = `https://new.khszlin.com/clanky/${article?.slug}`;
+  const url = `https://khszlin.com/clanky/${article?.slug}`;
   const imageUrl =
     article?.thumbnail ||
     "https://storage.googleapis.com/khs-zlin/card-fallback.svg";
@@ -57,7 +57,7 @@ const Page = async ({ params }: { params: Promise<{ clanek: string }> }) => {
     'src="https://',
   );
 
-  const urlToShare = `https://new.khszlin.com/clanky/${clanek}`;
+  const urlToShare = `https://khszlin.com/clanky/${clanek}`;
 
   return (
     <section className="w-full flex min-h-screen flex-col text-gray-600 dark:text-white items-center text-center">

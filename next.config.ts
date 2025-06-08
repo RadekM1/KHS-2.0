@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   },
 
   assetPrefix: process.env.NODE_ENV === 'production'
-    ? 'https://new.khszlin.com'
+    ? 'https://khszlin.com'
     : '',
 
   experimental: {

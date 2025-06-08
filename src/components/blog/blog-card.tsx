@@ -14,7 +14,7 @@ export const BlogCard = ({ data }: { data: ParsedPostCardSchema }) => {
   const [avatarSrc, setAvatarSrc] = useState(avatar);
   const [imageSrc, setImageSrc] = useState(mainImage);
   const tempShortDescription = `${data.description.slice(0, 100)}...`;
-  const share = `https://new.khszlin.com/clanky/${data.slug}`;
+  const share = `https://khszlin.com/clanky/${data.slug}`;
   const slug = data.slug;
 
   const thumbnailFallback =
