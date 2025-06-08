@@ -2,6 +2,9 @@
 
 import sharp from "sharp";
 
+sharp.cache(false);
+sharp.concurrency(1);
+
 export const avatarSharpOptim = async (file: File) => {
   try {
     const buffer = await file.arrayBuffer();

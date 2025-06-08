@@ -3,6 +3,8 @@
 import sharp from "sharp";
 
 const MAX_CONCURRENT = 1;
+sharp.cache(false);
+sharp.concurrency(1);
 let currentProcessing = 0;
 
 export const galerySharpOptim = async (file: File) => {
