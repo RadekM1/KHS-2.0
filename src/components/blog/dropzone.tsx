@@ -47,11 +47,16 @@ export const DropZone = ({
               <span className="text-orange-500 text-2xl hover:text-orange-500">
                 Nahrát fotografie
               </span>
-              <span className="text-slate-500 w-full">
+              <span className="text-slate-500 mt-3 w-full">
                 Fotky nahrajte kliknutím nebo přetáhnutím do vyhrazené oblasti
               </span>
-              <span className="text-slate-600"> PNG, JPG, JPEG max 8MB</span>
-              <span className="text-slate-600">
+              <span className="text-slate-500 mt-3">
+                <span className="font-semibold text-orange-600 dark:text-orange-400">
+                  max 9 MB fotka
+                </span>{" "}
+                (PNG, JPG, JPEG)
+              </span>
+              <span className="text-orange-600 mt-3 font-semibold dark:text-orange-400">
                 {" "}
                 Najednou lze nahrát max 20 fotek
               </span>

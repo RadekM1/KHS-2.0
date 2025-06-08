@@ -17,7 +17,7 @@ export const addFiles = async (
   setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[]>>,
   files: FileWithPreview[],
 ): Promise<void> => {
-  const maxFileSize: number = 8 * 1024 * 1024;
+  const maxFileSize: number = 9 * 1024 * 1024;
   const maxFiles: number = 20;
   const rejectedFiles: string[] = [];
   const duplicateFiles: string[] = [];
@@ -58,7 +58,7 @@ export const addFiles = async (
 
   if (rejectedFiles.length > 0) {
     toast.error(
-      `Následující soubory byly odmítnuty, protože přesahují limit 8 MB: ${rejectedFiles.join(", ")}`,
+      `Následující soubory byly odmítnuty, protože přesahují limit 9 MB: ${rejectedFiles.join(", ")}`,
     );
   }
 
