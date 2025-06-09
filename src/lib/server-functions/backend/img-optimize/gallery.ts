@@ -20,12 +20,12 @@ export const galerySharpOptim = async (file: File) => {
     })
       .rotate()
       .resize({
-        width: 1300,
+        width: 1500,
         withoutEnlargement: true,
         fit: "inside",
       })
       .jpeg({
-        quality: 80,
+        quality: 85,
         progressive: true,
         mozjpeg: true,
       })
