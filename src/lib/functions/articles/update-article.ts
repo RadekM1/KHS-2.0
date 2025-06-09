@@ -50,11 +50,14 @@ export const handleArticleChange = async (
 
   if (allInGallery.length > 0 && !thumbnail) {
     const proceed = confirm(
-      "nebyl vybrát náhledový obrázek, pokud budete pokračovat vybere se první v pořádí",
+      "nebyl vybrať náhledový obrázek, pokud budete pokračovat vybere se první v pořádí",
     );
     if (!proceed) {
       setLoading(false);
       return;
+    }
+    if (allInGallery[0]?.file) {
+      newThumbnail = allInGallery[0].file;
     }
   }
 
@@ -74,6 +77,7 @@ export const handleArticleChange = async (
     toast.error(
       "maximální počet obrázků v galerii je 100, dle uvážení některé odeberte",
     );
+    setLoading(false);
     return;
   }
   const tempThumbnail =
@@ -105,6 +109,7 @@ export const handleArticleChange = async (
       toast.error(
         "vyskytl se problém při nahrávání fotografií. Zkuste znovu nebo kontaktujte administrátora",
       );
+      setLoading(false);
       return;
     }
   }

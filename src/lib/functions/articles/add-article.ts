@@ -39,16 +39,21 @@ export const handleAddArticle = async (
     }
   }
 
-  if (readyToUploadFiles.length > 0 && !thumbnail) {
+  if (
+    readyToUploadFiles.length > 0 &&
+    !thumbnail &&
+    readyToUploadFiles[0]?.file
+  ) {
     const proceed = confirm(
       "nebyl vybrát náhledový obrázek, pokud budete pokračovat vybere se první v pořádí",
     );
     if (!proceed) {
       return;
     }
+    tempThumb = readyToUploadFiles[0].file;
   }
 
-  if (readyToUploadFiles && readyToUploadFiles.length > 30) {
+  if (readyToUploadFiles && readyToUploadFiles.length > 20) {
     toast.error(
       "maximální počet obrázků v galerii je 20, dle uvážení některé odeberte",
     );
@@ -56,11 +61,7 @@ export const handleAddArticle = async (
     return;
   }
 
-  if (
-    readyToUploadFiles.length > 0 &&
-    !thumbnail &&
-    readyToUploadFiles[0]?.file
-  ) {
+  if (readyToUploadFiles.length > 0 && !tempThumb) {
     tempThumb = readyToUploadFiles[0].file;
   }
 
