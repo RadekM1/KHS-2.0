@@ -17,7 +17,7 @@ export const addFiles = async (
   setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[]>>,
   files: FileWithPreview[],
 ): Promise<void> => {
-  const maxFileSize: number = 13 * 1024 * 1024;
+  const maxFileSize: number = 20 * 1024 * 1024;
   const maxFiles: number = 20;
   const rejectedFiles: string[] = [];
   const duplicateFiles: string[] = [];
