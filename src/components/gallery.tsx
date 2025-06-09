@@ -38,7 +38,7 @@ export const Gallery = ({ gallery }: ProductGallery) => {
               key={i}
               id={`img-${i}`}
               onClick={() => handleImgClick(i)}
-              className={`cursor-pointer group relative w-[47%] sm:w-full h-[150px] sm:h-[200px] rounded-md overflow-hidden
+              className={`cursor-pointer group relative max-w-[300px] w-[47%] sm:w-full h-[150px] sm:h-[200px] rounded-md overflow-hidden
                 ${!loaded[i] ? "bg-gray-200 animate-pulse" : ""}`}
             >
               <Image
