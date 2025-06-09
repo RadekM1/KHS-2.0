@@ -52,7 +52,7 @@ export const DropZone = ({
               </span>
               <span className="text-slate-500 mt-3">
                 <span className="font-semibold text-orange-600 dark:text-orange-400">
-                  max 20 MB fotka
+                  max 13 MB fotka
                 </span>{" "}
                 (PNG, JPG, JPEG)
               </span>
