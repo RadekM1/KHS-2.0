@@ -7,7 +7,7 @@ export const CalendarEventsTable = ({ rows }: { rows: CalendarEvents }) => {
     <table
       aria-label="tabulka akcí v měsíci"
       role="event feed"
-      className="w-full h-full table-auto items-center justify-center self-center text-sm md:ml-5 xl:w-2/3"
+      className="w-full h-full mt-6 lg:mt-0 table-auto items-center justify-center self-center text-sm md:ml-5 xl:w-2/3"
     >
       <tbody>
         {rows.map((row) => {

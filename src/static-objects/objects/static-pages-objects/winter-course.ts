@@ -17,7 +17,7 @@ export const winterBulletsTwo = [
   },
   {
     bold: "Místo konání: ",
-    text: "Rakousko alpy nebo Slovensko tatry",
+    text: "Rakousko Alpy nebo Slovensko Tatry",
   },
   {
     bold: "Termín: ",

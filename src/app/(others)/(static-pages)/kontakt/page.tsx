@@ -31,7 +31,7 @@ export default function page() {
 
         <div className="w-full flex flex-col md:py-10 lg:py-16 p-2 lg:p-6 my-12">
           <div className="flex flex-col md:flex-row items-center gap-5 lg:gap-10 p-2 lg:p-6 w-full text-center md:text-start  md:items-start  justify-start">
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-4 md:px-10 py-5">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
               <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ZÁKLADNÍ INFORMACE</span>
               </h2>
@@ -63,7 +63,7 @@ export default function page() {
               </div>
             </div>
 
-            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-2 md:px-10 py-5">
+            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-2 px-10 py-5">
               <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ODDÍLOVÉ KONTAKTY</span>
               </h2>
@@ -94,8 +94,8 @@ export default function page() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-5 lg:gap-10 p-2 mt-1 lg:p-6 w-full text-center md:text-start items-center  md:items-start  justify-start">
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-4 md:px-10 py-5">
+          <div className="flex flex-col md:flex-row gap-5  lg:gap-10 p-2 mt-1 lg:p-6 w-full text-center md:text-start items-center  md:items-start  justify-start">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-10 py-5">
               <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className=" dark:text-orange-300">HOROŠKOLA</span>
               </h2>
@@ -148,7 +148,7 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-1 md:px-10 py-5">
+            <div className="dark:bg-zinc-800 bg-gray-100 flex-grow rounded-xl px-1 px-10 py-5">
               <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className=" dark:text-orange-300">OSTATNÍ KONTAKTY</span>
               </h2>
