@@ -63,7 +63,7 @@ export default function page() {
               </div>
             </div>
 
-            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-2 px-10 py-5">
+            <div className="dark:bg-zinc-800 h-full bg-gray-100 rounded-xl px-10 py-5">
               <h2 className="items-start text-center md:text-start lg:items-center mt-10  font-bold text-2xl md:text-3xl">
                 <span className="dark:text-orange-300">ODDÍLOVÉ KONTAKTY</span>
               </h2>
