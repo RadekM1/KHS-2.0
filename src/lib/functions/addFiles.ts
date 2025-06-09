@@ -58,7 +58,7 @@ export const addFiles = async (
 
   if (rejectedFiles.length > 0) {
     toast.error(
-      `Následující soubory byly odmítnuty, protože přesahují limit 13 MB: ${rejectedFiles.join(", ")}`,
+      `Následující soubory byly odmítnuty, protože přesahují limit 20 MB: ${rejectedFiles.join(", ")}`,
     );
   }
 
