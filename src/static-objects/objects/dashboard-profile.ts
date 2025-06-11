@@ -27,13 +27,13 @@ export const profileText = [
   {
     title: "Přidání článku včetně návodu",
     text: `Po kliknutí na tlačítko články v menu:
-            - Vyberte kategorii příspěvku
-            - Zadejte titulek článku
-            - Vyplňte obsah článku
-            - Nahrajte fotografie
-            - Klikněte na některou z fotografií (zvolí se jako náhledá v kartě článků) Pokud nebude zvolena stane se náhledovou automaticky první nahraná.
-            - Pokud budete chtít provést na článku po nahrátí nějaké změnu tak v seznamu článků najděte publikovaný článek, klikněte na ikonku tužky a článek se objeví k editování. Proveďte úpravy, klikněte na uložit.
-            ke článku lze nahrát nejvíce 60 fotografií, nicméně aby upload fotek do cloudu proběhl bez problémů lze najednou pouze 15. Tzn když zakládáte nový článek tak nahrejte maximálně 20 fotek, následně klikněte na upravit článek a dalších 20 fotek můžete dohrát. Admin a editor vidí články všech, member pouze své články.`,
+            1) Vyberte kategorii příspěvku, 
+            2) Zadejte titulek článku, 
+            3) Vyplňte obsah článku, 
+            4) Nahrajte fotografie, 
+            5) Klikněte na některou z fotografií (zvolí se jako náhledá v kartě článků) Pokud nebude zvolena stane se náhledovou automaticky první nahraná, 
+            6) Pokud budete chtít udělat na článku po nahrátí nějaké změnu tak v seznamu článků najděte publikovaný článek, klikněte na ikonku tužky a článek se objeví k editování. Proveďte úpravy, klikněte na uložit. 
+            ke článku lze nahrát nejvíce 100 fotografií (to by mohlo stačit), nicméně aby upload fotek do cloudu proběhl bez problémů lze najednou pouze 20. Tzn když zakládáte nový článek tak nahrejte maximálně 20 fotek, následně klikněte na upravit článek a dalších 20 fotek můžete dohrát. Admin a editor vidí články všech, member pouze své články.`,
     clearance: "member, editor, admin",
   },
   {
@@ -58,11 +58,10 @@ export const profileText = [
   },
   {
     title: "Úrovně oprávnění uživatelů",
-    text: `Po kliknutí na tlačítko články v menu:
-            - Admin: jednoduše povoleno vše
-            - Editor: povoleno vše kromě sekce uživatelů
-            - Member: kometáře, srdíčka, články
-            - Visitor: komentáře, srdíčka`,
+    text: ` Admin - jednoduše povoleno vše, 
+            Editor - povoleno vše kromě sekce uživatelů, 
+            Member - kometáře, srdíčka, články 
+            Visitor - komentáře, srdíčka`,
     clearance: "admin",
   },
 ];

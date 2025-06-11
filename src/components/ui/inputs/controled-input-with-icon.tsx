@@ -31,7 +31,7 @@ export const InputWithIcon = ({
         >
           {label}
         </label>
-        <Icon className="absolute top-3 right-4 w-6 h-6 cursor-pointer stroke-slate-400 peer-disabled:cursor-not-allowed" />
+        <Icon className="absolute text-gray-500 top-3 right-4 w-6 h-6 cursor-pointer stroke-slate-400 peer-disabled:cursor-not-allowed" />
       </div>
     </>
   );
