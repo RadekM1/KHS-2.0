@@ -6,6 +6,7 @@ sharp.cache({ files: 0, items: 0 });
 sharp.concurrency(1);
 
 export const galerySharpOptim = async (file: File) => {
+  let base64 = "";
   try {
     let buffer = await file.arrayBuffer();
     let optimizedBuffer = await sharp(buffer, {
@@ -25,7 +26,7 @@ export const galerySharpOptim = async (file: File) => {
       })
       .withMetadata({ orientation: 1 })
       .toBuffer();
-    const base64 = optimizedBuffer.toString("base64");
+    base64 = optimizedBuffer.toString("base64");
     optimizedBuffer = Buffer.alloc(0);
     buffer = new ArrayBuffer(0);
     return {
@@ -35,5 +36,7 @@ export const galerySharpOptim = async (file: File) => {
   } catch (error) {
     console.log("Chyba při optimalizaci obrázku:", error);
     return { ok: false };
+  } finally {
+    base64 = "";
   }
 };

@@ -15,14 +15,17 @@ export const sendImgToGoogle = async (
       return { ok: false, message: "chybí podepsané URL" };
     }
 
-    const base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
-    const buffer = Uint8Array.from(atob(base64Data), (c) => c.charCodeAt(0));
+    let base64Data = base64.replace(/^data:image\/\w+;base64,/, "");
+    let buffer = Uint8Array.from(atob(base64Data), (c) => c.charCodeAt(0));
 
     const uploadResponse = await axios.put(String(signedUrl.url), buffer, {
       headers: {
         "Content-Type": "image/jpeg",
       },
     });
+
+    base64Data = "";
+    buffer = new Uint8Array(0);
 
     if (uploadResponse.status !== 200) {
       return { ok: false, message: "nepodařilo se nahrát obrázek do cloudu" };
