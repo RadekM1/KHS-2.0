@@ -29,7 +29,7 @@ export const sendImgToGoogle = async (
     }
     return { ok: true, message: "obrázek byl uložen do cloudu" };
   } catch (error) {
-    console.log("Failed to upload image:", error);
+    console.log("Nepodařil se upload fotky:", error);
     return { ok: false, message: "nepodařilo se nahrát obrázek do cloudu" };
   }
 };

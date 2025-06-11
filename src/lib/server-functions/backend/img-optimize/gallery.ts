@@ -2,19 +2,13 @@
 
 import sharp from "sharp";
 
-const MAX_CONCURRENT = 1;
-sharp.cache(false);
+sharp.cache({ files: 0, items: 0 });
 sharp.concurrency(1);
-let currentProcessing = 0;
 
 export const galerySharpOptim = async (file: File) => {
-  while (currentProcessing >= MAX_CONCURRENT) {
-    await new Promise((resolve) => setTimeout(resolve, 100));
-  }
-  currentProcessing++;
   try {
-    const buffer = await file.arrayBuffer();
-    const optimizedBuffer = await sharp(buffer, {
+    let buffer = await file.arrayBuffer();
+    let optimizedBuffer = await sharp(buffer, {
       sequentialRead: true,
       limitInputPixels: 268402689,
     })
@@ -31,9 +25,9 @@ export const galerySharpOptim = async (file: File) => {
       })
       .withMetadata({ orientation: 1 })
       .toBuffer();
-
     const base64 = optimizedBuffer.toString("base64");
-
+    optimizedBuffer = Buffer.alloc(0);
+    buffer = new ArrayBuffer(0);
     return {
       ok: true,
       file: `data:image/jpeg;base64,${base64}`,
@@ -41,7 +35,5 @@ export const galerySharpOptim = async (file: File) => {
   } catch (error) {
     console.log("Chyba při optimalizaci obrázku:", error);
     return { ok: false };
-  } finally {
-    currentProcessing--;
   }
 };

@@ -7,13 +7,15 @@ sharp.concurrency(1);
 
 export const avatarSharpOptim = async (file: File) => {
   try {
-    const buffer = await file.arrayBuffer();
-    const optimizedBuffer = await sharp(buffer)
+    let buffer = await file.arrayBuffer();
+    let optimizedBuffer = await sharp(buffer)
       .resize({ width: 500 })
       .jpeg({ quality: 80 })
       .toBuffer();
 
     const base64 = optimizedBuffer.toString("base64");
+    optimizedBuffer = Buffer.alloc(0);
+    buffer = new ArrayBuffer(0);
 
     return {
       ok: true,
