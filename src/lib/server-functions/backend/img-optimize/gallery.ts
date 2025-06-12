@@ -2,22 +2,27 @@
 
 import sharp from "sharp";
 
-sharp.cache({ memory: 50, files: 10, items: 20 });
+sharp.cache({
+  memory: 20,
+  files: 5,
+  items: 10,
+});
 sharp.concurrency(1);
 
 export const galerySharpOptim = async (file: File) => {
-  let base64 = "";
+  let buffer = null;
   let optimizedBuffer = null;
-  let buffer;
   let sharpInstance = null;
 
   try {
-    buffer = await file.arrayBuffer();
+    buffer = Buffer.from(await file.arrayBuffer());
 
     sharpInstance = sharp(buffer, {
       sequentialRead: true,
       limitInputPixels: 268402689,
       failOnError: false,
+      density: 72,
+      pages: 1,
     });
 
     optimizedBuffer = await sharpInstance
@@ -33,12 +38,10 @@ export const galerySharpOptim = async (file: File) => {
         mozjpeg: true,
       })
       .withMetadata({ orientation: 1 })
-      .toBuffer();
+      .toBuffer({ resolveWithObject: false });
 
-    base64 = optimizedBuffer.toString("base64");
+    const base64 = optimizedBuffer.toString("base64");
 
-    optimizedBuffer = null;
-    buffer = null;
     return {
       ok: true,
       file: `data:image/jpeg;base64,${base64}`,
@@ -47,9 +50,30 @@ export const galerySharpOptim = async (file: File) => {
     console.log("Chyba při optimalizaci obrázku:", error);
     return { ok: false };
   } finally {
-    base64 = "";
     if (sharpInstance) {
       sharpInstance.destroy();
+      sharpInstance = null;
     }
+    if (optimizedBuffer) {
+      optimizedBuffer = null;
+    }
+    if (buffer) {
+      buffer = null;
+    }
+    if (global.gc) {
+      global.gc();
+    }
+    clearSharpCache();
   }
+};
+
+export const clearSharpCache = async () => {
+  sharp.cache(false);
+  sharp.cache({ memory: 20, files: 5, items: 10 });
+
+  if (global.gc) {
+    global.gc();
+  }
+
+  return { status: "Sharp cache cleared" };
 };
