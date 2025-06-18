@@ -1,0 +1,35 @@
+services:
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .envDocker
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .envDocker
+    depends_on:
+      - db
+    
+volumes:
+  pgdata: 
+    driver: local
